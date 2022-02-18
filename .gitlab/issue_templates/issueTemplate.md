@@ -1,18 +1,3 @@
-Scenario:
-
-In order to <do something>
-As a <user>
-I want to <achieve some goal>
-
-
-
-Acceptance Criteria:
-
-Given <some state>
-When <some action>
-Then <some expectation>
-
-
 **Tracking Data**
 
 | Stage | Date |
@@ -25,35 +10,24 @@ Then <some expectation>
 | Entered Closed at | 0000-00-00 00:00 |
 
 **Acceptance Criteria**
-- [ ] One
-- [ ] Two
-- [ ] Three
 
-**Background:**
+Given <some state>
+When <some action>
+Then <some expectation>
 
-*Given* 
-
-*And* 
 
 **Scenario 1 - **
 
-*When* 
+In order to <do something>
+As a <user>
+I want to <achieve some goal>
 
-*And* 
-
-*Then* 
-
-*And* 
 
 **Scenario 2 - **
 
-*When* 
-
-*And* 
-
-*Then* 
-
-*And* 
+In order to <do something>
+As a <user>
+I want to <achieve some goal>
 
 **Scenario 3 - **
 
