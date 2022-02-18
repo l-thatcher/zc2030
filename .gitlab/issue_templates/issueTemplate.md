@@ -38,7 +38,7 @@ I want to <achieve some goal>
 
 
 **Definition of Ready**
-- [ ] It follows all the principles of INVEST
+- [ ] It follows all the principles of INVEST and SMART
 - [ ] It is estimated using Planning Poker (1, 2, 3, 5, 8, 13 points)
 - [ ] It has clear acceptance criteria that help clarify details and intent of the story that are understood by all the 
 team containing functional and/or non-functional requirements.
