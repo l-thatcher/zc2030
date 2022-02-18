@@ -31,7 +31,7 @@ Then
 - [ ] It is estimated using Planning Poker (1, 2, 3, 5, 8, 13 points)
 - [ ] It has clear acceptance criteria that help clarify details and intent of the story that are understood by all the 
 team containing functional and/or non-functional requirements.
-- [ ] It is written following a specific structure “As a <> I want <> so that <>”
+- [ ] It is written following a specific structure “Given When Then” (Gherkin)
 
 **Definition of Done**
 - [ ] It passed all  testing (unit,manual,Intergration)
