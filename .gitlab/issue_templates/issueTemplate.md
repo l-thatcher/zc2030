@@ -13,6 +13,7 @@
 
 Given <some state>
 When <some action>
+And <optional>
 Then <some expectation>
 
 
@@ -31,13 +32,10 @@ I want to <achieve some goal>
 
 **Scenario 3 - **
 
-*When* 
+In order to <do something>
+As a <user>
+I want to <achieve some goal>
 
-*And* 
-
-*Then* 
-
-*And* 
 
 **Definition of Ready**
 - [ ] It follows all the principles of INVEST
@@ -47,7 +45,9 @@ team containing functional and/or non-functional requirements.
 - [ ] It is written following a specific structure “As a <> I want <> so that <>”
 
 **Definition of Done**
-- [ ] It passed all automatic testing (Junit)
+- [ ] -	It passed all  testing (unit,manual,Intergration)
 - [ ] The code has been peer reviewed and then merged into the production branch with any conflicts resolved. 
 - [ ] Code is well commented/documented to allow to allow new developers to easily understand and begin further developing the code.
+- [ ] Code all follows a consistent naming convention *  https://www.w3schools.com/js/js_conventions.asp * ->  e.g Variable Names = camelCase
 - [ ] The code has been refactored if needed.
+- [ ] -	Changelog is updated
