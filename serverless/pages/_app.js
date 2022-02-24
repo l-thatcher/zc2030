@@ -1,15 +1,15 @@
 import '../styles/globals.css'
-import Navbar from '../Components/Navbar'
+import '../styles/Header.module.css'
+import Layout from "../Components/Layout";
+
+
 
 function MyApp({ Component, pageProps }) {
 
   return(
-  <>
-    <Navbar/>
-    <Component {...pageProps} />
-
-  </>
-
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   )
 }
 
