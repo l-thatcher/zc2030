@@ -1,6 +1,8 @@
 import styles from '../styles/Footer.module.css'
 
-const Footer = (props) => {
+const logo = "/cz2030_logo.png";
+
+const Footer = () => {
 
     return (
         <footer className={styles.footer}>
@@ -12,8 +14,8 @@ const Footer = (props) => {
             <span className={styles.logo}>
                 <img
                     className={styles.img}
-                    src={props.logo}
-                    srcSet={props.logo}
+                    src={logo}
+                    srcSet={logo}
                     alt= "Zero Carbon 2030 logo"
                 >
                 </img>
