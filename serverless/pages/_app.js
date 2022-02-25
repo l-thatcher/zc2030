@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import '../styles/Header.module.css'
-import Layout from "../Components/Layout";
+import Layout from "../Components/layout/Layout";
 
 
 

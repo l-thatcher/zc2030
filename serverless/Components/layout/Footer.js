@@ -1,4 +1,4 @@
-import styles from '../styles/Footer.module.css'
+import styles from '../../styles/Footer.module.css'
 
 const logo = "/cz2030_logo.png";
 

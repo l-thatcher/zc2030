@@ -1,4 +1,4 @@
-import styles from '../styles/Header.module.css';
+import styles from '../../styles/Header.module.css';
 import {Nav, Navbar} from "react-bootstrap";
 import Link from 'next/link'
 
@@ -14,7 +14,7 @@ const Header = () => {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav" style={{width:"0px"}}>
                             <Nav className={styles.nav}>
-                                <Link  href="/" passHref>
+                                <Link href="/" passHref>
                                     <Nav.Link
                                         className={styles.navFont}>{menuOptions[0]}
                                     </Nav.Link>
