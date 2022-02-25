@@ -1,44 +1,60 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Calculator.module.css'
+import {
+  Form, Button
+} from 'react-bootstrap';
 
-
-export default function Home() {
+export default function Calculator() {
   return (
-    <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className={styles.titleDiv}>
+          <h1>
+            Individual Calculator
+          </h1>
         </div>
+
+        <div className={styles.pageContent}>
+            <div className={styles.calculatorBody}>
+                <h3>
+                    Select a category:
+                </h3>
+                <div className={styles.formDiv}>
+                    <Form.Check
+                        className={styles.form}
+                        type="radio"
+                        id={`custom-radio item-`}
+                        name="category"
+                        label={"Dummy"}
+                        value={"Dummy"}
+                    />
+                    <Form.Check
+                        className={styles.form}
+                        type="radio"
+                        id={`custom-radio item-`}
+                        name="category"
+                        label={"Dummy"}
+                        value={"Dummy"}
+                    />
+                    <Form.Check
+                        className={styles.form}
+                        type="radio"
+                        id={`custom-radio item-`}
+                        name="category"
+                        label={"Dummy"}
+                        value={"Dummy"}
+                    />
+                </div>
+                <div>
+                    <Button variant="primary" size="lg" type="submit" className={styles.button}>
+                        Next
+                    </Button>
+                </div>
+            </div>
+            <div className={styles.progressBar}>
+                <h3>progress component</h3>
+            </div>
+        </div>
+
+
       </main>
-    </div>
   )
 }

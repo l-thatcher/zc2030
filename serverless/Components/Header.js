@@ -3,7 +3,7 @@ import {Nav, Navbar} from "react-bootstrap";
 import Link from 'next/link'
 
 const logo = "/cz2030_logo.png";
-const menuOptions = [ "Home", "About", "Projects", "Calculators", "Sign In", "Register"];
+const menuOptions = [ "Home", "About", "Projects", "Calculator", "Sign In", "Register"];
 
 const Header = () => {
 
