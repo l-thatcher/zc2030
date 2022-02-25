@@ -1,0 +1,31 @@
+
+.navbar {
+    border-bottom: solid 1px #eaeaea;
+}
+
+.nav {
+    width: 200px;
+}
+
+.navFont {
+    font-weight: normal;
+    font-size: 25px;
+    margin-right: 25%;
+}
+
+.navFont:hover {
+    border-bottom: solid 1px black;
+}
+
+.img {
+    height: 180px;
+    width: 257px;
+}
+
+.btn btn-secondary{
+    margin-left: 800px;
+    background-color: #B5DC10;
+    border-color: #B5DC10;
+    font-weight: bold;
+    color: white;
+}
