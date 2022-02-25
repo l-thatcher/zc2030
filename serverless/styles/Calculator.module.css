@@ -20,16 +20,15 @@
 
 .pageContent{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
 }
 
 .progressBar{
-    background: gray;
-    width: 40rem;
+    background: #A5A5AF;
     border-radius: 0.75rem;
     padding: 1rem;
-    margin-left: 0.5rem;
+    margin-top: 0.1rem;
 }
 
 .calculatorBody{
@@ -57,4 +56,5 @@
 .button{
     color: white;
     background: #57BC90;
+    margin-left: 1rem;
 }

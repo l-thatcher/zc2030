@@ -8,7 +8,7 @@ export default function Calculator() {
       <main className={styles.main}>
         <div className={styles.titleDiv}>
           <h1>
-            Individual Calculator
+            Carbon Calculator
           </h1>
         </div>
 
