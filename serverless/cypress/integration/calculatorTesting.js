@@ -11,6 +11,6 @@ describe('Navigation', () => {
         cy.url().should('include', '/calculator')
 
         // The new page should contain an h1 with "About page"
-        cy.get('h1').contains('Individual Calculator')
+        cy.get('h1').contains('Carbon Calculator')
     })
 })
