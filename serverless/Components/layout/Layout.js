@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
         <div className = "content">
             <Header/>
 
-            <div style={{marginTop:"140px"}}>
+            <div>
                 {children}
             </div>
 
