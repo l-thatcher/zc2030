@@ -1,9 +1,14 @@
-function LoginPage(){
-    function loginHandler(enteredLoginData) {
-        console.log(enteredLoginData)
-    }
+import Link from 'next/link';
+import Link from 'next/link'
 
-    return <LoginForm onLoginSubmit={loginHandler}/>
+function LoginPage() {
+  return (
+    <>
+      <Link href={'/api/auth/signin'}>
+        <h1>Login with Google</h1>
+      </Link>
+    </>
+  );
 }
 
 export default LoginPage;
