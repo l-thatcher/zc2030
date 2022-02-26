@@ -47,6 +47,13 @@ db.sequelizeConfig.sync({ force: false }).then(() => {
   console.log('yes re-sync done!');
 });
 
+try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+} catch (error) {
+    console.error('Unable to connect to the database:', error);
+}
+
 export default async function executeQuery({ query, values }) {
   try {
     const results = await db.query(query, values);
