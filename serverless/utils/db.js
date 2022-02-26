@@ -7,7 +7,7 @@ const { Sequelize } = require('@sequelize/core');
 dotenv.config();
 
 // Option 3: Passing parameters separately (other dialects)
-const sequelize = new Sequelize(
+export const sequelizeConfig = new Sequelize(
   process.env.DB,
   process.env.USER,
   process.env.PASSWORD,
