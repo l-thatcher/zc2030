@@ -1,12 +1,10 @@
-import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-import * as fs from 'fs';
 import UserModel from '../models/UserModel';
+
 const { Sequelize } = require('@sequelize/core');
 
 dotenv.config();
 
-// Option 3: Passing parameters separately (other dialects)
 export const sequelizeConfig = new Sequelize(
   process.env.DB,
   process.env.USER,
@@ -29,13 +27,6 @@ export const sequelizeConfig = new Sequelize(
   }
 );
 
-try {
-  await sequelize.authenticate();
-  console.log('Connection has been established successfully.');
-} catch (error) {
-  console.error('Unable to connect to the database:', error);
-}
-
 const db = {};
 
 db.Sequelize = Sequelize;
@@ -47,12 +38,6 @@ db.sequelizeConfig.sync({ force: false }).then(() => {
   console.log('yes re-sync done!');
 });
 
-try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-} catch (error) {
-    console.error('Unable to connect to the database:', error);
-}
 
 export default async function executeQuery({ query, values }) {
   try {

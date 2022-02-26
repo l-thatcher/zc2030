@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 import SequelizeAdapter from '@next-auth/sequelize-adapter';
 import GoogleProvider from "next-auth/providers/google"
-import { Sequelize } from 'sequelize';
+import {Sequelize} from 'sequelize';
 import sequelizeConfig from '../../utils/db'
 import dotenv from 'dotenv';
 
@@ -16,25 +16,10 @@ export default NextAuth({
   // https://next-auth.js.org/providers/overview
   providers: [
     GoogleProvider({
-        clientId: process.env.GOOGLE_ID,
-        clientSecret: process.env.GOOGLE_SECRET,
-      })
-  ],
-  adapter: SequelizeAdapter(sequelize,{ models: {
-    User: sequelize.define("user", {
-      ...models.User,
-      phoneNumber: DataTypes.STRING,
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
     })
-
-  } ,
-  theme: {
-    colorScheme: "light",
-  },
-  callbacks: {
-    async jwt({ token }) {
-      token.userRole = "admin"
-      return token
-    },
-  },
-});
+  ],
+  adapter: SequelizeAdapter(sequelize),
+})
 

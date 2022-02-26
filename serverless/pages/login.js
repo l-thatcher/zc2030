@@ -1,14 +1,21 @@
-import Link from 'next/link';
-import Link from 'next/link'
+import {signIn, signOut, useSession} from "next-auth/react"
 
 function LoginPage() {
-  return (
-    <>
-      <Link href={'/api/auth/signin'}>
-        <h1>Login with Google</h1>
-      </Link>
-    </>
-  );
+    const {data: session} = useSession()
+    if (session) {
+        return (
+            <>
+                Signed in as {session.user.email} <br/>
+                <button onClick={() => signOut()}>Sign out</button>
+            </>
+        )
+    }
+    return (
+        <>
+            Not signed in <br/>
+            <button onClick={() => signIn()}>Sign in</button>
+        </>
+    )
 }
 
 export default LoginPage;
