@@ -29,7 +29,7 @@ export default function Calculator() {
 
   return (
       <div className={styles.container}>
-        <h1 className={styles.h1}>Carbon Calculators</h1>
+        <h1 className={styles.h1} data-testid="main_heading">Carbon Calculators</h1>
 
           {
               data.map((type, i) =>
