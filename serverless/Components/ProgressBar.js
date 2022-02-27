@@ -31,7 +31,7 @@ const ProgressBar = (data) => {
 
             <div className={styles.column}>
                 <div className={styles.row} style={{marginTop:"30px"}}>
-                    <h1 className={styles.h1}>{data.category[1]}</h1>
+                    <h1 className={styles.h1} data-testid="category2_heading">{data.category[1]}</h1>
                 </div>
                 <div className={styles.row}>
                     <div className={styles.progressBar}>
@@ -49,7 +49,7 @@ const ProgressBar = (data) => {
 
             <div className={styles.column}>
                 <div className={styles.row} style={{marginTop:"30px"}}>
-                    <h1 className={styles.h1}>{data.category[2]}</h1>
+                    <h1 className={styles.h1} data-testid="category3_heading">{data.category[2]}</h1>
                 </div>
                 <div className={styles.row}>
                     <div className={styles.progressBar}>
