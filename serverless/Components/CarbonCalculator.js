@@ -30,10 +30,10 @@ const CarbonCalculator = (data) => {
     return(
             <main className={styles.main}>
                 <div className={styles.pageContent} style={{background: `${backgroundColor}`}}>
-                    <h2 className={styles.h2}> {data.data} Calculator </h2>
+                    <h2 className={styles.h2} data-testid="calculator_heading"> {data.data} Calculator </h2>
                     <div className={styles.calculatorContainer}>
                         <div className={styles.calculatorBody}>
-                            <h3 className={styles.h3}> Select a category:</h3>
+                            <h3 className={styles.h3} data-testid="category_heading">Select a category:</h3>
                             <div className={styles.formDiv}>
                                 <Form.Check
                                     className={styles.form}
@@ -61,7 +61,7 @@ const CarbonCalculator = (data) => {
                                 />
                             </div>
                             <div style={{textAlign:"center", marginBottom:"20px"}}>
-                                <Button variant="primary" size="lg" type="submit" className={styles.button}>
+                                <Button variant="primary" size="lg" type="submit" className={styles.button} data-testid="next_btn">
                                     Next
                                 </Button>
                             </div>
@@ -69,7 +69,7 @@ const CarbonCalculator = (data) => {
                         <div className={styles.progressBarBody}>
                             <div style={{width: "max-content"}}>
                                 <h3 style={{fontSize: "25px"}}>Progress Bar</h3>
-                                <ProgressBar category = {data.category} results = {data.results}/>
+                                <ProgressBar category = {data.category} results = {data.results} data-testid="category1_heading"/>
                             </div>
                         </div>
                     </div>
