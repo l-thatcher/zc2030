@@ -1,6 +1,7 @@
 import styles from '../../styles/Header.module.css';
 import { Nav, Navbar } from 'react-bootstrap';
 import Link from 'next/link';
+import LoginSession from '../LoginSession';
 
 const logo = '/cz2030_logo.png';
 const menuOptions = [
@@ -23,9 +24,9 @@ const Header = () => {
               <Link href="/" passHref>
                 <Nav.Link className={styles.navFont}>{menuOptions[0]}</Nav.Link>
               </Link>
-              <Link href={menuOptions[1].toLowerCase()} passHref>
-                <Nav.Link className={styles.navFont}>{menuOptions[1]}</Nav.Link>
-              </Link>
+              {/* <Link href={menuOptions[1].toLowerCase()} passHref> */}
+
+              <Nav.Link className={styles.navFont}>{menuOptions[1]}</Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <Navbar.Brand style={{ width: '250px' }}>
@@ -41,12 +42,11 @@ const Header = () => {
             style={{ marginLeft: '45px' }}
           >
             <Nav>
-              <Link href={menuOptions[2].toLowerCase()} passHref>
-                <Nav.Link className={styles.navFont}>{menuOptions[2]}</Nav.Link>
-              </Link>
-              <Link href={menuOptions[3].toLowerCase()} passHref>
-                <Nav.Link className={styles.navFont}>{menuOptions[3]}</Nav.Link>
-              </Link>
+              {/* <Link href={menuOptions[2].toLowerCase()} passHref> */}
+              <Nav.Link className={styles.navFont}>{menuOptions[2]}</Nav.Link>
+
+              {/* <Link href={menuOptions[3].toLowerCase()} passHref> */}
+              <Nav.Link className={styles.navFont}>{menuOptions[3]}</Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <div>
@@ -67,6 +67,7 @@ const Header = () => {
               {menuOptions[5].toUpperCase()}
             </button>
           </div>
+          <LoginSession />
         </div>
       </Navbar>
     </header>
