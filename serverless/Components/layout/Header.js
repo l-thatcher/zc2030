@@ -1,5 +1,5 @@
 import styles from '../../styles/Header.module.css';
-import { Nav, Navbar } from 'react-bootstrap';
+import {Nav, Navbar} from 'react-bootstrap';
 import Link from 'next/link';
 import LoginSession from '../LoginSession';
 
@@ -49,24 +49,6 @@ const Header = () => {
               <Nav.Link className={styles.navFont}>{menuOptions[3]}</Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <div>
-            <button
-              type="submit"
-              className="btn btn-secondary"
-              id="btn_login"
-              style={{ marginRight: '10px', background: '#77C9D4' }}
-            >
-              {menuOptions[4].toUpperCase()}
-            </button>
-            <button
-              type="submit"
-              className="btn btn-secondary"
-              id="btn_register"
-              style={{ background: '#57BC90' }}
-            >
-              {menuOptions[5].toUpperCase()}
-            </button>
-          </div>
           <LoginSession />
         </div>
       </Navbar>
