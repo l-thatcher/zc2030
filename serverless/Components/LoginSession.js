@@ -6,15 +6,21 @@ function LoginPage() {
     return (
         <>
             Signed in as {session.user.name} <br/>
-            <button onClick={() => signOut()}>Sign out</button>
+            <button className="btn btn-secondary"
+                    style={{marginLeft: '10px', background: '#57BC90'}}
+                    onClick={() => signOut()}>Sign out
+            </button>
         </>
     );
   }
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
+      <>
+          Not signed in <br/>
+          <button className="btn btn-secondary"
+                  style={{marginLeft: '10px', background: '#57BC90'}}
+                  onClick={() => signIn()}>Sign in
+          </button>
+      </>
   );
 }
 export default LoginPage;

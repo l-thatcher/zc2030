@@ -38,8 +38,8 @@ const Header = () => {
             ></img>
           </Navbar.Brand>
           <Navbar.Collapse
-            id="responsive-navbar-nav"
-            style={{ marginLeft: '45px' }}
+              id="responsive-navbar-nav"
+              style={{marginLeft: '45px'}}
           >
             <Nav>
               {/* <Link href={menuOptions[2].toLowerCase()} passHref> */}
@@ -49,7 +49,7 @@ const Header = () => {
               <Nav.Link className={styles.navFont}>{menuOptions[3]}</Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <LoginSession />
+          <LoginSession/>
         </div>
       </Navbar>
     </header>
