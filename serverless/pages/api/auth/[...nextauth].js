@@ -2,6 +2,8 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import {sequelizeConfig} from "../../../utils/db";
 import dotenv from 'dotenv';
+import SequelizeAdapter, {models} from "@next-auth/sequelize-adapter";
+import {DataTypes} from "@sequelize/core";
 
 dotenv.config();
 
@@ -20,8 +22,16 @@ export default NextAuth({
     // ...add more providers here
   ],
   secret: process.env.SECRET,
-  // adapter: SequelizeAdapter(sequelize),
+  adapter: SequelizeAdapter(sequelize, {
+    models: {
+      User: sequelize.define("user", {
+        ...models.User,
+        ethAddress: DataTypes.STRING
+      })
+    }
+  }),
 })
+
 
 
 
