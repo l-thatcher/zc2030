@@ -1,27 +1,23 @@
-import dotenv from 'dotenv';
-
-dotenv.config()
-
 describe("Login page", () => {
     before(() => {
         cy.log(`Visiting https://localhost:3000`)
         cy.visit("/")
     })
     it("Login with Google", () => {
-        const username = process.env.GOOGLE_USER
-        const password = process.env.GOOGLE_PW
-        const loginUrl = process.env.SITE_NAME
-        const cookieName = process.env.COOKIE_NAME
+        const username = Cypress.env("GOOGLE_USER")
+        const password = Cypress.env("GOOGLE_PW")
+        const loginUrl = Cypress.env("SITE_NAME")
+        const cookieName = Cypress.env("COOKIE_NAME")
         const socialLoginOptions = {
-            username: username,
-            password: password,
-            loginUrl: loginUrl,
+            username,
+            password,
+            loginUrl,
             headless: true,
             logs: false,
             isPopup: true,
-            loginSelector: `a[href="${
-                process.env.SITE_NAME
-            }/api/auth/signin/google"]`,
+            loginSelector: `a[href="${Cypress.env(
+                "SITE_NAME"
+            )}/api/auth/signin/google"]`,
             postLoginSelector: ".unread-count",
         }
 
