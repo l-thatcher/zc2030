@@ -1,4 +1,5 @@
 import mysql from 'serverless-mysql';
+
 const db = mysql({
     config: {
         host: process.env.MYSQL_HOST,
@@ -9,12 +10,12 @@ const db = mysql({
     }
 });
 
-export default async function excuteQuery({ query, values }) {
+export async function sql_query(query_string,values = []) {
     try {
-        const results = await db.query(query, values);
-        await db.end();
-        return results;
-    } catch (error) {
-        return { error };
+        const results = await db.query(query_string, values)
+        await db.end()
+        return results
+    } catch (e) {
+        throw Error(e.message)
     }
 }

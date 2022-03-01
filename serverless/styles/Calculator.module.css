@@ -1,0 +1,70 @@
+.h1 {
+    width: max-content;
+    padding-top: 140px;
+    height: 200px;
+    padding-left: 50px;
+}
+
+.h2 {
+    margin-top: 50px;
+    margin-left: 50px;
+    border-bottom: solid 3px #57BC90;
+    width: 80%;
+}
+ .h3 {
+    margin-left: 50px;
+    font-size: 25px;
+}
+
+ .container {
+     width: 100%;
+     background: #57BC90;
+ }
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pageContent {
+    width: 100%;
+    float: left;
+}
+
+.calculatorContainer {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+.calculatorBody {
+    width: 55%;
+    float: left;
+}
+
+.progressBarBody {
+    width: 40%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.formDiv {
+    padding: 2rem;
+}
+
+.form {
+    background: #FFFFFF;
+    border: solid 2px #57BC90;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0 0.5rem 2rem;
+    margin: 1rem;
+}
+
+.button {
+    color: black;
+    background: #57BC90;
+    border: solid 3px #57BC90;
+    width: 150px;
+}
