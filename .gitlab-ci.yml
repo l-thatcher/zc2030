@@ -5,7 +5,6 @@ build job:
   image: node:14
   stage: build
   script:
-    - cat $CI_PROJECT_DIR
     - cd /builds/c1847017/zc2030/serverless/
     - npm install
   artifacts:
