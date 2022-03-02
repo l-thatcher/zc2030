@@ -1,16 +1,24 @@
+stages:
+  - build
+  - test-jest
+  - test-cypress
+
 build job:
+  stage: build
   image: node:14
   script:
     - cd serverless/
     - npm install
 
 cypress-test job:
+  stage: test-cypress
   script:
     - cd serverless/
     - npm install
     - npx cypress run
 
 jest-test job:
+  stage: test-jest
   script:
     - cd serverless/
     - npm install
