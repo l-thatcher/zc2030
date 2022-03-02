@@ -1,12 +1,16 @@
-import CarbonCalculator from "../Components/CarbonCalculator"
-import styles from "../styles/Calculator.module.css"
+import CarbonCalculator from "../Components/CarbonCalculator";
+import styles from "../styles/Calculator.module.css";
+import {useState} from "react";
+import { Nav} from "react-bootstrap";
 
 export default function Calculator() {
+
+    const [value, setValue] = useState(0);
 
     // Using json data object for TESTING - This is going to be removed
     const jsonData = {
         Category1: [
-            { id: '1', name:`Individual`, category: ['Food', `Transport`, `Energy`], results: [14, 56, 89] }
+            { id: '1', name:`Individual`, category: ['Food', `Transport`, `Energy`], results: [24, 56, 89] }
         ],
         Category2: [
             { id: '2', name:`Business`, category: ['Zoo', `Jungle`, `Forest`], results: [1, 98, 32]  }
@@ -30,12 +34,24 @@ export default function Calculator() {
   return (
       <div className={styles.container}>
         <h1 className={styles.h1} data-testid="main_heading">Carbon Calculators</h1>
+          <div className="container-md" >
+              <div className={styles.containerMargin5}>
+                  <div className={styles.main}>
+                      <Nav className={styles.nav} onSelect={(e) => setValue(e)} fill variant="tabs" defaultActiveKey={value}>
+                          {
+                              data.map((name, i) =>
+                              <Nav.Item>
+                                <Nav.Link data-testid={data[i].name} className={styles.navItems} eventKey={i}>{data[i].name}</Nav.Link>
+                              </Nav.Item>
+                              )
+                          }
+                      </Nav>
+                  </div>
+              </div>
 
-          {
-              data.map((type, i) =>
-                  <CarbonCalculator data={data[i].name} id={i} category={data[i].category} results={data[i].results}/>
-              )
-          }
+              <CarbonCalculator data type={data[value].name} category={data[value].category} results={data[value].results}/>
+
+          </div>
 
       </div>
   )
