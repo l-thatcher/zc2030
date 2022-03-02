@@ -13,7 +13,6 @@ build job:
       - serverless/
 
 cypress-test job:
-  image: node:14
   stage: test
   script:
     - cd /builds/c1847017/zc2030/serverless/
