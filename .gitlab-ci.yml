@@ -1,7 +1,5 @@
 stages:
   - build
-  - test-jest
-  - test-cypress
 
 build job:
   stage: build
@@ -10,11 +8,11 @@ build job:
     - npm install
 
 cypress-test job:
-  stage: test-cypress
+  stage: .post
   script:
     - npx cypress run
 
 jest-test job:
-  stage: test-jest
+  stage: .post
   script:
     - npm test   
