@@ -8,7 +8,7 @@ import {PrismaClient} from "@prisma/client"
 
 dotenv.config();
 
-// https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database
+//https://next-auth.js.org/adapters/prisma
 const prisma = new PrismaClient()
 
 // For more information on each option (and a full list of options) go to
@@ -34,14 +34,6 @@ export default NextAuth({
   ],
   secret: process.env.SECRET,
   adapter: PrismaAdapter(prisma)
-  // (sequelize, {
-  //   models: {
-  //     User: sequelize.define("user", {
-  //       ...models.User,
-  //       ethAddress: DataTypes.STRING,
-  //       id: {type: DataTypes.STRING(1054), primaryKey:true}})
-  //   }
-  // }),
 })
 
 
