@@ -12,19 +12,20 @@ build job:
   script:
     - cd /builds/c1847017/zc2030/serverless/
     - npm install
+    - npm test
   artifacts:
     paths:
       - serverless/
 
-cypress-test job:
-  image: cypress/base:14.16.0
-  stage: test
-  cache:
-    paths:
-      - .npm
-      - cache/Cypress
-  script:
-    - npm ci --prefer-offline
-    - npm start &
-    - npx cypress run 
+# cypress-test job:
+#   image: cypress/base:14.16.0
+#   stage: test
+#   cache:
+#     paths:
+#       - .npm
+#       - cache/Cypress
+#   script:
+#     - npm ci --prefer-offline
+#     - npm start &
+#     - npx cypress run 
 
