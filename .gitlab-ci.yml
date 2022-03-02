@@ -8,7 +8,7 @@ build job:
   script:
     - cd serverless/
     - npm install
-    - npm run build
+    - npm run build  
 
 test jest job:
   image: node:14
@@ -24,4 +24,5 @@ test cypress job:
   script:
     - cd serverless/
     - npm install
+    - npm install cypress
     - npx cypress run    
