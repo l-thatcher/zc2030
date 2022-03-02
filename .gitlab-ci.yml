@@ -20,15 +20,3 @@ build job:
     paths:
       - serverless/
 
-# cypress-test job:
-#   image: cypress/base:14.16.0
-#   stage: test
-#   cache:
-#     paths:
-#       - .npm
-#       - cache/Cypress
-#   script:
-#     - npm ci --prefer-offline
-#     - npm start &
-#     - npx cypress run 
-
