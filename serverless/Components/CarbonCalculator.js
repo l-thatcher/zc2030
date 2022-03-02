@@ -1,36 +1,13 @@
 import styles from "../styles/Calculator.module.css";
 import {Button, Form} from "react-bootstrap";
 import ProgressBar from "./ProgressBar";
-import {useEffect, useState} from "react";
-
 
 const CarbonCalculator = (data) => {
 
-    const categoryId = data.id
-    const [backgroundColor, setBackgroundColor] = useState(["#D2EDE3"])
-
-
-    // Sets pattern and changes the background color for each calculator
-    function handleBackgroundColor() {
-        if (isEven(categoryId) === false){
-            setBackgroundColor("white")
-        }
-    }
-
-    // Checks if a number is even
-    function isEven(n) {
-        return n % 2 == 0;
-    }
-
-    // useEffect handler
-    useEffect(() => {
-        handleBackgroundColor()
-    }, []);
-
     return(
             <main className={styles.main}>
-                <div className={styles.pageContent} style={{background: `${backgroundColor}`}}>
-                    <h2 className={styles.h2} data-testid="calculator_heading"> {data.data} Calculator </h2>
+                <div className={styles.pageContentMain}>
+                    <h2 className={styles.h2} data-testid="calculator_heading"> {data.type} Calculator </h2>
                     <div className={styles.calculatorContainer}>
                         <div className={styles.calculatorBody}>
                             <h3 className={styles.h3} data-testid="category_heading">Select a category:</h3>
@@ -60,7 +37,7 @@ const CarbonCalculator = (data) => {
                                     value={data.category[2]}
                                 />
                             </div>
-                            <div style={{textAlign:"center", marginBottom:"20px"}}>
+                            <div className={styles.btnContainer}>
                                 <Button variant="primary" size="lg" type="submit" className={styles.button} data-testid="next_btn">
                                     Next
                                 </Button>
