@@ -20,7 +20,6 @@ cypress-test job:
 
 jest-test job:
   stage: test-jest
-  image: node:14
   script:
     - cd serverless/
     - npm install
