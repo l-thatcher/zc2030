@@ -1,6 +1,5 @@
 stages:
   - build
-  # - test-jest
   - test-cypress
 
 build job:
@@ -10,14 +9,6 @@ build job:
     - cd serverless/
     - npm install
     - npm run build  
-
-# test jest job:
-#   image: node:14
-#   stage: test-jest
-#   script:
-#     - cd serverless/
-#     - npm install
-#     - npm test
 
 test cypress job:
   image: cypress/base:14.16.0
