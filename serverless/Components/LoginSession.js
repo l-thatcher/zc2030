@@ -6,6 +6,7 @@ function LoginPage() {
     return (
         <>
             Signed in as {session.user.name} <br/>
+            {/*TODO: Remove In-Line Styling - Mix Bootstrap and External Styling?*/}
             <button
                 className="btn btn-secondary"
                 style={{marginLeft: "10px", background: "#57BC90"}}
@@ -19,6 +20,7 @@ function LoginPage() {
   return (
       <>
           Not signed in <br/>
+          {/*TODO: Remove In-Line Styling - Mix Bootstrap and External Styling?*/}
           <button
               className="btn btn-secondary"
               style={{marginLeft: "10px", background: "#57BC90"}}
