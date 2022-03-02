@@ -46,7 +46,7 @@ describe('Progress Bar Elements', () => {
 
         // Checks category name and percentage
         cy.get('h1').contains('Food')
-        cy.get('text.CircularProgressbar-text').contains('14%')
+        cy.get('text.CircularProgressbar-text').contains('24%')
 
         // Checks category name and percentage
         cy.get('h1').contains('Transport')
@@ -56,5 +56,57 @@ describe('Progress Bar Elements', () => {
         cy.get('h1').contains('Energy')
         cy.get('text.CircularProgressbar-text').contains('89%')
 
+    })
+})
+
+describe('Nav Items Elements', () => {
+    it('should choose the Business calculator and find the correct details', () => {
+
+        // Visits page
+        cy.visit('/calculator')
+
+        // Finds page
+        cy.get('a[data-testid="Business"]').click({force: true})
+
+        // Checks Progress Bar heading
+        cy.get('h3').contains('Progress Bar')
+
+        // Checks category name and percentage
+        cy.get('h1').contains('Zoo')
+        cy.get('text.CircularProgressbar-text').contains('1%')
+
+        // Checks category name and percentage
+        cy.get('h1').contains('Jungle')
+        cy.get('text.CircularProgressbar-text').contains('98%')
+
+        // Checks category name and percentage
+        cy.get('h1').contains('Forest')
+        cy.get('text.CircularProgressbar-text').contains('32%')
+    })
+})
+
+describe('Nav Items Elements 2', () => {
+    it('should choose the University calculator and find the correct details', () => {
+
+        // Visits page
+        cy.visit('/calculator')
+
+        // Finds page
+        cy.get('a[data-testid="University"]').click({force: true})
+
+        // Checks Progress Bar heading
+        cy.get('h3').contains('Progress Bar')
+
+        // Checks category name and percentage
+        cy.get('h1').contains('Books')
+        cy.get('text.CircularProgressbar-text').contains('5%')
+
+        // Checks category name and percentage
+        cy.get('h1').contains('Pencil')
+        cy.get('text.CircularProgressbar-text').contains('89%')
+
+        // Checks category name and percentage
+        cy.get('h1').contains('Rubber')
+        cy.get('text.CircularProgressbar-text').contains('10%')
     })
 })

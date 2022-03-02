@@ -41,7 +41,7 @@ export default function Calculator() {
                           {
                               data.map((name, i) =>
                               <Nav.Item>
-                                <Nav.Link className={styles.navItems} eventKey={i}>{data[i].name}</Nav.Link>
+                                <Nav.Link data-testid={data[i].name} className={styles.navItems} eventKey={i}>{data[i].name}</Nav.Link>
                               </Nav.Item>
                               )
                           }
