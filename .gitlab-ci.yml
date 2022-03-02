@@ -1,12 +1,12 @@
 build:
   image: node:14
   script:
-    -npm install
-    -npm run build
+    - npm install
+    - npm run build
 
 deploy job:
   image: node:14
   script:
-    -npm install
-    -npm run dev
+    - npm install
+    - npm run dev
 
