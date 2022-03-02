@@ -1,6 +1,19 @@
-build project:
-  image: node:14
+stages:
+  - test
+  - build
+
+test project:
+  stage: test
+  image: 14
   script:
     - npm install
     - npm test
-    - npm build
+    - npx cypress run
+
+build project:
+  stage: build
+  image: node:14
+  script:
+    - npm install
+    - npm run build
+    - npm run dev
