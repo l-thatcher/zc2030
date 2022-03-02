@@ -10,10 +10,18 @@ build job:
     - npm install
     - npm run build
 
-deploy job:
+test jest job:
   image: node:14
   stage: test
   script:
     - cd serverless/
     - npm install
     - npm test
+
+test cypress job:
+  image: node:14
+  stage: test
+  script:
+    - cd serverless/
+    - npm install
+    - npx cypress run    
