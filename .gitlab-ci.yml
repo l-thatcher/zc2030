@@ -1,8 +1,8 @@
-image: node:15
 stages:
   - build
 
 build job:
+  image: node:15
   stage: build
   script:
     - cat $CI_PROJECT_DIR
