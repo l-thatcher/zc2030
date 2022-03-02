@@ -3,14 +3,14 @@ stages:
   - build
   - run
 
-jest test job:
-  image: 14
-  stage: test
-  script:
-    - cd serverless/
-    - npm install
-    - npm test
-    - npx cypress run
+# jest test job:
+#   image: 14
+#   stage: test
+#   script:
+#     - cd serverless/
+#     - npm install
+#     - npm test
+#     - npx cypress run
 
 # cypress test job:
 #   stage: test
