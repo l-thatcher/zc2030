@@ -17,5 +17,6 @@ cypress-test job:
   stage: test
   script:
     - cd /builds/c1847017/zc2030/serverless/
+    - npm install
     - npx cypress run      
 
