@@ -1,54 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider        = "prisma-client-js"
+model account {
+  id                String  @id
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              user    @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Account_userId_fkey")
+
+  @@unique([provider, providerAccountId], map: "Account_provider_providerAccountId_key")
+  @@index([userId], map: "Account_userId_fkey")
 }
 
-model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+model calculatorcategory {
+  id              BigInt            @id @default(autoincrement())
+  type_id         BigInt?
+  name            String?           @db.VarChar(255)
+  calculatortype  calculatortype?   @relation(fields: [type_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_category_id_to_type_id")
+  calculatorinput calculatorinput[]
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
+  @@index([type_id], map: "fk_category_id_to_type_id")
 }
 
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
+model calculatorinput {
+  id                 BigInt              @id @default(autoincrement())
+  category_id        BigInt?
+  name               String?             @db.VarChar(255)
+  factor             Float?
+  unit               String?             @db.VarChar(24)
+  calculatorcategory calculatorcategory? @relation(fields: [category_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_category_id_to_input_id")
+  calculatorresult   calculatorresult[]
+
+  @@index([category_id], map: "fk_category_id_to_input_id")
+}
+
+model calculatorresult {
+  id              BigInt           @id @default(autoincrement())
+  input_id        BigInt?
+  user_id         String
+  quantity        Float?
+  result          Float?
+  calculatorinput calculatorinput? @relation(fields: [input_id], references: [id], onDelete: Cascade, map: "fk_result_id_to_input_id")
+  user            user             @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "fk_result_id_to_user_id")
+
+  @@index([input_id], map: "fk_result_id_to_input_id")
+  @@index([user_id], map: "fk_result_id_to_user_id")
+}
+
+model calculatortype {
+  id                 BigInt               @id @default(autoincrement())
+  name               String?              @db.VarChar(255)
+  calculatorcategory calculatorcategory[]
+}
+
+model session {
+  id           String   @id
+  sessionToken String   @unique(map: "Session_sessionToken_key")
   userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Session_userId_fkey")
+
+  @@index([userId], map: "Session_userId_fkey")
 }
 
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  ethWallet     String?
-  accounts      Account[]
-  sessions      Session[]
+model user {
+  id               String             @id
+  name             String?
+  email            String?            @unique(map: "User_email_key")
+  emailVerified    DateTime?
+  image            String?
+  ethWallet        String?
+  account          account[]
+  calculatorresult calculatorresult[]
+  session          session[]
 }
 
-model VerificationToken {
+model verificationtoken {
   identifier String
-  token      String   @unique
+  token      String   @unique(map: "VerificationToken_token_key")
   expires    DateTime
 
-  @@unique([identifier, token])
+  @@unique([identifier, token], map: "VerificationToken_identifier_token_key")
 }
