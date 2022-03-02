@@ -1,8 +1,9 @@
 .h1 {
-    width: max-content;
+    width: 100%;
     padding-top: 140px;
     height: 200px;
     padding-left: 50px;
+    background: #57BC90;
 }
 
 .h2 {
@@ -18,8 +19,13 @@
 
  .container {
      width: 100%;
-     background: #57BC90;
+     background: #D2EDE3;
  }
+
+ .containerMargin5 {
+    margin-bottom: 5%;
+     margin-top: 5%;
+}
 
 .main {
     display: flex;
@@ -31,6 +37,21 @@
 .pageContent {
     width: 100%;
     float: left;
+
+}
+
+.pageContentMain {
+    width: 100%;
+    float: left;
+    background: white;
+    margin-bottom: 70px;
+
+    /**
+  Generated using https://www.cssmatic.com/box-shadow
+   */
+    -webkit-box-shadow: 0px 0px 50px -20px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 50px -20px rgba(0,0,0,0.2);
+    box-shadow: 10px 15px 50px -20px rgba(0,0,0,0.2);
 }
 
 .calculatorContainer {
@@ -39,12 +60,12 @@
     margin-bottom: 100px;
 }
 .calculatorBody {
-    width: 55%;
+    width: 59%;
     float: left;
 }
 
 .progressBarBody {
-    width: 40%;
+    width: 30%;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -62,9 +83,30 @@
     margin: 1rem;
 }
 
+.btnContainer {
+    text-align: center;
+}
+
 .button {
     color: black;
     background: #57BC90;
     border: solid 3px #57BC90;
     width: 150px;
 }
+
+.nav {
+    background-color: #A5A5AF !important;
+}
+
+
+.navItems {
+    color: black !important;
+    font-size: 21px !important;
+    box-shadow: black !important;
+}
+
+.navItems:hover {
+    background: #57BC90;
+}
+
+
