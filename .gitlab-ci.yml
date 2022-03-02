@@ -1,15 +1,9 @@
+image: node:14
 stages:
   - build
-  - test
 
 build job:
   stage: build
-  image: node:15
   script:
     - cd serverless/
     - npm install
-
-cypress-test job:
-  stage: test
-  script:
-    - npx cypress run
