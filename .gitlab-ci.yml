@@ -15,7 +15,6 @@ test cypress job:
   stage: test-cypress
   script:
     - cd serverless/
-    - nohup npm run dev &
     - npm ci --prefer-offline
-    - npm start &
+    - npm run dev &
     - npx cypress run  
