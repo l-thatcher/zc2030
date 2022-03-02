@@ -1,16 +1,10 @@
-stages:
-  - build
-  - run
-
 build:
-  stage: build
   image: node:14
   script:
     - cd serverless/
     - npm install
 
 deploy:
-  stage: run
   image: node:14
   script:
     - cd serverless/
