@@ -2,7 +2,7 @@ stages:
   - build
 
 build job:
-  image: node:15
+  image: node:14
   stage: build
   script:
     - cat $CI_PROJECT_DIR
