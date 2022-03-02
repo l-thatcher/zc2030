@@ -1,4 +1,4 @@
-import {signIn, signOut, useSession} from 'next-auth/react';
+import {signIn, signOut, useSession} from "next-auth/react";
 
 function LoginPage() {
   const { data: session } = useSession();
@@ -6,9 +6,12 @@ function LoginPage() {
     return (
         <>
             Signed in as {session.user.name} <br/>
-            <button className="btn btn-secondary"
-                    style={{marginLeft: '10px', background: '#57BC90'}}
-                    onClick={() => signOut()}>Sign out
+            <button
+                className="btn btn-secondary"
+                style={{marginLeft: "10px", background: "#57BC90"}}
+                onClick={() => signOut()}
+            >
+                Sign out
             </button>
         </>
     );
@@ -16,9 +19,12 @@ function LoginPage() {
   return (
       <>
           Not signed in <br/>
-          <button className="btn btn-secondary"
-                  style={{marginLeft: '10px', background: '#57BC90'}}
-                  onClick={() => signIn()}>Sign in
+          <button
+              className="btn btn-secondary"
+              style={{marginLeft: "10px", background: "#57BC90"}}
+              onClick={() => signIn()}
+          >
+              Sign in
           </button>
       </>
   );

@@ -1,7 +1,4 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -11,7 +8,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
         <div className={styles.grid}>
@@ -31,8 +28,8 @@ export default function Home() {
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
+              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+              className={styles.card}
           >
             <h2>Deploy &rarr;</h2>
             <p>
@@ -42,5 +39,5 @@ export default function Home() {
         </div>
       </main>
     </div>
-  )
+  );
 }

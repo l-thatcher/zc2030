@@ -1,32 +1,32 @@
-
 .navbar {
-    border-bottom: solid 1px #eaeaea;
-    position: sticky; top: 0
+  border-bottom: solid 1px #eaeaea;
+  position: sticky;
+  top: 0;
 }
 
 .nav {
-    width: 200px;
+  width: 200px;
 }
 
 .navFont {
-    font-weight: normal;
-    font-size: 25px;
-    margin-right: 25%;
+  font-weight: normal;
+  font-size: 25px;
+  margin-right: 25%;
 }
 
 .navFont:hover {
-    border-bottom: solid 1px black;
+  border-bottom: solid 1px black;
 }
 
 .img {
-    height: 180px;
-    width: 257px;
+  height: 180px;
+  width: 257px;
 }
 
-.btn btn-secondary{
-    margin-left: 800px;
-    background-color: #B5DC10;
-    border-color: #B5DC10;
-    font-weight: bold;
-    color: white;
+.btn btn-secondary {
+  margin-left: 800px;
+  background-color: #b5dc10;
+  border-color: #b5dc10;
+  font-weight: bold;
+  color: white;
 }
