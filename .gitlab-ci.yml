@@ -6,7 +6,7 @@ build job:
   stage: build
   script:
     - cat $CI_PROJECT_DIR
-    - cd serverless/
+    - cd /builds/c1847017/zc2030/serverless/
     - npm install
   artifacts:
     paths:
