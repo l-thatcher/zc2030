@@ -13,9 +13,3 @@ cypress-test job:
   image: node:14
   script:
     - npx cypress run
-
-jest-test job:
-  stage: .post
-  image: node:14
-  script:
-    - npm test   
