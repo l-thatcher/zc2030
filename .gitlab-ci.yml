@@ -1,12 +1,14 @@
 build:
   image: node:14
   script:
+    - cd .\serverless\
     - npm install
     - npm run build
 
 deploy job:
   image: node:14
   script:
+    - cd .\serverless\
     - npm install
     - npm run dev
 
