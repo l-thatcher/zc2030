@@ -3,9 +3,3 @@ build:
   script:
     - cd serverless/
     - npm install
-
-deploy:
-  image: node:14
-  script:
-    - cd serverless/
-    - npm install
