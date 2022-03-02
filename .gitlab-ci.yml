@@ -1,12 +1,38 @@
-build:
+stages:
+  - test
+  - build
+  - run
+
+jest-test job:
+  stage: test
+  image: 14
+  script:
+    - cd serverless/
+    - npm install
+    - npm test
+    - npx cypress run
+
+cypress-test job:
+  stage: test
+  image: 14
+  script:
+    - cd serverless/
+    - npm install
+    - npx cypress run
+
+build job:
+  stage: build
   image: node:14
   script:
     - cd serverless/
     - npm install
+    - npm run build
 
 deploy job:
+  stage: run
   image: node:14
   script:
     - cd serverless/
     - npm install
-
+    - npm run dev&
+    - npx kill-port 3000
