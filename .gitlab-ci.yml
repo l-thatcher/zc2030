@@ -3,16 +3,16 @@ stages:
   - test
 
 build job:
-  stage: build
   image: node:14
+  stage: build
   script:
     - cd serverless/
     - npm install
     - npm run build
 
 deploy job:
-  stage: test
   image: node:14
+  stage: test
   script:
     - cd serverless/
     - npm install
