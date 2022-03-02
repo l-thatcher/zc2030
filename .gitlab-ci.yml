@@ -11,16 +11,10 @@ build job:
 
 cypress-test job:
   stage: test-cypress
-  image: node:14
   script:
-    - cd serverless/
-    - npm install
     - npx cypress run
 
 jest-test job:
   stage: test-jest
   script:
-    - cd serverless/
-    - npm install
-    - npm test
-    - npx cypress run    
+    - npm test   
