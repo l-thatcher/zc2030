@@ -25,4 +25,5 @@ test jest job:
   stage: test-jest
   script:
     - cd serverless/
+    - npm install
     - npm test    
