@@ -4,30 +4,30 @@ stages:
   -run
 
 jest-test:
-  stage: test
-  image: 14
+  stage:test
+  image:14
   script:
     -npm install
     -npm test
     -npx cypress run
 
 cypress-test:
-  stage: test
-  image: 14
+  stage:test
+  image:14
   script:
     -npm install
     -npx cypress run
 
 build:
-  stage: build
-  image: node:14
+  stage:build
+  image:node:14
   script:
     -npm install
     -npm run build
 
 deploy job:
-  stage: run
-  image: node:14
+  stage:run
+  image:node:14
   script:
     -npm install
     -npm run dev
