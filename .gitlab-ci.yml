@@ -10,6 +10,6 @@ build job:
 
 cypress-test job:
   stage: .post
-  image: node:14
+  image: node:15
   script:
     - npx cypress run
