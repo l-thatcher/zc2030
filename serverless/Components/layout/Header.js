@@ -8,7 +8,7 @@ const menuOptions = [
   "Home",
   "About",
   "Projects",
-  "Calculators",
+  "Calculator",
   "Sign In",
   "Register",
 ];
@@ -24,9 +24,9 @@ const Header = () => {
               <Link href="/" passHref>
                 <Nav.Link className={styles.navFont}>{menuOptions[0]}</Nav.Link>
               </Link>
-              {/* <Link href={menuOptions[1].toLowerCase()} passHref> */}
-
-              <Nav.Link className={styles.navFont}>{menuOptions[1]}</Nav.Link>
+              <Link href={menuOptions[1].toLowerCase()} passHref>
+                <Nav.Link className={styles.navFont}>{menuOptions[1]}</Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
           <Navbar.Brand style={{width: "250px"}}>
@@ -42,11 +42,12 @@ const Header = () => {
               style={{marginLeft: "45px"}}
           >
             <Nav>
-              {/* <Link href={menuOptions[2].toLowerCase()} passHref> */}
-              <Nav.Link className={styles.navFont}>{menuOptions[2]}</Nav.Link>
-
-              {/* <Link href={menuOptions[3].toLowerCase()} passHref> */}
-              <Nav.Link className={styles.navFont}>{menuOptions[3]}</Nav.Link>
+              <Link href={menuOptions[2].toLowerCase()} passHref>
+                <Nav.Link className={styles.navFont}>{menuOptions[2]}</Nav.Link>
+              </Link>
+              <Link href={menuOptions[3].toLowerCase()} passHref>
+                <Nav.Link className={styles.navFont}>{menuOptions[3]}</Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
           <LoginSession/>
