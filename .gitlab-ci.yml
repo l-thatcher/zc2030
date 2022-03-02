@@ -5,5 +5,10 @@ stages:
 build job:
   stage: build
   script:
+    - cat $CI_PROJECT_DIR
     - cd serverless/
     - npm install
+  artifacts:
+    paths:
+      - serverless/
+
