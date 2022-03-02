@@ -12,6 +12,7 @@ build job:
 
 cypress-test job:
   stage: test-cypress
+  image: node:14
   script:
     - cd serverless/
     - npm install
