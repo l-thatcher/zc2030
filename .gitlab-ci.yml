@@ -3,7 +3,7 @@ stages:
   - test
 
 build job:
-  image: node:14
+  image: node:latest
   stage: build
   script:
     - cd /builds/c1847017/zc2030/serverless/
