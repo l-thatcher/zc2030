@@ -3,7 +3,7 @@
 import React from "react";
 // Using render and screen from test-utils.js instead of
 // @testing-library/react
-import { render, screen } from "../test-utils";
+import {render, screen} from "../test-utils";
 import Home from "../../pages/index";
 
 /**
@@ -20,7 +20,7 @@ describe("Home", () => {
         render(<Home/>);
 
         const heading = screen.getByText(
-            /Testing Next.js With Jest and React Testing Library/i
+            /Welcome/i
         );
 
         // we can only use toBeInTheDocument because it was imported
