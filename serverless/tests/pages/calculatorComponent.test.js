@@ -1,5 +1,5 @@
 import {render, screen} from "../test-utils";
-import CarbonCalculator from "../../Components/CarbonCalculator";
+import CarbonCalculator from "../../Components/calculators/CarbonCalculator";
 import React from "react";
 
 const data = [
