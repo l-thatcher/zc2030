@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/ProgressBar.module.css";
+import styles from "../../styles/ProgressBar.module.css";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
@@ -13,8 +13,8 @@ const ProgressBar = (data) => {
                 <div className={styles.row}>
                     <div className={styles.progressBar}>
                         <CircularProgressbar
-                            value={data.results[0]}
-                            text={`${data.results[0]}%`}
+                            value={66}
+                            text={`66%`}
                             styles={buildStyles({
                                 textSize: "28px",
                                 textColor: "black",
@@ -34,8 +34,8 @@ const ProgressBar = (data) => {
                 <div className={styles.row}>
                     <div className={styles.progressBar}>
                         <CircularProgressbar
-                            value={data.results[1]}
-                            text={`${data.results[1]}%`}
+                            value={66}
+                            text={`66%`}
                             styles={buildStyles({
                                 textSize: "28px",
                                 textColor: "black",
@@ -55,8 +55,8 @@ const ProgressBar = (data) => {
                 <div className={styles.row}>
                     <div className={styles.progressBar}>
                         <CircularProgressbar
-                            value={data.results[2]}
-                            text={`${data.results[2]}%`}
+                            value={66}
+                            text={`77%`}
                             styles={buildStyles({
                                 textSize: "28px",
                                 textColor: "black",

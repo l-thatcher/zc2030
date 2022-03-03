@@ -1,8 +1,9 @@
-import styles from "../styles/Calculator.module.css";
+import styles from "../../styles/Calculator.module.css";
 import {Button, Form} from "react-bootstrap";
 import ProgressBar from "./ProgressBar";
 
 const CarbonCalculator = (data) => {
+
   return (
       <main className={styles.main}>
         <div className={styles.pageContentMain}>
@@ -20,25 +21,25 @@ const CarbonCalculator = (data) => {
                     className={styles.form}
                     type="radio"
                     id={`custom-radio item-`}
-                    name={data.category[0]}
-                    label={data.category[0]}
-                    value={data.category[0]}
+                    name={data.data.inputs[data.value][0].name}
+                    label={data.data.inputs[data.value][0].name}
+                    value={data.data.inputs[data.value][0].name}
                 />
                 <Form.Check
                     className={styles.form}
                     type="radio"
                     id={`custom-radio item-`}
-                    name={data.category[1]}
-                    label={data.category[1]}
-                    value={data.category[1]}
+                    name={data.data.inputs[data.value][1].name}
+                    label={data.data.inputs[data.value][1].name}
+                    value={data.data.inputs[data.value][1].name}
                 />
                 <Form.Check
                     className={styles.form}
                     type="radio"
                     id={`custom-radio item-`}
-                    name={data.category[2]}
-                    label={data.category[2]}
-                    value={data.category[2]}
+                    name={data.data.inputs[data.value][2].name}
+                    label={data.data.inputs[data.value][2].name}
+                    value={data.data.inputs[data.value][2].name}
                 />
               </div>
               <div className={styles.btnContainer}>
@@ -57,8 +58,8 @@ const CarbonCalculator = (data) => {
               <div style={{width: "max-content"}}>
                 <h3 style={{fontSize: "25px"}}>Progress Bar</h3>
                 <ProgressBar
-                    category={data.category}
-                    results={data.results}
+                    inputs={data.data.inputs}
+                    results={data.data.results}
                     data-testid="category1_heading"
                 />
               </div>
