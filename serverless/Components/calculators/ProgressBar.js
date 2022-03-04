@@ -4,6 +4,9 @@ import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const ProgressBar = (data) => {
+
+    const inputs = data.inputs[data.value]
+
     return (
         <div className={styles.container}>
             <div className={styles.column} style={{marginTop: "10px"}}>
@@ -24,7 +27,6 @@ const ProgressBar = (data) => {
                     </div>
                 </div>
             </div>
-
             <div className={styles.column}>
                 <div className={styles.row} style={{marginTop: "30px"}}>
                     <h1 className={styles.h1} data-testid="category2_heading">
@@ -34,8 +36,8 @@ const ProgressBar = (data) => {
                 <div className={styles.row}>
                     <div className={styles.progressBar}>
                         <CircularProgressbar
-                            value={66}
-                            text={`66%`}
+                            value={3}
+                            text={`3%`}
                             styles={buildStyles({
                                 textSize: "28px",
                                 textColor: "black",
@@ -45,7 +47,6 @@ const ProgressBar = (data) => {
                     </div>
                 </div>
             </div>
-
             <div className={styles.column}>
                 <div className={styles.row} style={{marginTop: "30px"}}>
                     <h1 className={styles.h1} data-testid="category3_heading">
@@ -55,7 +56,7 @@ const ProgressBar = (data) => {
                 <div className={styles.row}>
                     <div className={styles.progressBar}>
                         <CircularProgressbar
-                            value={66}
+                            value={77}
                             text={`77%`}
                             styles={buildStyles({
                                 textSize: "28px",
