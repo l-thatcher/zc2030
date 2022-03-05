@@ -1,11 +1,12 @@
 import styles from "../styles/Calculator.module.css";
-import {getCalculatorInputs, getCalculatorTypes} from "../services/CalculatorService";
+import {getCalculatorCategories, getCalculatorInputs, getCalculatorTypes} from "../services/CalculatorService";
 import ListOfCalculators from "../Components/calculators/ListOfCalculators";
 
 export default function Calculator(props) {
 
-    const inputs = props.inputs;
     const types = props.types;
+    const categories = props.categories;
+    const inputs = props.inputs;
 
     return (
         <div className={styles.container}>
@@ -16,8 +17,9 @@ export default function Calculator(props) {
             </h1>
             <div className="container-md">
                 <ListOfCalculators
-                    inputs={inputs}
+                    categories={categories}
                     types={types}
+                    inputs={[inputs]}
                 />
             </div>
         </div>

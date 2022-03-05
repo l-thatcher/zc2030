@@ -1,12 +1,20 @@
 import styles from "../../styles/Calculator.module.css";
 import {Button, Form} from "react-bootstrap";
 import ProgressBar from "./ProgressBar";
+import {useState} from "react";
 
 const CarbonCalculator = (data) => {
 
+  // Step 1: Calculator Categories, Step 2: Calculator Inputs, Step 3: Input Number
+  const [step, setStep] = useState(1);
+
+  // Selected option number from choices
+  const [selectedNum, setSelectedNum] = useState(0);
+
   const type = data.type
   const value = data.value;
-  const inputs = data.data.inputs;
+  const categories = data.category;
+  const inputs = data.input;
   const results = data.data.results;
 
   return (
@@ -20,42 +28,76 @@ const CarbonCalculator = (data) => {
               <h3 className={styles.h3} data-testid="category_heading">
                 Select a category:
               </h3>
-              <div className={styles.formDiv}>
-                <Form.Check
-                    className={styles.form}
-                    type="radio"
-                    id={`custom-radio item-`}
-                    name={inputs[value][0].name}
-                    label={inputs[value][0].name}
-                    value={inputs[value][0].name}
-                />
-                <Form.Check
-                    className={styles.form}
-                    type="radio"
-                    id={`custom-radio item-`}
-                    name={inputs[value][1].name}
-                    label={inputs[value][1].name}
-                    value={inputs[value][1].name}
-                />
-                <Form.Check
-                    className={styles.form}
-                    type="radio"
-                    id={`custom-radio item-`}
-                    name={inputs[value][2].name}
-                    label={inputs[value][2].name}
-                    value={inputs[value][2].name}
-                />
-              </div>
+              {step === 1 && (
+                  <>
+                    <div className={styles.formDiv}>
+                      {
+                        categories.map((category, i) => (
+                            <Form.Check
+                                className={styles.form}
+                                type="radio"
+                                id={`custom-radio item-`}
+                                name={category.name}
+                                label={category.name}
+                                value={i}
+                                onClick={(e) => setSelectedNum(e.target.value)}
+                            />
+                        ))
+                      }
+                    </div>
+                  </>
+              )}
+              {step === 2 && (
+                  <>
+                    <div className={styles.formDiv}>
+                      {
+                        inputs[selectedNum].map((input, i) => (
+                            <Form.Check
+                                className={styles.form}
+                                type="radio"
+                                id={`custom-radio item-`}
+                                name={input.name}
+                                label={input.name}
+                                value={i}
+                            />
+                        ))
+                      }
+                    </div>
+                  </>
+              )}
+              {step === 3 && (
+                  <>
+                    <div className={styles.formDiv}>
+                      <Form.Control className={styles.form} type="text" placeholder="Enter a value"/>
+                    </div>
+                  </>
+              )}
               <div className={styles.btnContainer}>
-                <Button
-                    variant="primary"
-                    size="lg"
-                    type="submit"
-                    className={styles.button}
-                    data-testid="next_btn"
-                >
-                  Next
-                </Button>
+                {step < 3 && (
+                    <Button
+                        variant="primary"
+                        size="lg"
+                        type="submit"
+                        className={styles.button}
+                        data-testid="next_btn"
+                        onClick={((e) => setStep(step + 1))}
+                    >
+                      Next
+                    </Button>
+                )
+                }
+                {step === 3 && (
+                    <Button
+                        variant="primary"
+                        size="lg"
+                        type="submit"
+                        className={styles.button}
+                        data-testid="next_btn"
+                    >
+                      Next
+                    </Button>
+                )
+                }
               </div>
             </div>
             <div className={styles.progressBarBody}>
@@ -65,7 +107,7 @@ const CarbonCalculator = (data) => {
                 </h3>
                 <ProgressBar
                     value={value}
-                    inputs={inputs}
+                    categories={categories}
                     results={results}
                     data-testid="category1_heading"
                 />

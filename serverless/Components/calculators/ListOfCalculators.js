@@ -7,15 +7,25 @@ import CarbonCalculator from "./CarbonCalculator";
 const ListOfCalculators = (props) => {
 
     const [value, setValue] = useState(0);
+    const inputs = [];
+
     const types = props.types;
-    const inputs = props.inputs;
+    const categories = props.categories;
+    const allInputs = props.inputs[0];
+
+    // Add inputs for a specific calculator type
+    categories[value].map((category, i) => (
+        inputs.push(allInputs[category.id - 1])
+    ))
 
     return <Fragment>
         <div className={styles.containerMargin5}>
             <div className={styles.main}>
                 <Nav
                     className={styles.nav}
-                    onSelect={(e) => setValue(e)}
+                    onSelect={(e) => {
+                        setValue(e)
+                    }}
                     fill
                     variant="tabs"
                     defaultActiveKey={value}
@@ -38,7 +48,8 @@ const ListOfCalculators = (props) => {
             value={value}
             data={props}
             type={types[value].name}
-            category={inputs[value].category}
+            category={categories[value]}
+            input={inputs}
             results={0}
         />
     </Fragment>
