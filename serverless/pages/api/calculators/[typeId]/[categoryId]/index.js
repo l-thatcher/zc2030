@@ -7,13 +7,13 @@ const getCalculatorInputsByCategoryId = ` SELECT CalculatorInput.id, CalculatorI
 
 export default async function handler(req, res) {
 
-    const {inputId} = req.query
+    const {categoryId} = req.query
     switch (req.method) {
 
         // Get data from database
         case 'GET':
             try {
-                const result = await execute_query(getCalculatorInputsByCategoryId, inputId);
+                const result = await execute_query(getCalculatorInputsByCategoryId, categoryId);
                 res.status(200).json(result);
 
             } catch (e) {
