@@ -7,8 +7,8 @@ const logo = "/cz2030_logo.png";
 const menuOptions = [
   "Home",
   "About",
-  "Projects",
   "Calculator",
+  "Projects",
   "Sign In",
   "Register",
 ];
@@ -35,7 +35,7 @@ const Header = () => {
                 src={logo}
                 srcSet={logo}
                 alt="Zero Carbon 2030 logo"
-            ></img>
+            />
           </Navbar.Brand>
           <Navbar.Collapse
               id="responsive-navbar-nav"
