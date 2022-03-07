@@ -1,10 +1,12 @@
 import {useState} from "react";
-import {Nav} from "react-bootstrap";
-
-
-
-
+import {Card, Nav} from "react-bootstrap";
+import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
+// import {}
+import "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 function CreateProjectCard(cardItem) {
+    const variant = "primary";
+    const idx = 0;
     return (
 
         // A card contains:
@@ -18,58 +20,49 @@ function CreateProjectCard(cardItem) {
         // Button linked to its page - cardItem.projectInfoLink
 
 
-        <div className="CardContainer">
-
-            <img className="ProjectBanner"
-                 src={cardItem.projectImage}/>
-
-            <img className="CompanyLogo"
-                 src={cardItem.companyLogo}/>
-
-            <p className="CPTText">
-                {cardItem.cpt}</p>
-
-            <p className="ProjectNameText">
-                {cardItem.projectName}</p>
-
-            <p className="ProjectLocationText">
-                {cardItem.projectLocation}</p>
-
-            <p className="TotalSupplyText">
-                {cardItem.totalSupply}</p>
-
-            <p className="PercentageSoldText">
-                {cardItem.percentageSold}</p>
-
-            <button className="InfoButton"
-                    href={cardItem.projectInfoLink}></button>
+        // This is used to map json of cards
+        // [
+        //
+        // ].map((variant, idx) => (
 
 
+// Basic example of a react-bootstrap card
+            <Card
+                bg={variant.toLowerCase()}
+                key={idx}
+                text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+                style={{ width: '18rem' }}
+                className="mb-2"
+            >
+                <Card.Header>{cardItem.projectName}</Card.Header>
+                <Card.Body>
+                    <Card.Title>{variant} Card Title </Card.Title>
+                    <Card.Text>
+                        Some quick example text to build on the card title and make up the bulk
+                        of the card's content.
+                    </Card.Text>
+                </Card.Body>
+            </Card>
 
-
-
-
-        </div>
 
     );
+
 }
 
 export default function Projects() {
-    return (
-        <div>
+            return (
             <CreateProjectCard projectImage={"Card 1"}
-                               companyLogo={"https://www.chevening.org/wp-content/uploads/2019/07/Cardiff-University-logo-300x167.png"}
-                               cpt={"£60"}
-                               projectName={"Breccon Wind Farm"}
-                               projectLocation={"Breccon"}
-                               totalSupply={"100"}
-                               percentageSold={"10"}
-                               projectInfoLink={"https://www.google.com"}
+            companyLogo={"https://www.chevening.org/wp-content/uploads/2019/07/Cardiff-University-logo-300x167.png"}
+            cpt={"£60"}
+            projectName={"Breccon Wind Farm"}
+            projectLocation={"Primary"}
+            totalSupply={"100"}
+            percentageSold={"10"}
+            projectInfoLink={"https://www.google.com"}
             />
 
-            {/*<CreateProjectCard name="Card 2" />*/}
-            {/*<CreateProjectCard name="Card 3" />*/}
-        </div>
-    );
-}
+            );
+
+
+        }
 
