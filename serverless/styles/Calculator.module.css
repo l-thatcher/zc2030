@@ -73,15 +73,32 @@
 }
 
 .formDiv {
-  padding: 2rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-left: 1rem;
+  text-align: center;
 }
 
 .form {
   background: #ffffff;
   border: solid 2px #57bc90;
   border-radius: 0.75rem;
-  padding: 0.5rem 0 0.5rem 2rem;
-  margin: 1rem;
+  padding: 0.7rem 0 0.5rem 2rem;
+  margin: 0.5rem;
+  color: black;
+  width: 90%;
+  text-align: center;
+}
+
+.form:hover {
+  background: #a5a5af;
+  border: solid 2px #a5a5af;
+  border-radius: 0.75rem;
+  padding: 0.7rem 0 0.5rem 2rem;
+  margin: 0.5rem;
+  color: black;
+  width: 90%;
+  text-align: center;
 }
 
 .btnContainer {
@@ -108,3 +125,4 @@
 .navItems:hover {
   background: #57bc90;
 }
+
