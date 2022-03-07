@@ -6,7 +6,7 @@ const getCalculatorInputsByCategoryId = `SELECT *
                                          WHERE input_id = ?`;
 
 const saveCalculatorInputsByCategoryId = ` INSERT INTO CalculatorResult(input_id, quantity, result, user_id)
-                                           VALUES (?, ?, ?, "cl09jy3yd0006kgres23k78u3");
+                                           VALUES (?, ?, ?, "cl0h9jrk10006ywregdb84xab");
 `;
 
 export default async function handler(req, res) {
