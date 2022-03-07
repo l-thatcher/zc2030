@@ -1,4 +1,4 @@
-import {render, screen} from "../test-utils";
+import { render, screen } from "../test-utils";
 import CarbonCalculator from "../../Components/calculators/CarbonCalculator";
 import React from "react";
 
@@ -37,12 +37,12 @@ const data = [
 
 test("Should render CarbonCalculator component with [0] data and identifies category names", () => {
   render(
-      <CarbonCalculator
-          data={data[0].name}
-          id={data[0].id}
-          category={data[0].category}
-          results={data[0].results}
-      />
+    <CarbonCalculator
+      data={data[0].name}
+      id={data[0].id}
+      category={data[0].category}
+      results={data[0].results}
+    />
   );
 
   const calculatorHeading = screen.getByTestId("calculator_heading");
@@ -70,12 +70,12 @@ test("Should render CarbonCalculator component with [0] data and identifies cate
 
 test("Should render CarbonCalculator component with [4] data and identifies category names", () => {
   render(
-      <CarbonCalculator
-          data={data[4].name}
-          id={data[4].id}
-          category={data[4].category}
-          results={data[4].results}
-      />
+    <CarbonCalculator
+      data={data[4].name}
+      id={data[4].id}
+      category={data[4].category}
+      results={data[4].results}
+    />
   );
 
   const calculatorHeading = screen.getByTestId("calculator_heading");
@@ -103,12 +103,12 @@ test("Should render CarbonCalculator component with [4] data and identifies cate
 
 test("Should render calculator component and find main heading and button", () => {
   render(
-      <CarbonCalculator
-          data={data[1].name}
-          id={data[1].id}
-          category={data[1].category}
-          results={data[1].results}
-      />
+    <CarbonCalculator
+      data={data[1].name}
+      id={data[1].id}
+      category={data[1].category}
+      results={data[1].results}
+    />
   );
 
   const categoryHeading = screen.getByTestId("category_heading");

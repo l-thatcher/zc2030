@@ -1,9 +1,9 @@
 import React from "react";
-import {render, screen} from "../test-utils";
+import { render, screen } from "../test-utils";
 import Calculator from "../../pages/calculator";
 
 test("Should render calculator page and find main heading", () => {
-  render(<Calculator/>);
+  render(<Calculator />);
 
   // Main heading
   const mainHeading = screen.getByTestId("main_heading");
@@ -15,7 +15,7 @@ test("Should render calculator page and find main heading", () => {
 });
 
 test("Should render calculator page and find nav options", () => {
-  render(<Calculator/>);
+  render(<Calculator />);
 
   // Nav options
   const individualOption = screen.getByTestId("Individual");

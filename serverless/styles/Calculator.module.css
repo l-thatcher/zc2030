@@ -1,110 +1,110 @@
 .h1 {
-    width: 100%;
-    padding-top: 40px;
-    height: 100px;
-    padding-left: 50px;
-    background: #57bc90;
+  width: 100%;
+  padding-top: 40px;
+  height: 100px;
+  padding-left: 50px;
+  background: #57bc90;
 }
 
 .h2 {
-    margin-top: 50px;
-    margin-left: 50px;
-    border-bottom: solid 3px #57bc90;
-    width: 80%;
+  margin-top: 50px;
+  margin-left: 50px;
+  border-bottom: solid 3px #57bc90;
+  width: 80%;
 }
 
 .h3 {
-    margin-left: 50px;
-    font-size: 25px;
+  margin-left: 50px;
+  font-size: 25px;
 }
 
 .container {
-    width: 100%;
-    background: #d2ede3;
+  width: 100%;
+  background: #d2ede3;
 }
 
 .containerMargin5 {
-    margin-bottom: 5%;
-    margin-top: 5%;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .pageContent {
-    width: 100%;
-    float: left;
+  width: 100%;
+  float: left;
 }
 
 .pageContentMain {
-    width: 100%;
-    float: left;
-    background: white;
-    margin-bottom: 70px;
+  width: 100%;
+  float: left;
+  background: white;
+  margin-bottom: 70px;
 
-    /**
+  /**
     Generated using https://www.cssmatic.com/box-shadow
      */
-    -webkit-box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.2);
-    box-shadow: 10px 15px 50px -20px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 15px 50px -20px rgba(0, 0, 0, 0.2);
 }
 
 .calculatorContainer {
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 100px;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 .calculatorBody {
-    width: 59%;
-    float: left;
+  width: 59%;
+  float: left;
 }
 
 .progressBarBody {
-    width: 30%;
-    display: grid;
-    justify-content: center;
-    align-content: center;
+  width: 30%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
 }
 
 .formDiv {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 .form {
-    background: #ffffff;
-    border: solid 2px #57bc90;
-    border-radius: 0.75rem;
-    padding: 0.5rem 0 0.5rem 2rem;
-    margin: 1rem;
+  background: #ffffff;
+  border: solid 2px #57bc90;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0 0.5rem 2rem;
+  margin: 1rem;
 }
 
 .btnContainer {
-    text-align: center;
+  text-align: center;
 }
 
 .button {
-    color: black;
-    background: #57bc90;
-    border: solid 3px #57bc90;
-    width: 150px;
+  color: black;
+  background: #57bc90;
+  border: solid 3px #57bc90;
+  width: 150px;
 }
 
 .nav {
-    background-color: #a5a5af !important;
+  background-color: #a5a5af !important;
 }
 
 .navItems {
-    color: black !important;
-    font-size: 21px !important;
-    box-shadow: black !important;
+  color: black !important;
+  font-size: 21px !important;
+  box-shadow: black !important;
 }
 
 .navItems:hover {
-    background: #57bc90;
+  background: #57bc90;
 }
