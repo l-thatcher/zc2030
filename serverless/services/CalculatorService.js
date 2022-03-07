@@ -14,3 +14,8 @@ export const getCalculatorCategories = (type_id) => {
 export const getCalculatorInputs = (type_id, category_id) => {
     return MainService.get(`/api/calculators/${type_id}/${category_id}`);
 }
+
+// POST Request - Save calculator result
+export const saveCalculatorResult = (type_id, category_id, input_id, data) => {
+    return MainService.post(`/api/calculators/${type_id}/${category_id}/${input_id}`, data);
+}
