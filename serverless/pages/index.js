@@ -1,7 +1,11 @@
 import styles from "../styles/Home.module.css";
 
 
-const logo = "/calculator-logo.png";
+const calculatorImg = "/calculator-logo.png";
+const discoverImg = "/discover-logo2.png";
+const purchaseImg = "/purchase-logo.png";
+const offsetImg = "/offset-logo.png";
+
 
 
 export default function Home() {
@@ -21,22 +25,22 @@ export default function Home() {
 
               <div className={styles.promptsCollection}>
                   <div className={styles.prompts}>
-                      <img src={logo} srcSet={logo} className={styles.img} alt="Calculator"/>
+                      <img src={calculatorImg} srcSet={calculatorImg} className={styles.img} alt="Calculator"/>
                       <p className={styles.promptText}>calculate</p>
                   </div>
 
                   <div className={styles.prompts}>
-                      <img src={logo} srcSet={logo} className={styles.img} alt="Calculate"/>
+                      <img src={discoverImg} srcSet={discoverImg} className={styles.img} alt="Discover"/>
                       <p className={styles.promptText}>Discover</p>
                   </div>
 
                   <div className={styles.prompts}>
-                      <img src={logo} srcSet={logo} className={styles.img} alt="Calculate"/>
+                      <img src={purchaseImg} srcSet={purchaseImg} className={styles.img} alt="Calculate"/>
                       <p className={styles.promptText}>Purchase</p>
                   </div>
 
                   <div className={styles.prompts}>
-                      <img src={logo} srcSet={logo} className={styles.img} alt="Calculate"/>
+                      <img src={offsetImg} srcSet={offsetImg} className={styles.img} alt="Calculate"/>
                       <p className={styles.promptText}>Offset</p>
                   </div>
               </div>
@@ -53,6 +57,19 @@ export default function Home() {
               <h1 className={styles.teamHeader}>
                   Meet the team
               </h1>
+
+              <div className={styles.profileCard}>
+                  <img src={purchaseImg} srcSet={purchaseImg} className={styles.profilePic} alt="Calculate"/>
+                  <h2>
+                      Peter Trott
+                  </h2>
+                  <h4>
+                      CEO
+                  </h4>
+                  <p>
+                      Hi, i'm Peter Lorelum ipsum doerem fogarten motum henlum. Onmun optus domini opium suptus.
+                  </p>
+              </div>
           </div>
       </main>
     </div>
