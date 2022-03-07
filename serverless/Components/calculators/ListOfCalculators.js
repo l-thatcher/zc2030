@@ -47,7 +47,7 @@ const ListOfCalculators = (props) => {
         <CarbonCalculator
             value={value}
             data={props}
-            type={types[value].name}
+            type={types[value]}
             category={categories[value]}
             input={inputs}
             results={0}
