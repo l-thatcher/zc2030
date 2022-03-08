@@ -110,16 +110,16 @@
   width: 150px;
 }
 
-.nav {
-  background-color: #a5a5af !important;
+.nav{
+  background: #57bc90 !important;
 }
 
 .navItems {
   color: black !important;
   font-size: 21px !important;
-  box-shadow: black !important;
+  border-top: solid 1px #d2ede3 !important;
 }
 
 .navItems:hover {
-  background: #57bc90;
+  background: #a5a5af;
 }
