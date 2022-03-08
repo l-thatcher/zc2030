@@ -43,7 +43,7 @@
 .pageContentMain {
   width: 100%;
   float: left;
-  background: white;
+  background-color: rgba(255, 255, 255, 0.8);
   margin-bottom: 70px;
 
   /**
@@ -51,7 +51,7 @@
      */
   -webkit-box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.2);
-  box-shadow: 10px 15px 50px -20px rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 30px 60px -20px rgba(0, 0, 0, 0.2);
 }
 
 .calculatorContainer {
@@ -83,7 +83,6 @@
   background: #ffffff;
   border: solid 2px #57bc90;
   border-radius: 0.75rem;
-  padding: 0.7rem 0 0.5rem 2rem;
   margin: 0.5rem;
   color: black;
   width: 90%;
@@ -94,7 +93,6 @@
   background: #a5a5af;
   border: solid 2px #a5a5af;
   border-radius: 0.75rem;
-  padding: 0.7rem 0 0.5rem 2rem;
   margin: 0.5rem;
   color: black;
   width: 90%;
