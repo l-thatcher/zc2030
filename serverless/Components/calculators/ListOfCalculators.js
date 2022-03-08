@@ -9,6 +9,7 @@ const ListOfCalculators = (props) => {
 
   const types = props.types;
   const categories = props.categories;
+  const categoriesCount = props.categoriesCount
   const allInputs = props.inputs[0];
 
   // Add inputs for a specific calculator type
@@ -48,6 +49,7 @@ const ListOfCalculators = (props) => {
         data={props}
         type={types[value]}
         category={categories[value]}
+        categoriesCount={categoriesCount}
         input={inputs}
         results={0}
       />

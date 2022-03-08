@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 const ProgressBar = (data) => {
   const categories = data.categories;
+  const categoriesCount = data.categoriesCount;
 
   return (
     <div className={styles.container}>
@@ -16,8 +17,8 @@ const ProgressBar = (data) => {
           <div className={styles.row}>
             <div className={styles.progressBar}>
               <CircularProgressbar
-                value={category.id}
-                text={category.id + "%"}
+                value={categoriesCount[i]}
+                text={categoriesCount[i] + "%"}
                 styles={buildStyles({
                   textSize: "28px",
                   textColor: "black",

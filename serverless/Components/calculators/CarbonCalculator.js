@@ -24,6 +24,7 @@ const CarbonCalculator = (data) => {
   const type = data.type
   const value = data.value;
   const categories = data.category;
+  const categoriesCount = data.categoriesCount
   const inputs = data.input;
   const results = data.data.results;
 
@@ -181,6 +182,7 @@ const CarbonCalculator = (data) => {
                 <ProgressBar
                     value={value}
                     categories={categories}
+                    categoriesCount={categoriesCount}
                     results={results}
                     data-testid="category1_heading"
                 />

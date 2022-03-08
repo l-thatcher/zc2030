@@ -35,5 +35,5 @@ export const getCountOfUsersUniqueFilledResultsByCategory = (userId, idArray) =>
                 user_id: userId,
                 input_id: {in: idArray}
             },
-        }).count()
+        })
 }

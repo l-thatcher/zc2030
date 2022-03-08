@@ -2,14 +2,16 @@ import styles from "../styles/Calculator.module.css";
 import {
   getCalculatorCategories,
   getCalculatorInputs,
-  getCalculatorTypes,
+  getCalculatorTypes, getUserCategoryProgress,
 } from "../services/CalculatorService";
 import ListOfCalculators from "../Components/calculators/ListOfCalculators";
+import {session} from "next-auth/core/routes";
 
 export default function Calculator(props) {
   const types = props.types;
   const categories = props.categories;
   const inputs = props.inputs;
+  const categoriesCount = props.categoriesCount
 
   return (
     <div className={styles.container}>
@@ -19,6 +21,7 @@ export default function Calculator(props) {
       <div className="container-md">
         <ListOfCalculators
           categories={categories}
+          categoriesCount={categoriesCount}
           types={types}
           inputs={[inputs]}
         />
@@ -30,6 +33,7 @@ export default function Calculator(props) {
 // This gets called at build time
 export async function getStaticProps({ params }) {
   let categories = [];
+  let categoriesCount = [];
   let inputs = [];
   let typeId = [];
   let categoryId = [];
@@ -46,7 +50,10 @@ export async function getStaticProps({ params }) {
   // Add Calculator Categories into categories for every id of calculators
   for (let i = 0; i < typeId.length; i++) {
     const res = await getCalculatorCategories(typeId[i]);
-    categories.push(res.data);
+    const calculatorCategories = res.data
+    const res2 = await calculatorCategories.map(getUserCategoryProgress(session.user.id, it))
+    categories.push(calculatorCategories);
+    categoriesCount.push(res2.data)
   }
 
   // Add Calculator Inputs for each calculator type
@@ -59,5 +66,5 @@ export async function getStaticProps({ params }) {
   }
 
   // Pass post data to the page via props
-  return { props: { types, categories, inputs } };
+  return { props: { types, categories, inputs, categoriesCount } };
 }
