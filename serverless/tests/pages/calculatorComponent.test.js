@@ -5,86 +5,88 @@ import ListOfCalculators from "../../Components/calculators/ListOfCalculators";
 
 const types = [
   {
-    "id": 1,
-    "name": "Individual"
+    id: 1,
+    name: "Individual",
   },
   {
-    "id": 2,
-    "name": "Business"
-  }
-]
+    id: 2,
+    name: "Business",
+  },
+];
 
 const categories = [
   [
     {
-      "id": 1,
-      "name": "Food"
+      id: 1,
+      name: "Food",
     },
     {
-      "id": 2,
-      "name": "Transport"
+      id: 2,
+      name: "Transport",
     },
     {
-      "id": 3,
-      "name": "Energy"
-    }
+      id: 3,
+      name: "Energy",
+    },
   ],
   [
-      {
-      "id": 4,
-      "name": "Cars"
-      },
-      {
-        "id": 5,
-      "name": "Bicycles"
+    {
+      id: 4,
+      name: "Cars",
     },
     {
-      "id": 6,
-      "name": "Bike"
-    }
-  ]
-]
+      id: 5,
+      name: "Bicycles",
+    },
+    {
+      id: 6,
+      name: "Bike",
+    },
+  ],
+];
 
 const inputs = [
-  [{
-    "id": 1,
-    "name": "Bread",
-    "factor": 1,
-    "unit": "grams"
-  },
-  {
-    "id": 2,
-    "name": "Rice",
-    "factor": 0.8,
-    "unit": "grams"
-  },
-  {
-    "id": 3,
-    "name": "Chicken",
-    "factor": 500,
-    "unit": "grams"
-  }],
-    [
-      {
-        "id": 1,
-        "name": "Bread",
-        "factor": 1,
-        "unit": "grams"
-      },
-      {
-        "id": 2,
-        "name": "Rice",
-        "factor": 0.8,
-        "unit": "grams"
-      },
-      {
-        "id": 3,
-        "name": "Chicken",
-        "factor": 500,
-        "unit": "grams"
-      }
-    ]
-]
+  [
+    {
+      id: 1,
+      name: "Bread",
+      factor: 1,
+      unit: "grams",
+    },
+    {
+      id: 2,
+      name: "Rice",
+      factor: 0.8,
+      unit: "grams",
+    },
+    {
+      id: 3,
+      name: "Chicken",
+      factor: 500,
+      unit: "grams",
+    },
+  ],
+  [
+    {
+      id: 1,
+      name: "Bread",
+      factor: 1,
+      unit: "grams",
+    },
+    {
+      id: 2,
+      name: "Rice",
+      factor: 0.8,
+      unit: "grams",
+    },
+    {
+      id: 3,
+      name: "Chicken",
+      factor: 500,
+      unit: "grams",
+    },
+  ],
+];
 
 const data = [
   {
@@ -121,21 +123,20 @@ const data = [
 
 test("Should render CarbonCalculator component with [0] data and identifies category names", () => {
   render(
-      <CarbonCalculator
-          value={0}
-          data={data}
-          type={types[0]}
-          category={categories[0]}
-          input={inputs}
-          results={0}
-      />
+    <CarbonCalculator
+      value={0}
+      data={data}
+      type={types[0]}
+      category={categories[0]}
+      input={inputs}
+      results={0}
+    />
   );
 
   const calculatorHeading = screen.getByTestId("calculator_heading");
   const category_1 = screen.getByTestId("category-0");
   const category_2 = screen.getByTestId("category-1");
   const category_3 = screen.getByTestId("category-2");
-
 
   // Identifies calculator heading, checks its content and is visible
   expect(calculatorHeading).toBeInTheDocument();
@@ -160,14 +161,14 @@ test("Should render CarbonCalculator component with [0] data and identifies cate
 
 test("Should render CarbonCalculator component with [4] data and identifies category names", () => {
   render(
-  <CarbonCalculator
+    <CarbonCalculator
       value={0}
       data={data}
       type={types[1]}
       category={categories[1]}
       input={inputs}
       results={0}
-  />
+    />
   );
 
   const calculatorHeading = screen.getByTestId("calculator_heading");
@@ -198,13 +199,12 @@ test("Should render CarbonCalculator component with [4] data and identifies cate
 
 test("Should render calculator component and find main heading and button", () => {
   render(
-      <ListOfCalculators
-          categories={categories}
-          types={types}
-          inputs={[inputs]}
-      />
+    <ListOfCalculators
+      categories={categories}
+      types={types}
+      inputs={[inputs]}
+    />
   );
-
 
   const categoryHeading = screen.getByTestId("category_heading");
   const nextButton = screen.getByTestId("next_btn");

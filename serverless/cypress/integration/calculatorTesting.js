@@ -24,11 +24,13 @@ describe("Calculator Headings", () => {
     cy.get("h2").contains("Calculator");
 
     // Checks category heading
-    cy.get('h3[data-testid=category_heading]').contains("Select a Category:");
+    cy.get("h3[data-testid=category_heading]").contains("Select a Category:");
 
     // Checks category headings
     cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Food");
-    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Transport");
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains(
+      "Transport"
+    );
     cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Energy");
   });
 });
@@ -92,27 +94,31 @@ describe("Calculate a footprint", () => {
     cy.get('a[data-testid="Individual"]').click({ force: true });
 
     // Clicks Cars category
-    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Food").click( {force: true});
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary")
+      .contains("Food")
+      .click({ force: true });
 
     // Click Next
-    cy.get("button").contains("Next").click( {force: true});
+    cy.get("button").contains("Next").click({ force: true });
 
     // Clicks Rice category
-    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Rice").click( {force: true});
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary")
+      .contains("Rice")
+      .click({ force: true });
 
     // Click Next
-    cy.get("button").contains("Next").click( {force: true});
+    cy.get("button").contains("Next").click({ force: true });
 
     // Add Input
-    cy.get('input.form-control').type("10");
+    cy.get("input.form-control").type("10");
 
     // Click Next
-    cy.get("button").contains("Next").click( {force: true});
+    cy.get("button").contains("Next").click({ force: true });
 
     // Check result
-    cy.get("h3.Calculator_form__Woycm").contains("8")
+    cy.get("h3.Calculator_form__Woycm").contains("8");
 
     // Click Reset
-    cy.get("button").contains("Reset").click( {force: true});
+    cy.get("button").contains("Reset").click({ force: true });
   });
 });

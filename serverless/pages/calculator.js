@@ -14,7 +14,10 @@ export default function Calculator(props) {
   const inputs = props.inputs;
 
   return (
-    <div className={styles.container} style={{backgroundImage: `url(${background3})`}}>
+    <div
+      className={styles.container}
+      style={{ backgroundImage: `url(${background3})` }}
+    >
       <h1 className={styles.h1} data-testid="main_heading">
         Carbon Calculators
       </h1>
