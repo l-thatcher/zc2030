@@ -6,7 +6,19 @@ import {saveCalculatorResult} from "../../services/CalculatorService";
 
 const CarbonCalculator = (data) => {
 
-  // Step 1: Calculator Categories, Step 2: Calculator Inputs, Step 3: Input Number
+  const type = data.type;
+  const value = data.value;
+  const categories = data.category;
+  const inputs = data.input;
+  const results = data.data.results;
+
+  // Background image
+  const background4 = "/calculator_background_4.jpg";
+
+  // User Input value
+  const [inputValue, setInputValue] = useState();
+
+  // Stores step number - Step-1: Calculator Categories, Step 2: Calculator Inputs, Step 3: Input Number
   const [step, setStep] = useState(1);
 
   // Step-1: selected value from choices
