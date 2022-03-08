@@ -1,65 +1,63 @@
-import {useState} from "react";
-import {Card, Nav} from "react-bootstrap";
-import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
-// import {}
-import "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
-function CreateProjectCard(cardItem) {
-    const variant = "primary";
-    const idx = 0;
+import styles from "../../styles/ProjectCard.module.css";
+import Link from "next/link";
+
+export const getStaticProps = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await res.json();
+
+    return {
+        props: { projects: data },
+    };
+};
+
+const Projects = ({ projects }) => {
+    console.log(projects);
     return (
+        <div className="bg-blue-400 py-24 flex items-center justify-center flex">
+            <div className="bg-zc30-green rounded-lg w-1/7">
+                <div className="border-white border-3 rounded-lg">
+                    <div className="relative overflow-hidden rounded-lg shadow-lg">
+                        <img
+                            src="https://media.nationalgeographic.org/assets/photos/818/719/3d97f911-594f-4257-880c-d9aa1c6da22d.jpg"
+                            className="card-img rounded-t-lg h-60 w-full object-cover"
+                        />
 
-        // A card contains:
-        // Project Image [class: ProjectBanner] cardItem.projectImage
-        // Company Logo - cardItem.companyLogo
-        // Cost Per Tonne - cardItem.cpt
-        // Project Name - cardItem.projectName
-        // Project Location - cardItem.projectLocation
-        // Total Supply - cardItem.totalSupply
-        // % of Supply sold - cardItem.percentageSold TODO: review where percentage is calculated
-        // Button linked to its page - cardItem.projectInfoLink
+                        <div className="absolute bottom-0 right-0">
+                            <h2 className="p-0.5 bg-opacity-70 rounded-3 bg-zc30-blue text-black text-center font-light mb-1 position-relative shadow-inner shadow-lg">
+                                £51/ C tonne
+                            </h2>
+                        </div>
+                    </div>
 
-        // This is used to map json of cards
-        // [
-        //
-        // ].map((variant, idx) => (
+                    <h2 className="text-white text-xxl-center text-center font-light mb-1 position-relative flex-center shadow-lg">
+                        Breccon Wind Energy
+                    </h2>
+                </div>
 
+                <div className="p-2 position-relative text-center">
+                    <div className="flex justify-center">
+                        <div className=" items-center">
+                            <img
+                                src="https://www.svgrepo.com/show/127575/location-sign.svg"
+                                className="w-5 h-5 align-content-center"
+                            />
+                        </div>
+                        <p className="flex font-light text-lg">
+                            Breccon Beacons National Reserve
+                        </p>
+                    </div>
 
-// Basic example of a react-bootstrap card
-        <Card
-            bg={variant.toLowerCase()}
-            key={idx}
-            text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-            style={{ width: '18rem' }}
-            className="mb-2"
-        >
-            <Card.Header>{cardItem.projectName}</Card.Header>
-            <Card.Body>
-                <Card.Title>{variant} Card Title </Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk
-                    of the card's content.
-                </Card.Text>
-            </Card.Body>
-        </Card>
+                    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded">
+                        More details
+                    </button>
+                </div>
+
+                {/*add progress bar here*/}
+                <footer className="bg-gray-100 rounded-b-lg text-right py-1 px-8 text-xs text-gray-500"></footer>
+            </div>
+
+        </div>
     );
+};
 
-}
-
-export default function Projects() {
-    return (
-        <CreateProjectCard projectImage={"Card 1"}
-                           companyLogo={"https://www.chevening.org/wp-content/uploads/2019/07/Cardiff-University-logo-300x167.png"}
-                           cpt={"£60"}
-                           projectName={"Breccon Wind Farm"}
-                           projectLocation={"Primary"}
-                           totalSupply={"100"}
-                           percentageSold={"10"}
-                           projectInfoLink={"https://www.google.com"}
-        />
-
-    );
-
-
-}
-
+export default Projects;
