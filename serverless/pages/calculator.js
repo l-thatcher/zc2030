@@ -6,13 +6,15 @@ import {
 } from "../services/CalculatorService";
 import ListOfCalculators from "../Components/calculators/ListOfCalculators";
 
+const background3 = "/calculator_background_3.jpg";
+
 export default function Calculator(props) {
   const types = props.types;
   const categories = props.categories;
   const inputs = props.inputs;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{backgroundImage: `url(${background3})`}}>
       <h1 className={styles.h1} data-testid="main_heading">
         Carbon Calculators
       </h1>

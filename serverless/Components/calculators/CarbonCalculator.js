@@ -12,9 +12,6 @@ const CarbonCalculator = (data) => {
   const inputs = data.input;
   const results = data.data.results;
 
-  // Background image
-  const background4 = "/calculator_background_4.jpg";
-
   // User Input value
   const [inputValue, setInputValue] = useState();
 
