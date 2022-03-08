@@ -5,11 +5,12 @@ import Auth0Provider from "next-auth/providers/auth0";
 import dotenv from "dotenv";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
+import * as PrismaService from "../../../services/PrismaService";
 
 dotenv.config();
 
 //https://next-auth.js.org/adapters/prisma
-const prisma = new PrismaClient();
+const prisma = PrismaService.providePrismaClient;
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options

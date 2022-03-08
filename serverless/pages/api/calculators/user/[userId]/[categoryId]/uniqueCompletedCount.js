@@ -1,5 +1,9 @@
 import { PrismaClient } from '@prisma/client'
 import {useRouter} from "next/router";
+import {
+    getCountOfUsersUniqueFilledResultsByCategory,
+    getInputsByCategory
+} from "../../../../../../services/PrismaService";
 
 const prisma = new PrismaClient()
 export default async function handler(req, res) {
@@ -8,26 +12,12 @@ export default async function handler(req, res) {
 
         case "GET":
             try {
-                const categoryId = parseInt(req.query.categoryId)
-                // console.log(categoryId)
-                const inputIds = await prisma.calculatorInput.findMany(
-                {
-                    where: {
-                        category_id: categoryId,
-                    },
-                    select: {
-                        id: true
-                    }
-                })
-                const idArray = inputIds.map(input => input.id)
 
-                const result = await prisma.calculatorResult.findMany(
-                    {distinct: ["input_id"],
-                    where: {
-                        user_id: req.query.userId,
-                        input_id: {in: idArray}
-                    },
-                })
+                const categoryId = parseInt(req.query.categoryId)
+                const inputIds = await getInputsByCategory(categoryId)
+                const idArray = inputIds.map(input => input.id)
+                const result = await getCountOfUsersUniqueFilledResultsByCategory(req.query.userId, idArray)
+
                 res.status(200).json(result);
             } catch (e) {
                 res.status(500).json({ message: e.message });
