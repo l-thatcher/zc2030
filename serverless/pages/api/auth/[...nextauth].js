@@ -10,7 +10,7 @@ import * as PrismaService from "../../../services/PrismaService";
 dotenv.config();
 
 //https://next-auth.js.org/adapters/prisma
-const prisma = PrismaService.providePrismaClient;
+const prisma = new PrismaClient()
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options

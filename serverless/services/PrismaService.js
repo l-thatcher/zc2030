@@ -1,7 +1,7 @@
 import { PrismaClient, Prisma } from '@prisma/client'
 import MainService from "./MainService";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 // export default async function FilledResultsByCategory(userId, inputIds) {
 //     const results = await prisma.calculatorResult.findMany({
@@ -11,10 +11,6 @@ const prisma = new PrismaClient()
 //         },
 //     })
 // }
-
-export const providePrismaClient = () => {
-    return prisma
-};
 
 export const getInputsByCategory = (categoryId) => {
     return prisma.calculatorInput.findMany(
