@@ -121,6 +121,8 @@ const data = [
   },
 ];
 
+const categoriesCount=[ [ 66.7, 100, 0 ], [ 0, 0, 0 ] ]
+
 test("Should render CarbonCalculator component with [0] data and identifies category names", () => {
   render(
     <CarbonCalculator
@@ -130,6 +132,7 @@ test("Should render CarbonCalculator component with [0] data and identifies cate
       category={categories[0]}
       input={inputs}
       results={0}
+      categoriesCount = {categoriesCount}
     />
   );
 
@@ -168,6 +171,7 @@ test("Should render CarbonCalculator component with [4] data and identifies cate
       category={categories[1]}
       input={inputs}
       results={0}
+      categoriesCount = {categoriesCount}
     />
   );
 
@@ -203,6 +207,7 @@ test("Should render calculator component and find main heading and button", () =
       categories={categories}
       types={types}
       inputs={[inputs]}
+      categoriesCount = {categoriesCount}
     />
   );
 

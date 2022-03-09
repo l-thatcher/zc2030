@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "../test-utils";
 import Calculator from "../../pages/calculator";
+import * as client from "next-auth/react";
 
 const types = [
   {
@@ -87,8 +88,19 @@ const inputs = [
   ],
 ];
 
+const categoriesCount=[ [ 66.7, 100, 0 ], [ 0, 0, 0 ] ]
+
 test("Should render calculator page and find main heading", () => {
-  render(<Calculator types={types} categories={categories} inputs={inputs} />);
+
+  it("Works", async () => {
+    const mockSession = {
+      expires: "1",
+      user: {email: "a", name: "Delta", image: "c", id: "1"}
+    };
+
+    client.useSession.mockReturnValueOnce([mockSession, false])
+  })
+  render(<Calculator types={types} categories={categories} inputs={inputs} categoriesCount = {categoriesCount}/>);
 
   // Main heading
   const mainHeading = screen.getByTestId("main_heading");
@@ -100,7 +112,15 @@ test("Should render calculator page and find main heading", () => {
 });
 
 test("Should render calculator page and find nav options", () => {
-  render(<Calculator types={types} categories={categories} inputs={inputs} />);
+  it("Works", async () => {
+    const mockSession = {
+      expires: "1",
+      user: {email: "a", name: "Delta", image: "c", id: "1"}
+    };
+
+    client.useSession.mockReturnValueOnce([mockSession, false])
+  })
+  render(<Calculator types={types} categories={categories} inputs={inputs} categoriesCount = {categoriesCount} />);
 
   // Nav options
   const individualOption = screen.getByTestId("Individual");
