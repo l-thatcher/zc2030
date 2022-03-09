@@ -5,6 +5,8 @@ import {
   getCalculatorTypes,
 } from "../services/CalculatorService";
 import ListOfCalculators from "../Components/calculators/ListOfCalculators";
+import {useSession} from "next-auth/react";
+
 
 const background3 = "/calculator_background_3.jpg";
 
@@ -12,6 +14,11 @@ export default function Calculator(props) {
   const types = props.types;
   const categories = props.categories;
   const inputs = props.inputs;
+  const { data: session } = useSession()
+  let userId = null;
+  if (session) {
+   userId = session.user.id
+  }
 
   return (
     <div
@@ -26,6 +33,7 @@ export default function Calculator(props) {
           categories={categories}
           types={types}
           inputs={[inputs]}
+          userId={userId}
         />
       </div>
     </div>

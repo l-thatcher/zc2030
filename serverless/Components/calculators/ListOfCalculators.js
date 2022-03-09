@@ -10,6 +10,7 @@ const ListOfCalculators = (props) => {
   const types = props.types;
   const categories = props.categories;
   const allInputs = props.inputs[0];
+  const userId = props.userId;
 
   // Add inputs for a specific calculator type
   categories[value].map((category, i) =>
@@ -50,6 +51,7 @@ const ListOfCalculators = (props) => {
         category={categories[value]}
         input={inputs}
         results={0}
+        userId={userId}
       />
     </Fragment>
   );
