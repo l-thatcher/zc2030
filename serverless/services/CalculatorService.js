@@ -25,5 +25,7 @@ export const saveCalculatorResult = (type_id, category_id, input_id, data) => {
 
 // GET Request - Get User Category Progress
 export const getUserCategoryProgress = (userId, categoryId) => {
-  return MainService.get(`/api/calculators/user/${userId}/${categoryId}/uniqueCompletedCount`);
+  return MainService.get(
+    `/api/calculators/user/${userId}/${categoryId}/uniqueCompletedCount`
+  );
 };

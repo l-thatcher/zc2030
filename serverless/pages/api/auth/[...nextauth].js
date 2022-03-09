@@ -10,7 +10,7 @@ import * as PrismaService from "../../../services/PrismaService";
 dotenv.config();
 
 //https://next-auth.js.org/adapters/prisma
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
@@ -38,8 +38,8 @@ export default NextAuth({
   callbacks: {
     async session({ session, user }) {
       // Send properties to the client, like an access_token from a provider.
-      session.user.id = user.id
-      return session
-    }
-  }
+      session.user.id = user.id;
+      return session;
+    },
+  },
 });

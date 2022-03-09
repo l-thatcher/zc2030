@@ -28,14 +28,14 @@ export default async function handler(req, res) {
       const input_id = req.query.resultId;
       const result = req.body[0];
       const quantity = req.body[1];
-      const userId = req.body[2]
+      const userId = req.body[2];
 
       try {
         const response = await execute_query(saveCalculatorInputsByCategoryId, [
           input_id,
           quantity,
           result,
-          userId
+          userId,
         ]);
         res.status(200).json(response);
       } catch (e) {

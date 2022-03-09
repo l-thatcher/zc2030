@@ -9,7 +9,7 @@ const ListOfCalculators = (props) => {
 
   const types = props.types;
   const categories = props.categories;
-  const categoriesCount = props.categoriesCount
+  const categoriesCount = props.categoriesCount;
   const allInputs = props.inputs[0];
   const userId = props.userId;
 

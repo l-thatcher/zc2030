@@ -2,11 +2,11 @@ import styles from "../styles/Calculator.module.css";
 import {
   getCalculatorCategories,
   getCalculatorInputs,
-  getCalculatorTypes, getUserCategoryProgress,
+  getCalculatorTypes,
+  getUserCategoryProgress,
 } from "../services/CalculatorService";
 import ListOfCalculators from "../Components/calculators/ListOfCalculators";
-import {getSession, useSession} from "next-auth/react";
-
+import { getSession, useSession } from "next-auth/react";
 
 const background3 = "/calculator_background_3.jpg";
 
@@ -14,11 +14,11 @@ export default function Calculator(props) {
   const types = props.types;
   const categories = props.categories;
   const inputs = props.inputs;
-  const categoriesCount = props.categoriesCount
-  const { data: session } = useSession()
+  const categoriesCount = props.categoriesCount;
+  const { data: session } = useSession();
   let userId = null;
   if (session) {
-   userId = session.user.id
+    userId = session.user.id;
   }
 
   return (
@@ -49,10 +49,10 @@ export async function getServerSideProps(context) {
   let inputs = [];
   let typeId = [];
   let categoryId = [];
-  const session = await getSession(context)
+  const session = await getSession(context);
   let userId = null;
   if (session) {
-    userId = session.user.id
+    userId = session.user.id;
   }
 
   // Adds all Calculator types in a list
@@ -67,17 +67,23 @@ export async function getServerSideProps(context) {
   // Add Calculator Categories into categories for every id of calculators
   for (let i = 0; i < typeId.length; i++) {
     const res = await getCalculatorCategories(typeId[i]);
-    const calculatorCategories = res.data
-    if(userId != null) {
+    const calculatorCategories = res.data;
+    if (userId != null) {
       // categoriesCount.push(await calculatorCategories.map(it => getUserCategoryProgress(userId, it.id)))
       // categoriesCount.push((await getUserCategoryProgress("cl0h963z10006rwqni8sc891f", 1)).data.count)
       const temp = [];
-      for (let j = 0; j < calculatorCategories.length; j++){
-        temp.push((await getUserCategoryProgress("cl0h963z10006rwqni8sc891f", calculatorCategories[j].id)).data.count)
+      for (let j = 0; j < calculatorCategories.length; j++) {
+        temp.push(
+          (
+            await getUserCategoryProgress(
+              "cl0h963z10006rwqni8sc891f",
+              calculatorCategories[j].id
+            )
+          ).data.count
+        );
       }
-      categoriesCount.push(temp)
+      categoriesCount.push(temp);
     }
-    console.log(categoriesCount)
     categories.push(calculatorCategories);
   }
 
