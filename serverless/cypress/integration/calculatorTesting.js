@@ -1,112 +1,112 @@
-describe('Navigation', () => {
-    it('should navigate to the about page', () => {
-        // Start from the index page
-        cy.visit('/')
+describe("Navigation", () => {
+  it("should navigate to the about page", () => {
+    // Start from the index page
+    cy.visit("/");
 
-        cy.get('button.navbar-toggler.collapsed').click() // Click on button
-        // Find a link with an href attribute containing "about" and click it
-        cy.get('a[href*="calculator"]').click()
+    cy.get("button.navbar-toggler.collapsed").click(); // Click on button
+    // Find a link with an href attribute containing "about" and click it
+    cy.get('a[href*="calculator"]').click();
 
-        // The new url should include "/about"
-        cy.url().should('include', '/calculator')
+    // The new url should include "/about"
+    cy.url().should("include", "/calculator");
 
-        // The new page should contain an h1 with "About page"
-        cy.get('h1').contains('Carbon Calculator')
-    })
-})
+    // The new page should contain an h1 with "About page"
+    cy.get("h1").contains("Carbon Calculator");
+  });
+});
 
-describe('Calculator Headings', () => {
-    it('should find calculator and category headings', () => {
+describe("Calculator Headings", () => {
+  it("should find calculator and category headings", () => {
+    // Visits page
+    cy.visit("/calculator");
 
-        // Visits page
-        cy.visit('/calculator')
+    // Checks calculator heading
+    cy.get("h2").contains("Calculator");
 
-        // Checks calculator heading
-        cy.get('h2').contains('Calculator')
+    // Checks category heading
+    cy.get("h3[data-testid=category_heading]").contains("Select a Category:");
 
-        // Checks category heading
-        cy.get('h3').contains('Select a category:')
+    // Checks category headings
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Food");
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains(
+      "Transport"
+    );
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Energy");
+  });
+});
 
-        // Checks category headings
-        cy.get('label.form-check-label').contains('Food')
-        cy.get('label.form-check-label').contains('Transport')
-        cy.get('label.form-check-label').contains('Energy')
+describe("Progress Bar Elements", () => {
+  it("should find progress bar and category headings, and percentages", () => {
+    // Visits page
+    cy.visit("/calculator");
 
-    })
-})
+    // Checks Progress Bar heading
+    cy.get("h3").contains("Progress Bar");
 
-describe('Progress Bar Elements', () => {
-    it('should find progress bar and category headings, and percentages', () => {
+    cy.get('button.btn.btn-secondary').contains("Sign in to view progress")
 
-        // Visits page
-        cy.visit('/calculator')
+  });
+});
 
-        // Checks Progress Bar heading
-        cy.get('h3').contains('Progress Bar')
+describe("Nav Items Elements", () => {
+  it("should choose the Business calculator and find the correct details", () => {
+    // Visits page
+    cy.visit("/calculator");
 
-        // Checks category name and percentage
-        cy.get('h1').contains('Food')
-        cy.get('text.CircularProgressbar-text').contains('24%')
+    // Finds page
+    cy.get('a[data-testid="Business"]').click({ force: true });
 
-        // Checks category name and percentage
-        cy.get('h1').contains('Transport')
-        cy.get('text.CircularProgressbar-text').contains('56%')
+    // Checks Progress Bar heading
+    cy.get("h3").contains("Progress Bar");
 
-        // Checks category name and percentage
-        cy.get('h1').contains('Energy')
-        cy.get('text.CircularProgressbar-text').contains('89%')
+    // Checks category name and percentage
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Cars");
 
-    })
-})
+    // Checks category name and percentage
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Bicycles");
 
-describe('Nav Items Elements', () => {
-    it('should choose the Business calculator and find the correct details', () => {
+    // Checks category name and percentage
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Bike");
+  });
+});
 
-        // Visits page
-        cy.visit('/calculator')
+describe("Calculate a footprint", () => {
+  it("should choose the Cars category on Business calculator and find the correct inputs", () => {
+    // Visits page
+    cy.visit("/calculator");
 
-        // Finds page
-        cy.get('a[data-testid="Business"]').click({force: true})
+    // Finds page
+    cy.get('a[data-testid="Business"]').click({ force: true });
 
-        // Checks Progress Bar heading
-        cy.get('h3').contains('Progress Bar')
+    // Finds page
+    cy.get('a[data-testid="Individual"]').click({ force: true });
 
-        // Checks category name and percentage
-        cy.get('h1').contains('Zoo')
-        cy.get('text.CircularProgressbar-text').contains('1%')
+    // Clicks Cars category
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary")
+      .contains("Food")
+      .click({ force: true });
 
-        // Checks category name and percentage
-        cy.get('h1').contains('Jungle')
-        cy.get('text.CircularProgressbar-text').contains('98%')
+    // Click Next
+    cy.get("button").contains("Next").click({ force: true });
 
-        // Checks category name and percentage
-        cy.get('h1').contains('Forest')
-        cy.get('text.CircularProgressbar-text').contains('32%')
-    })
-})
+    // Clicks Rice category
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary")
+      .contains("Rice")
+      .click({ force: true });
 
-describe('Nav Items Elements 2', () => {
-    it('should choose the University calculator and find the correct details', () => {
+    // Click Next
+    cy.get("button").contains("Next").click({ force: true });
 
-        // Visits page
-        cy.visit('/calculator')
+    // Add Input
+    cy.get("input.form-control").type("10");
 
-        // Finds page
-        cy.get('a[data-testid="University"]').click({force: true})
+    // Click Next
+    cy.get("button").contains("Next").click({ force: true });
 
-        // Checks Progress Bar heading
-        cy.get('h3').contains('Progress Bar')
+    // Check result
+    cy.get("h3.Calculator_form__Woycm").contains("8");
 
-        // Checks category name and percentage
-        cy.get('h1').contains('Books')
-        cy.get('text.CircularProgressbar-text').contains('5%')
-
-        // Checks category name and percentage
-        cy.get('h1').contains('Pencil')
-        cy.get('text.CircularProgressbar-text').contains('89%')
-
-        // Checks category name and percentage
-        cy.get('h1').contains('Rubber')
-        cy.get('text.CircularProgressbar-text').contains('10%')
-    })
-})
+    // Click Reset
+    cy.get("button").contains("Reset").click({ force: true });
+  });
+});
