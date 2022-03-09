@@ -69,7 +69,7 @@ const CarbonCalculator = (data) => {
 
     // Save calculator result
     function saveCalculator() {
-        const data = [result, inputValue];
+        const data = [result, inputValue, userId];
         if (userId != null) {
             saveCalculatorResult(
                 type.id,
