@@ -5,7 +5,7 @@ import {
   getCalculatorTypes, getUserCategoryProgress,
 } from "../services/CalculatorService";
 import ListOfCalculators from "../Components/calculators/ListOfCalculators";
-import {useSession} from "next-auth/react";
+import {getSession, useSession} from "next-auth/react";
 
 
 const background3 = "/calculator_background_3.jpg";
@@ -43,16 +43,21 @@ export default function Calculator(props) {
 }
 
 // This gets called at build time
-export async function getStaticProps({ params }) {
+export async function getServerSideProps(context) {
   let categories = [];
   let categoriesCount = [];
   let inputs = [];
   let typeId = [];
   let categoryId = [];
+  const session = await getSession(context)
+  let userId = null;
+  if (session) {
+    userId = session.user.id
+  }
 
   // Adds all Calculator types in a list
-  const res = await getCalculatorTypes();
-  const types = res.data;
+  const typesRes = await getCalculatorTypes();
+  const types = typesRes.data;
 
   // Adds the IDs of calculators in a list
   types.map((type) => {
@@ -63,9 +68,17 @@ export async function getStaticProps({ params }) {
   for (let i = 0; i < typeId.length; i++) {
     const res = await getCalculatorCategories(typeId[i]);
     const calculatorCategories = res.data
-    const res2 = await calculatorCategories.map(getUserCategoryProgress(session.user.id, it))
+    if(userId != null) {
+      // categoriesCount.push(await calculatorCategories.map(it => getUserCategoryProgress(userId, it.id)))
+      // categoriesCount.push((await getUserCategoryProgress("cl0h963z10006rwqni8sc891f", 1)).data.count)
+      const temp = [];
+      for (let j = 0; j < calculatorCategories.length; j++){
+        temp.push((await getUserCategoryProgress("cl0h963z10006rwqni8sc891f", calculatorCategories[j].id)).data.count)
+      }
+      categoriesCount.push(temp)
+    }
+    console.log(categoriesCount)
     categories.push(calculatorCategories);
-    categoriesCount.push(res2.data)
   }
 
   // Add Calculator Inputs for each calculator type

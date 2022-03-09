@@ -248,6 +248,7 @@ const CarbonCalculator = (data) => {
                             <h3 style={{fontSize: "25px"}}>Progress Bar</h3>
                             <ProgressBar
                                 value={value}
+                                type={type}
                                 categories={categories}
                                 categoriesCount={categoriesCount}
                                 results={results}

@@ -8,6 +8,8 @@ const ProgressBar = (data) => {
   const categories = data.categories;
   const categoriesCount = data.categoriesCount;
   const userId = data.userId;
+  const type = data.type;
+  console.log(type)
 
   if (userId != null) {
     return (
@@ -20,8 +22,8 @@ const ProgressBar = (data) => {
                 <div className={styles.row}>
                   <div className={styles.progressBar}>
                     <CircularProgressbar
-                        value={categoriesCount[i]}
-                        text={categoriesCount[i] + "%"}
+                        value={categoriesCount[type.id-1][i]}
+                        text={categoriesCount[type.id-1][i] + "%"}
                         styles={buildStyles({
                           textSize: "28px",
                           textColor: "black",

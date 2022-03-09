@@ -14,12 +14,12 @@ export default async function handler(req, res) {
                 const idArray = inputIds.map(input => input.id)
                 const idsInputted = await getCountOfUsersUniqueFilledResultsByCategory(req.query.userId, idArray)
                 let result;
-                if (idsInputted != null) {
-                    result = idsInputted.length * 100 / inputIds.length
+                if (idsInputted !== []) {
+                    result = Math.round(idsInputted.length * 100 / inputIds.length * 10) / 10
                 } else {
                     result = 0
                 }
-                res.status(200).json(result);
+                res.status(200).json({count: result});
             } catch (e) {
                 res.status(500).json({message: e.message});
             }
