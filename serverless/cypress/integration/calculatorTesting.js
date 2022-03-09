@@ -43,17 +43,8 @@ describe("Progress Bar Elements", () => {
     // Checks Progress Bar heading
     cy.get("h3").contains("Progress Bar");
 
-    // Checks category name and percentage
-    cy.get("h1").contains("Food");
-    cy.get("text.CircularProgressbar-text").contains("1%");
+    cy.get('button.btn.btn-secondary').contains("Sign in to view progress")
 
-    // Checks category name and percentage
-    cy.get("h1").contains("Transport");
-    cy.get("text.CircularProgressbar-text").contains("2%");
-
-    // Checks category name and percentage
-    cy.get("h1").contains("Energy");
-    cy.get("text.CircularProgressbar-text").contains("3%");
   });
 });
 
@@ -69,16 +60,13 @@ describe("Nav Items Elements", () => {
     cy.get("h3").contains("Progress Bar");
 
     // Checks category name and percentage
-    cy.get("h1").contains("Cars");
-    cy.get("text.CircularProgressbar-text").contains("4%");
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Cars");
 
     // Checks category name and percentage
-    cy.get("h1").contains("Bicycles");
-    cy.get("text.CircularProgressbar-text").contains("5%");
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Bicycles");
 
     // Checks category name and percentage
-    cy.get("h1").contains("Bike");
-    cy.get("text.CircularProgressbar-text").contains("6%");
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Bike");
   });
 });
 
