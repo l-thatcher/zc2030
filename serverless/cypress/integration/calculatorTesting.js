@@ -24,12 +24,14 @@ describe("Calculator Headings", () => {
     cy.get("h2").contains("Calculator");
 
     // Checks category heading
-    cy.get("h3").contains("Select a category:");
+    cy.get("h3[data-testid=category_heading]").contains("Select a Category:");
 
     // Checks category headings
-    cy.get("label.form-check-label").contains("Food");
-    cy.get("label.form-check-label").contains("Transport");
-    cy.get("label.form-check-label").contains("Energy");
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Food");
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains(
+      "Transport"
+    );
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Energy");
   });
 });
 
@@ -43,15 +45,15 @@ describe("Progress Bar Elements", () => {
 
     // Checks category name and percentage
     cy.get("h1").contains("Food");
-    cy.get("text.CircularProgressbar-text").contains("24%");
+    cy.get("text.CircularProgressbar-text").contains("1%");
 
     // Checks category name and percentage
     cy.get("h1").contains("Transport");
-    cy.get("text.CircularProgressbar-text").contains("56%");
+    cy.get("text.CircularProgressbar-text").contains("2%");
 
     // Checks category name and percentage
     cy.get("h1").contains("Energy");
-    cy.get("text.CircularProgressbar-text").contains("89%");
+    cy.get("text.CircularProgressbar-text").contains("3%");
   });
 });
 
@@ -67,40 +69,56 @@ describe("Nav Items Elements", () => {
     cy.get("h3").contains("Progress Bar");
 
     // Checks category name and percentage
-    cy.get("h1").contains("Zoo");
-    cy.get("text.CircularProgressbar-text").contains("1%");
+    cy.get("h1").contains("Cars");
+    cy.get("text.CircularProgressbar-text").contains("4%");
 
     // Checks category name and percentage
-    cy.get("h1").contains("Jungle");
-    cy.get("text.CircularProgressbar-text").contains("98%");
+    cy.get("h1").contains("Bicycles");
+    cy.get("text.CircularProgressbar-text").contains("5%");
 
     // Checks category name and percentage
-    cy.get("h1").contains("Forest");
-    cy.get("text.CircularProgressbar-text").contains("32%");
+    cy.get("h1").contains("Bike");
+    cy.get("text.CircularProgressbar-text").contains("6%");
   });
 });
 
-describe("Nav Items Elements 2", () => {
-  it("should choose the University calculator and find the correct details", () => {
+describe("Calculate a footprint", () => {
+  it("should choose the Cars category on Business calculator and find the correct inputs", () => {
     // Visits page
     cy.visit("/calculator");
 
     // Finds page
-    cy.get('a[data-testid="University"]').click({ force: true });
+    cy.get('a[data-testid="Business"]').click({ force: true });
 
-    // Checks Progress Bar heading
-    cy.get("h3").contains("Progress Bar");
+    // Finds page
+    cy.get('a[data-testid="Individual"]').click({ force: true });
 
-    // Checks category name and percentage
-    cy.get("h1").contains("Books");
-    cy.get("text.CircularProgressbar-text").contains("5%");
+    // Clicks Cars category
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary")
+      .contains("Food")
+      .click({ force: true });
 
-    // Checks category name and percentage
-    cy.get("h1").contains("Pencil");
-    cy.get("text.CircularProgressbar-text").contains("89%");
+    // Click Next
+    cy.get("button").contains("Next").click({ force: true });
 
-    // Checks category name and percentage
-    cy.get("h1").contains("Rubber");
-    cy.get("text.CircularProgressbar-text").contains("10%");
+    // Clicks Rice category
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary")
+      .contains("Rice")
+      .click({ force: true });
+
+    // Click Next
+    cy.get("button").contains("Next").click({ force: true });
+
+    // Add Input
+    cy.get("input.form-control").type("10");
+
+    // Click Next
+    cy.get("button").contains("Next").click({ force: true });
+
+    // Check result
+    cy.get("h3.Calculator_form__Woycm").contains("8");
+
+    // Click Reset
+    cy.get("button").contains("Reset").click({ force: true });
   });
 });
