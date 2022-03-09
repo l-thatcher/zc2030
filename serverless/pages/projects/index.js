@@ -13,49 +13,228 @@ export const getStaticProps = async () => {
 const Projects = ({ projects }) => {
     console.log(projects);
     return (
-        <div className="bg-blue-400 py-24 flex items-center justify-center flex">
-            <div className="bg-zc30-green rounded-lg w-1/7">
-                <div className="border-white border-3 rounded-lg">
-                    <div className="relative overflow-hidden rounded-lg shadow-lg">
-                        <img
-                            src="https://media.nationalgeographic.org/assets/photos/818/719/3d97f911-594f-4257-880c-d9aa1c6da22d.jpg"
-                            className="card-img rounded-t-lg h-60 w-full object-cover"
-                        />
-
-                        <div className="absolute bottom-0 right-0">
-                            <h2 className="p-0.5 bg-opacity-70 rounded-3 bg-zc30-blue text-black text-center font-light mb-1 position-relative shadow-inner shadow-lg">
-                                £51/ C tonne
-                            </h2>
-                        </div>
-                    </div>
-
-                    <h2 className="text-white text-xxl-center text-center font-light mb-1 position-relative flex-center shadow-lg">
-                        Breccon Wind Energy
-                    </h2>
-                </div>
-
-                <div className="p-2 position-relative text-center">
-                    <div className="flex justify-center">
-                        <div className=" items-center">
+        <div className="bg-zc30-blue backdrop-blur-2xl items-center justify-center flex px-100">
+            <div className="py-24 flex items-center justify-center flex px-3">
+                <div className="bg-zc30-green rounded-lg w-1/7">
+                    <div className="border-white border-3 rounded-lg">
+                        <div className="relative overflow-hidden rounded-lg shadow-lg">
                             <img
-                                src="https://www.svgrepo.com/show/127575/location-sign.svg"
-                                className="w-5 h-5 align-content-center"
+                                src="https://media.nationalgeographic.org/assets/photos/818/719/3d97f911-594f-4257-880c-d9aa1c6da22d.jpg"
+                                className="card-img rounded-t-lg h-60 w-full object-cover"
                             />
+
+                            <div className="absolute bottom-0 right-0">
+                                <h2 className="p-0.5 bg-opacity-70 rounded-3 bg-zc30-blue text-black text-center font-light mb-1 position-relative shadow-inner shadow-lg">
+                                    £51/ C tonne
+                                </h2>
+                            </div>
                         </div>
-                        <p className="flex font-light text-lg">
-                            Breccon Beacons National Reserve
-                        </p>
+
+                        <h2 className="text-white text-xxl-center text-center font-light mb-1 position-relative flex-center shadow-lg">
+                            Breccon Wind Energy
+                        </h2>
                     </div>
 
-                    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded">
-                        More details
-                    </button>
-                </div>
+                    <div className="p-2 position-relative text-center">
+                        <div className="flex justify-center">
+                            <div className=" items-center">
+                                <img
+                                    src="https://www.svgrepo.com/show/127575/location-sign.svg"
+                                    className="w-5 h-5 align-content-center opacity-75"
+                                />
+                            </div>
+                            <p className="flex font-light text-lg">
+                                Breccon Beacons National Reserve
+                            </p>
+                        </div>
 
-                {/*add progress bar here*/}
-                <footer className="bg-gray-100 rounded-b-lg text-right py-1 px-8 text-xs text-gray-500"></footer>
+                        <button className="font-semibold hover:text-white py-1 px-4 border hover:border-transparent rounded">
+                            More details
+                        </button>
+                    </div>
+
+                    {/*add progress bar here*/}
+                    <footer className="bg-gray-100 rounded-b-lg text-right py-1 px-8 text-xs text-gray-500">
+                        <div className="flex mb-2 items-center justify-between">
+                            <div>
+                <span className="text-xs font-semibold inline-block py-1 px-2 rounded-full">
+                  Captured Carbon
+                </span>
+                            </div>
+                            <div className="text-right">
+                <span className="text-xs font-semibold inline-block opacity-80">
+                  Available Carbon: 10.5T
+                </span>
+                            </div>
+                        </div>
+
+                        <div className="overflow-hidden flex h-2 mb-2 text-xs rounded shadow-md">
+                            <div
+                                style={{ width: "100%", background: "white", opacity: "100%" }}
+                            >
+                                <div className="overflow-hidden flex h-2 mb-2 text-xs rounded">
+                                    {/*TODO: Import percentage from db*/}
+                                    <div
+                                        style={{
+                                            width: "25%",
+                                            background: "#77C9D4",
+                                            opacity: "100%",
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
             </div>
 
+            <div className="py-24 flex items-center justify-center flex px-3">
+                <div className="bg-zc30-green rounded-lg w-1/7">
+                    <div className="border-white border-3 rounded-lg">
+                        <div className="relative overflow-hidden rounded-lg shadow-lg">
+                            <img
+                                src="https://media.nationalgeographic.org/assets/photos/818/719/3d97f911-594f-4257-880c-d9aa1c6da22d.jpg"
+                                className="card-img rounded-t-lg h-60 w-full object-cover"
+                            />
+
+                            <div className="absolute bottom-0 right-0">
+                                <h2 className="p-0.5 bg-opacity-70 rounded-3 bg-zc30-blue text-black text-center font-light mb-1 position-relative shadow-inner shadow-lg">
+                                    £51/ C tonne
+                                </h2>
+                            </div>
+                        </div>
+
+                        <h2 className="text-white text-xxl-center text-center font-light mb-1 position-relative flex-center shadow-lg">
+                            Breccon Wind Energy
+                        </h2>
+                    </div>
+
+                    <div className="p-2 position-relative text-center">
+                        <div className="flex justify-center">
+                            <div className=" items-center">
+                                <img
+                                    src="https://www.svgrepo.com/show/127575/location-sign.svg"
+                                    className="w-5 h-5 align-content-center opacity-75"
+                                />
+                            </div>
+                            <p className="flex font-light text-lg">
+                                Breccon Beacons National Reserve
+                            </p>
+                        </div>
+
+                        <button className="font-semibold hover:text-white py-1 px-4 border hover:border-transparent rounded">
+                            More details
+                        </button>
+                    </div>
+
+                    {/*add progress bar here*/}
+                    <footer className="bg-gray-100 rounded-b-lg text-right py-1 px-8 text-xs text-gray-500">
+                        <div className="flex mb-2 items-center justify-between">
+                            <div>
+                <span className="text-xs font-semibold inline-block py-1 px-2 rounded-full">
+                  Captured Carbon
+                </span>
+                            </div>
+                            <div className="text-right">
+                <span className="text-xs font-semibold inline-block opacity-80">
+                  Available Carbon: 10.5T
+                </span>
+                            </div>
+                        </div>
+
+                        <div className="overflow-hidden flex h-2 mb-2 text-xs rounded shadow-md">
+                            <div
+                                style={{ width: "100%", background: "white", opacity: "100%" }}
+                            >
+                                <div className="overflow-hidden flex h-2 mb-2 text-xs rounded">
+                                    {/*TODO: Import percentage from db*/}
+                                    <div
+                                        style={{
+                                            width: "25%",
+                                            background: "#77C9D4",
+                                            opacity: "100%",
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+
+            <div className="py-24 flex items-center justify-center flex px-3">
+                <div className="bg-zc30-green rounded-lg w-1/7">
+                    <div className="border-white border-3 rounded-lg">
+                        <div className="relative overflow-hidden rounded-lg shadow-lg">
+                            <img
+                                src="https://media.nationalgeographic.org/assets/photos/818/719/3d97f911-594f-4257-880c-d9aa1c6da22d.jpg"
+                                className="card-img rounded-t-lg h-60 w-full object-cover"
+                            />
+
+                            <div className="absolute bottom-0 right-0">
+                                <h2 className="p-0.5 bg-opacity-70 rounded-3 bg-zc30-blue text-black text-center font-light mb-1 position-relative shadow-inner shadow-lg">
+                                    £51/ C tonne
+                                </h2>
+                            </div>
+                        </div>
+
+                        <h2 className="text-white text-xxl-center text-center font-light mb-1 position-relative flex-center shadow-lg">
+                            Breccon Wind Energy
+                        </h2>
+                    </div>
+
+                    <div className="p-2 position-relative text-center">
+                        <div className="flex justify-center">
+                            <div className=" items-center">
+                                <img
+                                    src="https://www.svgrepo.com/show/127575/location-sign.svg"
+                                    className="w-5 h-5 align-content-center opacity-75"
+                                />
+                            </div>
+                            <p className="flex font-light text-lg">
+                                Breccon Beacons National Reserve
+                            </p>
+                        </div>
+
+                        <button className="font-semibold hover:text-white py-1 px-4 border hover:border-transparent rounded">
+                            More details
+                        </button>
+                    </div>
+
+                    {/*add progress bar here*/}
+                    <footer className="bg-gray-100 rounded-b-lg text-right py-1 px-8 text-xs text-gray-500">
+                        <div className="flex mb-2 items-center justify-between">
+                            <div>
+                <span className="text-xs font-semibold inline-block py-1 px-2 rounded-full">
+                  Captured Carbon
+                </span>
+                            </div>
+                            <div className="text-right">
+                <span className="text-xs font-semibold inline-block opacity-80">
+                  Available Carbon: 10.5T
+                </span>
+                            </div>
+                        </div>
+
+                        <div className="overflow-hidden flex h-2 mb-2 text-xs rounded shadow-md">
+                            <div
+                                style={{ width: "100%", background: "white", opacity: "100%" }}
+                            >
+                                <div className="overflow-hidden flex h-2 mb-2 text-xs rounded">
+                                    {/*TODO: Import percentage from db*/}
+                                    <div
+                                        style={{
+                                            width: "25%",
+                                            background: "#77C9D4",
+                                            opacity: "100%",
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
         </div>
     );
 };
