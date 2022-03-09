@@ -76,7 +76,7 @@ export async function getServerSideProps(context) {
         temp.push(
           (
             await getUserCategoryProgress(
-              "cl0h963z10006rwqni8sc891f",
+                userId,
               calculatorCategories[j].id
             )
           ).data.count
