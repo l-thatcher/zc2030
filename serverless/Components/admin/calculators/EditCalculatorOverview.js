@@ -1,6 +1,7 @@
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 
 const EditCalculatorOverview = (data) => {
+    const categories = data.categories
     return (
         <div>
             <Form>
