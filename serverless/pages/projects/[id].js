@@ -1,4 +1,4 @@
-import ProjectDetails from "../../Components/ProjectDetails";
+import ProjectDetails from "../../Components/projectDetails/ProjectDetails";
 
 
 export const getStaticPaths = async () => {

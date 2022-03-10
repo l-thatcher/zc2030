@@ -3,8 +3,6 @@ import ProgressB from './ProgressB'
 
 function BuyCard(props) {
 
-
-
     return(
     <div className="w-full md:w-1/2 lg:w-1/3 px-4">
         <div
@@ -50,8 +48,6 @@ function BuyCard(props) {
                         <ProgressB/>
                     </div>
                 </div>
-
-
 
             </div>
             <a href="javascript:void(0)"
