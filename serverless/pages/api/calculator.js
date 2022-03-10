@@ -1,20 +1,20 @@
 import {sql_query} from "../../utils/db";
 
-const getCalculatorCategory = `SELECT * FROM CALC_CATEGORY`;
-const getCalculatorInput = `SELECT * FROM CALC_INPUT`;
-const getCalculatorResult = `SELECT * FROM CALC_INPUT`;
+const getCalculatorTypeById = `SELECT * FROM CalculatorType WHERE CalculatorType.id = 1`;
 
+const getCalculatorTypeByName = `SELECT * FROM CalculatorType WHERE CalculatorType.name = "Individual"`;
 
 const handler = async (_, res) => {
     try {
-        const result = await sql_query( getCalculatorCategory
+        const result = await sql_query(getCalculatorTypeById
         );
 
         return res.json(result)
     } catch (e) {
 
         console.log(res)
-        res.status(500).json({ message: e.message});
+        res.status(500).json({message: e.message});
+        console.log(res)
 
     }
 };
