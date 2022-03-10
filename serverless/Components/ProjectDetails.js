@@ -5,18 +5,14 @@ import {LocationMarkerIcon,CalendarIcon} from '@heroicons/react/solid'
 // import image3 from '../public/7a5d17d22fbcb9629f6224458481884b.jpeg'
 // import image4 from '../public/Bogdkhan_Uul_Strictly_Protected_Area,_Mongolia_(149199747).jpg'
 // import image5 from '../public/9a08-20140530-everdale.jpg'
-
+import { Loader } from '@googlemaps/js-api-loader';
 import ProjectImageCard from "./ProjectImageCard";
 import BuyCard from "./BuyCard";
-
-
-
-
 import {FiGlobe, FiFacebook} from "react-icons/fi"
+import Map from './Map'
 
 
 function ProjectDetails(props) {
-
 
 
 
@@ -28,18 +24,22 @@ function ProjectDetails(props) {
         "https://stmaaprodfwsite.blob.core.windows.net/assets/sites/1/2021/05/AdobeStock_113406376_900x506.jpg",
         "https://spca.bc.ca/wp-content/uploads/red-barn-on-farm-in-summer-e1606851289222.jpg",
        "https://images.squarespace-cdn.com/content/v1/548af91fe4b0b9b9be1989a8/1612445276928-SEGCMEH5DGQTZHCB3QEI/20201014_115940.jpg?format=1500w"
-        ]
+    ]
+
+    const lat = 51.509865
+    const lng = -0.118092
+    const location = {lat,lng}
 
 
 
     return (
-        <div className="lg:flex lg:items-center lg:justify-between container   max-w-7xl  ">
+        <div className="lg:flex lg:items-center lg:justify-between container     ">
             <div className="flex-1 min-w-0">
 
                 <main className="  ">
                     {/*Name*/}
                     <div className=' mt-10'>
-                        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Elveden farm {props.name}</h1>
+                        <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">Elveden farm {props.name}</h1>
 
                         <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                             <div className="mt-2 flex items-center text-sm text-gray-500 border-b border-[#F2F2F2] capitalize">
@@ -67,7 +67,7 @@ function ProjectDetails(props) {
                                 </div>
 
                             <div className="hidden md:block">
-                                <div className="grid-cols-3  pr-20 pb-20 space-y-2   md:space-y-0 md:grid md:gap-3 md:grid-rows-3 ">
+                                <div className="grid-cols-3  pr-20 pb-10 space-y-2   md:space-y-0 md:grid md:gap-3 md:grid-rows-3 ">
                                     <div className="w-full  col-span-2 row-span-2 rounded ">
                                         <img className='rounded-xl hover:scale-105 transition duration-200 ease-in-out'
                                             src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
@@ -107,6 +107,40 @@ function ProjectDetails(props) {
                         {/*ABOUT Project*/}
                         <div className='mt-4 border-t border-[#F2F2F2] p-4'>
 
+                            {/*BUY Carbon*/}
+                            <div className="mt-1">
+                                <div className='flex items-center bg-blue-500'>
+
+                                </div>
+                                <div className=''>
+                                    <h2 className="font-bold  mb-1 text-[34px] text-green-600 pb-3 ">
+                                        £30 {props.price}
+                                        <span className="text-base text-body-color text-black  font-medium">/ tCo2e
+                                         </span>
+                                    </h2>
+                                    <p className='font-semibold text-gray-400'> Total Supply: {props.totalsupply} </p>
+                                    <p className='font-semibold text-gray-400' > Available Supply: </p>
+                                    <p className='font-bold'>How many tonnes of carbon would you like to buy?</p>
+                                    <input className='w-full form-control border border-solid border-gray-300 rounded block px-6 py-2.5 mb-3' type="number" placeholder='/tCo2e'/>
+                                    <button type="button"
+                                            className="mb-2 w-full inline-block px-6 py-2.5 bg-green-500 text-white font-medium
+                                             text-xs leading-normal uppercase rounded shadow-md hover:bg-green-800 hover:shadow-lg
+                                            focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800
+                                             active:shadow-lg transition duration-150 ease-in-out">Buy Carbon
+                                    </button>
+                                </div>
+
+                            </div>
+
+
+
+
+                            {/*Header*/}
+                            <div>
+                                <h2 className='flex justify-between items-center py-3 w-full font-medium text-left text-gray-900 rounded-t-xl border-b border-gray-200 dark:border-gray-700 dark:text-white'>
+                                    <span>About This Project</span>
+                                </h2>
+                            </div>
 
                             <div className='flex  items-center'>
 
@@ -148,18 +182,11 @@ function ProjectDetails(props) {
                                 {/*Date*/}
                                 <div className="mt-2 flex items-center text-sm text-gray-500">
                                     <CalendarIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
-                                     January 9, 2020 {props.date}
+                                    January 9, 2020 {props.date}
                                 </div>
                                 <div className='border-b border-[#F2F2F2] w-20 pt-2 g'>
 
                                 </div>
-                            </div>
-
-                            {/*Header*/}
-                            <div>
-                                <h2 className='flex justify-between items-center py-3 w-full font-medium text-left text-gray-900 rounded-t-xl border-b border-gray-200 dark:border-gray-700 dark:text-white'>
-                                    <span>About This Project</span>
-                                </h2>
                             </div>
 
                             {/*Description*/}
@@ -174,19 +201,23 @@ function ProjectDetails(props) {
                                     Cum sociis natoque penatibus et magnis dis parturient {props.description}</p>
                             </div>
 
+                            {/*modal*/}
                             <div className=' border-b border-gray-200'>
-                                <p className="text-gray-500 line-clamp-4 underline text-black font-bold "> Show more > </p>
+                                <p className="text-gray-500 line-clamp-4 underline font-bold text-green-600 "> Show more > </p>
                             </div>
 
 
+                            {/*Where are we based?*/}
+                            <div>
+                                <h3 className='flex justify-between items-center py-3 w-full font-normal text-left text-gray-900 rounded-t-xl  '>
+                                    <span>Where are we based ?</span>
+                                </h3>
 
+                                <Map location={location} />
 
-                            <div className="mt-4">
-                                <div className='flex items-center bg-blue-500'>
+                                <div>
 
                                 </div>
-                                <div className='flex flex-wrap justify-center -mx-4'><BuyCard/></div>
-
                             </div>
 
 
