@@ -29,7 +29,7 @@ const Header = () => {
               </Link>
             </Nav>
           </Navbar.Collapse>
-          <Navbar.Brand style={{width: "250px"}}>
+          <Navbar.Brand style={{width: "140px"}}>
             <img
                 className={styles.img}
                 src={logo}

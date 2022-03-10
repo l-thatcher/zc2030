@@ -1,6 +1,6 @@
 .navbar {
   border-bottom: solid 1px #eaeaea;
-  position: sticky;
+  position: fixed;
   top: 0;
 }
 

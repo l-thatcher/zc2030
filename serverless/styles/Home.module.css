@@ -4,22 +4,57 @@
 
 .main {
   flex-direction: column;
+
+  background: linear-gradient(329deg, #57bc90, #77c9d4);
+  background-size: 400% 400%;
+
+  -webkit-animation: topBoxAnimation 6s ease infinite;
+  -moz-animation: topBoxAnimation 6s ease infinite;
+  animation: topBoxAnimation 6s ease infinite;
 }
 
 .summary {
-  background: rgb(87,188,144);
-  background: linear-gradient(90deg, rgba(87,188,144,1) 0%, rgba(119,201,212,1) 100%);
   padding: 3rem 3rem;
   display: flex;
   max-height: 40rem;
   justify-content: space-between;
 }
 
+@-webkit-keyframes topBoxAnimation {
+  0%{background-position:0 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0 50%}
+}
+@-moz-keyframes topBoxAnimation {
+  0%{background-position:0 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0 50%}
+}
+@keyframes topBoxAnimation {
+  0%{background-position:0 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0 50%}
+}
+
 .summaryHeader{
   color: white;
   text-transform: uppercase;
   font-size: 48pt;
+  animation-name: headerTextAnimation;
+  animation-duration: 1s;
+  position: relative;
 }
+
+@keyframes headerTextAnimation {
+  from {
+    top: -100%;
+  }
+
+  to {
+    top: 0;
+  }
+}
+
 
 .leftSideHeader{
   padding: 3rem 0;
@@ -29,6 +64,19 @@
   max-width: 50%;
   color: white;
   font-size: 17pt;
+  position: relative;
+  animation-name: paraTextAnimation;
+  animation-duration: 2s;
+}
+
+@keyframes paraTextAnimation {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 0;
+  }
 }
 
 .promptsCollection{
@@ -49,17 +97,30 @@
   position: relative;
   left: -25px;
   top: 4rem;
+  animation-name: promptTextAnimation;
+  animation-duration: 2s;
+  color: white;
+}
+
+@keyframes promptTextAnimation {
+  from {
+    left: 200%;
+  }
+
+  to {
+    left: -25px;
+  }
 }
 
 .img{
   max-width: 20%;
 }
 
-
 .projects {
   min-height: 30vh;
   padding: 3rem 3rem;
   color: black;
+  background: white;
 }
 
 .projectsHeader{
@@ -68,7 +129,6 @@
 .team{
   min-height: 30vh;
   padding: 3rem 3rem;
-  background: rgb(87,188,144);
 }
 
 .teamHeader{
@@ -77,7 +137,7 @@
 }
 
 .profileCard{
-  height: 25rem;
+  height: 20rem;
   width: 15rem;
   background: rgba(255,255,255,0.5);
   padding: 1rem;
@@ -89,4 +149,5 @@
 .profilePic{
   height: 12rem;
   width: 13rem;
+  margin: 0 0 2rem 0;
 }
