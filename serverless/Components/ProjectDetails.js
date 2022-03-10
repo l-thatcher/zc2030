@@ -67,7 +67,7 @@ function ProjectDetails(props) {
                                 </div>
 
                             <div className="hidden md:block">
-                                <div className="grid-cols-3 p-2 space-y-2 bg-yellow-100  md:space-y-0 md:grid md:gap-3 md:grid-rows-3 ">
+                                <div className="grid-cols-3  pr-20 pb-20 space-y-2   md:space-y-0 md:grid md:gap-3 md:grid-rows-3 ">
                                     <div className="w-full  col-span-2 row-span-2 rounded ">
                                         <img className='rounded-xl hover:scale-105 transition duration-200 ease-in-out'
                                             src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
