@@ -2,6 +2,7 @@ import {Alert, Button, Form, FormControl, FormLabel, InputGroup} from "react-boo
 import styles from "../../../styles/Calculator.module.css";
 import {FaEdit} from 'react-icons/fa';
 import {CgAddR} from 'react-icons/Cg'
+import {AiFillDelete} from "react-icons/ai"
 import {useState} from "react";
 import CalculatorInput from "./CalculatorInput";
 
@@ -10,8 +11,8 @@ const CalculatorCategory = (data) => {
     const [optionSelected, setOptionSelected] = useState(0);
     const [type, setType] = ([{id: 1, name: 'Individual'}])
     const [showInput, setShowInput] = useState(false)
-    // const [category, setCategory] = useState(["Category"]);
-    const [category, setCategory] = useState([{id: 1, name: 'Food'}, {id: 2, name: 'Drink'}]);
+    // const [category, setCategory] = useState([""]);
+    const [category, setCategory] = useState([{id: 1, name: 'Food'}, {id: 2, name: 'Drink'}, {id: 3, name: 'Cars'}]);
     const [input, setInput] = useState([]);
     const [error, setError] = useState(false)
     const [errorMsg, setErrorMsg] = useState()
@@ -29,7 +30,7 @@ const CalculatorCategory = (data) => {
     // onChange handler
     function handleChange(e, index){
 
-        let categoryClone = [...category]; // Category clone data
+        let categoryClone = [...category];
         categoryClone[index] = {id:index, name:e.target.value};
 
         setCategory(categoryClone);
@@ -51,9 +52,15 @@ const CalculatorCategory = (data) => {
         setShowInput(true)
     }
 
+    function handleDelete(idToRemove) {
+        setCategory(prevCategories => (
+            prevCategories.filter((value, i) => i !== idToRemove)
+        ));
+    }
+
     return (
         <div className="container-md" style={{width:"100%"}}>
-            <div className="main" style={{backgroundColor: "white", padding:"5%"}}>
+            <div className="main" style={{backgroundColor: "white", padding:"3%"}}>
                 { showInput === false && (
                     <Form>
                         {error === true && (
@@ -65,13 +72,13 @@ const CalculatorCategory = (data) => {
                             </Alert>
                         )
                         }
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Type</Form.Label>
+                        <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+                            <Form.Label style={{fontSize:"25px"}}>Type</Form.Label>
                             <Form.Control size="lg" type="text" placeholder={type.name} disabled readOnly/>
                         </Form.Group>
-                        <FormLabel style={{width: "100%"}}>Categories</FormLabel>
+                        <FormLabel style={{width: "100%", fontSize:"25px"}}>Categories</FormLabel>
                         {category.map((category, i) => (
-                            <InputGroup size="lg" className="mt-2">
+                            <InputGroup  size="lg" className="mt-2">
                                 <FormControl
                                     id={`category-${i + 1}`}
                                     placeholder={`E.g. Category ${i + 1}`}
@@ -82,6 +89,8 @@ const CalculatorCategory = (data) => {
                                 />
                                 <Button variant="primary" id="button-addon2" onClick={(e) => handleEdit(i)}>
                                     Edit <FaEdit size={20} style={{marginBottom: "5px"}}/>
+                                </Button>
+                                <Button variant="danger" id="button-addon2" onClick={(e) => handleDelete(i)}><AiFillDelete size={20}/>
                                 </Button>
                             </InputGroup>
                         ))

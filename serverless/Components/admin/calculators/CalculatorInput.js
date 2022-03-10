@@ -3,12 +3,13 @@ import {Alert, Button, Form, FormControl, FormLabel, InputGroup} from "react-boo
 import {FaEdit} from "react-icons/fa";
 import styles from "../../../styles/Calculator.module.css";
 import {CgAddR} from "react-icons/cg";
+import {AiOutlineDelete} from "react-icons/ai"
 
 const CalculatorInput = (data) => {
 
     const [type, setType] = ([{id: 1, name: 'Individual'}])
-    // const [input, setInput] = useState([{"id":4,"name":"Bus","factor":20,"unit":"Miles travelled"},{"id":5,"name":"Petrol Car","factor":200,"unit":"Miles travelled"}]);
-    const [input, setInput] = useState(data.input);
+    const [input, setInput] = useState([{"id":4,"name":"Bus","factor":20,"unit":"Miles travelled"},{"id":5,"name":"Petrol Car","factor":200,"unit":"Miles travelled"}, {"id":6,"name":"Motor Car","factor":300,"unit":"Miles travelled"}]);
+    // const [input, setInput] = useState(data.input);
     const [name, setName] = useState();
     const [factor, setFactor] = useState();
     const [unit, setUnit] = useState();
@@ -33,10 +34,10 @@ const CalculatorInput = (data) => {
         let InputClone = [...input]; // Category clone data
 
         if (inputField === "name") {
-            InputClone[indexCategory] = {id: input[indexCategory].id, name: e.target.value, factor: factor, unit: unit};
+            InputClone[indexCategory] = {id: input[indexCategory].id, name: e.target.value};
             setName(e.target.value)
         } else if (inputField === "factor") {
-            InputClone[indexCategory] = {id: input[indexCategory].id, name: name, factor: e.target.value, unit: unit};
+            InputClone[indexCategory] = {id: input[indexCategory].id, factor: e.target.value};
             setFactor(e.target.value)
         } else if (inputField === "unit") {
             InputClone[indexCategory] = {id: input[indexCategory].id, name: name, factor: factor, unit: e.target.value};
@@ -56,6 +57,16 @@ const CalculatorInput = (data) => {
         }
     }
 
+    function handleDelete(idToRemove) {
+
+        setInput(prevInputs => (
+            // Filter out the item with the matching index
+            prevInputs.filter((value, i) => i !== idToRemove)
+        ));
+    }
+
+    console.log(input)
+
     return (
        <div>
                 <Form>
@@ -69,19 +80,24 @@ const CalculatorInput = (data) => {
                     )
                     }
                     <Form.Group className="mt-5" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Category</Form.Label>
-                        <Form.Control size="lg" type="text" placeholder={category[0].name} disabled readOnly/>
+                        <Form.Label style={{fontSize:"25px"}} for="category-name">Category</Form.Label>
+                        <Form.Control aria-labelledby={`category-name`} id={`category-name`} size="lg" type="text" placeholder={category[0].name} disabled readOnly/>
                     </Form.Group>
                     {input.map((inputVal, i) =>
                         <div>
                             <Form.Group className="mt-5" controlId="exampleForm.ControlInput1">
-                                <FormLabel className="mt-4" style={{width: "100%"}}>Input {i + 1}</FormLabel>
+                                <FormLabel for={`input-${i + 1}`} className="mt-4" style={{width: "50%", fontSize:"25px"}}>Input {i + 1}</FormLabel>
+                                <Button className="mt-4" style={{float: "right"}} variant="danger" onClick={(e) => handleDelete(i)}>Delete<AiOutlineDelete size={18} style={{marginBottom:"3px"}}/></Button>
                             </Form.Group>
 
                             { inputTitles.map((inputTitle, b) =>
                             <InputGroup style={{width:"100%"}} size="lg" className="mt-2">
                             <InputGroup.Text>{inputTitle}</InputGroup.Text>
-                            <FormControl aria-describedby="inputGroup-sizing-sm" value={input[i][inputTitle]}
+                            <FormControl
+                                         id={`input-${b + 1}`}
+                                         value={input[i][inputTitle]}
+                                         aria-labelledby={`input-${b + 1}`}
+                                         placeholder={`Enter a value:`}
                                          onChange={(e) => handleChange(e, i, b, inputTitle)}/>
                             </InputGroup>
                             )}
