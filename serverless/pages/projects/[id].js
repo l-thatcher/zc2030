@@ -30,7 +30,7 @@ export const getStaticProps = async (context) =>{
 const Details = ({project}) =>{
 
     return(
-        <div className='bg-gray-50' >
+        <div className='bg-gray-10' >
             <ProjectDetails  />
         </div>
     )
