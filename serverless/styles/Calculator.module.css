@@ -110,6 +110,14 @@
   width: 150px;
 }
 
+.buttonAdd {
+  color: black;
+  background: #a5a5af;
+  border: solid 0px #57bc90;
+  width: 150px;
+  font-size: 19px;
+}
+
 .nav {
   background: #57bc90 !important;
 }

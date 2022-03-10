@@ -1,4 +1,7 @@
 import { getSession, useSession } from "next-auth/react";
+import CalculatorCategory from "../../Components/admin/calculators/CalculatorCategory";
+import styles from "../../styles/Calculator.module.css";
+import CalculatorInput from "../../Components/admin/calculators/CalculatorInput";
 
 export default function addCalculator(props) {
     const types = props.types;
@@ -11,13 +14,17 @@ export default function addCalculator(props) {
     //     userId = session.user.id;
     // }
 
+    const background4 = "/calculator_background_3.jpg";
+
     return (
-        <div>
+        <div className={styles.container}
+             style={{ backgroundImage: `url(${background4})`, padding:"50px"}}
+        >
             <h1 data-testid="main_heading">
                 Carbon Calculators
             </h1>
             <div className="container-md">
-
+            <CalculatorCategory/>
             </div>
         </div>
     );
