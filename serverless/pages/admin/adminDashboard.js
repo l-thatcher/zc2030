@@ -1,6 +1,6 @@
 import styles from "../../styles/AdminDashboard.module.css";
 import AdminSidebar from "../../Components/AdminSidebar";
-import {AiOutlineEdit, AiOutlinePlusSquare} from 'react-icons/Ai';
+import {AiOutlineEdit, AiOutlinePlusSquare, AiOutlineSearch} from 'react-icons/Ai';
 import {MdDelete} from "react-icons/Md";
 
 export default function adminDashboard() {
@@ -75,7 +75,11 @@ export default function adminDashboard() {
                 <div className={styles.listContainer}>
                     <div className={styles.titles}>
                         <h1>Admin Management </h1>
-                        <AiOutlinePlusSquare className={styles.icons}/>
+                        <div>
+                            <AiOutlinePlusSquare className={styles.icons}/>
+                            <AiOutlineSearch className={styles.icons}/>
+                        </div>
+
                     </div>
                     <div className={styles.lists}>
                         {adminData.map((name, i) => (
@@ -91,6 +95,7 @@ export default function adminDashboard() {
                 <div className={styles.listContainer}>
                     <div className={styles.titles}>
                         <h1>User Management </h1>
+                        <AiOutlineSearch className={styles.icons}/>
                     </div>
                     <div className={styles.lists}>
                         {adminData.map((name, i) => (
