@@ -1,5 +1,8 @@
-import {Nav} from "react-bootstrap";
-import styles from "../styles/AdminDashboard.module.css";
+import styles from "../styles/AdminSidebar.module.css";
+import Link from 'next/link'
+import {MdAccountBox} from "react-icons/Md";
+import {ImCalculator} from "react-icons/Im";
+import {AiFillProject} from "react-icons/Ai";
 
 
 
@@ -7,21 +10,24 @@ export default function adminSidebar() {
 
     return (
         <div className={styles.container}>
-            <Nav className="col-md-12 d-none d-md-block bg-light sidebar"
-                 activeKey="/home"
-                 onSelect={selectedKey => alert(`selected ${selectedKey}`)}
-            >
-                <div className="sidebar-sticky"/>
-                <Nav.Item>
-                    <Nav.Link href="/home">Accounts</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-1">Calculators</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-2">Projects</Nav.Link>
-                </Nav.Item>
-            </Nav>
+            <Link href="/admin/adminDashboard">
+                <div className={styles.navbarComponent}>
+                    <MdAccountBox className={styles.icons}/>
+                    <p className={styles.text}>Accounts</p>
+                </div>
+            </Link>
+            <Link href="/admin/projects">
+                <div className={styles.navbarComponent}>
+                    <AiFillProject className={styles.icons}/>
+                    <p className={styles.text}>Projects</p>
+                </div>
+            </Link>
+            <Link href="/admin/calculator">
+                <div className={styles.navbarComponent}>
+                    <ImCalculator className={styles.icons}/>
+                    <p className={styles.text}>Calculators</p>
+                </div>
+            </Link>
         </div>
     );
 }

@@ -35,25 +35,25 @@ export default function adminDashboard() {
                 id: "1",
                 name: `bob`,
                 email: 'alfred@zc30.com',
-                type: 'alfred@zc30.com',
+                type: 'personal',
             },
             {
                 id: "2",
                 name: `tod`,
                 email: 'alfred@zc30.com',
-                type: 'alfred@zc30.com',
+                type: 'business',
             },
             {
                 id: "3",
                 name: `hob`,
                 email: 'alfred@zc30.com',
-                type: 'alfred@zc30.com',
+                type: 'business',
             },
             {
                 id: "4",
-                name: `slob`,
+                name: `lob`,
                 email: 'alfred@zc30.com',
-                type: 'alfred@zc30.com',
+                type: 'school',
             },
 
         ]
@@ -64,7 +64,7 @@ export default function adminDashboard() {
     }, []);
 
     const userData = Object.keys(userJsonData).reduce((accumulator, iterator) => {
-        return [...accumulator, ...adminJsonData[iterator]];
+        return [...accumulator, ...userJsonData[iterator]];
     }, []);
 
     return (
@@ -95,10 +95,10 @@ export default function adminDashboard() {
                     <div className={styles.lists}>
                         {adminData.map((name, i) => (
                             <div className={styles.items}>
+                                <p>{userData[i].id}</p>
                                 <p>{userData[i].name}</p>
                                 <p>{userData[i].email}</p>
                                 <p>{userData[i].type}</p>
-                                <p>{userData[i].id}</p>
                                 <AiOutlineEdit className={styles.icons}/>
                             </div>
                         ))}
