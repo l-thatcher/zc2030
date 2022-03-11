@@ -2,16 +2,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Layout = ({children}) => {
-    return (
-        <div className="content">
-            <Header/>
+const Layout = ({ children }) => {
+  return (
+    <div className="content">
+      <Header />
 
-            <div>{children}</div>
+      <div>{children}</div>
 
-            <Footer/>
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 };
 
 export default Layout;
