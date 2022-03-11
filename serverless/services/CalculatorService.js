@@ -7,7 +7,7 @@ export const getCalculatorTypes = () => {
 
 // GET Request - Get Calculator Types
 export const getCalculatorType = (type_id) => {
-  return MainService.get(`/api/calculators/${type_id}`);
+  return MainService.get(`/api/calculators/overview/${type_id}`);
 };
 
 // GET Request - Get Calculator Categories
