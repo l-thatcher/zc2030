@@ -3,6 +3,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 const EditCalculatorOverview = (data) => {
     const details = data.details;
     const users = data.users;
+    console.log(`here`,details)
     return (
         <div>
             <Form>

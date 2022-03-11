@@ -1,6 +1,6 @@
 import { execute_query } from "../../../utils/db";
 
-const getCalculatorTypes = `SELECT * FROM CalculatorType`;
+const getCalculatorTypes = `SELECT * FROM CalculatorType WHERE public = true`;
 
 // Extra script - might be needed
 // const getCalculatorCategoriesByTypeId = `SELECT CalculatorType.id, CalculatorCategory.id, CalculatorCategory.name FROM CalculatorCategory

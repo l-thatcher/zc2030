@@ -26,7 +26,6 @@ export async function getStaticProps(context) {
     const calculatorDetails = typeRes.data;
     const calculatorCategories = categoriesRes.data;
     const users = usersRes.data
-    console.log( {categories: calculatorCategories, details: calculatorDetails, users: users})
     return {props: {categories: calculatorCategories, details: calculatorDetails, users: users}}
 }
 
