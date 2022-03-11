@@ -1,4 +1,4 @@
-import {sql_query} from "../../../utils/db";
+import {execute_query} from "../../../utils/db";
 
 const getAdminData = `SELECT * FROM USER`;
 

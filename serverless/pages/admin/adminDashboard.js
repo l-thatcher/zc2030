@@ -2,6 +2,7 @@ import styles from "../../styles/AdminDashboard.module.css";
 import AdminSidebar from "../../Components/AdminSidebar";
 import {AiOutlineEdit, AiOutlinePlusSquare, AiOutlineSearch} from 'react-icons/Ai';
 import {MdDelete} from "react-icons/Md";
+import {getUserData} from "../../services/adminService";
 
 export default function adminDashboard(props) {
     const users = props.users;
@@ -82,10 +83,10 @@ export default function adminDashboard(props) {
 
                     </div>
                     <div className={styles.lists}>
-                        {adminData.map((name, i) => (
+                        {users.map((name, i) => (
                             <div className={styles.items}>
-                                <p>{adminData[i].name}</p>
-                                <p>{adminData[i].email}</p>
+                                <p>{users[i].name}</p>
+                                <p>{users[i].email}</p>
                                 <MdDelete className={styles.icons}/>
                             </div>
                         ))}
@@ -98,7 +99,7 @@ export default function adminDashboard(props) {
                         <AiOutlineSearch className={styles.icons}/>
                     </div>
                     <div className={styles.lists}>
-                        {adminData.map((name, i) => (
+                        {users.map((name, i) => (
                             <div className={styles.items}>
                                 <p>{users[i].id}</p>
                                 <p>{users[i].name}</p>
@@ -107,10 +108,68 @@ export default function adminDashboard(props) {
                                 <AiOutlineEdit className={styles.icons}/>
                             </div>
                         ))}
-
                     </div>
                 </div>
             </div>
         </div>
     );
+}
+
+// This gets called at build time
+export async function getServerSideProps(){
+    // let categories = [];
+    // let categoriesCount = [];
+    // let inputs = [];
+    // let typeId = [];
+    // let categoryId = [];
+    // const session = await getSession(context);
+    // let userId = null;
+    // if (session) {
+    //     userId = session.user.id;
+    // }
+
+    // Adds all Calculator types in a list
+    const userRes = await getUserData()
+    const users = userRes.data
+    console.log(users)
+
+    // Adds the IDs of calculators in a list
+    // types.map((type) => {
+    //     typeId.push(type.id);
+    // });
+
+    // Add Calculator Categories into categories for every id of calculators
+    // for (let i = 0; i < typeId.length; i++) {
+    //     const res = await getCalculatorCategories(typeId[i]);
+    //     const calculatorCategories = res.data;
+    //     if (userId != null) {
+    //         // categoriesCount.push(await calculatorCategories.map(it => getUserCategoryProgress(userId, it.id)))
+    //         // categoriesCount.push((await getUserCategoryProgress("cl0h963z10006rwqni8sc891f", 1)).data.count)
+    //         const temp = [];
+    //         for (let j = 0; j < calculatorCategories.length; j++) {
+    //             temp.push(
+    //                 (
+    //                     await getUserCategoryProgress(
+    //                         userId,
+    //                         calculatorCategories[j].id
+    //                     )
+    //                 ).data.count
+    //             );
+    //         }
+    //         categoriesCount.push(temp);
+    //     }
+    //     categories.push(calculatorCategories);
+    // }
+
+    // Add Calculator Inputs for each calculator type
+    // for (let i = 0; i < typeId.length; i++) {
+    //     for (let b = 0; b < categories[i].length; b++) {
+    //         categoryId = categories[i][b].id;
+    //         const res = await getCalculatorInputs(typeId[i], categoryId);
+    //         inputs.push(res.data);
+    //     }
+    // }
+
+    // Pass post data to the page via props
+    return { props: {users} };
 }
