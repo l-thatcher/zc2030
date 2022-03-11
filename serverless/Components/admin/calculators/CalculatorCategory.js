@@ -17,13 +17,9 @@ const CalculatorCategory = (data) => {
   const [optionSelected, setOptionSelected] = useState(0);
   const [type, setType] = [{ id: 1, name: "Individual" }];
   const [showInput, setShowInput] = useState(false);
-  // const [category, setCategory] = useState([""]);
-  const [category, setCategory] = useState([
-    { id: 1, name: "Food" },
-    { id: 2, name: "Drink" },
-    { id: 3, name: "Cars" },
-  ]);
-  const [input, setInput] = useState([]);
+  const [category, setCategory] = useState(data.categories);
+
+  const [input, setInput] = useState(data.inputs);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
 
@@ -102,7 +98,7 @@ const CalculatorCategory = (data) => {
                 <FormControl
                   id={`category-${i + 1}`}
                   placeholder={`E.g. Category ${i + 1}`}
-                  aria-label="Recipient's username"
+                  aria-label={`category-${i + 1}`}
                   aria-labelledby={`category-${i + 1}`}
                   value={category.name}
                   onChange={(e) => handleChange(e, i)}
@@ -155,7 +151,7 @@ const CalculatorCategory = (data) => {
           <div style={{ width: "100%" }}>
             <CalculatorInput
               category={category[optionSelected]}
-              input={input}
+              input={input[optionSelected]}
             />
           </div>
         )}

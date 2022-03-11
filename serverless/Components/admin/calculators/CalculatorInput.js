@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Alert,
   Button,
@@ -7,19 +7,12 @@ import {
   FormLabel,
   InputGroup,
 } from "react-bootstrap";
-import { FaEdit } from "react-icons/fa";
 import styles from "../../../styles/Calculator.module.css";
 import { CgAddR } from "react-icons/cg";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const CalculatorInput = (data) => {
-  const [type, setType] = [{ id: 1, name: "Individual" }];
-  const [input, setInput] = useState([
-    { id: 4, name: "Bus", factor: 20, unit: "Miles travelled" },
-    { id: 5, name: "Petrol Car", factor: 200, unit: "Miles travelled" },
-    { id: 6, name: "Motor Car", factor: 300, unit: "Miles travelled" },
-  ]);
-  // const [input, setInput] = useState(data.input);
+  const [input, setInput] = useState(data.input);
   const [name, setName] = useState();
   const [factor, setFactor] = useState();
   const [unit, setUnit] = useState();
