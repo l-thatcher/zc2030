@@ -5,6 +5,11 @@ export const getCalculatorTypes = () => {
   return MainService.get("/api/calculators");
 };
 
+// GET Request - Get Calculator Types
+export const getPublicCalculatorTypes = () => {
+  return MainService.get("/api/calculators/public");
+};
+
 export const getCalculatorTypesForUser = (userId) => {
   return MainService.get(`/api/calculators/user/${userId}/getTypes`);
 };
