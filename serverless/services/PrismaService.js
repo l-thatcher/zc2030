@@ -51,3 +51,14 @@ export const getDetailsByType = (typeId) => {
     }
   })
 }
+
+export const getUsersFromList = (userIdList) => {
+  return prisma.user.findMany({
+    where: {
+      id: {in: userIdList}
+    },
+    select: {
+    email: true,
+    id: true}
+  })
+}

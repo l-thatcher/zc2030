@@ -1,4 +1,4 @@
-import {getUsersThatCanViewCalculator} from "../../../../../services/PrismaService";
+import {getUsersFromList, getUsersThatCanViewCalculator} from "../../../../../services/PrismaService";
 
 export default async function handler(req, res) {
     const { typeId } = req.query;
@@ -7,8 +7,11 @@ export default async function handler(req, res) {
         case "GET":
             try {
                 const result = await getUsersThatCanViewCalculator(BigInt(typeId))
+                const userIds = []
+                result.map(field => userIds.push(field.user_id))
+                const users = await getUsersFromList(userIds)
                 // Serialization that avoids issue with BigInt
-                const json = JSON.stringify(result, (key, value) =>
+                const json = JSON.stringify(users, (key, value) =>
                     typeof value === "bigint" ? parseInt(value) : value
                 );
                 res.status(200).json(json);

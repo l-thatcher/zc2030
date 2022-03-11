@@ -36,7 +36,7 @@ export async function getStaticPaths() {
         paths: [
             {
                 params: {
-                    typeId: "3",
+                    typeId: "1",
                 },
             },
             {
