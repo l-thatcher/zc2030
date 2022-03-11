@@ -7,7 +7,7 @@ export const getCalculatorTypes = () => {
 
 // GET Request - Get Calculator Types
 export const getCalculatorType = (type_id) => {
-  return MainService.get(`/api/calculators/type/${type_id}`);
+  return MainService.get(`/api/calculators/${type_id}`);
 };
 
 // GET Request - Get Calculator Categories
@@ -19,6 +19,11 @@ export const getCalculatorCategories = (type_id) => {
 export const getCalculatorInputs = (type_id, category_id) => {
   return MainService.get(`/api/calculators/${type_id}/${category_id}`);
 };
+
+export const getCalculatorUsers = (type_id) => {
+  return MainService.get(`/api/calculators/getUsers/${type_id}`);
+};
+
 
 // POST Request - Save calculator result
 export const saveCalculatorResult = (type_id, category_id, input_id, data) => {

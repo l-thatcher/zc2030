@@ -23,6 +23,14 @@ export const getInputsByCategory = (categoryId) => {
   });
 };
 
+export const getUsersThatCanViewCalculator = (typeId) => {
+  return prisma.userCalculator.findMany({
+    where: {
+      type_id: typeId,
+    }
+  });
+};
+
 export const getCountOfUsersUniqueFilledResultsByCategory = (
   userId,
   idArray
@@ -35,3 +43,11 @@ export const getCountOfUsersUniqueFilledResultsByCategory = (
     },
   });
 };
+
+export const getDetailsByType = (typeId) => {
+  return prisma.calculatorType.findUnique({
+    where: {
+      id: typeId
+    }
+  })
+}
