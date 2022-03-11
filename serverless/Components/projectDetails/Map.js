@@ -8,6 +8,7 @@ const Map = ({location}) => {
         height: '400px'
     };
 
+
     const center = {
         lat: location.lat,
         lng: location.lng  };
@@ -44,6 +45,10 @@ const Map = ({location}) => {
          <Marker position={{lat: location.lat, lng: location.lng  }}  />
             <></>
         </GoogleMap>
+
+
+
+
     ) : <></>
 
 }

@@ -4,7 +4,7 @@ import ProgressB from './ProgressB'
 function BuyCard(props) {
 
     return(
-    <div className="w-full md:w-1/2 lg:w-1/3 px-4">
+    <div className="w-96  px-4">
         <div
             className="
                bg-white
@@ -19,49 +19,26 @@ function BuyCard(props) {
                sm:p-12
                lg:py-10 lg:px-6
                xl:p-12
-               mb-10
+
                bg-white rounded-xl transform
-            transition-all hover:-translate-y-2 duration-300 shadow-lg
+             duration-300 shadow-lg
              hover:shadow-2xl hover:font-bold">
 
-            <h2 className="font-bold text-dark mb-4 text-[42px] border-b border-[#F2F2F2] pb-3 mb-3 ">
-                £30
-                <span className="text-base text-body-color font-medium">
-                  / tco2e
-                  </span>
+            <h2 className="font-bold  mb-1 text-[34px] text-green-600 pb-3 ">
+                £30 {props.price}
+                <span className="text-base text-body-color text-black  font-medium">/ tCo2e
+                                         </span>
             </h2>
-
-            <div className="mb-7">
-                <p className="text-base font-medium text-body-color leading-loose mb-1">
-                    Total supply
-                </p>
-                <p className="text-base font-medium text-body-color leading-loose mb-1">
-                    Available Supply
-                </p>
-                <p className="text-base font-medium text-body-color leading-loose mb-1">
-                    How many tonnes of carbon would you like to buy:
-                </p>
-
-
-                <div>
-                    <div>
-                        <ProgressB/>
-                    </div>
-                </div>
-
-            </div>
-            <a href="javascript:void(0)"
-               className=" w-full block text-base font-semibold text-white bg-green-400 p-4 hover:bg-opacity-90
-                 border-pill rounded-md text-center transition "
-            >
-                Buy carbon
-            </a>
-            <div>
-
-                <span className="absolute right-4 top-4 z-[-1]">
-
-                  </span>
-            </div>
+            <p className='font-semibold text-gray-400'> Total Supply: {props.totalsupply} </p>
+            <p className='font-semibold text-gray-400' > Available Supply: {props.avlbsupply} </p>
+            <p className='font-bold'>How many tonnes of carbon would you like to buy?</p>
+            <input className='w-full form-control border border-solid border-gray-300 rounded block px-6 py-2.5 mb-3' type="number" placeholder='/tCo2e'/>
+            <button type="button"
+                    className="mb-2 w-full inline-block px-6 py-2.5 bg-green-500 text-white font-medium
+                                             text-xs leading-normal uppercase rounded shadow-md hover:bg-green-800 hover:shadow-lg
+                                            focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800
+                                              active:shadow-lg  duration-150 ease-in-out">Buy Carbon
+            </button>
         </div>
     </div>)
 
