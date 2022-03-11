@@ -21,8 +21,8 @@ const ProgressBar = (data) => {
             <div className={styles.row}>
               <div className={styles.progressBar}>
                 <CircularProgressbar
-                  value={categoriesCount[type.id - 1][i]}
-                  text={categoriesCount[type.id - 1][i] + "%"}
+                  value={categoriesCount[i]}
+                  text={categoriesCount[i] + "%"}
                   styles={buildStyles({
                     textSize: "28px",
                     textColor: "black",

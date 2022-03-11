@@ -6,7 +6,7 @@ export const getCalculatorTypes = () => {
 };
 
 export const getCalculatorTypesForUser = (userId) => {
-  return MainService.get("/api/calculators");
+  return MainService.get(`/api/calculators/user/${userId}/getTypes`);
 };
 
 // GET Request - Get Calculator Types

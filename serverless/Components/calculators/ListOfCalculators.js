@@ -50,7 +50,7 @@ const ListOfCalculators = (props) => {
         data={props}
         type={types[value]}
         category={categories[value]}
-        categoriesCount={categoriesCount}
+        categoriesCount={categoriesCount[value]}
         input={inputs}
         results={0}
         userId={userId}

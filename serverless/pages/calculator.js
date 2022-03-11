@@ -62,6 +62,7 @@ export async function getServerSideProps(context) {
   // Adds all Calculator types in a list
   const types = typesRes.data;
 
+  console.log(types)
   // Adds the IDs of calculators in a list
   types.map((type) => {
     typeId.push(type.id);
@@ -84,6 +85,8 @@ export async function getServerSideProps(context) {
       categoriesCount.push(temp);
     }
     categories.push(calculatorCategories);
+    console.log(categories)
+    console.log(categoriesCount)
   }
 
   // Add Calculator Inputs for each calculator type
