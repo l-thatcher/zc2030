@@ -18,15 +18,33 @@ const CalculatorCategory = (data) => {
   const [type, setType] = [{ id: 1, name: "Individual" }];
   const [showInput, setShowInput] = useState(false);
   const [category, setCategory] = useState(data.categories);
-
   const [input, setInput] = useState(data.inputs);
+  // const [category, setCategory] = useState([]);
+  // const [input, setInput] = useState([]);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
+
+  // Receives data back from CalculatorInput
+  const getCalculatorInputData = (optionSelected, newInput, newCategory) => {
+
+    let InputClone = [...input]; // Input clone data
+    InputClone[optionSelected] = newInput
+    setInput(InputClone)
+
+    let CategoryClone = [...category]; // Input clone data
+    CategoryClone[optionSelected] = newCategory
+    setCategory(CategoryClone)
+
+    setShowInput(false);
+  };
+
 
   // "Add" button handler
   function handleAdd(input) {
     if (category.length < 3) {
       setCategory([...category, input]);
+      setOptionSelected(category.length);
+      setShowInput(true)
     } else {
       setErrorMsg("You reached the maximum number of categories.");
       setError(true);
@@ -37,10 +55,10 @@ const CalculatorCategory = (data) => {
   function handleChange(e, index) {
     let categoryClone = [...category];
     categoryClone[index] = { id: index, name: e.target.value };
-
     setCategory(categoryClone);
   }
 
+  // "Create" button handler
   function handleCreate() {
     for (let i = 0; i < category.length; i++) {
       let num = i + 1;
@@ -54,14 +72,24 @@ const CalculatorCategory = (data) => {
     }
   }
 
+  // "Edit" button handler
   function handleEdit(i) {
     setOptionSelected(i);
     setShowInput(true);
   }
 
+  // "Delete" button handler
   function handleDelete(idToRemove) {
+    console.log(idToRemove)
+    console.log(category)
     setCategory((prevCategories) =>
       prevCategories.filter((value, i) => i !== idToRemove)
+    );
+
+    console.log(idToRemove)
+    console.log(category)
+    setInput((prevInputs) =>
+        prevInputs.filter((value, i) => i !== idToRemove)
     );
   }
 
@@ -87,7 +115,6 @@ const CalculatorCategory = (data) => {
                 type="text"
                 placeholder={type.name}
                 disabled
-                readOnly
               />
             </Form.Group>
             <FormLabel style={{ width: "100%", fontSize: "25px" }}>
@@ -102,6 +129,8 @@ const CalculatorCategory = (data) => {
                   aria-labelledby={`category-${i + 1}`}
                   value={category.name}
                   onChange={(e) => handleChange(e, i)}
+                  disabled
+                  readOnly
                 />
                 <Button
                   variant="primary"
@@ -152,6 +181,8 @@ const CalculatorCategory = (data) => {
             <CalculatorInput
               category={category[optionSelected]}
               input={input[optionSelected]}
+              calculatorInputData={getCalculatorInputData}
+              optionSelected={optionSelected}
             />
           </div>
         )}

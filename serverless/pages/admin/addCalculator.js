@@ -27,7 +27,7 @@ export default function addCalculator(props) {
 // This gets called at build time
 export async function getServerSideProps(context) {
 
-  let typeId = 1;
+  let typeId = 2;
   let inputs = [];
   let categoryId = [];
 

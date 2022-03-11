@@ -22,9 +22,12 @@ const CalculatorInput = (data) => {
   const [errorMsg, setErrorMsg] = useState();
 
   // "Add" button handler
-  function handleAdd(newInput) {
-    if (input.length < 3) {
-      setInput([...input, newInput]);
+  function handleAdd() {
+    console.log(input)
+    if (input === undefined) {
+      setInput([""]);
+    } else if (input.length < 3){
+      setInput([...input, []]);
     } else {
       setErrorMsg("You reached the maximum number of inputs.");
       setError(true);
@@ -46,7 +49,7 @@ const CalculatorInput = (data) => {
         id: input[indexCategory].id,
         factor: e.target.value,
       };
-      setFactor(e.target.value);
+      setFactor(Number(e.target.value));
     } else if (inputField === "unit") {
       InputClone[indexCategory] = {
         id: input[indexCategory].id,
@@ -59,6 +62,13 @@ const CalculatorInput = (data) => {
     setInput(InputClone);
   }
 
+  // onChange handler
+  function handleCategoryChange(e, index) {
+    let categoryClone = [...category];
+    categoryClone[index] = { id: category[0]?.id, name: e.target.value };
+    setCategory(categoryClone);
+  }
+
   function handleCreate() {
     for (let i = 0; i < input.length; i++) {
       let num = i + 1;
@@ -66,6 +76,12 @@ const CalculatorInput = (data) => {
         setErrorMsg("You might have forgotten to add a value on Input " + num);
         setError(true);
         break;
+      } else if (category[0].name === undefined) {
+        setErrorMsg("You might have forgotten to add a value on Category Name ");
+        setError(true);
+        break;
+      } else {
+        data.calculatorInputData(data.optionSelected, input, category[0])
       }
     }
   }
@@ -95,12 +111,12 @@ const CalculatorInput = (data) => {
             id={`category-name`}
             size="lg"
             type="text"
-            placeholder={category[0].name}
-            disabled
-            readOnly
+            placeholder="E.g Category 1"
+            value={category[0]?.name}
+            onChange={(e) => handleCategoryChange(e, 0)}
           />
         </Form.Group>
-        {input.map((inputVal, i) => (
+        {input?.map((inputVal, i) => (
           <div>
             <Form.Group className="mt-5" controlId="exampleForm.ControlInput1">
               <FormLabel
@@ -155,9 +171,9 @@ const CalculatorInput = (data) => {
           type="submit"
           className={styles.button}
           data-testid="next_btn"
-          onClick={(e) => console.log(input)}
+          onClick={(e) => handleCreate()}
         >
-          Create
+          Save
         </Button>
       </div>
     </div>
