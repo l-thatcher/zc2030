@@ -1,6 +1,6 @@
 import {execute_query} from "../../../utils/db";
 
-const getAdminData = `SELECT * FROM USER`;
+const getAdminData = `SELECT * FROM USER WHERE email='rowbotom@gmail.com'`;
 
 // const handler = async (_, res) => {
 //     try {

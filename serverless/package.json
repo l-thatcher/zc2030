@@ -25,6 +25,7 @@
     "next": "^12.1.0",
     "next-auth": "^4.2.1",
     "prisma": "^3.10.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-circular-progressbar": "^2.0.4",

@@ -1,4 +1,4 @@
-import styles from "../styles/AdminSidebar.module.css";
+import styles from "../../styles/AdminSidebar.module.css";
 import Link from 'next/link'
 import {MdAccountBox} from "react-icons/Md";
 import {ImCalculator} from "react-icons/Im";

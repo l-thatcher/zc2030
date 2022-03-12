@@ -1,11 +1,14 @@
 import styles from "../../styles/AdminDashboard.module.css";
-import AdminSidebar from "../../Components/AdminSidebar";
+import AdminSidebar from "../../Components/admin/AdminSidebar";
+import NewAdminPop from "../../Components/admin/NewAdminPop";
 import {AiOutlineEdit, AiOutlinePlusSquare, AiOutlineSearch} from 'react-icons/Ai';
 import {MdDelete} from "react-icons/Md";
-import {getUserData} from "../../services/adminService";
+import {getUserData, getAdminData} from "../../services/adminService";
+import {useState} from "react";
 
 export default function adminDashboard(props) {
     const users = props.users;
+    const admins = props.admins;
     // const adminJsonData = {
     //     Category1: [
     //         {
@@ -68,6 +71,12 @@ export default function adminDashboard(props) {
     // const userData = Object.keys(userJsonData).reduce((accumulator, iterator) => {
     //     return [...accumulator, ...userJsonData[iterator]];
     // }, [])
+    const [visibility, setVisibility] = useState(false);
+
+    const popupCloseHandler = (e) => {
+        setVisibility(e);
+    };
+
     return (
         <div className={styles.main}>
             <AdminSidebar/>
@@ -77,16 +86,16 @@ export default function adminDashboard(props) {
                     <div className={styles.titles}>
                         <h1>Admin Management </h1>
                         <div>
-                            <AiOutlinePlusSquare className={styles.icons}/>
+                            <AiOutlinePlusSquare className={styles.icons} onClick={(e) => setVisibility(!visibility)}/>
                             <AiOutlineSearch className={styles.icons}/>
                         </div>
 
                     </div>
                     <div className={styles.lists}>
-                        {users.map((name, i) => (
-                            <div className={styles.items}>
-                                <p>{users[i].name}</p>
-                                <p>{users[i].email}</p>
+                        {admins.map((name, i) => (
+                            <div key="{admins}" className={styles.items}>
+                                <p>{admins[i].name}</p>
+                                <p>{admins[i].email}</p>
                                 <MdDelete className={styles.icons}/>
                             </div>
                         ))}
@@ -100,7 +109,7 @@ export default function adminDashboard(props) {
                     </div>
                     <div className={styles.lists}>
                         {users.map((name, i) => (
-                            <div className={styles.items}>
+                            <div key="{users}" className={styles.items}>
                                 <p>{users[i].id}</p>
                                 <p>{users[i].name}</p>
                                 <p>{users[i].email}</p>
@@ -111,65 +120,30 @@ export default function adminDashboard(props) {
                     </div>
                 </div>
             </div>
+            <NewAdminPop
+                onClose={popupCloseHandler}
+                show={visibility}
+                title="Hello Jeetendra"
+            >
+                <h1>Hello This is Popup Content Area</h1>
+                <h2>This is my lorem ipsum text here!</h2>
+            </NewAdminPop>
         </div>
     );
 }
 
 // This gets called at build time
 export async function getServerSideProps(){
-    // let categories = [];
-    // let categoriesCount = [];
-    // let inputs = [];
-    // let typeId = [];
-    // let categoryId = [];
-    // const session = await getSession(context);
-    // let userId = null;
-    // if (session) {
-    //     userId = session.user.id;
-    // }
-
-    // Adds all Calculator types in a list
+    // Adds all users types in a list
     const userRes = await getUserData()
     const users = userRes.data
-    console.log(users)
 
-    // Adds the IDs of calculators in a list
-    // types.map((type) => {
-    //     typeId.push(type.id);
-    // });
+    // Adds all admins types in a list
+    const adminRes = await getAdminData()
+    const admins = adminRes.data
+    console.log(admins);
 
-    // Add Calculator Categories into categories for every id of calculators
-    // for (let i = 0; i < typeId.length; i++) {
-    //     const res = await getCalculatorCategories(typeId[i]);
-    //     const calculatorCategories = res.data;
-    //     if (userId != null) {
-    //         // categoriesCount.push(await calculatorCategories.map(it => getUserCategoryProgress(userId, it.id)))
-    //         // categoriesCount.push((await getUserCategoryProgress("cl0h963z10006rwqni8sc891f", 1)).data.count)
-    //         const temp = [];
-    //         for (let j = 0; j < calculatorCategories.length; j++) {
-    //             temp.push(
-    //                 (
-    //                     await getUserCategoryProgress(
-    //                         userId,
-    //                         calculatorCategories[j].id
-    //                     )
-    //                 ).data.count
-    //             );
-    //         }
-    //         categoriesCount.push(temp);
-    //     }
-    //     categories.push(calculatorCategories);
-    // }
-
-    // Add Calculator Inputs for each calculator type
-    // for (let i = 0; i < typeId.length; i++) {
-    //     for (let b = 0; b < categories[i].length; b++) {
-    //         categoryId = categories[i][b].id;
-    //         const res = await getCalculatorInputs(typeId[i], categoryId);
-    //         inputs.push(res.data);
-    //     }
-    // }
 
     // Pass post data to the page via props
-    return { props: {users} };
+    return { props: {users, admins} };
 }
