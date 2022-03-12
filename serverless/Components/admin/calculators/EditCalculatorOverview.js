@@ -1,4 +1,5 @@
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import UserList from "./UserList";
 
 const EditCalculatorOverview = (data) => {
     const details = data.details;
@@ -30,15 +31,7 @@ const EditCalculatorOverview = (data) => {
                         />
                     </div>
                 </Form.Group>
-                <Form.Group controlId="form.Users">
-                    <Form.Label>Users that can access the calculator:</Form.Label>
-                    {users.map((user, i) => (
-                    <Row>
-                        <Col><Form.Control type="text" placeholder="Enter email" value={user.email}/></Col>
-                        <Col><Button>Remove</Button></Col>
-                    </Row>
-                    ))}
-                </Form.Group>
+                <UserList details = {details} users = {users}/>
             </Form>
         </div>
     )

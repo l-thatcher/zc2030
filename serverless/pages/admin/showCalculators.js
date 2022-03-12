@@ -9,6 +9,5 @@ export default function showCalculators(props) {
 export async function getStaticProps(context) {
   const typesRes = await getCalculatorTypes();
   const types = typesRes.data;
-  console.log(types);
   return { props: { types } };
 }
