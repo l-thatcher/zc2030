@@ -35,6 +35,7 @@ function ProjectDetails(props) {
             <div className="flex-1 min-w-0">
 
                 <main className="  ">
+
                     {/*Name*/}
                     <div className=' mt-10'>
                         <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">Elveden farm {props.name}</h1>
