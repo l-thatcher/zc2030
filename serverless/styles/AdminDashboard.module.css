@@ -7,6 +7,10 @@
     padding: 2rem;
 }
 
+.adminPop{
+    z-index: 2;
+}
+
 .listContainer{
     padding: 0 3rem 3rem 0;
 }
@@ -36,6 +40,10 @@
     justify-content: space-around;
     border-bottom: 1px solid black;
     padding: .5rem 0 0 0;
+}
+
+.item{
+    width: 20%;
 }
 
 .items:nth-child(odd){

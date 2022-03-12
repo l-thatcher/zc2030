@@ -80,6 +80,21 @@ export default function adminDashboard(props) {
     return (
         <div className={styles.main}>
             <AdminSidebar/>
+            <NewAdminPop
+                className={styles.adminPop}
+                onClose={popupCloseHandler}
+                show={visibility}
+                title="New Admin"
+            >
+                <h5>Enter email</h5>
+
+                <form action="" method="POST">
+                    <input id="email" type="email" required/>
+                    <p/>
+                    <button type="submit">Submit</button>
+                </form>
+
+            </NewAdminPop>
             <div className={styles.container}>
 
                 <div className={styles.listContainer}>
@@ -94,8 +109,8 @@ export default function adminDashboard(props) {
                     <div className={styles.lists}>
                         {admins.map((name, i) => (
                             <div key="{admins}" className={styles.items}>
-                                <p>{admins[i].name}</p>
-                                <p>{admins[i].email}</p>
+                                <p className={styles.item}>{admins[i].name}</p>
+                                <p className={styles.item}>{admins[i].email}</p>
                                 <MdDelete className={styles.icons}/>
                             </div>
                         ))}
@@ -110,24 +125,16 @@ export default function adminDashboard(props) {
                     <div className={styles.lists}>
                         {users.map((name, i) => (
                             <div key="{users}" className={styles.items}>
-                                <p>{users[i].id}</p>
-                                <p>{users[i].name}</p>
-                                <p>{users[i].email}</p>
-                                <p>{users[i].type}</p>
+                                <p className={styles.item}>{users[i].id}</p>
+                                <p className={styles.item}>{users[i].name}</p>
+                                <p className={styles.item}>{users[i].email}</p>
+                                <p className={styles.item}>{users[i].type}</p>
                                 <AiOutlineEdit className={styles.icons}/>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
-            <NewAdminPop
-                onClose={popupCloseHandler}
-                show={visibility}
-                title="Hello Jeetendra"
-            >
-                <h1>Hello This is Popup Content Area</h1>
-                <h2>This is my lorem ipsum text here!</h2>
-            </NewAdminPop>
         </div>
     );
 }
@@ -141,7 +148,6 @@ export async function getServerSideProps(){
     // Adds all admins types in a list
     const adminRes = await getAdminData()
     const admins = adminRes.data
-    console.log(admins);
 
 
     // Pass post data to the page via props
