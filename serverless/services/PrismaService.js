@@ -38,3 +38,12 @@ export const getCountOfUsersUniqueFilledResultsByCategory = (
 export const getListofProjects = () => {
     return prisma.projects.findMany();
 };
+
+
+export const getProject = (projectID) => {
+    return prisma.projects.findUnique({
+        where: {
+            id: projectID
+        }
+    })   ;
+};
