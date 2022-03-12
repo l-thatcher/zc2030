@@ -104,12 +104,12 @@ function ProjectDetails(props) {
                             <div className="mt-1 md:hidden">
                                 <div className=''>
                                     <h2 className="font-bold  mb-1 text-[34px] text-green-600 pb-3 ">
-                                        £30 {props.price}
+                                        £30 {props.cptgbp}
                                         <span className="text-base text-body-color text-black  font-medium">/ tCo2e
                                          </span>
                                     </h2>
                                     <p className='font-semibold text-gray-400'> Total Supply: {props.totalsupply} </p>
-                                    <p className='font-semibold text-gray-400' > Available Supply: {props.avlbsupply} </p>
+                                    <p className='font-semibold text-gray-400' > Available Supply: {props.remainingsupply} </p>
                                     <p className='font-bold'>How many tonnes of carbon would you like to buy?</p>
                                     <input className='w-full form-control border border-solid border-gray-300 rounded block px-6 py-2.5 mb-3' type="number" placeholder='/tCo2e'/>
                                     <button type="button"

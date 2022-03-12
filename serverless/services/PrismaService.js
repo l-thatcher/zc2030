@@ -1,6 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
+
 
 // export default async function FilledResultsByCategory(userId, inputIds) {
 //     const results = await prisma.calculatorResult.findMany({
@@ -36,14 +37,14 @@ export const getCountOfUsersUniqueFilledResultsByCategory = (
 };
 
 export const getListofProjects = () => {
-    return prisma.projects.findMany();
+    return prisma.project.findMany();
 };
 
 
 export const getProject = (projectID) => {
-    return prisma.projects.findUnique({
+    return prisma.project.findUnique({
         where: {
-            id: projectID
-        }
+            id: projectID,
+        },
     })   ;
 };

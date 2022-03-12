@@ -45,14 +45,40 @@ model User {
   sessions      Session[]
 }
 
-model Projects {
+model Project {
   id               String  @id @default(cuid())
   projectname      String
-  projectimagelink String
+  projectimages    String[]
   cptgbp           Decimal
-  location         String
+  location         Location
   totalsupply      Decimal
   remainingsupply  Decimal
-  authorid         String
+  ownerprofile     Ownerprofile
   description      String
+  date             String
+  nftaddress       String?
 }
+
+model Location{
+    id             String  @id @default(cuid())
+    latitude       Float
+    longitude      Float
+    streetname     String
+    city           String
+    county         String
+    country        String
+    project        Project @relation(fields: [projectId], references: [id])
+    projectId      String
+}
+
+model Ownerprofile {
+  id               String  @id @default(cuid())
+  profilePicture   String[]
+  type             String
+  website          String?
+  project          Project @relation(fields: [projectId], references: [id])
+  projectId        String
+}
+
+
+
