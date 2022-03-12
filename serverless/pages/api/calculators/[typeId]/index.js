@@ -1,4 +1,5 @@
 import { execute_query } from "../../../../utils/db";
+import {deleteCalculatorType} from "../../../../services/PrismaService";
 
 const getCalculatorCategoriesByTypeId = `SELECT CalculatorType.id, CalculatorCategory.id, CalculatorCategory.name FROM CalculatorCategory 
                                          JOIN CalculatorType ON CalculatorType.id = CalculatorCategory.type_id 
@@ -53,16 +54,19 @@ export default async function handler(req, res) {
     // Delete data from database
     case "DELETE":
 
-      const categoryIdDelete = req.body[1];
-
+      // const categoryIdDelete = req.body[1];
+      console.log(typeId)
       try {
-        const result = await execute_query(
-            deleteCalculatorCategory,categoryIdDelete
-            );
-        res.status(200).json(result);
+        // const result = await execute_query(
+        //     deleteCalculatorCategory,categoryIdDelete
+        //     );
+        await deleteCalculatorType(BigInt(typeId))
+        res.status(204).json();
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
+
       break;
 
     // Update data from database

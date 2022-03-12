@@ -62,3 +62,35 @@ export const getUsersFromList = (userIdList) => {
     id: true}
   })
 }
+
+export const deleteCalculatorType = (typeId) => {
+  return prisma.calculatorType.delete({
+    where: {
+      id: typeId
+    }
+  })
+}
+
+export const deleteCategoryByType = (typeId) => {
+  return prisma.calculatorCategory.deleteMany({
+    where: {
+      type_id: typeId
+    }
+  })
+}
+
+export const deleteInputByCategory = (categoryId) => {
+  return prisma.calculatorInput.deleteMany({
+    where: {
+      category_id: categoryId
+    }
+  })
+}
+
+export const deleteResultByInput = (inputId) => {
+  return prisma.calculatorResult.deleteMany({
+    where: {
+      input_id: inputId
+    }
+  })
+}

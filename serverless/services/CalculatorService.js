@@ -104,3 +104,9 @@ export const getUserCategoryProgress = (userId, categoryId) => {
     `/api/calculators/user/${userId}/${categoryId}/uniqueCompletedCount`
   );
 };
+
+export const deleteCalculatorType = (idToDelete) =>{
+  return MainService.delete(
+      `/api/calculators/${idToDelete}`
+  )
+}

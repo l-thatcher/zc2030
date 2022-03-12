@@ -52,7 +52,7 @@ const EditCalculatorOverview = (data) => {
                         data-testid="next_btn"
                         onClick={(e) => handleEdit()}
                     >
-                        Edit
+                        Next
                     </Button>
                 </Form>
             )
