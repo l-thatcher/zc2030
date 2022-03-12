@@ -22,7 +22,7 @@ const EditCalculatorOverview = (data) => {
                 <Form>
                     <Form.Group controlId="form.Name">
                         <Form.Label>Calculator Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter name" value={name} onChange={handleNameChange}/>
+                        <Form.Control type="text" placeholder="Enter name" value={details.name}/>
                     </Form.Group>
                     <Form.Group controlId="form.Visibility">
                         <Form.Label>Calculator Visibility</Form.Label>
