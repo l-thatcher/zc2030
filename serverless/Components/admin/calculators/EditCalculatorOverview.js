@@ -1,10 +1,21 @@
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import UserList from "./UserList";
+import CalculatorCategory from "./CalculatorCategory";
+import {useState} from "react";
 
 const EditCalculatorOverview = (data) => {
     const details = data.details;
     const users = data.users;
-    console.log(`here`,details)
+    const categories = data.categories;
+    const inputs = data.inputs
+    const [overviewShowing, setOverviewShowing] = useState(true);
+    const [showCategory, setShowCategory] = useState(false);
+
+    function handleEdit(){
+        setOverviewShowing(false)
+        setShowCategory(true)
+    }
+
     return (
         <div>
             <Form>

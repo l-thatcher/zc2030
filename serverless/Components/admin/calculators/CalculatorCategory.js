@@ -20,7 +20,7 @@ import {
 
 const CalculatorCategory = (data) => {
   const [optionSelected, setOptionSelected] = useState(0);
-  const [type, setType] = [{ id: 2, name: "Business" }];
+  let type = data.type;
   const [showInput, setShowInput] = useState(false);
   const [category, setCategory] = useState(data.categories);
   const [input, setInput] = useState(data.inputs);
