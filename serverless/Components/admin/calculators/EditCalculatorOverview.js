@@ -18,32 +18,48 @@ const EditCalculatorOverview = (data) => {
 
     return (
         <div>
-            <Form>
-                <Form.Group controlId="form.Name">
-                    <Form.Label>Calculator Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter name" value={details.name}/>
-                </Form.Group>
-                <Form.Group controlId="form.Visibility">
-                    <Form.Label>Calculator Visibility</Form.Label>
-                    <div key={`default-radio`} className="mb-3">
-                        <Form.Check
-                            type="radio"
-                            id={`public`}
-                            label={`Public`}
-                            checked={details.public}
-                            name="visibility"
-                        />
-                        <Form.Check
-                            type="radio"
-                            id="private"
-                            label="Private"
-                            checked={!details.public}
-                            name="visibility"
-                        />
-                    </div>
-                </Form.Group>
-                <UserList details = {details} users = {users}/>
-            </Form>
+            { overviewShowing === true && (
+                <Form>
+                    <Form.Group controlId="form.Name">
+                        <Form.Label>Calculator Name</Form.Label>
+                        <Form.Control type="text" placeholder="Enter name" value={name} onChange={handleNameChange}/>
+                    </Form.Group>
+                    <Form.Group controlId="form.Visibility">
+                        <Form.Label>Calculator Visibility</Form.Label>
+                        <div key={`default-radio`} className="mb-3">
+                            <Form.Check
+                                type="radio"
+                                id={`public`}
+                                label={`Public`}
+                                checked={details.public}
+                                name="visibility"
+                            />
+                            <Form.Check
+                                type="radio"
+                                id="private"
+                                label="Private"
+                                checked={!details.public}
+                                name="visibility"
+                            />
+                        </div>
+                    </Form.Group>
+                    <UserList details={details} users={users}/>
+                    <Button
+                        style={{ width: "125px", marginTop: "40px" }}
+                        variant="secondary"
+                        size="lg"
+                        type="submit"
+                        data-testid="next_btn"
+                        onClick={(e) => handleEdit()}
+                    >
+                        Edit
+                    </Button>
+                </Form>
+            )
+            }
+            { showCategory === true && (
+            <CalculatorCategory type = {details} categories = {categories} inputs = {inputs}/>
+            )}
         </div>
     )
 }
