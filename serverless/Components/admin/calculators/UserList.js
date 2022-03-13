@@ -33,9 +33,10 @@ const UserList = (data) => {
 
     async function handleDelete() {
         if(idToDelete === ""){
-            const temp = [...users]; 
-            temp.splice(index, 1);
+            const temp = [...users];
+            temp.splice(optionSelected, 1);
             setUsers(temp)
+            setShowModal(false)
         } else {
             await deleteUsersCalculator(idToDelete, details.id)
             router.reload()
