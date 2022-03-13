@@ -24,15 +24,9 @@ const CalculatorCategory = (data) => {
   const [showInput, setShowInput] = useState(false);
   const [category, setCategory] = useState(data.categories);
   const [input, setInput] = useState(data.inputs);
-  // const [category, setCategory] = useState([]);
-  // const [input, setInput] = useState([]);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
-  let newCategoryId = category[category.length - 1].id + 1
 
-  console.log(newCategoryId)
-  console.log(Number(newCategoryId))
-  console.log(Math.floor(newCategoryId))
   // Receives data back from CalculatorInput
   const getCalculatorInputData = (optionSelected, newInput, newCategory) => {
 
@@ -40,7 +34,7 @@ const CalculatorCategory = (data) => {
     InputClone[optionSelected] = newInput
     setInput(InputClone)
 
-    let CategoryClone = [...category]; // Input clone data
+    let CategoryClone = [...category]; // Category clone data
     CategoryClone[optionSelected] = newCategory
     setCategory(CategoryClone)
 
@@ -78,30 +72,26 @@ const CalculatorCategory = (data) => {
         break;
       }
     }
+
     for (let i = 0; i < category.length; i++) {
       if (category[i].id === undefined) {
-        const data = [2, category[i].name]
+        const data = [type.id, category[i].name]
         await saveCalculatorCategories(type.id, data);
 
         for (let b = 0; b < input[optionSelected].length; b++) {
 
           if (input[optionSelected][b].id === undefined) {
             const data = [Number(category[category.length - 1].id + 1), input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit]
-            console.log(category[category.length - 1].id + 1)
-            console.log(Number(category[category.length - 1].id + 1))
-            console.log(data)
             await saveCalculatorInputs(type.id, Number(category[category.length - 1].id + 1), data);
 
           } else {
             const data = [Number(category[category.length - 1].id + 1), input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit, input[i][b]?.id]
-            console.log(data)
             await updateCalculatorInputs(type.id, Number(category[category.length - 1].id + 1), data);
           }
         }
 
-
       } else {
-        const data = [2, category[i].name, category[i].id]
+        const data = [type.id, category[i].name, category[i].id]
         await updateCalculatorCategories(type.id, data);
 
         for (let b = 0; b < input[optionSelected].length; b++) {
@@ -120,26 +110,6 @@ const CalculatorCategory = (data) => {
 
       }
     }
-
-    // for (let i = 0; i < category.length; i++){
-    //
-    //   for (let b = 0; b < input[optionSelected].length; b++) {
-    //
-    //     if (input[optionSelected][b].id === undefined) {
-    //       const data = [category[i].id, input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit]
-    //       console.log(data)
-    //       await saveCalculatorInputs(type.id, category[i].id, data);
-    //
-    //     } else {
-    //       const data = [category[i].id, input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit, input[i][b]?.id]
-    //       console.log(data)
-    //       await updateCalculatorInputs(type.id, category[i].id, data);
-    //     }
-    //   }
-    // }
-
-
-
   }
 
   // "Edit" button handler
@@ -154,13 +124,13 @@ const CalculatorCategory = (data) => {
     for (let i = 0; i < input[idToRemove].length; i++){
       const categoryId = category[idToRemove].id
       const inputId = input[idToRemove][i].id
-      const data = [2, inputId]
-      await deleteCalculatorInputs(2, categoryId, data)
+      const data = [type.id, inputId]
+      await deleteCalculatorInputs(type.id, categoryId, data)
     }
 
     if (category[idToRemove].id !== undefined) {
       const categoryId = category[idToRemove].id
-      const data = [2, categoryId]
+      const data = [type.id, categoryId]
       await deleteCalculatorCategory(type.id, data);
     }
 
@@ -201,32 +171,34 @@ const CalculatorCategory = (data) => {
               Categories
             </FormLabel>
             {category.map((category, i) => (
-              <InputGroup size="lg" className="mt-2">
-                <FormControl
-                  id={`category-${i + 1}`}
-                  placeholder={`E.g. Category ${i + 1}`}
-                  aria-label={`category-${i + 1}`}
-                  aria-labelledby={`category-${i + 1}`}
-                  value={category.name}
-                  onChange={(e) => handleChange(e, i)}
-                  disabled
-                  readOnly
-                />
-                <Button
-                  variant="primary"
-                  id="button-addon2"
-                  onClick={(e) => handleEdit(i)}
-                >
-                  Edit <FaEdit size={20} style={{ marginBottom: "5px" }} />
-                </Button>
-                <Button
-                  variant="danger"
-                  id="button-addon2"
-                  onClick={(e) => handleDelete(i)}
-                >
-                  <AiFillDelete size={20} />
-                </Button>
-              </InputGroup>
+              <div key={i}>
+                <InputGroup size="lg" className="mt-2">
+                  <FormControl
+                    id={`category-${i + 1}`}
+                    placeholder={`E.g. Category ${i + 1}`}
+                    aria-label={`category-${i + 1}`}
+                    aria-labelledby={`category-${i + 1}`}
+                    value={category.name}
+                    onChange={(e) => handleChange(e, i)}
+                    disabled
+                    readOnly
+                  />
+                  <Button
+                    variant="primary"
+                    id="button-addon2"
+                    onClick={(e) => handleEdit(i)}
+                  >
+                    Edit <FaEdit size={20} style={{ marginBottom: "5px" }} />
+                  </Button>
+                  <Button
+                    variant="danger"
+                    id="button-addon2"
+                    onClick={(e) => handleDelete(i)}
+                  >
+                    <AiFillDelete size={20} />
+                  </Button>
+                </InputGroup>
+              </div>
             ))}
             <Button
               type={"button"}

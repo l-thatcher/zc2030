@@ -76,7 +76,7 @@ const EditCalculatorOverview = (data) => {
             )
             }
             { showCategory === true && (
-            <CalculatorCategory type = {details} categories = {categories} inputs = {inputs}/>
+                <CalculatorCategory type = {details} categories = {categories} inputs = {inputs}/>
             )}
         </div>
     )

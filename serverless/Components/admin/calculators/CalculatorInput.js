@@ -102,9 +102,11 @@ const CalculatorInput = (data) => {
             <p>{errorMsg}</p>
           </Alert>
         )}
-        <Form.Group className="mt-5" controlId="exampleForm.ControlInput1">
-          <Form.Label style={{ fontSize: "25px" }} for="category-name">
-            Category
+        <Form.Group className="mt-5">
+          <Form.Label
+              style={{ fontSize: "25px" }}
+              htmlFor="category-name">
+              Category
           </Form.Label>
           <Form.Control
             aria-labelledby={`category-name`}
@@ -117,10 +119,10 @@ const CalculatorInput = (data) => {
           />
         </Form.Group>
         {input?.map((inputVal, i) => (
-          <div>
-            <Form.Group className="mt-5" controlId="exampleForm.ControlInput1">
+          <div key={i}>
+            <Form.Group className="mt-5">
               <FormLabel
-                for={`input-${i + 1}`}
+                htmlFor={`input-${i + 1}`}
                 className="mt-4"
                 style={{ width: "50%", fontSize: "25px" }}
               >
@@ -138,16 +140,18 @@ const CalculatorInput = (data) => {
             </Form.Group>
 
             {inputTitles.map((inputTitle, b) => (
-              <InputGroup style={{ width: "100%" }} size="lg" className="mt-2">
-                <InputGroup.Text>{inputTitle}</InputGroup.Text>
-                <FormControl
-                  id={`input-${b + 1}`}
-                  value={input[i][inputTitle]}
-                  aria-labelledby={`input-${b + 1}`}
-                  placeholder={`Enter a value:`}
-                  onChange={(e) => handleChange(e, i, b, inputTitle)}
-                />
-              </InputGroup>
+              <div key={b}>
+                <InputGroup style={{ width: "100%" }} size="lg" className="mt-2">
+                  <InputGroup.Text>{inputTitle}</InputGroup.Text>
+                  <FormControl
+                    id={`input-${b + 1}`}
+                    value={input[i][inputTitle]}
+                    aria-labelledby={`input-${b + 1}`}
+                    placeholder={`Enter a value:`}
+                    onChange={(e) => handleChange(e, i, b, inputTitle)}
+                  />
+                </InputGroup>
+              </div>
             ))}
           </div>
         ))}
