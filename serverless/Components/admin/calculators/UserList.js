@@ -10,10 +10,12 @@ const UserList = (data) => {
         <Form.Group controlId="form.Users">
             <Form.Label>Users that can access the calculator:</Form.Label>
             {users.map((user, i) => (
-                <Row>
-                    <Col><Form.Control type="text" placeholder="Enter email" value={user.email}/></Col>
-                    <Col><Button>Remove</Button></Col>
-                </Row>
+                <div key={i}>
+                    <Row>
+                        <Col><Form.Control type="text" placeholder="Enter email" value={user.email}/></Col>
+                        <Col><Button>Remove</Button></Col>
+                    </Row>
+                </div>
             ))}
         </Form.Group>)
     }
