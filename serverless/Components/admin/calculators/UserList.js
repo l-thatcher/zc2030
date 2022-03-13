@@ -1,4 +1,7 @@
 import {Button, Col, Form, Row} from "react-bootstrap";
+import {useState} from "react";
+import styles from "../../../styles/Calculator.module.css";
+import {CgAddR} from "react-icons/cg";
 
 const UserList = (data) => {
     const details = data.details;
