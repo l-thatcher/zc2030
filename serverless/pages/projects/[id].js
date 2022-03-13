@@ -1,37 +1,31 @@
 import ProjectDetails from "../../Components/projectDetails/ProjectDetails";
+import {getProjectsList} from "../../services/ProjectService";
+import {getProjectById} from "../../services/ProjectService";
 
 
-export const getStaticPaths = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    const data = await res.json();
 
-    const paths = data.map( project=>{
-        return{
-            params: {id: project.id.toString()}
-        }
-    })
 
-    return{
-        paths, fallback: false
-    }
-
-}
-
-export const getStaticProps = async (context) =>{
+export async function getServerSideProps(context) {
+    // const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    // const data = await res.json();
     const id = context.params.id;
-    const res = await fetch('https://jsonplaceholder.typicode.com/users/'+id);
-    const data = await res.json();
+    console.log("id: "+id)
+    const projectRes = await getProjectById(id);
+    const project = projectRes.data;
+    console.log("project: "+project)
 
-    return{
-        props: {project: data}
-    }
+
+    return {
+        props: {project}
+    };
 }
 
-const Details = ({project}) =>{
-
+const Details = (props) =>{
+    const project = props.project;
+    console.log("here:" + project)
     return(
         <div className='bg-gray-10' >
-            <ProjectDetails  />
+            <ProjectDetails detailsProps={project} />
         </div>
     )
 
