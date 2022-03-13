@@ -25,20 +25,21 @@ const UserList = (data) => {
     }
 
     function handleOpen(id, index) {
-        if (id === "") {
-            const temp = [...users]; // make a separate copy of the array
-            temp.splice(index, 1);
-            setUsers(temp)
-        } else{
-            setIdToDelete(id)
-            setOptionSelected(index)
-            setShowModal(true)
-        }
+        setIdToDelete(id)
+        setOptionSelected(index)
+        setShowModal(true)
+
     }
 
     async function handleDelete() {
-        await deleteUsersCalculator(idToDelete, details.id)
-        router.reload()
+        if(idToDelete === ""){
+            const temp = [...users]; 
+            temp.splice(index, 1);
+            setUsers(temp)
+        } else {
+            await deleteUsersCalculator(idToDelete, details.id)
+            router.reload()
+        }
     }
 
 
@@ -52,7 +53,8 @@ const UserList = (data) => {
                     {users.map((user, i) => (
                         <div key={i} className="mt-2">
                             <Row>
-                                <Col><Form.Control type="text" placeholder="Enter email" value={user.email} disabled={user.id !== ""}
+                                <Col><Form.Control type="text" placeholder="Enter email" value={user.email}
+                                                   disabled={user.id !== ""}
                                                    onChange={(e) => handleChange(e, i)}/></Col>
                                 <Col><Button onClick={(e) => handleOpen(user.id, i)}>Remove</Button></Col>
                             </Row>
