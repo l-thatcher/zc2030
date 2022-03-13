@@ -48,37 +48,33 @@ model User {
 model Project {
   id               String  @id @default(cuid())
   projectname      String
-  projectimages    String[]
+  projectimage     projectImage[]
   cptgbp           Decimal
-  location         Location
+  latitude         Float
+  longitude        Float
+  streetname       String
+  city             String
+  county           String
+  country          String
   totalsupply      Decimal
   remainingsupply  Decimal
-  ownerprofile     Ownerprofile
+  ownerpicture     String
+  type             String
+  website          String?
   description      String
-  date             String
+  datefounded      String
   nftaddress       String?
 }
 
-model Location{
-    id             String  @id @default(cuid())
-    latitude       Float
-    longitude      Float
-    streetname     String
-    city           String
-    county         String
-    country        String
-    project        Project @relation(fields: [projectId], references: [id])
-    projectId      String
-}
-
-model Ownerprofile {
+model projectImage {
   id               String  @id @default(cuid())
-  profilePicture   String[]
-  type             String
-  website          String?
+  profileimage     String
   project          Project @relation(fields: [projectId], references: [id])
   projectId        String
 }
+
+
+
 
 
 
