@@ -55,7 +55,7 @@ const CalculatorTypes = (data) => {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete type {`"${types[idToDelete].name}"`}?</Modal.Title>
+                    <Modal.Title>Delete type {`"${types[idToDelete]?.name}"`}?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     You'll lose all Categories, Inputs and Results collected from this type.
