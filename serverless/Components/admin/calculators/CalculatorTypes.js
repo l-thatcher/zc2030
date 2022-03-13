@@ -55,16 +55,16 @@ const CalculatorTypes = (data) => {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Are you sure you want to delete?</Modal.Title>
+                    <Modal.Title>Delete type {`"${types[idToDelete].name}"`}?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Deleting a calculator type is permanent and will delete all corresponding data.
+                    You'll lose all Categories, Inputs and Results collected from this type.
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Button variant="danger" onClick={handleDelete}>Delete</Button>
+                    <Button variant="danger" onClick={handleDelete}>Yes, delete it</Button>
                 </Modal.Footer>
             </Modal>
 

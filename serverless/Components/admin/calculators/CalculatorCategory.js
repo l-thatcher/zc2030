@@ -4,7 +4,7 @@ import {
   Form,
   FormControl,
   FormLabel,
-  InputGroup,
+  InputGroup, Modal,
 } from "react-bootstrap";
 import styles from "../../../styles/Calculator.module.css";
 import { FaEdit } from "react-icons/fa";
@@ -26,6 +26,14 @@ const CalculatorCategory = (data) => {
   const [input, setInput] = useState(data.inputs);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
+
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+
+  function handleOpen(id) {
+    setOptionSelected(id)
+    setShowModal(true)
+  }
 
   // Receives data back from CalculatorInput
   const getCalculatorInputData = (optionSelected, newInput, newCategory) => {
@@ -82,10 +90,12 @@ const CalculatorCategory = (data) => {
 
           if (input[optionSelected][b].id === undefined) {
             const data = [Number(category[category.length - 1].id + 1), input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit]
+            console.log(data)
             await saveCalculatorInputs(type.id, Number(category[category.length - 1].id + 1), data);
 
           } else {
             const data = [Number(category[category.length - 1].id + 1), input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit, input[i][b]?.id]
+            console.log(data)
             await updateCalculatorInputs(type.id, Number(category[category.length - 1].id + 1), data);
           }
         }
@@ -193,7 +203,7 @@ const CalculatorCategory = (data) => {
                   <Button
                     variant="danger"
                     id="button-addon2"
-                    onClick={(e) => handleDelete(i)}
+                    onClick={(e) => handleOpen(i)}
                   >
                     <AiFillDelete size={20} />
                   </Button>
@@ -239,6 +249,25 @@ const CalculatorCategory = (data) => {
           </div>
         )}
       </div>
+      <Modal
+          show={showModal}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Delete category {`"${category[optionSelected].name}"`}?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          You'll lose all Inputs and Results collected from this category.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>Yes, delete it</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
