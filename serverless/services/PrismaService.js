@@ -79,6 +79,14 @@ export const deleteCategoryByType = (typeId) => {
   })
 }
 
+export const deleteCategoryByCategoryId = (categoryId) => {
+  return prisma.calculatorCategory.delete({
+    where: {
+      id: categoryId
+    }
+  })
+}
+
 export const deleteInputByCategory = (categoryId) => {
   return prisma.calculatorInput.deleteMany({
     where: {

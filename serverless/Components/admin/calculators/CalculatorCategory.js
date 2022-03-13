@@ -13,10 +13,11 @@ import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
 import CalculatorInput from "./CalculatorInput";
 import {
-  deleteCalculatorCategory, deleteCalculatorInputs,
+  deleteCalculatorCategory, deleteCalculatorInputs, deleteUsersCalculator,
   saveCalculatorCategories, saveCalculatorInputs,
   updateCalculatorCategories, updateCalculatorInputs
 } from "../../../services/CalculatorService";
+import {useRouter} from "next/router";
 
 const CalculatorCategory = (data) => {
   const [optionSelected, setOptionSelected] = useState(0);
@@ -27,12 +28,15 @@ const CalculatorCategory = (data) => {
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const handleBackPress = data.handleBackpress
+  const [idToRemove, setIdToRemove] = useState("")
+  const router = useRouter()
 
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
 
-  function handleOpen(id) {
-    setOptionSelected(id)
+  function handleOpen(id, index) {
+    setIdToRemove(id)
+    setOptionSelected(index)
     setShowModal(true)
   }
 
@@ -133,23 +137,19 @@ const CalculatorCategory = (data) => {
   }
 
   // "Delete" button handler
-  async function handleDelete(idToRemove) {
-
-    //TODO: Add to prisma
-
-    if (category[idToRemove].id !== undefined) {
-      const categoryId = category[idToRemove].id
-      const data = [type.id, categoryId]
-      await deleteCalculatorCategory(type.id, data);
+  async function handleDelete() {
+    if (idToRemove !== "") {
+      await deleteCalculatorCategory(type.id, idToRemove);
+      const temp = [...category];
+      temp.splice(optionSelected, 1);
+      setCategory(temp)
+      setShowModal(false)
+    } else{
+      const temp = [...category];
+      temp.splice(optionSelected, 1);
+      setCategory(temp)
+      setShowModal(false)
     }
-
-    setCategory((prevCategories) =>
-        prevCategories.filter((value, i) => i !== idToRemove)
-    );
-    setInput((prevInputs) =>
-        prevInputs.filter((value, i) => i !== idToRemove)
-    );
-
   }
 
   return (
@@ -202,7 +202,7 @@ const CalculatorCategory = (data) => {
                   <Button
                     variant="danger"
                     id="button-addon2"
-                    onClick={(e) => handleOpen(i)}
+                    onClick={(e) => handleOpen(category.id, i)}
                   >
                     <AiFillDelete size={20} />
                   </Button>
@@ -266,7 +266,7 @@ const CalculatorCategory = (data) => {
           keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Delete category {`"${category[optionSelected].name}"`}?</Modal.Title>
+          <Modal.Title>Delete category {`"${category[optionSelected]?.name}"`}?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           You'll lose all Inputs and Results collected from this category.

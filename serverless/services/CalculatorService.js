@@ -46,9 +46,8 @@ export const saveCalculatorCategories = (type_id, data) => {
 };
 
 // DELETE Request - Delete Calculator Category
-export const deleteCalculatorCategory = (type_id, data) => {
-  return MainService.delete(`/api/calculators/${type_id}`,
-      {data}
+export const deleteCalculatorCategory = (type_id, categoryId) => {
+  return MainService.delete(`/api/calculators/${type_id}/${categoryId}`
   );
 };
 

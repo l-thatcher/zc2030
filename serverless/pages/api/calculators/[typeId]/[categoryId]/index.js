@@ -1,4 +1,10 @@
 import { execute_query } from "../../../../../utils/db";
+import {
+  deleteCalculatorType,
+  deleteCategoryByCategoryId,
+  deleteInputByCategory
+} from "../../../../../services/PrismaService";
+import {deleteCalculatorCategory} from "../../../../../services/CalculatorService";
 
 const getCalculatorInputsByCategoryId = ` SELECT CalculatorInput.id, CalculatorInput.name, CalculatorInput.factor, CalculatorInput.unit 
                                           FROM CalculatorCategory
@@ -59,15 +65,13 @@ export default async function handler(req, res) {
     // Delete data from database
     case "DELETE":
 
-      const inputIdDelete = req.body[1];
-
       try {
-        const result = await execute_query(
-            deleteCalculatorInput,inputIdDelete
-        );
-        res.status(200).json(result);
-      } catch (e) {
-        res.status(500).json({ message: e.message });
+        await deleteCategoryByCategoryId(BigInt(req.query.categoryId))
+        res.status(204).json();
+      } catch
+          (e) {
+        console.log(e)
+        res.status(500).json({message: e.message});
       }
 
       break;
