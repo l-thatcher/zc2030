@@ -67,7 +67,6 @@ const CalculatorTypes = (data) => {
                     <Button variant="danger" onClick={handleDelete}>Yes, delete it</Button>
                 </Modal.Footer>
             </Modal>
-
         </Container>
 
     );
