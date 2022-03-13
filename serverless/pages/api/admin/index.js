@@ -1,17 +1,11 @@
 import {execute_query} from "../../../utils/db";
 
-const getAdminData = `SELECT * FROM USER WHERE email='rowbotom@gmail.com'`;
-
-// const handler = async (_, res) => {
-//     try {
-//         const result = await sql_query(getAllUserData);
-//
-//         return res.json(result);
-//     } catch (e) {
-//         console.log(res);
-//         res.status(500).json({message: e.message});
-//     }
-// };
+const getAdminData = `SELECT * FROM USER WHERE type='ADMIN'`;
+const addNewAdmin = `UPDATE USER 
+SET 
+    type = 'ADMIN'
+WHERE
+    email = ?`;
 
 export default async function handler(req, res) {
     switch (req.method) {
@@ -35,6 +29,13 @@ export default async function handler(req, res) {
 
         // Update data from database
         case "PUT":
+            const email = req.query.email;
+            try {
+                const result = await execute_query(addNewAdmin, [email]);
+                res.status(200).json(result);
+            } catch (e) {
+                res.status(500).json({ message: e.message });
+            }
             break;
     }
 }

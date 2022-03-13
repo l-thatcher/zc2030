@@ -4,22 +4,22 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
 }
 
 model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.Text
-  session_state     String?
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -35,23 +35,35 @@ model Session {
 }
 
 model User {
-  id               String             @id @default(cuid())
-  name             String?
-  email            String?            @unique
-  emailVerified    DateTime?
-  image            String?
-  ethWallet        String?
-  accounts         Account[]
-  sessions         Session[]
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  ethWallet     String?
+  type          Role               @default(PERSONAL)
+  accounts      Account[]
+  sessions      Session[]
   CalculatorResult CalculatorResult[]
+  UserCalculator   UserCalculator[]
 }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+enum Role {
+    PERSONAL
+    ADMIN
+    BUSINESS
+}
 
-  @@unique([identifier, token])
+model Projects {
+  id               String  @id @default(cuid())
+  projectname      String
+  projectimagelink String
+  cptgbp           Decimal
+  location         String
+  totalsupply      Decimal
+  remainingsupply  Decimal
+  authorid         String
+  description      String
 }
 
 model CalculatorCategory {
@@ -93,4 +105,17 @@ model CalculatorType {
   id                 BigInt               @id @default(autoincrement())
   name               String?              @db.VarChar(255)
   calculatorcategory CalculatorCategory[]
+  public             Boolean              @default(false)
+  UserCalculator     UserCalculator[]
+}
+
+model UserCalculator {
+  id             BigInt         @id @default(autoincrement())
+  user_id        String
+  type_id        BigInt
+  calculatorType CalculatorType @relation(fields: [type_id], references: [id], onDelete: Cascade, map: "fk_calculatorType_id_to_type_id")
+  user           User           @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "fk_calculatorType_id_to_user_id")
+
+  @@index([type_id], map: "fk_calculatorType_id_to_type_id")
+  @@index([user_id], map: "fk_calculatorType_id_to_user_id")
 }

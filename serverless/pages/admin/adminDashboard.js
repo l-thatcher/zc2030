@@ -3,7 +3,7 @@ import AdminSidebar from "../../Components/admin/AdminSidebar";
 import NewAdminPop from "../../Components/admin/NewAdminPop";
 import {AiOutlineEdit, AiOutlinePlusSquare, AiOutlineSearch} from 'react-icons/Ai';
 import {MdDelete} from "react-icons/Md";
-import {getUserData, getAdminData} from "../../services/adminService";
+import {getUserData, getAdminData, addNewAdmin} from "../../services/adminService";
 import {useState} from "react";
 
 export default function adminDashboard(props) {
@@ -71,6 +71,7 @@ export default function adminDashboard(props) {
     // const userData = Object.keys(userJsonData).reduce((accumulator, iterator) => {
     //     return [...accumulator, ...userJsonData[iterator]];
     // }, [])
+
     const [visibility, setVisibility] = useState(false);
 
     const popupCloseHandler = (e) => {
@@ -94,6 +95,7 @@ export default function adminDashboard(props) {
                     <button type="submit">Submit</button>
                 </form>
 
+
             </NewAdminPop>
             <div className={styles.container}>
 
@@ -107,6 +109,11 @@ export default function adminDashboard(props) {
 
                     </div>
                     <div className={styles.lists}>
+                        <div key="{admins}" className={styles.items}>
+                            <p className={styles.item}>Name</p>
+                            <p className={styles.item}>Email</p>
+                            <p>Remove</p>
+                        </div>
                         {admins.map((name, i) => (
                             <div key="{admins}" className={styles.items}>
                                 <p className={styles.item}>{admins[i].name}</p>
@@ -123,12 +130,21 @@ export default function adminDashboard(props) {
                         <AiOutlineSearch className={styles.icons}/>
                     </div>
                     <div className={styles.lists}>
+                        <div key="{users}" className={styles.items}>
+                            <p className={styles.item}>ID</p>
+                            <p className={styles.item}>Name</p>
+                            <p className={styles.item}>Email</p>
+                            <p className={styles.item}>Type</p>
+                            <p className={styles.item}>Wallet Address</p>
+                            <p>Edit</p>
+                        </div>
                         {users.map((name, i) => (
                             <div key="{users}" className={styles.items}>
                                 <p className={styles.item}>{users[i].id}</p>
                                 <p className={styles.item}>{users[i].name}</p>
                                 <p className={styles.item}>{users[i].email}</p>
                                 <p className={styles.item}>{users[i].type}</p>
+                                <p className={styles.item}>{users[i].wallet}</p>
                                 <AiOutlineEdit className={styles.icons}/>
                             </div>
                         ))}

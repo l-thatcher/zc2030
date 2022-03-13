@@ -16,13 +16,13 @@ export default function adminSidebar() {
                     <p className={styles.text}>Accounts</p>
                 </div>
             </Link>
-            <Link href="/admin/projects">
+            <Link href="/admin/adminProjects">
                 <div className={styles.navbarComponent}>
                     <AiFillProject className={styles.icons}/>
                     <p className={styles.text}>Projects</p>
                 </div>
             </Link>
-            <Link href="/admin/calculator">
+            <Link href="/admin/addCalculator">
                 <div className={styles.navbarComponent}>
                     <ImCalculator className={styles.icons}/>
                     <p className={styles.text}>Calculators</p>
