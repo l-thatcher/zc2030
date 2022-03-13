@@ -57,8 +57,8 @@ const CalculatorInput = (data) => {
     } else if (inputField === "unit") {
       InputClone[indexCategory] = {
         id: input[indexCategory].id,
-        name: name,
-        factor: factor,
+        name: input[indexCategory].name,
+        factor: input[indexCategory].factor,
         unit: e.target.value,
       };
       setUnit(e.target.value);

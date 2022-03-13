@@ -50,6 +50,7 @@ const CalculatorCategory = (data) => {
     setShowInput(false);
   };
 
+
   // "Add" button handler
   function handleAdd(input) {
     if (category.length < 3) {
@@ -71,56 +72,58 @@ const CalculatorCategory = (data) => {
 
   // "Create" button handler
   async function handleCreate() {
-    for (let i = 0; i < category.length; i++) {
-      let num = i + 1;
-      if (category[i].name === undefined) {
-        setErrorMsg(
-            "You might have forgotten to add a value on Category " + num
-        );
-        setError(true);
-        break;
-      }
-    }
 
-    for (let i = 0; i < category.length; i++) {
-      if (category[i].id === undefined) {
-        const data = [type.id, category[i].name]
-        await saveCalculatorCategories(type.id, data);
+    data. calculatorCategoryData(input, category)
+    // for (let i = 0; i < category.length; i++) {
+    //   let num = i + 1;
+    //   if (category[i].name === undefined) {
+    //     setErrorMsg(
+    //         "You might have forgotten to add a value on Category " + num
+    //     );
+    //     setError(true);
+    //     break;
+    //   }
+    // }
 
-        for (let b = 0; b < input[optionSelected].length; b++) {
-
-          if (input[optionSelected][b].id === undefined) {
-            const data = [Number(category[category.length - 1].id + 1), input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit]
-            console.log(data)
-            await saveCalculatorInputs(type.id, Number(category[category.length - 1].id + 1), data);
-
-          } else {
-            const data = [Number(category[category.length - 1].id + 1), input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit, input[i][b]?.id]
-            console.log(data)
-            await updateCalculatorInputs(type.id, Number(category[category.length - 1].id + 1), data);
-          }
-        }
-
-      } else {
-        const data = [type.id, category[i].name, category[i].id]
-        await updateCalculatorCategories(type.id, data);
-
-        for (let b = 0; b < input[optionSelected].length; b++) {
-
-          if (input[optionSelected][b].id === undefined) {
-            const data = [category[i].id, input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit]
-            console.log(data)
-            await saveCalculatorInputs(type.id, category[i].id, data);
-
-          } else {
-            const data = [category[i].id, input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit, input[i][b]?.id]
-            console.log(data)
-            await updateCalculatorInputs(type.id, category[i].id, data);
-          }
-        }
-
-      }
-    }
+    // for (let i = 0; i < category.length; i++) {
+    //   if (category[i].id === undefined) {
+    //     const data = [type.id, category[i].name]
+    //     await saveCalculatorCategories(type.id, data);
+    //
+    //     for (let b = 0; b < input[optionSelected].length; b++) {
+    //
+    //       if (input[optionSelected][b].id === undefined) {
+    //         const data = [Number(category[category.length - 1].id + 1), input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit]
+    //         console.log(data)
+    //         await saveCalculatorInputs(type.id, Number(category[category.length - 1].id + 1), data);
+    //
+    //       } else {
+    //         const data = [Number(category[category.length - 1].id + 1), input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit, input[i][b]?.id]
+    //         console.log(data)
+    //         await updateCalculatorInputs(type.id, Number(category[category.length - 1].id + 1), data);
+    //       }
+    //     }
+    //
+    //   } else {
+    //     const data = [type.id, category[i].name, category[i].id]
+    //     await updateCalculatorCategories(type.id, data);
+    //
+    //     for (let b = 0; b < input[optionSelected].length; b++) {
+    //
+    //       if (input[optionSelected][b].id === undefined) {
+    //         const data = [category[i].id, input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit]
+    //         console.log(data)
+    //         await saveCalculatorInputs(type.id, category[i].id, data);
+    //
+    //       } else {
+    //         const data = [category[i].id, input[i][b]?.name, input[i][b]?.factor, input[i][b]?.unit, input[i][b]?.id]
+    //         console.log(data)
+    //         await updateCalculatorInputs(type.id, category[i].id, data);
+    //       }
+    //     }
+    //
+    //   }
+    // }
   }
 
   // "Edit" button handler

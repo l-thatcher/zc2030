@@ -6,8 +6,8 @@ import {useState} from "react";
 const EditCalculatorOverview = (data) => {
     const [details, setDetails] = useState(data.details);
     const users = data.users;
-    const categories = data.categories;
-    const inputs = data.inputs
+    const [categories, setCategories] = useState(data.categories)
+    const [inputs, setInputs] = useState(data.inputs)
     const [overviewShowing, setOverviewShowing] = useState(true);
     const [showCategory, setShowCategory] = useState(false);
 
@@ -32,6 +32,22 @@ const EditCalculatorOverview = (data) => {
         temp = {id: details.id, name: details.name, public: event.target.value==="true" };
         setDetails(temp);
     }
+
+    // Receives data back from CalculatorInput
+    const getCalculatorCategoryData = (newInput, newCategory) => {
+
+        let InputClone = [...inputs]; // Input clone data
+        InputClone = newInput
+        setInputs(InputClone)
+
+        let CategoryClone = [...categories]; // Category clone data
+        CategoryClone = newCategory
+        setCategories(CategoryClone)
+
+    };
+
+    console.log(categories)
+    console.log(inputs)
 
     return (
         <div>
