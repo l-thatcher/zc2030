@@ -25,9 +25,15 @@ const UserList = (data) => {
     }
 
     function handleOpen(id, index) {
-        setIdToDelete(id)
-        setOptionSelected(index)
-        setShowModal(true)
+        if (id === "") {
+            const temp = [...users]; // make a separate copy of the array
+            temp.splice(index, 1);
+            setUsers(temp)
+        } else{
+            setIdToDelete(id)
+            setOptionSelected(index)
+            setShowModal(true)
+        }
     }
 
     async function handleDelete() {
