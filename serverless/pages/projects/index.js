@@ -5,7 +5,7 @@ import {getProjectsList} from "../../services/ProjectService";
 
 export default function Projects(props) {
     const allProjects = props.allProjects;
-    console.log(allProjects)
+    console.log("Test1:" + allProjects)
     return (
         <div className="content-center">
             <div className=" items-center justify-items-center justify-center flex px-50 grid grid-rows-2 grid-flow-col gap-4 justify-content-center">
