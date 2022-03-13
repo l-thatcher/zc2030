@@ -42,12 +42,16 @@ const CalculatorInput = (data) => {
       InputClone[indexCategory] = {
         id: input[indexCategory].id,
         name: e.target.value,
+        factor:input[indexCategory].factor,
+        unit: input[indexCategory].unit
       };
       setName(e.target.value);
     } else if (inputField === "factor") {
       InputClone[indexCategory] = {
         id: input[indexCategory].id,
-        factor: e.target.value,
+        name: input[indexCategory].name,
+        factor:e.target.value,
+        unit: input[indexCategory].unit
       };
       setFactor(Number(e.target.value));
     } else if (inputField === "unit") {

@@ -26,6 +26,7 @@ const CalculatorCategory = (data) => {
   const [input, setInput] = useState(data.inputs);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
+  const handleBackPress = data.handleBackpress
 
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
@@ -131,12 +132,7 @@ const CalculatorCategory = (data) => {
   // "Delete" button handler
   async function handleDelete(idToRemove) {
 
-    for (let i = 0; i < input[idToRemove].length; i++){
-      const categoryId = category[idToRemove].id
-      const inputId = input[idToRemove][i].id
-      const data = [type.id, inputId]
-      await deleteCalculatorInputs(type.id, categoryId, data)
-    }
+    //TODO: Add to prisma
 
     if (category[idToRemove].id !== undefined) {
       const categoryId = category[idToRemove].id
@@ -226,6 +222,17 @@ const CalculatorCategory = (data) => {
         {showInput === false && (
           <div style={{ width: "100%", textAlign: "center" }}>
             <Button
+                style={{ width: "125px", marginTop: "40px" }}
+                variant="secondary"
+                size="lg"
+                type="submit"
+                className={styles.button}
+                data-testid="next_btn"
+                onClick={(e) => handleBackPress(e)}
+            >
+              Back
+            </Button>
+            <Button
               style={{ width: "125px", marginTop: "40px" }}
               variant="secondary"
               size="lg"
@@ -234,7 +241,7 @@ const CalculatorCategory = (data) => {
               data-testid="next_btn"
               onClick={(e) => handleCreate(e)}
             >
-              Create
+              Save
             </Button>
           </div>
         )}

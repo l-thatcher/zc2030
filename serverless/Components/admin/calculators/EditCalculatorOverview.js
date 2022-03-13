@@ -16,6 +16,11 @@ const EditCalculatorOverview = (data) => {
         setShowCategory(true)
     }
 
+    function handleReturnToOverview(){
+        setOverviewShowing(true)
+        setShowCategory(false)
+    }
+
     function handleNameChange(event) {
         let temp;
         temp = {id: details.id, name: event.target.value, public: details.public };
@@ -76,7 +81,8 @@ const EditCalculatorOverview = (data) => {
             )
             }
             { showCategory === true && (
-                <CalculatorCategory type = {details} categories = {categories} inputs = {inputs}/>
+                <CalculatorCategory type = {details} categories = {categories} inputs = {inputs} handleBackpress = {handleReturnToOverview}
+                                    calculatorCategoryData={getCalculatorCategoryData}/>
             )}
         </div>
     )
