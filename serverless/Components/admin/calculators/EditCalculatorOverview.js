@@ -4,7 +4,7 @@ import CalculatorCategory from "./CalculatorCategory";
 import {useState} from "react";
 
 const EditCalculatorOverview = (data) => {
-    const details = data.details;
+    const [details, setDetails] = useState(data.details);
     const users = data.users;
     const categories = data.categories;
     const inputs = data.inputs
@@ -16,13 +16,25 @@ const EditCalculatorOverview = (data) => {
         setShowCategory(true)
     }
 
+    function handleNameChange(event) {
+        let temp;
+        temp = {id: details.id, name: event.target.value, public: details.public };
+        setDetails(temp);
+    }
+
+    function handleVisibilityChange(event) {
+        let temp;
+        temp = {id: details.id, name: details.name, public: event.target.value==="true" };
+        setDetails(temp);
+    }
+
     return (
         <div>
             { overviewShowing === true && (
                 <Form>
                     <Form.Group controlId="form.Name">
                         <Form.Label>Calculator Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter name" value={details.name}/>
+                        <Form.Control data-testid="nameInput" type="text" placeholder="Enter name" onChange={e => handleNameChange(e)} value={details ? details.name : ""}/>
                     </Form.Group>
                     <Form.Group controlId="form.Visibility">
                         <Form.Label>Calculator Visibility</Form.Label>
@@ -31,19 +43,25 @@ const EditCalculatorOverview = (data) => {
                                 type="radio"
                                 id={`public`}
                                 label={`Public`}
-                                checked={details.public}
+                                checked={details ? details.public : false}
                                 name="visibility"
+                                data-testid="publicCheck"
+                                value={true}
+                                onClick={e => handleVisibilityChange(e)}
                             />
                             <Form.Check
                                 type="radio"
                                 id="private"
                                 label="Private"
-                                checked={!details.public}
+                                checked={details ? !details.public : true}
                                 name="visibility"
+                                data-testid="privateCheck"
+                                value={false}
+                                onClick={e => handleVisibilityChange(e)}
                             />
                         </div>
                     </Form.Group>
-                    <UserList details={details} users={users}/>
+                    <UserList details={details} users={users} data-testid="userList"/>
                     <Button
                         style={{ width: "125px", marginTop: "40px" }}
                         variant="secondary"
