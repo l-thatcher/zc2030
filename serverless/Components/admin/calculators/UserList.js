@@ -30,9 +30,8 @@ const UserList = (data) => {
         setShowModal(true)
     }
 
-    async function handleDelete(idToDelete) {
-        console.log(idToDelete)
-        // await deleteUsersCalculator(idToDelete, details.id)
+    async function handleDelete() {
+        await deleteUsersCalculator(idToDelete, details.id)
         router.reload()
     }
 
