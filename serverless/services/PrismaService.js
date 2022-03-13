@@ -94,3 +94,12 @@ export const deleteResultByInput = (inputId) => {
     }
   })
 }
+
+export const deleteUserCalculator = (typeId, userId) => {
+  return prisma.userCalculator.delete({
+    where: {
+      type_id: typeId,
+      user_id: userId
+    }
+  })
+}

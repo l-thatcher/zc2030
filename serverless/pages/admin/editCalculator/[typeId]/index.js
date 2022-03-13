@@ -3,9 +3,7 @@ import {Container} from "react-bootstrap";
 import {
     getCalculatorCategories, getCalculatorInputs,
     getCalculatorType, getCalculatorUsers,
-    getUserCategoryProgress
 } from "../../../../services/CalculatorService";
-import {useState} from "react";
 
 export default function editCalculator(props) {
     const categories = props.categories;

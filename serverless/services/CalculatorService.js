@@ -110,3 +110,9 @@ export const deleteCalculatorType = (idToDelete) =>{
       `/api/calculators/${idToDelete}`
   )
 }
+
+export const deleteUsersCalculator = (idToDelete, typeId) =>{
+  return MainService.delete(
+      `/api/calculators/${typeId}/user/${idToDelete}`
+  )
+}
