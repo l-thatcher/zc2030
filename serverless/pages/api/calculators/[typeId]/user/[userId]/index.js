@@ -2,8 +2,7 @@ import {execute_query} from "../../../../../../utils/db";
 import {deleteUserCalculator} from "../../../../../../services/PrismaService";
 
 export default async function handler(req, res) {
-    const { typeId } = req.query.typeId;
-    const { userId } = req.query.userId;
+
 
     switch (req.method) {
 
@@ -17,9 +16,8 @@ export default async function handler(req, res) {
 
         // Delete data from database
         case "DELETE":
-
             try {
-                await deleteUserCalculator(BigInt(typeId), BigInt(userId))
+                await deleteUserCalculator(BigInt(req.query.typeId),req.query.userId)
                 res.status(204).json();
             } catch (e) {
                 console.log(e)
