@@ -46,78 +46,73 @@ const EditCalculatorOverview = (data) => {
 
     // "Save" handler button
     async function handleSave() {
-        //If type.id != "" THEN CREATE
-        //Get all overview info, get all user list info, get all category info, get all inputs
-        //One big create
-
-        //ELSE SAVE
-        // console.log(details)
-        // await saveType();
-
-        await saveCategories();
-        const cat = await getCalculatorCategories(details.id)
-        setCategories(cat.data)
-
-        for (let i = 0; i < cat.data.length; i++){
-            await saveInputs(cat.data[i].id, i)
-        }
-        await router.replace("http://localhost:3000/admin/showCalculators")
+        const temp = await saveCalculatorType([details.name,details.public])
     }
 
-    const saveType = async () => {
-            const data = [ details.name,details.public];
-            console.log(data, "here1234")
-            setDetails(await saveCalculatorType(data))
-    }
-
-    // Save or Update Categories
-    const saveCategories = async () => {
-        for (let i = 0; i < categories.length; i++) {
-
-            if (categories[i].id === undefined) {
-                const data = [details.id, categories[i].name]
-                await saveCalculatorCategories(details.id, data);
-
-            } else {
-                const data = [details.id, categories[i].name, categories[i].id]
-                await updateCalculatorCategories(details.id, data);
-
-            }
-        }
-    }
-
-    // Save or Update Inputs
-    const saveInputs = async (category_id, index) => {
-
-            console.log(inputs[0].length)
-            console.log(category_id)
-            console.log(index)
-            for (let b = 0; b < inputs[index].length; b++){
-
-                const newCategoryId = categoryId + 1;
-
-                if (inputs[index][b].id === undefined){
-
-                    if (category_id === undefined){
-                        const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
-                        await saveCalculatorInputs(details.id, newCategoryId, data);
-                    } else {
-                        const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
-                        await saveCalculatorInputs(details.id, category_id, data);
-                    }
-
-                } else {
-
-                    if (category_id === undefined){
-                        const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
-                        await saveCalculatorInputs(details.id, newCategoryId, data);
-                    } else {
-                        const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit, inputs[index][b].id]
-                        await updateCalculatorInputs(details.id, category_id, data);
-                    }
-                }
-            }
-    }
+    //     const typeData = [ details.name,details.public];
+    //     console.log(typeData, "here1234")
+    //     const temp = await saveCalculatorType(typeData)
+    //     console.log(`here12345 ${temp}`)
+    //
+    //     await saveCategories();
+    //     const cat = await getCalculatorCategories(details.id)
+    //     setCategories(cat.data)
+    //
+    //     for (let i = 0; i < cat.data.length; i++){
+    //         await saveInputs(cat.data[i].id, i)
+    //     }
+    //     await router.replace("http://localhost:3000/admin/showCalculators")
+    // }
+    //
+    //
+    // // Save or Update Categories
+    // const saveCategories = async () => {
+    //     for (let i = 0; i < categories.length; i++) {
+    //
+    //         if (categories[i].id === undefined) {
+    //             const data = [details.id, categories[i].name]
+    //             await saveCalculatorCategories(details.id, data);
+    //
+    //         } else {
+    //             const data = [details.id, categories[i].name, categories[i].id]
+    //             await updateCalculatorCategories(details.id, data);
+    //
+    //         }
+    //     }
+    // }
+    //
+    // // Save or Update Inputs
+    // const saveInputs = async (category_id, index) => {
+    //
+    //         console.log(inputs[0].length)
+    //         console.log(category_id)
+    //         console.log(index)
+    //         for (let b = 0; b < inputs[index].length; b++){
+    //
+    //             const newCategoryId = categoryId + 1;
+    //
+    //             if (inputs[index][b].id === undefined){
+    //
+    //                 if (category_id === undefined){
+    //                     const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+    //                     await saveCalculatorInputs(details.id, newCategoryId, data);
+    //                 } else {
+    //                     const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+    //                     await saveCalculatorInputs(details.id, category_id, data);
+    //                 }
+    //
+    //             } else {
+    //
+    //                 if (category_id === undefined){
+    //                     const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+    //                     await saveCalculatorInputs(details.id, newCategoryId, data);
+    //                 } else {
+    //                     const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit, inputs[index][b].id]
+    //                     await updateCalculatorInputs(details.id, category_id, data);
+    //                 }
+    //             }
+    //         }
+    // }
 
 
     // Receives data back from CalculatorInput

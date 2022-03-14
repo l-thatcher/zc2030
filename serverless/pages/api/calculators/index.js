@@ -32,13 +32,8 @@ export default async function handler(req, res) {
 
         // Create data from database
         case "POST":
-
             const namePost = req.body[0];
             const publicPost = req.body[1];
-            console.log("!!!!!!")
-            console.log(req.body[0])
-            console.log(req.body[1])
-
             try {
                 const result = await createCalculator(namePost, publicPost)
                 const json = JSON.stringify(result, (key, value) =>
