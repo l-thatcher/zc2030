@@ -21,32 +21,39 @@ const EditCalculatorOverview = (data) => {
     const [overviewShowing, setOverviewShowing] = useState(true);
     const [showCategory, setShowCategory] = useState(false);
 
-    function handleEdit(){
+    function handleEdit() {
         setOverviewShowing(false)
         setShowCategory(true)
     }
 
 
-    function handleReturnToOverview(){
+    function handleReturnToOverview() {
         setOverviewShowing(true)
         setShowCategory(false)
     }
 
     function handleNameChange(event) {
         let temp;
-        temp = {id: details.id, name: event.target.value, public: details.public };
+        temp = {id: details.id, name: event.target.value, public: details.public};
         setDetails(temp);
     }
 
     function handleVisibilityChange(event) {
         let temp;
-        temp = {id: details.id, name: details.name, public: event.target.value==="true" };
+        temp = {id: details.id, name: details.name, public: event.target.value === "true"};
         setDetails(temp);
     }
 
     // "Save" handler button
     async function handleSave() {
-        const temp = await saveCalculatorType([details.name,details.public])
+        const type = (await saveCalculatorType([details.name, details.public])).data
+        await saveCategories(type);
+        const cat = await getCalculatorCategories(type.id)
+        setCategories(cat.data)
+        for (let i = 0; i < cat.data.length; i++) {
+            await saveInputs(cat.data[i].id, i, type)
+        }
+        await router.replace("http://localhost:3000/admin/showCalculators")
     }
 
     //     const typeData = [ details.name,details.public];
@@ -65,54 +72,54 @@ const EditCalculatorOverview = (data) => {
     // }
     //
     //
-    // // Save or Update Categories
-    // const saveCategories = async () => {
-    //     for (let i = 0; i < categories.length; i++) {
-    //
-    //         if (categories[i].id === undefined) {
-    //             const data = [details.id, categories[i].name]
-    //             await saveCalculatorCategories(details.id, data);
-    //
-    //         } else {
-    //             const data = [details.id, categories[i].name, categories[i].id]
-    //             await updateCalculatorCategories(details.id, data);
-    //
-    //         }
-    //     }
-    // }
-    //
+    // Save or Update Categories
+    const saveCategories = async (type) => {
+        for (let i = 0; i < categories.length; i++) {
+
+            if (categories[i].id === undefined) {
+                const data = [type.id, categories[i].name]
+                await saveCalculatorCategories(type.id, data);
+
+            } else {
+                const data = [type.id, categories[i].name, categories[i].id]
+                await updateCalculatorCategories(type.id, data);
+
+            }
+        }
+    }
+
     // // Save or Update Inputs
-    // const saveInputs = async (category_id, index) => {
-    //
-    //         console.log(inputs[0].length)
-    //         console.log(category_id)
-    //         console.log(index)
-    //         for (let b = 0; b < inputs[index].length; b++){
-    //
-    //             const newCategoryId = categoryId + 1;
-    //
-    //             if (inputs[index][b].id === undefined){
-    //
-    //                 if (category_id === undefined){
-    //                     const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
-    //                     await saveCalculatorInputs(details.id, newCategoryId, data);
-    //                 } else {
-    //                     const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
-    //                     await saveCalculatorInputs(details.id, category_id, data);
-    //                 }
-    //
-    //             } else {
-    //
-    //                 if (category_id === undefined){
-    //                     const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
-    //                     await saveCalculatorInputs(details.id, newCategoryId, data);
-    //                 } else {
-    //                     const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit, inputs[index][b].id]
-    //                     await updateCalculatorInputs(details.id, category_id, data);
-    //                 }
-    //             }
-    //         }
-    // }
+    const saveInputs = async (category_id, index, type) => {
+
+            console.log(inputs[0].length)
+            console.log(category_id)
+            console.log(index)
+            for (let b = 0; b < inputs[index].length; b++){
+
+                const newCategoryId = categoryId + 1;
+
+                if (inputs[index][b].id === undefined){
+
+                    if (category_id === undefined){
+                        const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+                        await saveCalculatorInputs(type.id, newCategoryId, data);
+                    } else {
+                        const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+                        await saveCalculatorInputs(type.id, category_id, data);
+                    }
+
+                } else {
+
+                    if (category_id === undefined){
+                        const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+                        await saveCalculatorInputs(type.id, newCategoryId, data);
+                    } else {
+                        const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit, inputs[index][b].id]
+                        await updateCalculatorInputs(type.id, category_id, data);
+                    }
+                }
+            }
+    }
 
 
     // Receives data back from CalculatorInput
@@ -129,11 +136,11 @@ const EditCalculatorOverview = (data) => {
         setCategories(CategoryClone)
 
         // Set last defined category Id
-        for (let i = categories.length - 1; i >=0; i--){
-                if (categories[i].id !== undefined) {
-                    setCategoryId(categories[i].id)
-                    i=0;
-                }
+        for (let i = categories.length - 1; i >= 0; i--) {
+            if (categories[i].id !== undefined) {
+                setCategoryId(categories[i].id)
+                i = 0;
+            }
         }
 
         // Set Category data
@@ -149,11 +156,12 @@ const EditCalculatorOverview = (data) => {
 
     return (
         <div>
-            { overviewShowing === true && (
+            {overviewShowing === true && (
                 <Form>
                     <Form.Group controlId="form.Name">
                         <Form.Label>Calculator Name</Form.Label>
-                        <Form.Control data-testid="nameInput" type="text" placeholder="Enter name" onChange={e => handleNameChange(e)} value={details ? details.name : ""}/>
+                        <Form.Control data-testid="nameInput" type="text" placeholder="Enter name"
+                                      onChange={e => handleNameChange(e)} value={details ? details.name : ""}/>
                     </Form.Group>
                     <Form.Group controlId="form.Visibility">
                         <Form.Label>Calculator Visibility</Form.Label>
@@ -182,7 +190,7 @@ const EditCalculatorOverview = (data) => {
                     </Form.Group>
                     <UserList details={details} users={users} data-testid="userList"/>
                     <Button
-                        style={{ width: "125px", marginTop: "40px" }}
+                        style={{width: "125px", marginTop: "40px"}}
                         variant="secondary"
                         size="lg"
                         type="submit"
@@ -192,7 +200,7 @@ const EditCalculatorOverview = (data) => {
                         Next
                     </Button>
                     <Button
-                        style={{ width: "125px", marginTop: "40px" }}
+                        style={{width: "125px", marginTop: "40px"}}
                         variant="secondary"
                         size="lg"
                         data-testid="next_btn"
@@ -203,8 +211,9 @@ const EditCalculatorOverview = (data) => {
                 </Form>
             )
             }
-            { showCategory === true && (
-                <CalculatorCategory type = {details} categories = {categories} inputs = {inputs} handleBackpress = {handleReturnToOverview}
+            {showCategory === true && (
+                <CalculatorCategory type={details} categories={categories} inputs={inputs}
+                                    handleBackpress={handleReturnToOverview}
                                     calculatorCategoryData={getCalculatorCategoryData}/>
             )}
         </div>
