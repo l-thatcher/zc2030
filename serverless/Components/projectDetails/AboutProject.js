@@ -1,6 +1,9 @@
 import {FiFacebook, FiGlobe} from "react-icons/fi";
 import {CalendarIcon} from '@heroicons/react/solid'
 
+import Link from "next/link";
+
+
 const AboutProject = (props) => {
 
 
@@ -29,23 +32,27 @@ const AboutProject = (props) => {
               {/*//name*/}
               <div className=' mt-6 px-2'>
                   <div>
-                      <h6 className=" capitalize">John Doe {props.creator}</h6>
+                      <h6 className=" capitalize">John Doe</h6>
                   </div>
                   <div>
-                      <p className="text-gray-500 capitalize">farm Owner {props.type}</p>
+                      <p className="text-gray-500 capitalize"> {props.detailsProps.type}</p>
                   </div>
 
               </div>
 
               {/*//socials*/}
               <div className='flex px-10'>
-                  <span className="text-xl font-bold block uppercase  tracking-wide hover:text-green-700 text-gray-500 cursor-pointer   ">
-                      <FiGlobe/>
-                  </span>
+                  <a href="https://google.com" target="_blank">
+                      <span className="text-xl font-bold block uppercase  tracking-wide hover:text-green-700 text-gray-500 cursor-pointer   ">
+                          <FiGlobe/>
+                      </span>
+                  </a>
 
-                  <span className="text-xl font-bold block uppercase tracking-wide text-gray-500 ml-6 hover:text-green-700 cursor-pointer">
+
+                    <a href="https://facebook.com" target="_blank" ><span className="text-xl font-bold block uppercase tracking-wide text-gray-500 ml-6 hover:text-green-700 cursor-pointer">
                       <FiFacebook/>
-                  </span>
+                    </span> </a>
+
               </div>
 
           </div>
@@ -54,7 +61,7 @@ const AboutProject = (props) => {
               {/*Date*/}
               <div className="mt-2 flex items-center text-sm text-gray-500">
                   <CalendarIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
-                  January 9, 2020 {props.date}
+                   {props.detailsProps.datefounded}
               </div>
               <div className='border-b border-[#F2F2F2] w-20 pt-2 g'>
 
@@ -64,13 +71,7 @@ const AboutProject = (props) => {
           {/*Description*/}
 
           <div className='mt-6 '>
-              <p className="text-gray-500 line-clamp-4 ">laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
-                  Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes,
-                  nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci,
-                  sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
-                  Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
-                  Cum sociis natoque penatibus et magnis dis parturient {props.description}</p>
+              <p className="text-gray-500 line-clamp-4 "> {props.detailsProps.description}</p>
           </div>
 
           {/*modal*/}

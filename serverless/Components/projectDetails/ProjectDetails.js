@@ -25,9 +25,10 @@ function ProjectDetails(props) {
     ]
 
 
-    const lat = 51.509865
-    const lng = -0.118092
+    const lat = props.detailsProps.latitude
+    const lng = props.detailsProps.longitude
     const location = {lat,lng}
+    const detailsprops= props.detailsProps
 
 
 
@@ -39,13 +40,13 @@ function ProjectDetails(props) {
 
                     {/*Name*/}
                     <div className=' mt-10'>
-                        <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">Elveden farm {props.detailsProps.projectname}</h1>
+                        <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl capitalize sm:truncate">{props.detailsProps.projectname}</h1>
 
                         <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                             <div className="mt-2 flex items-center text-sm text-gray-500 underline border-b mb-2 border-[#F2F2F2] capitalize">
                                 {/*location*/}
                                 <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
-                                Elveden Estate {props.detailsProps.city} | Norfolk, United Kingdom {props.detailsProps.county} {props.detailsProps.country}
+                                {props.detailsProps.streetname} | {props.detailsProps.city} {props.detailsProps.county} {props.detailsProps.country}
                             </div>
 
 
@@ -117,12 +118,12 @@ function ProjectDetails(props) {
                             <div className="mt-1 md:hidden">
                                 <div className=''>
                                     <h2 className="font-bold  mb-1 text-[34px] text-green-600 pb-3 ">
-                                        £30 {props.cptgbp}
+                                        £30 {props.detailsProps.cptgbp}
                                         <span className="text-base text-body-color text-black  font-medium">/ tCo2e
                                          </span>
                                     </h2>
-                                    <p className='font-semibold text-gray-400'> Total Supply: {props.totalsupply} </p>
-                                    <p className='font-semibold text-gray-400' > Available Supply: {props.remainingsupply} </p>
+                                    <p className='font-semibold text-gray-400'> Total Supply: {props.detailsProps.totalsupply} </p>
+                                    <p className='font-semibold text-gray-400' > Available Supply: {props.detailsProps.remainingsupply} </p>
                                     <p className='font-bold'>How many tonnes of carbon would you like to buy?</p>
                                     <input className='w-full form-control border border-solid border-gray-300 rounded block px-6 py-2.5 mb-3' type="number" placeholder='/tCo2e'/>
                                     <button type="button"
@@ -140,7 +141,7 @@ function ProjectDetails(props) {
                             {/*Header*/}
                             <div className='flex'>
                                 <div>
-                                    <AboutProject/>
+                                    <AboutProject detailsProps={detailsprops} />
                                 </div>
                                 <div className="hidden md:block ">
                                     <BuyCard />
@@ -158,7 +159,7 @@ function ProjectDetails(props) {
                                 <div className="mt-2 flex items-center text-sm text-gray-500 border-b border-[#F2F2F2] capitalize">
                                     {/*location*/}
                                     <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
-                                    Elveden Estate {props.streetname} | Norfolk, United Kingdom {props.city} {props.county} {props.country}
+                                     {props.detailsProps.streetname} | {props.detailsProps.city} {props.detailsProps.county} {props.detailsProps.country}
                                 </div>
                                 <Map location={location} />
 
