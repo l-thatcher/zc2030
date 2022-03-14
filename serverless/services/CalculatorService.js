@@ -51,6 +51,10 @@ export const deleteCalculatorCategory = (type_id, categoryId) => {
   );
 };
 
+export const deleteCalculatorInput = (type_id, categoryId, inputId) => {
+  return MainService.delete(`/api/calculators/${type_id}/${categoryId}/${inputId}`)
+}
+
 // PUT Request - Update Calculator Category
 export const updateCalculatorCategories = (type_id, data) => {
   return MainService.put(`/api/calculators/${type_id}`,

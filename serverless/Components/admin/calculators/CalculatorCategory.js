@@ -255,6 +255,7 @@ const CalculatorCategory = (data) => {
               input={input[optionSelected]}
               calculatorInputData={getCalculatorInputData}
               optionSelected={optionSelected}
+              type={type}
             />
           </div>
         )}

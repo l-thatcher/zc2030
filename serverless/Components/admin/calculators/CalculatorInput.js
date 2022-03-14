@@ -5,13 +5,17 @@ import {
   Form,
   FormControl,
   FormLabel,
-  InputGroup,
+  InputGroup, Modal,
 } from "react-bootstrap";
 import styles from "../../../styles/Calculator.module.css";
 import { CgAddR } from "react-icons/cg";
 import { AiOutlineDelete } from "react-icons/ai";
+import {deleteCalculatorCategory, deleteCalculatorInput} from "../../../services/CalculatorService";
+import {useRouter} from "next/router";
 
 const CalculatorInput = (data) => {
+  const type = data.type;
+  const [optionSelected, setOptionSelected] = useState(0);
   const [input, setInput] = useState(data.input);
   const [name, setName] = useState();
   const [factor, setFactor] = useState();
@@ -20,6 +24,16 @@ const CalculatorInput = (data) => {
   const [category, setCategory] = useState([data.category]);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
+  const [idToRemove, setIdToRemove] = useState("")
+  const router = useRouter()
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+
+  function handleOpen(id, index) {
+    setIdToRemove(id)
+    setOptionSelected(index)
+    setShowModal(true)
+  }
 
   // "Add" button handler
   function handleAdd() {
@@ -90,12 +104,22 @@ const CalculatorInput = (data) => {
     }
   }
 
-  function handleDelete(idToRemove) {
-    setInput((prevInputs) =>
-      // Filter out the item with the matching index
-      prevInputs.filter((value, i) => i !== idToRemove)
-    );
+  // "Delete" button handler
+  async function handleDelete() {
+    if (idToRemove !== "") {
+      await deleteCalculatorInput(type.id,category.id, idToRemove);
+      const temp = [...input];
+      temp.splice(optionSelected, 1);
+      setInput(temp)
+      setShowModal(false)
+    } else{
+      const temp = [...category];
+      temp.splice(optionSelected, 1);
+      setInput(temp)
+      setShowModal(false)
+    }
   }
+
 
   return (
     <div>
@@ -136,7 +160,7 @@ const CalculatorInput = (data) => {
                 className="mt-4"
                 style={{ float: "right" }}
                 variant="danger"
-                onClick={(e) => handleDelete(i)}
+                onClick={(e) => handleOpen(inputVal.id,i)}
               >
                 Delete
                 <AiOutlineDelete size={18} style={{ marginBottom: "3px" }} />
@@ -184,6 +208,26 @@ const CalculatorInput = (data) => {
           Save
         </Button>
       </div>
+
+      <Modal
+          show={showModal}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Delete input {`"${input[optionSelected]?.name}"`}?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          You'll lose all Results collected from this category.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>Yes, delete it</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

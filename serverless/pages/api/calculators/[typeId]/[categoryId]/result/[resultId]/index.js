@@ -1,4 +1,4 @@
-import { execute_query } from "../../../../../../utils/db";
+import { execute_query } from "../../../../../../../utils/db";
 import { useRouter } from "next/router";
 
 const getCalculatorInputsByCategoryId = `SELECT *
