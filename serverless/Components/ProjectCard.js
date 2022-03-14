@@ -37,9 +37,11 @@ export default function ProjectCard(props) {
                                     </p>
                                 </div>
 
+                                <a href={"./projects/"+ props.project.id}>
                                 <button className="font-semibold hover:text-white py-1 px-4 border hover:border-transparent rounded">
                                     More details
                                 </button>
+                                </a>
                             </div>
 
                             {/*add progress bar here*/}
