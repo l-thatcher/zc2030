@@ -23,6 +23,7 @@ const CalculatorTypes = (data) => {
         setShowModal(true)
     }
 
+
     return (
         <Container>
             <h1>

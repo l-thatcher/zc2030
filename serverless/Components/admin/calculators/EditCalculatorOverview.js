@@ -3,10 +3,10 @@ import UserList from "./UserList";
 import CalculatorCategory from "./CalculatorCategory";
 import {useState} from "react";
 import {
-    getCalculatorCategories, getCalculatorInputs,
+    getCalculatorCategories, getCalculatorInputs, getCalculatorTypes,
     saveCalculatorCategories,
-    saveCalculatorInputs,
-    updateCalculatorCategories, updateCalculatorInputs
+    saveCalculatorInputs, saveCalculatorType,
+    updateCalculatorCategories, updateCalculatorInputs, updateCalculatorType
 } from "../../../services/CalculatorService";
 import {useRouter} from "next/router";
 
@@ -56,6 +56,12 @@ const EditCalculatorOverview = (data) => {
         await router.replace("http://localhost:3000/admin/showCalculators")
     }
 
+    const saveType = async () => {
+            const data = [ details.name,details.public];
+            console.log(data, "here1234")
+            setDetails(await saveCalculatorType(data))
+    }
+
     // Save or Update Categories
     const saveCategories = async () => {
         for (let i = 0; i < categories.length; i++) {
@@ -75,6 +81,9 @@ const EditCalculatorOverview = (data) => {
     // Save or Update Inputs
     const saveInputs = async (category_id, index) => {
 
+            console.log(inputs[0].length)
+            console.log(category_id)
+            console.log(index)
             for (let b = 0; b < inputs[index].length; b++){
 
                 const newCategoryId = categoryId + 1;
@@ -123,6 +132,15 @@ const EditCalculatorOverview = (data) => {
                     i=0;
                 }
         }
+
+        // Set Category data
+        // let CategoryClone = [...categories];
+        // CategoryClone = newCategory
+        // setCategories(CategoryClone)
+
+        console.log(inputs)
+        console.log(categories)
+        console.log(details)
 
     };
 

@@ -5,12 +5,12 @@ import {
 } from "../../../../../services/PrismaService";
 import {execute_query} from "../../../../../utils/db";
 
-const saveCalculatorType = ` INSERT INTO CalculatorType(name, public)
-                             VALUES (?, ?)`;
-
-const updateCalculatorType = ` UPDATE CalculatorType
-                               SET name = ?, public = ?
-                               WHERE id = ?`;
+// const saveCalculatorType = ` INSERT INTO CalculatorType(name, public)
+//                              VALUES (?, ?)`;
+//
+// const updateCalculatorType = ` UPDATE CalculatorType
+//                                SET name = ?, public = ?
+//                                WHERE id = ?`;
 
 export default async function handler(req, res) {
     switch (req.method) {
@@ -33,19 +33,19 @@ export default async function handler(req, res) {
         // Create data from database
         case "POST":
 
-            const namePost = req.body[0];
-            const publicPost = req.body[1];
-
-            try {
-                const result = await execute_query(
-                    saveCalculatorType,
-                    namePost,
-                    publicPost
-                );
-                res.status(200).json(result);
-            } catch (e) {
-                res.status(500).json({ message: e.message });
-            }
+            // const namePost = req.body[0];
+            // const publicPost = req.body[1];
+            //
+            // try {
+            //     const result = await execute_query(
+            //         saveCalculatorType,
+            //         namePost,
+            //         publicPost
+            //     );
+            //     res.status(200).json(result);
+            // } catch (e) {
+            //     res.status(500).json({ message: e.message });
+            // }
 
             break;
 
@@ -56,20 +56,20 @@ export default async function handler(req, res) {
         // Update data from database
         case "PUT":
 
-            const typeId = req.query.typeId;
-            const namePut = req.body[0];
-            const publicPut = req.body[1];
-            try {
-                const result = await execute_query(
-                    updateCalculatorType,
-                    namePut,
-                    publicPut,
-                    typeId
-                );
-                res.status(200).json(result);
-            } catch (e) {
-                res.status(500).json({ message: e.message });
-            }
+            // const typeId = req.query.typeId;
+            // const namePut = req.body[0];
+            // const publicPut = req.body[1];
+            // try {
+            //     const result = await execute_query(
+            //         updateCalculatorType,
+            //         namePut,
+            //         publicPut,
+            //         typeId
+            //     );
+            //     res.status(200).json(result);
+            // } catch (e) {
+            //     res.status(500).json({ message: e.message });
+            // }
 
             break;
     }

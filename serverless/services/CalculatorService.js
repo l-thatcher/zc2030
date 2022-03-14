@@ -28,7 +28,7 @@ export const saveCalculatorType = (type_id, data) => {
 
 // PUT Request - Update calculator Type
 export const updateCalculatorType = (type_id, data) => {
-  return MainService.put(`/api/calculators/overview/${type_id}`,
+  return MainService.put(`/api/calculators/${type_id}`,
       data
   );
 };
