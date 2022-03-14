@@ -64,7 +64,7 @@ const CalculatorInput = (data) => {
       InputClone[indexCategory] = {
         id: input[indexCategory].id,
         name: input[indexCategory].name,
-        factor:e.target.value,
+        factor:Number(e.target.value),
         unit: input[indexCategory].unit
       };
       setFactor(Number(e.target.value));
@@ -216,7 +216,7 @@ const CalculatorInput = (data) => {
           keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Delete input {`"${input[optionSelected]?.name}"`}?</Modal.Title>
+          {/*<Modal.Title>Delete input {`"${input[optionSelected].name}"`}?</Modal.Title>*/}
         </Modal.Header>
         <Modal.Body>
           You'll lose all Results collected from this category.

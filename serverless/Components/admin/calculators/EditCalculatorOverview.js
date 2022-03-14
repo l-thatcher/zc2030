@@ -2,12 +2,20 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import UserList from "./UserList";
 import CalculatorCategory from "./CalculatorCategory";
 import {useState} from "react";
+import {
+    getCalculatorCategories, getCalculatorInputs,
+    saveCalculatorCategories,
+    saveCalculatorInputs,
+    updateCalculatorCategories, updateCalculatorInputs
+} from "../../../services/CalculatorService";
 
 const EditCalculatorOverview = (data) => {
     const [details, setDetails] = useState(data.details);
     const users = data.users;
     const [categories, setCategories] = useState(data.categories)
     const [inputs, setInputs] = useState(data.inputs)
+    const [categoryId, setCategoryId] = useState()
+    const [inputId, setInputId] = useState()
     const [overviewShowing, setOverviewShowing] = useState(true);
     const [showCategory, setShowCategory] = useState(false);
 
@@ -15,6 +23,7 @@ const EditCalculatorOverview = (data) => {
         setOverviewShowing(false)
         setShowCategory(true)
     }
+
 
     function handleReturnToOverview(){
         setOverviewShowing(true)
@@ -33,21 +42,86 @@ const EditCalculatorOverview = (data) => {
         setDetails(temp);
     }
 
+    // "Save" handler button
+    async function handleSave() {
+        await saveCategories();
+        const cat = await getCalculatorCategories(details.id)
+        setCategories(cat.data)
+
+        for (let i = 0; i < cat.data.length; i++){
+            await saveInputs(cat.data[i].id, i)
+        }
+    }
+
+    // Save or Update Categories
+    const saveCategories = async () => {
+        for (let i = 0; i < categories.length; i++) {
+
+            if (categories[i].id === undefined) {
+                const data = [details.id, categories[i].name]
+                await saveCalculatorCategories(details.id, data);
+
+            } else {
+                const data = [details.id, categories[i].name, categories[i].id]
+                await updateCalculatorCategories(details.id, data);
+
+            }
+        }
+    }
+
+    // Save or Update Inputs
+    const saveInputs = async (category_id, index) => {
+
+            for (let b = 0; b < inputs[index].length; b++){
+
+                const newCategoryId = categoryId + 1;
+
+                if (inputs[index][b].id === undefined){
+
+                    if (category_id === undefined){
+                        const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+                        await saveCalculatorInputs(details.id, newCategoryId, data);
+                    } else {
+                        const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+                        await saveCalculatorInputs(details.id, category_id, data);
+                    }
+
+                } else {
+
+                    if (category_id === undefined){
+                        const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+                        await saveCalculatorInputs(details.id, newCategoryId, data);
+                    } else {
+                        const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit, inputs[index][b].id]
+                        await updateCalculatorInputs(details.id, category_id, data);
+                    }
+                }
+            }
+    }
+
+
     // Receives data back from CalculatorInput
     const getCalculatorCategoryData = (newInput, newCategory) => {
 
-        let InputClone = [...inputs]; // Input clone data
+        // Set Input data
+        let InputClone = [...inputs];
         InputClone = newInput
         setInputs(InputClone)
 
-        let CategoryClone = [...categories]; // Category clone data
+        // Set Category data
+        let CategoryClone = [...categories];
         CategoryClone = newCategory
         setCategories(CategoryClone)
 
-    };
+        // Set last defined category Id
+        for (let i = categories.length - 1; i >=0; i--){
+                if (categories[i].id !== undefined) {
+                    setCategoryId(categories[i].id)
+                    i=0;
+                }
+        }
 
-    console.log(categories)
-    console.log(inputs)
+    };
 
     return (
         <div>
@@ -92,6 +166,15 @@ const EditCalculatorOverview = (data) => {
                         onClick={(e) => handleEdit()}
                     >
                         Next
+                    </Button>
+                    <Button
+                        style={{ width: "125px", marginTop: "40px" }}
+                        variant="secondary"
+                        size="lg"
+                        data-testid="next_btn"
+                        onClick={(e) => handleSave()}
+                    >
+                        Save
                     </Button>
                 </Form>
             )
