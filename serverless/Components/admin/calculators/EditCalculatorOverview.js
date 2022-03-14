@@ -8,8 +8,10 @@ import {
     saveCalculatorInputs,
     updateCalculatorCategories, updateCalculatorInputs
 } from "../../../services/CalculatorService";
+import {useRouter} from "next/router";
 
 const EditCalculatorOverview = (data) => {
+    const router = useRouter()
     const [details, setDetails] = useState(data.details);
     const users = data.users;
     const [categories, setCategories] = useState(data.categories)
@@ -51,6 +53,7 @@ const EditCalculatorOverview = (data) => {
         for (let i = 0; i < cat.data.length; i++){
             await saveInputs(cat.data[i].id, i)
         }
+        await router.replace("http://localhost:3000/admin/showCalculators")
     }
 
     // Save or Update Categories
