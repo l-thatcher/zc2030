@@ -1,5 +1,5 @@
 
-import {LocationMarkerIcon,CalendarIcon} from '@heroicons/react/solid'
+// import {LocationMarkerIcon,CalendarIcon} from '@heroicons/react/solid'
 // import image1 from '../public/image1.jpg'
 // import image2 from '../public/image2.jpg'
 // import image3 from '../public/7a5d17d22fbcb9629f6224458481884b.jpeg'
@@ -39,12 +39,12 @@ function ProjectDetails(props) {
 
                     {/*Name*/}
                     <div className=' mt-10'>
-                        <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">Elveden farm {props.detailsProps.projectname}</h1>
+                        <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl sm:truncate">{props.detailsProps.projectname}</h1>
 
                         <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                             <div className="mt-2 flex items-center text-sm text-gray-500 underline border-b mb-2 border-[#F2F2F2] capitalize">
                                 {/*location*/}
-                                <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                                {/*<LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />*/}
                                 Elveden Estate {props.detailsProps.city} | Norfolk, United Kingdom {props.detailsProps.county} {props.detailsProps.country}
                             </div>
 
@@ -157,7 +157,7 @@ function ProjectDetails(props) {
                                 </h3>
                                 <div className="mt-2 flex items-center text-sm text-gray-500 border-b border-[#F2F2F2] capitalize">
                                     {/*location*/}
-                                    <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                                    {/*<LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />*/}
                                     Elveden Estate {props.streetname} | Norfolk, United Kingdom {props.city} {props.county} {props.country}
                                 </div>
                                 <Map location={location} />

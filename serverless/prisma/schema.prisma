@@ -41,10 +41,17 @@ model User {
   emailVerified    DateTime?
   image            String?
   ethWallet        String?
+  role             Role               @default(PERSONAL)
   accounts         Account[]
   sessions         Session[]
   CalculatorResult CalculatorResult[]
   UserCalculator   UserCalculator[]
+}
+
+enum Role {
+  PERSONAL
+  ADMIN
+  BUSINESS
 }
 
 model VerificationToken {
