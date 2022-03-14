@@ -28,9 +28,11 @@ const CalculatorTypes = (data) => {
         <Container>
             <h1>
                 Edit Calculators{" "}
+                <Link href={`/admin/addCalculator`}>
                 <Button variant="primary" size="lg">
                     +
                 </Button>
+                </Link>
             </h1>
             <div className="d-grid gap-2">
                 {types.map((it) => (

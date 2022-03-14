@@ -46,6 +46,14 @@ const EditCalculatorOverview = (data) => {
 
     // "Save" handler button
     async function handleSave() {
+        //If type.id != "" THEN CREATE
+        //Get all overview info, get all user list info, get all category info, get all inputs
+        //One big create
+
+        //ELSE SAVE
+        // console.log(details)
+        // await saveType();
+
         await saveCategories();
         const cat = await getCalculatorCategories(details.id)
         setCategories(cat.data)
