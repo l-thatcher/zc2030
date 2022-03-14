@@ -2,7 +2,8 @@ import {execute_query} from "../../../utils/db";
 import {updateCalculatorInputs} from "../../../services/CalculatorService";
 import {createCalculator} from "../../../services/PrismaService";
 
-const getCalculatorTypes = `SELECT * FROM CalculatorType`;
+const getCalculatorTypes = `SELECT *
+                            FROM CalculatorType`;
 
 const saveCalculatorType = ` INSERT INTO CalculatorType(name, public)
                              VALUES (?, 0)`;
@@ -18,19 +19,19 @@ const updateCalculatorType = ` UPDATE CalculatorType
 const getLastId = `SELECT LAST_INSERT_ID()`;
 
 export default async function handler(req, res) {
-  switch (req.method) {
-    // Get data from database
-    case "GET":
-      try {
-        const result = await execute_query(getCalculatorTypes);
-        res.status(200).json(result);
-      } catch (e) {
-        res.status(500).json({ message: e.message });
-      }
-      break;
+    switch (req.method) {
+        // Get data from database
+        case "GET":
+            try {
+                const result = await execute_query(getCalculatorTypes);
+                res.status(200).json(result);
+            } catch (e) {
+                res.status(500).json({message: e.message});
+            }
+            break;
 
-    // Create data from database
-    case "POST":
+        // Create data from database
+        case "POST":
 
             const namePost = req.body[0];
             const publicPost = req.body[1];
@@ -51,12 +52,12 @@ export default async function handler(req, res) {
 
             break;
 
-    // Delete data from database
-    case "DELETE":
-      break;
+        // Delete data from database
+        case "DELETE":
+            break;
 
-    // Update data from database
-    case "PUT":
+        // Update data from database
+        case "PUT":
 
             const typeIdPut = req.body[0];
             const namePut = req.body[1];

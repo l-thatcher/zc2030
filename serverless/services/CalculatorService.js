@@ -20,8 +20,8 @@ export const getCalculatorType = (type_id) => {
 };
 
 // POST Request - Save calculator Type
-export const saveCalculatorType = (type_id, data) => {
-  return MainService.post(`/api/calculators/overview/${type_id}`,
+export const saveCalculatorType = (data) => {
+  return MainService.post(`/api/calculators`,
       data
   );
 };

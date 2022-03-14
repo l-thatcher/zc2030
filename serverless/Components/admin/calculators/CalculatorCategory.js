@@ -139,7 +139,7 @@ const CalculatorCategory = (data) => {
             <FormLabel style={{ width: "100%", fontSize: "25px" }}>
               Categories
             </FormLabel>
-            {category.map((category, i) => (
+            {category?.map((category, i) => (
               <div key={i}>
                 <InputGroup size="lg" className="mt-2">
                   <FormControl
