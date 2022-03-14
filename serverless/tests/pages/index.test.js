@@ -3,7 +3,7 @@
 import React from "react";
 // Using render and screen from test-utils.js instead of
 // @testing-library/react
-import {render, screen} from "../test-utils";
+import { render, screen } from "../test-utils";
 import Home from "../../pages/index";
 
 /**
@@ -17,7 +17,7 @@ test("use jsdom in this test file", () => {
 
 describe("Home", () => {
   it("should render the heading", () => {
-    render(<Home/>);
+    render(<Home />);
 
     const heading = screen.getByText(/Welcome/i);
 

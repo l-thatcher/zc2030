@@ -1,0 +1,55 @@
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.container{
+    padding: 2rem;
+}
+
+.adminPop{
+    z-index: 2;
+}
+
+.listContainer{
+    padding: 0 3rem 3rem 0;
+}
+
+.titles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icons{
+    height: 2rem;
+    width: auto;
+}
+
+.items{
+    min-width: 80rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    padding: .5rem 0 0 0;
+}
+
+
+.lists{
+    display: flex;
+    flex-direction: column;
+    height: 12rem;
+    overflow: auto;
+}
+
+.item{
+    width: 15%;
+}
+
+.items:nth-child(odd){
+    background: lightblue !important;
+}
+
+
+
