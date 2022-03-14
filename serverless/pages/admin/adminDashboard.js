@@ -3,8 +3,9 @@ import AdminSidebar from "../../Components/admin/AdminSidebar";
 import NewAdminPop from "../../Components/admin/NewAdminPop";
 import {AiOutlineEdit, AiOutlinePlusSquare, AiOutlineSearch} from 'react-icons/Ai';
 import {MdDelete} from "react-icons/Md";
-import {getUserData, getAdminData, addNewAdmin} from "../../services/adminService";
+import {getUserData, getAdminData, updateRole} from "../../services/adminService";
 import {useState} from "react";
+import router from 'next/router'
 
 export default function adminDashboard(props) {
     const users = props.users;
@@ -72,11 +73,29 @@ export default function adminDashboard(props) {
     //     return [...accumulator, ...userJsonData[iterator]];
     // }, [])
 
-    const [visibility, setVisibility] = useState(false);
+    const [adminVisibility, setAdminVisibility] = useState(false);
+    const [userVisibility, setUserVisibility] = useState(false);
+    const [email,setEmail] = useState(``);
 
     const popupCloseHandler = (e) => {
-        setVisibility(e);
+        setAdminVisibility(e);
     };
+
+    function newAdminAddFunc(){
+        updateRole(['ADMIN', email]).then((res) => {
+            console.log('Admin added successfully', res.data);
+            setEmail('');
+            router.reload();
+        });
+    }
+
+    function removeAdminAddFunc(){
+        const data = ['PERSONAL', 'louis@thatchermob.com']
+        updateRole(data).then((res) => {
+            console.log("Admin removed successfully", res.data);
+            router.reload();
+        });
+    }
 
     return (
         <div className={styles.main}>
@@ -84,27 +103,44 @@ export default function adminDashboard(props) {
             <NewAdminPop
                 className={styles.adminPop}
                 onClose={popupCloseHandler}
-                show={visibility}
-                title="New Admin"
-            >
+                show={adminVisibility}
+                title="New Admin">
                 <h5>Enter email</h5>
-
-                <form action="" method="POST">
-                    <input id="email" type="email" required/>
+                <form method="POST">
+                    <input id="email" type="email" required onChange={(e) => setEmail(e.target.value)}/>
                     <p/>
-                    <button type="submit">Submit</button>
+                    <button onClick={newAdminAddFunc}>Submit</button>
                 </form>
-
-
             </NewAdminPop>
+
+            {/*<NewAdminPop*/}
+            {/*    className={styles.adminPop}*/}
+            {/*    onClose={popupCloseHandler}*/}
+            {/*    show={userVisibility}*/}
+            {/*    title="Edit user">*/}
+            {/*    <form onSubmit={newAdminAddFunc} method="POST">*/}
+            {/*        <h5>Name</h5>*/}
+            {/*        <input id="Name" type="Name" required onChange={(e) => setEmail(e.target.value)}/>*/}
+            {/*        <h5>Email</h5>*/}
+            {/*        <input id="email" type="email" required onChange={(e) => setEmail(e.target.value)}/>*/}
+            {/*        <h5>Type</h5>*/}
+            {/*        <input id="Type" type="Type" required onChange={(e) => setEmail(e.target.value)}/>*/}
+            {/*        <h5>Wallet</h5>*/}
+            {/*        <input id="Wallet" type="Wallet" required onChange={(e) => setEmail(e.target.value)}/>*/}
+            {/*        <p/>*/}
+            {/*        <button>Submit</button>*/}
+            {/*    </form>*/}
+            {/*</NewAdminPop>*/}
+
+
             <div className={styles.container}>
 
                 <div className={styles.listContainer}>
                     <div className={styles.titles}>
                         <h1>Admin Management </h1>
                         <div>
-                            <AiOutlinePlusSquare className={styles.icons} onClick={(e) => setVisibility(!visibility)}/>
-                            <AiOutlineSearch className={styles.icons}/>
+                            <AiOutlinePlusSquare className={styles.icons} onClick={(e) => setAdminVisibility(!adminVisibility)}/>
+                            {/*<AiOutlineSearch className={styles.icons}/>*/}
                         </div>
 
                     </div>
@@ -118,7 +154,7 @@ export default function adminDashboard(props) {
                             <div key="{admins}" className={styles.items}>
                                 <p className={styles.item}>{admins[i].name}</p>
                                 <p className={styles.item}>{admins[i].email}</p>
-                                <MdDelete className={styles.icons}/>
+                                <MdDelete onClick={(e) => removeAdminAddFunc(admins[i].email)} className={styles.icons}/>
                             </div>
                         ))}
                     </div>
@@ -127,7 +163,7 @@ export default function adminDashboard(props) {
                 <div className={styles.listContainer}>
                     <div className={styles.titles}>
                         <h1>User Management </h1>
-                        <AiOutlineSearch className={styles.icons}/>
+                        {/*<AiOutlineSearch className={styles.icons}/>*/}
                     </div>
                     <div className={styles.lists}>
                         <div key="{users}" className={styles.items}>
@@ -145,7 +181,7 @@ export default function adminDashboard(props) {
                                 <p className={styles.item}>{users[i].email}</p>
                                 <p className={styles.item}>{users[i].type}</p>
                                 <p className={styles.item}>{users[i].wallet}</p>
-                                <AiOutlineEdit className={styles.icons}/>
+                                <AiOutlineEdit className={styles.icons} onClick={(e) => setUserVisibility(!userVisibility)}/>
                             </div>
                         ))}
                     </div>

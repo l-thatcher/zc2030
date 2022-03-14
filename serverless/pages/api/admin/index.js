@@ -1,9 +1,9 @@
 import {execute_query} from "../../../utils/db";
 
-const getAdminData = `SELECT * FROM USER WHERE type='ADMIN'`;
-const addNewAdmin = `UPDATE USER 
+const getAdminData = `SELECT * FROM USER WHERE role='ADMIN'`;
+const updateRole = `UPDATE USER 
 SET 
-    type = 'ADMIN'
+    role = ?
 WHERE
     email = ?`;
 
@@ -29,9 +29,10 @@ export default async function handler(req, res) {
 
         // Update data from database
         case "PUT":
-            const email = req.query.email;
             try {
-                const result = await execute_query(addNewAdmin, [email]);
+                const role = req.body[0];
+                const email = req.body[1];
+                const result = await execute_query(updateRole, [role, email]);
                 res.status(200).json(result);
             } catch (e) {
                 res.status(500).json({ message: e.message });

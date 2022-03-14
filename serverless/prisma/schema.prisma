@@ -4,22 +4,22 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -35,15 +35,15 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  ethWallet     String?
-  type          Role               @default(PERSONAL)
-  accounts      Account[]
-  sessions      Session[]
+  id               String             @id @default(cuid())
+  name             String?
+  email            String?            @unique
+  emailVerified    DateTime?
+  image            String?
+  ethWallet        String?
+  role             Role               @default(PERSONAL)
+  accounts         Account[]
+  sessions         Session[]
   CalculatorResult CalculatorResult[]
   UserCalculator   UserCalculator[]
 }
@@ -54,23 +54,18 @@ enum Role {
     BUSINESS
 }
 
-model Projects {
-  id               String  @id @default(cuid())
-  projectname      String
-  projectimagelink String
-  cptgbp           Decimal
-  location         String
-  totalsupply      Decimal
-  remainingsupply  Decimal
-  authorid         String
-  description      String
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  @@unique([identifier, token])
 }
 
 model CalculatorCategory {
   id              BigInt            @id @default(autoincrement())
   type_id         BigInt?
   name            String?           @db.VarChar(255)
-  calculatortype  CalculatorType?   @relation(fields: [type_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_category_id_to_type_id")
+  calculatortype  CalculatorType?   @relation(fields: [type_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_category_id_to_type_id")
   calculatorinput CalculatorInput[]
 
   @@index([type_id], map: "fk_category_id_to_type_id")
@@ -82,7 +77,7 @@ model CalculatorInput {
   name               String?             @db.VarChar(255)
   factor             Float?
   unit               String?             @db.VarChar(24)
-  calculatorcategory CalculatorCategory? @relation(fields: [category_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_category_id_to_input_id")
+  calculatorcategory CalculatorCategory? @relation(fields: [category_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_category_id_to_input_id")
   calculatorresult   CalculatorResult[]
 
   @@index([category_id], map: "fk_category_id_to_input_id")
@@ -118,4 +113,28 @@ model UserCalculator {
 
   @@index([type_id], map: "fk_calculatorType_id_to_type_id")
   @@index([user_id], map: "fk_calculatorType_id_to_user_id")
+}
+
+model Project {
+  id              String  @id @default(cuid())
+  projectname     String
+  projectimage1   String
+  projectimage2   String
+  projectimage3   String
+  projectimage4   String
+  cptgbp          Decimal
+  latitude        Float
+  longitude       Float
+  streetname      String
+  city            String
+  county          String
+  country         String
+  totalsupply     Decimal
+  remainingsupply Decimal
+  ownerpicture    String
+  type            String
+  website         String?
+  description     String
+  datefounded     String
+  nftaddress      String?
 }
