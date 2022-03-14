@@ -1,15 +1,8 @@
 
-import {LocationMarkerIcon,CalendarIcon} from '@heroicons/react/solid'
-// import image1 from '../public/image1.jpg'
-// import image2 from '../public/image2.jpg'
-// import image3 from '../public/7a5d17d22fbcb9629f6224458481884b.jpeg'
-// import image4 from '../public/Bogdkhan_Uul_Strictly_Protected_Area,_Mongolia_(149199747).jpg'
-// import image5 from '../public/9a08-20140530-everdale.jpg'
-import ProjectGridImage from './ProjectGridImage.js'
+import {LocationMarkerIcon} from '@heroicons/react/solid'
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
-import {FiGlobe, FiFacebook} from "react-icons/fi"
 import Map from './Map'
 
 
@@ -82,30 +75,30 @@ function ProjectDetails(props) {
                                 {/*</div>*/}
 
                             <div className="hidden md:block  ">
-                                <div className="grid-cols-4 space-y-2  md:space-y-0 md:grid md:gap-3  ">
-                                    <div className=" h-auto col-span-2 row-span-2 rounded ">
-                                        <img className='rounded-xl  hover:scale-105 transition duration-200 ease-in-out'
+                                <div className="grid-cols-4 space-y-2 md:space-y-0 md:grid md:gap-3  ">
+                                    <div className=" w-full col-span-2 bg-yellow-600 row-span-2 rounded ">
+                                        <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
                                             src={details.projectimage1}
                                             alt="image"/>
                                     </div>
 
                                     <div className=" w-full   rounded ">
-                                        <img className='rounded-xl h-auto hover:scale-105 transition duration-200 ease-in-out'
+                                        <img className='rounded-xl h-full object-cover  hover:scale-105 transition duration-200 ease-in-out'
                                              src={details.projectimage2}
                                              alt="image"/>
                                     </div>
                                     <div className="w-full h-full rounded ">
-                                        <img className='rounded-xl h-auto hover:scale-105 transition duration-200 ease-in-out'
+                                        <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
                                              src={details.projectimage3}
                                             alt="image"/>
                                     </div>
                                     <div className="w-full h-full rounded ">
-                                        <img className='rounded-xl h-auto hover:scale-105 transition duration-200 ease-in-out'
+                                        <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
                                              src={details.projectimage4}
                                             alt="image"/>
                                     </div>
                                     <div className="w-full h-full rounded ">
-                                        <img className ='rounded-xl h-auto hover:scale-105 transition duration-200 ease-in-out'
+                                        <img className ='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
                                              src={details.projectimage4}
                                             alt="image"/>
                                     </div>
