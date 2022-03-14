@@ -209,25 +209,28 @@ const CalculatorInput = (data) => {
         </Button>
       </div>
 
-      <Modal
-          show={showModal}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-      >
-        <Modal.Header closeButton>
-          {/*<Modal.Title>Delete input {`"${input[optionSelected].name}"`}?</Modal.Title>*/}
-        </Modal.Header>
-        <Modal.Body>
-          You'll lose all Results collected from this category.
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleDelete}>Yes, delete it</Button>
-        </Modal.Footer>
-      </Modal>
+      { input !== undefined && (
+        <Modal
+            show={showModal}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Delete input {`"${input[optionSelected]?.name}"`}?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            You'll lose all Results collected from this category.
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>Yes, delete it</Button>
+          </Modal.Footer>
+        </Modal>
+      )
+      }
     </div>
   );
 };
