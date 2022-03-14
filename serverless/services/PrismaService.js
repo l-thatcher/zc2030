@@ -120,3 +120,11 @@ export const deleteUserCalculator = (typeId, userId) => {
     }
   })
 }
+
+export const getUsersLogs = (userId) => {
+  return prisma.userCalculator.findMany({
+    where: {
+      user_id: userId
+    }
+  })
+}

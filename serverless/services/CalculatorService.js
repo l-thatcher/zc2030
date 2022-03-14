@@ -96,7 +96,7 @@ export const getCalculatorUsers = (type_id) => {
 // POST Request - Save calculator result
 export const saveCalculatorResult = (type_id, category_id, input_id, data) => {
   return MainService.post(
-    `/api/calculators/${type_id}/${category_id}/${input_id}`,
+    `/api/calculators/${type_id}/${category_id}/result/${input_id}`,
     data
   );
 };
@@ -115,8 +115,12 @@ export const deleteCalculatorType = (idToDelete) =>{
 }
 
 export const deleteUsersCalculator = (idToDelete, typeId) =>{
-  console.log(`here234 ${idToDelete} ${typeId}`)
   return MainService.delete(
       `/api/calculators/${typeId}/user/${idToDelete}`, {}
+  )
+}
+
+export const getLogsByUser = (userId) =>{
+  return MainService.get(`/api/calculators/user/${userId}/logs`
   )
 }

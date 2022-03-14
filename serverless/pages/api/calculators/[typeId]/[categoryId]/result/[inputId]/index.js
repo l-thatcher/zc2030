@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
     // Create data from database
     case "POST":
-      const input_id = req.query.resultId;
+      const input_id = req.query.inputId;
       const result = req.body[0];
       const quantity = req.body[1];
       const userId = req.body[2];

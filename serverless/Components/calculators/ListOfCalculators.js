@@ -14,7 +14,7 @@ const ListOfCalculators = (props) => {
   const userId = props.userId;
 
   // Add inputs for a specific calculator type
-  categories[value].map((category, i) =>
+  categories[value]?.map((category, i) =>
     inputs.push(allInputs[category.id - 1])
   );
 

@@ -87,7 +87,7 @@ const CarbonCalculator = (data) => {
     <main className={styles.main}>
       <div className={styles.pageContentMain}>
         <h2 className={styles.h2} data-testid="calculator_heading">
-          {type.name} Calculator
+          {type?.name} Calculator
         </h2>
         <div className={styles.calculatorContainer}>
           <div className={styles.calculatorBody}>
@@ -97,7 +97,7 @@ const CarbonCalculator = (data) => {
                   Select a Category:
                 </h3>
                 <div className={styles.formDiv}>
-                  {categories.map((category, i) => (
+                  {categories?.map((category, i) => (
                     <ToggleButton
                       className={styles.form}
                       id={`toggle-check-${i}`}
