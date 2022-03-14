@@ -6,8 +6,11 @@ export default async function handler(req, res) {
         // Get data from database
         case "GET":
             try {
-                const result = await getUsersLogs(req.query.userId)
-                res.status(200).json(result);
+                const logs = await getUsersLogs(req.query.userId)
+                const json = JSON.stringify(logs, (key, value) =>
+                    typeof value === "bigint" ? parseInt(value) : value
+                );
+                res.status(200).json(json);
             } catch (e) {
                 res.status(500).json({ message: e.message });
             }

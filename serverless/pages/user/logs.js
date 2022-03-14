@@ -1,10 +1,15 @@
 import {getSession, useSession} from "next-auth/react";
 import {getLogsByUser} from "../../services/CalculatorService";
 import styles from "../../styles/Calculator.module.css";
+import {Table} from "react-bootstrap";
+
 const background3 = "/calculator_background_3.jpg";
 
 export default function Logs(props) {
-    const { data: session } = useSession();
+    const {data: session} = useSession();
+    const headers = ["Category", "Input Type", "Quantity Inputted", "Result"]
+    const logs = props.logs
+
     if (session) {
         return (
             <div
@@ -15,7 +20,27 @@ export default function Logs(props) {
                     {session.user.name} Log Data
                 </h1>
                 <div className="container-md">
-
+                    <Table responsive variant="light">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            {headers.map((header, index) => (
+                                <th key={index}>{header}</th>
+                            ))}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {logs.map((log, index) => (
+                            <tr key={index}>
+                                <td>{index}</td>
+                                <td>{log.calculatorinput.calculatorcategory.name}</td>
+                                <td>{log.calculatorinput.name}</td>
+                                <td>{log.quantity}</td>
+                                <td>{log.result}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
                 </div>
             </div>
         );
@@ -33,9 +58,6 @@ export async function getServerSideProps(context) {
     if (session) {
         userId = session.user.id;
         logs = await getLogsByUser(userId)
-        console.log(logs)
-    } else {
-    }
-
-    return { props: { logs } };
+    } 
+    return {props: {logs: logs.data}};
 }
