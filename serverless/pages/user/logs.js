@@ -58,6 +58,6 @@ export async function getServerSideProps(context) {
     if (session) {
         userId = session.user.id;
         logs = await getLogsByUser(userId)
-    } 
+    }
     return {props: {logs: logs.data}};
 }

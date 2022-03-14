@@ -29,3 +29,11 @@
 .progressBar {
   width: 45px;
 }
+
+.button {
+  margin-top: 10px;
+  color: black;
+  background: #57bc90;
+  border: solid 3px #57bc90;
+  width: 150px;
+}
