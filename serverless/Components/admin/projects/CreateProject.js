@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState } from "react";
 import Link from "next/link";
+
 // components
 
 // import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
@@ -8,7 +9,22 @@ import AdminSidebar from '../AdminSidebar'
 export default function CreateProject() {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
 
-
+    const [projectname, setProjectname] = useState('');
+    const [cptgbp, setCptgbp] = useState('');
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
+    const [streetname, setStreetname] = useState('');
+    const [city, setCity] = useState('');
+    const [county, setCounty] = useState('');
+    const [country, setCountry] = useState('');
+    const [totalsupply, setTotalsupply] = useState('');
+    const [remainingsupply, setRemainingsupply] = useState(0);
+    const [ownerpicture, setOwnerpicture] = useState('');
+    const [type, setType] = useState('');
+    const [website, setWebsite] = useState('');
+    const [description, setDescription] = useState('');
+    const [datefounded, setDatefounded] = useState('');
+    const [nftaddress, setNftaddress] = useState('');
 
 
     return (
@@ -43,7 +59,7 @@ export default function CreateProject() {
                                     <input
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        defaultValue="lucky.jesse"
+                                        defaultValue="lucky.jesse" onChange={(e) => setProjectname(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -58,7 +74,7 @@ export default function CreateProject() {
                                     <input
                                         type="email"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        defaultValue="jesse@example.com"
+                                        defaultValue="jesse@example.com"  onChange={(e) => setNftaddress(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -73,7 +89,7 @@ export default function CreateProject() {
                                     <input
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        defaultValue="total supply"
+                                        defaultValue="total supply" onChange={(e) => setTotalsupply(e.target.value)}
                                     />
                                 </div>
                                 <div className="relative w-full mb-3">
@@ -84,7 +100,7 @@ export default function CreateProject() {
                                         Cost per tonne of co2
                                     </label>
                                     <input
-                                        type="text"
+                                        type="text" onChange={(e) => setCptgbp(e.target.value)}
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     />
                                 </div>
