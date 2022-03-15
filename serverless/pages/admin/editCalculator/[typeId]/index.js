@@ -1,9 +1,11 @@
+import styles from "../../../../styles/Calculator.module.css";
 import EditCalculatorOverview from "../../../../Components/admin/calculators/EditCalculatorOverview";
-import {Container} from "react-bootstrap";
 import {
     getCalculatorCategories, getCalculatorInputs,
     getCalculatorType, getCalculatorUsers,
 } from "../../../../services/CalculatorService";
+
+const background3 = "/calculator_background_3.jpg";
 
 export default function editCalculator(props) {
     const categories = props.categories;
@@ -11,10 +13,12 @@ export default function editCalculator(props) {
     const users = props.users;
     const inputs = props.inputs
     return (
-        <Container>
-            <h1>Edit Calculator</h1>
-            <EditCalculatorOverview details = {details} users = {users} categories = {categories} inputs = {inputs}/>
-        </Container>
+        <div className={styles.container} style={{ backgroundImage: `url(${background3})` }}>
+            <div className="container-md">
+                <h1 style={{paddingTop:"20px"}}>Edit Calculator</h1>
+                <EditCalculatorOverview details = {details} users = {users} categories = {categories} inputs = {inputs}/>
+            </div>
+        </div>
     )
 }
 

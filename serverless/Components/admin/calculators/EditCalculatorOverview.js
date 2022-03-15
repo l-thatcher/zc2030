@@ -1,3 +1,4 @@
+import styles from "../../../styles/Calculator.module.css";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import UserList from "./UserList";
 import CalculatorCategory from "./CalculatorCategory";
@@ -170,9 +171,10 @@ const EditCalculatorOverview = (data) => {
     // };
 
     return (
-        <div>
+        <div className={styles.containerMargin5}>
             {overviewShowing === true && (
-                <Form>
+                <div className={styles.main}>
+                <Form className={styles.pageContentMain}>
                     <Form.Group controlId="form.Name">
                         <Form.Label>Calculator Name</Form.Label>
                         <Form.Control data-testid="nameInput" type="text" placeholder="Enter name"
@@ -215,6 +217,7 @@ const EditCalculatorOverview = (data) => {
                         Next
                     </Button>
                 </Form>
+                </div>
             )
             }
             {showCategory === true && (

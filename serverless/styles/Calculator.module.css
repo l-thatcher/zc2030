@@ -110,6 +110,13 @@
   width: 150px;
 }
 
+.buttonBack {
+  color: black;
+  background: #a5a5af;
+  border: solid 3px #a5a5af;
+  width: 150px;
+}
+
 .buttonAdd {
   color: black;
   background: #a5a5af;

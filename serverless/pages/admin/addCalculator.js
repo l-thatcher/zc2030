@@ -11,12 +11,14 @@ export default function addCalculator(props) {
     const categories = props.categories;
     const inputs = props.inputs;
 
-    const background4 = "/calculator_background_3.jpg";
+    const background3 = "/calculator_background_3.jpg";
 
     return (
-        <div>
+        <div className={styles.container} style={{ backgroundImage: `url(${background3})` }}>
+            <div className="container-md" >
             <h1>Create Calculator</h1>
             <EditCalculatorOverview details={{id: "", name: "", public: false}} users={[]} categories={[]} inputs={[]}/>
+            </div>
         </div>
     );
 }

@@ -197,8 +197,8 @@ const CalculatorCategory = (data) => {
   }
 
   return (
-    <div className="container-md" style={{ width: "100%" }}>
-      <div className="main" style={{ backgroundColor: "white", padding: "3%" }}>
+    <div className={styles.main} style={{ width: "100%" }}>
+      <div className={styles.pageContentMain} style={{ backgroundColor: "white", padding: "3%" }}>
         {showInput === false && (
           <Form>
             {error === true && (
@@ -270,10 +270,10 @@ const CalculatorCategory = (data) => {
           <div style={{ width: "100%", textAlign: "center" }}>
             <Button
                 style={{ width: "125px", marginTop: "40px" }}
-                variant="primary"
+                variant="secondary"
                 size="lg"
                 type="submit"
-                className={styles.button}
+                className={styles.buttonBack}
                 data-testid="next_btn"
                 onClick={(e) => handleBackPress(e)}
             >
