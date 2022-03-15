@@ -28,12 +28,30 @@ export const getCountOfUsersUniqueFilledResultsByCategory = (
   });
 };
 
+export const getListofProjects = () => {
+  return prisma.project.findMany();
+};
 
-export const createNewProject = (id, projectname, projectimage1, projectimage2, projectimage3, projectimage4, cptgbp, latitude, longitude, streetname, city, county, country, totalsupply, remainingsupply, ownerpicture, type, website, description, datefounded, nftaddress) => {
+
+export const getProject = (projectID) => {
+  return prisma.project.findUnique({
+    where: {
+      id: projectID,
+    },
+  })   ;
+};
+
+
+
+export const createNewProject = (id, projectname, projectimage1, projectimage2,
+                                 projectimage3, projectimage4, cptgbp, latitude,
+                                 longitude, streetname, city, county, country,
+                                 totalsupply, remainingsupply, ownerpicture,
+                                 type, website, description, datefounded, nftaddress) => {
   return prisma.project.create({
     data: {
       id: '3',
-      email: 'elsa@prisma.io',
+
       projectname: 'Elsa Prisma',
       projectimage1: 'elsa@prisma.io',
       projectimage2: 'Elsa Prisma',
@@ -57,6 +75,8 @@ export const createNewProject = (id, projectname, projectimage1, projectimage2, 
     },
   })
 };
+
+
 
 
 
