@@ -15,7 +15,7 @@ export default function editCalculator(props) {
     return (
         <div className={styles.container} style={{ backgroundImage: `url(${background3})` }}>
             <div className="container-md">
-                <h1 style={{paddingTop:"20px"}}>Edit Calculator</h1>
+                <h1 style={{paddingTop:"4%"}}>Edit Calculator</h1>
                 <EditCalculatorOverview details = {details} users = {users} categories = {categories} inputs = {inputs}/>
             </div>
         </div>
