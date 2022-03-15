@@ -15,3 +15,10 @@ export const createNewProject = (data) => {
         data
     );
 };
+
+// PUT Request - Create a new project
+export const editProjectById = (data, id) => {
+    return MainService.put(`/api/projects/${id}/edit`,
+        data
+    );
+};
