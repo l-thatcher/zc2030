@@ -49,6 +49,12 @@ model User {
 }
 
 enum Role {
+    PERSONAL
+    ADMIN
+    BUSINESS
+}
+
+enum Role {
   PERSONAL
   ADMIN
   BUSINESS
