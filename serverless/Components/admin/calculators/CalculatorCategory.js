@@ -13,18 +13,19 @@ import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
 import CalculatorInput from "./CalculatorInput";
 import {
+  createUserCalculator,
   deleteCalculatorCategory, deleteCalculatorInputs, deleteUsersCalculator, getCalculatorCategories,
   saveCalculatorCategories, saveCalculatorInputs, saveCalculatorType,
-  updateCalculatorCategories, updateCalculatorInputs
+  updateCalculatorCategories, updateCalculatorInputs, updateCalculatorType
 } from "../../../services/CalculatorService";
 import {useRouter} from "next/router";
 
 const CalculatorCategory = (data) => {
-  let type = data.type;
   const router = useRouter()
   const [optionSelected, setOptionSelected] = useState(0);
   const [showInput, setShowInput] = useState(false);
   const [details, setDetails] = useState(data.type);
+  const [users, setUsers] = useState(data.users)
   const [categories, setCategories] = useState(data.categories);
   const [inputs, setInputs] = useState(data.inputs);
   const [categoryId, setCategoryId] = useState()
@@ -45,7 +46,14 @@ const CalculatorCategory = (data) => {
   // "Save" handler button
   async function handleSave() {
 
-    const type = (await saveCalculatorType([details.name, details.public])).data
+    let type
+    if (details.id === undefined || details.id === "") {
+      type = (await saveCalculatorType([details.name, details.public])).data
+    } else{
+      await updateCalculatorType([details.id, details.name, details.public])
+      type = details
+    }
+    await saveUsers(type);
     await saveCategories(type);
     const categoryData = await getCalculatorCategories(type.id)
     setCategories(categoryData.data)
@@ -56,6 +64,13 @@ const CalculatorCategory = (data) => {
     setShowModal(false)
   }
 
+  async function saveUsers(type) {
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].id === "") {
+        await createUserCalculator(type.id, users[i].name);
+      }
+    }
+  }
 
   // Save or Update Categories
   const saveCategories = async (type) => {
@@ -201,7 +216,7 @@ const CalculatorCategory = (data) => {
               <Form.Control
                 size="lg"
                 type="text"
-                placeholder={type.name}
+                placeholder={details.name}
                 disabled
               />
             </Form.Group>
@@ -284,7 +299,7 @@ const CalculatorCategory = (data) => {
               input={inputs[optionSelected]}
               calculatorInputData={getCalculatorInputData}
               optionSelected={optionSelected}
-              type={type}
+              type={details}
             />
           </div>
         )}
