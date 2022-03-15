@@ -140,3 +140,5 @@ model Project {
   datefounded     String
   nftaddress      String?
 }
+
+

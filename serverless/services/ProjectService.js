@@ -10,8 +10,8 @@ export const getProjectById = (projectId) => {
 };
 
 // POST Request - Create a new project
-export const createNewProject = (id, projectname, projectimage1, projectimage2, projectimage3, projectimage4, cptgbp, latitude, longitude, streetname, city, county, country, totalsupply, remainingsupply, ownerpicture, type, website, description, datefounded, nftaddress) => {
-    return MainService.post(`/api/projects/newproject`,
+export const createNewProject = (data) => {
+    return MainService.post(`/api/projects`,
         data
     );
 };
