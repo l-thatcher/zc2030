@@ -78,12 +78,6 @@ export default async function handler(req, res) {
 
     // Update data from database
     case "PUT":
-
-      console.log(req.body[0])
-      console.log(req.body[1])
-      console.log(req.body[2])
-      console.log(req.body[3])
-      console.log(req.body[4])
       const categoryIdPut = req.body[0];
       const namePut = req.body[1];
       const factorPut = req.body[2];

@@ -1,5 +1,5 @@
-import {createUserCalculatorEntity, deleteUserCalculator, getUsersByEmail} from "../../../../../services/PrismaService";
-import {execute_query} from "../../../../../utils/db";
+import {createUserCalculatorEntity, getUsersByEmail} from "../../../../../services/PrismaService";
+import log from "tailwindcss/lib/util/log";
 
 export default async function handler(req, res) {
 
@@ -13,19 +13,17 @@ export default async function handler(req, res) {
         // Create data from database
         case "POST":
             const typeId = req.query.typeId;
-            const userEmail = req.body;
+            const idList = req.body;
             try {
-                const user = await getUsersByEmail(userEmail);
-                console.log("!!!!!!!!!!!")
-                console.log(user)
-                const userCalculator = await createUserCalculatorEntity(BigInt(typeId), user[0].id)
-                const json = JSON.stringify(userCalculator, (key, value) =>
+                const userCalculators = await idList.map(async it =>
+                    await createUserCalculatorEntity(BigInt(typeId), it))
+                const json = JSON.stringify(userCalculators, (key, value) =>
                     typeof value === "bigint" ? parseInt(value) : value
                 );
                 res.status(200).json(json);
             } catch (e) {
                 console.log(e)
-                res.status(500).json({ message: e.message });
+                res.status(500).json({message: e.message});
             }
             break;
 

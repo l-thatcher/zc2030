@@ -37,7 +37,6 @@ const CalculatorInput = (data) => {
 
   // "Add" button handler
   function handleAdd() {
-    console.log(input)
     if (input === undefined) {
       setInput([""]);
     } else if (input.length < 3){

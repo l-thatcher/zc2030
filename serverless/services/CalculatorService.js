@@ -47,8 +47,7 @@ export const saveCalculatorCategories = (type_id, data) => {
 
 // POST Request - Create User Calculator
 export const createUserCalculator = (typeId, data) => {
-  console.log(`/api/calculators/${typeId}/user`)
-  return MainService.post(`/api/calculators/${typeId}/user/`,data)
+  return MainService.post(`/api/calculators/${typeId}/user/insertUsersIntoCalculator`,data)
 }
 
 // DELETE Request - Delete Calculator Category
@@ -129,4 +128,8 @@ export const deleteUsersCalculator = (idToDelete, typeId) =>{
 export const getLogsByUser = (userId) =>{
   return MainService.get(`/api/calculators/user/${userId}/logs`
   )
+}
+
+export const getUserByEmail = (email) =>{
+  return MainService.get(`/api/users/${email}/getByEmail/`)
 }

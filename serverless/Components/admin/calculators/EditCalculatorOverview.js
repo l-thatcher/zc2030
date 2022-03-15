@@ -47,7 +47,6 @@ const EditCalculatorOverview = (data) => {
     }
 
     const getUserListCallback = async (users) => {
-        console.log(users)
         setUsers(users)
     };
 
