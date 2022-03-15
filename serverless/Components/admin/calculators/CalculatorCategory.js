@@ -65,6 +65,8 @@ const CalculatorCategory = (data) => {
   }
 
   async function saveUsers(type) {
+    console.log("here123!")
+    console.log(users)
     for (let i = 0; i < users.length; i++) {
       if (users[i].id === "") {
         await createUserCalculator(type.id, users[i].name);

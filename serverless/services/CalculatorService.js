@@ -46,8 +46,9 @@ export const saveCalculatorCategories = (type_id, data) => {
 };
 
 // POST Request - Create User Calculator
-export const createUserCalculator = (typeId, userName) => {
-  return MainService.post(`/api/calculators/${typeId}/user/${userName}`)
+export const createUserCalculator = (typeId, data) => {
+  console.log(`/api/calculators/${typeId}/user`)
+  return MainService.post(`/api/calculators/${typeId}/user/`,data)
 }
 
 // DELETE Request - Delete Calculator Category

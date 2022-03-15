@@ -67,7 +67,7 @@ export const getUsersFromList = (userIdList) => {
 export const getUsersByEmail = (userEmail) => {
     return prisma.user.findMany({
         where: {
-            id: userEmail
+            email: userEmail
         },
         select: {
             id: true
