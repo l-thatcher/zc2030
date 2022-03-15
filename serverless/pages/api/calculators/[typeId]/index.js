@@ -66,8 +66,7 @@ export default async function handler(req, res) {
 
         // Update data from database
         case
-        "PUT"
-        :
+        "PUT":
 
             const typeIdPut = req.body[0];
             const namePut = req.body[1];

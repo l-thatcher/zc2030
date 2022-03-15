@@ -116,15 +116,29 @@ model UserCalculator {
   @@index([user_id], map: "fk_calculatorType_id_to_user_id")
 }
 
-model Projects {
-  id               String  @id @default(cuid())
-  projectname      String
-  projectimagelink String
-  cptgbp           Decimal
-  location         String
-  totalsupply      Decimal
-  remainingsupply  Decimal
-  authorid         String
-  description      String
+model Project {
+  id              String  @id @default(cuid())
+  projectname     String
+  projectimage1   String
+  projectimage2   String
+  projectimage3   String
+  projectimage4   String
+  projectimage5   String
+  cptgbp          Decimal
+  latitude        Float
+  longitude       Float
+  streetname      String
+  city            String
+  county          String
+  country         String
+  totalsupply     Decimal
+  remainingsupply Decimal
+  ownerpicture    String
+  type            String
+  website         String?
+  description     String
+  datefounded     String
+  nftaddress      String?
 }
+
 

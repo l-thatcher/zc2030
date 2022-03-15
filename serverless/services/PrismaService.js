@@ -64,6 +64,17 @@ export const getUsersFromList = (userIdList) => {
     })
 }
 
+export const getUsersByEmail = (userEmail) => {
+    return prisma.user.findMany({
+        where: {
+            id: userEmail
+        },
+        select: {
+            id: true
+        }
+    })
+}
+
 export const deleteCalculatorType = (typeId) => {
     return prisma.calculatorType.delete({
         where: {
@@ -146,3 +157,11 @@ export const createCalculator = (calculatorName, isPublic) => {
     })
 }
 
+export const createUserCalculatorEntity = (typeId, userId) => {
+    return prisma.userCalculator.create({
+        data: {
+            type_id: typeId,
+            user_id: userId
+        }
+    })
+}
