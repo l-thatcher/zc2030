@@ -1,5 +1,5 @@
 import {FiFacebook, FiGlobe} from "react-icons/fi";
-import {FcCalendar} from "react-icons/Fc";
+import {FcCalendar} from "react-icons/fc";
 
 
 

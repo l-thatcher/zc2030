@@ -1,7 +1,7 @@
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
-import {HiLocationMarker} from "react-icons/Hi";
+import {HiLocationMarker} from "react-icons/hi";
 
 
 
