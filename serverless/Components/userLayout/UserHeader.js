@@ -13,7 +13,7 @@ const menuOptions = [
   "Register",
 ];
 
-const Header = () => {
+const UserHeader = () => {
   return (
     <header className="header">
       <Navbar className={styles.navbar} bg="white" expand="xxl" fixed="top">
@@ -30,12 +30,7 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
           <Navbar.Brand style={{ width: "250px" }}>
-            <img
-              className={styles.img}
-              src={logo}
-              srcSet={logo}
-              alt="Zero Carbon 2030 logo"
-            ></img>
+            <img className={styles.img} src={logo} srcSet={logo} alt="Zero Carbon 2030 logo"/>
           </Navbar.Brand>
           <Navbar.Collapse
             id="responsive-navbar-nav"
@@ -57,4 +52,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default UserHeader;

@@ -1,11 +1,14 @@
 import {execute_query} from "../../../utils/db";
 
 const getAdminData = `SELECT * FROM USER WHERE role='ADMIN'`;
+
 const updateRole = `UPDATE USER 
 SET 
     role = ?
 WHERE
     email = ?`;
+
+const removeUser = `DELETE FROM USER WHERE id=?`;
 
 export default async function handler(req, res) {
     switch (req.method) {
@@ -25,6 +28,13 @@ export default async function handler(req, res) {
 
         // Delete data from database
         case "DELETE":
+            try {
+                const id = req.body[0];
+                const result = await execute_query(removeUser, id);
+                res.status(200).json(result);
+            } catch (e) {
+                res.status(500).json({ message: e.message });
+            }
             break;
 
         // Update data from database

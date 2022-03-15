@@ -1,9 +1,10 @@
 import styles from "../../styles/AdminDashboard.module.css";
 import AdminSidebar from "../../Components/admin/AdminSidebar";
-import NewAdminPop from "../../Components/admin/NewAdminPop";
+import Popup from "../../Components/admin/Popup";
 import {AiOutlineEdit, AiOutlinePlusSquare, AiOutlineSearch} from 'react-icons/Ai';
 import {MdDelete} from "react-icons/Md";
-import {getUserData, getAdminData, updateRole} from "../../services/adminService";
+import {IoMdRemoveCircle} from "react-icons/io";
+import {getUserData, getAdminData, updateRole, removeUser, updateUser} from "../../services/adminService";
 import {useState} from "react";
 import router from 'next/router'
 
@@ -75,66 +76,105 @@ export default function adminDashboard(props) {
 
     const [adminVisibility, setAdminVisibility] = useState(false);
     const [userVisibility, setUserVisibility] = useState(false);
-    const [email,setEmail] = useState(``);
+
+    const [adminEmail,setAdminEmail] = useState(``);
+
+    const [userId,setUserId] = useState(``);
+    const [userName,setUserName] = useState(``);
+    const [userEmail,setUserEmail] = useState(``);
+    const [userRole,setUserRole] = useState(``);
+    const [userWallet,setUserWallet] = useState(``);
+
 
     const popupCloseHandler = (e) => {
         setAdminVisibility(e);
+        setUserVisibility(e);
+        setUserId('');
+        setUserName('');
+        setUserEmail('');
+        setUserRole('');
+        setUserWallet('');
     };
 
     function newAdminAddFunc(){
-        updateRole(['ADMIN', email]).then((res) => {
+        updateRole(['ADMIN', adminEmail]).then((res) => {
             console.log('Admin added successfully', res.data);
-            setEmail('');
-            router.reload();
+            setAdminEmail('');
         });
     }
 
-    function removeAdminAddFunc(){
-        const data = ['PERSONAL', 'louis@thatchermob.com']
+    function removeAdminFunc(removalEmail){
+        const data = ['PERSONAL', removalEmail]
         updateRole(data).then((res) => {
             console.log("Admin removed successfully", res.data);
             router.reload();
         });
     }
 
+    function removeUserFunc(removalID){
+        const data = [removalID]
+        removeUser(data).then((res) => {
+            console.log("User deleted successfully", res.data);
+            router.reload();
+        });
+    }
+
+    function editUserFunc(id, name, email, role, ethWallet){
+        setUserId(id);
+        setUserName(name);
+        setUserEmail(email);
+        setUserRole(role);
+        setUserWallet(ethWallet);
+
+        setUserVisibility(!userVisibility);
+    }
+
+    function updateUserDetails(){
+        const data = [userId, userName, userEmail, userRole, userWallet]
+        updateUser(data).then((res) => {
+            console.log("User updated successfully", res.data);
+        });
+    }
+
     return (
         <div className={styles.main}>
             <AdminSidebar/>
-            <NewAdminPop
+            <Popup
                 className={styles.adminPop}
                 onClose={popupCloseHandler}
                 show={adminVisibility}
                 title="New Admin">
                 <h5>Enter email</h5>
-                <form method="POST">
-                    <input id="email" type="email" required onChange={(e) => setEmail(e.target.value)}/>
+                <form onSubmit={newAdminAddFunc} method="POST">
+                    <input id="email" type="email" required onChange={(e) => setAdminEmail(e.target.value)}/>
                     <p/>
-                    <button onClick={newAdminAddFunc}>Submit</button>
+                    <button>Submit</button>
                 </form>
-            </NewAdminPop>
+            </Popup>
 
-            {/*<NewAdminPop*/}
-            {/*    className={styles.adminPop}*/}
-            {/*    onClose={popupCloseHandler}*/}
-            {/*    show={userVisibility}*/}
-            {/*    title="Edit user">*/}
-            {/*    <form onSubmit={newAdminAddFunc} method="POST">*/}
-            {/*        <h5>Name</h5>*/}
-            {/*        <input id="Name" type="Name" required onChange={(e) => setEmail(e.target.value)}/>*/}
-            {/*        <h5>Email</h5>*/}
-            {/*        <input id="email" type="email" required onChange={(e) => setEmail(e.target.value)}/>*/}
-            {/*        <h5>Type</h5>*/}
-            {/*        <input id="Type" type="Type" required onChange={(e) => setEmail(e.target.value)}/>*/}
-            {/*        <h5>Wallet</h5>*/}
-            {/*        <input id="Wallet" type="Wallet" required onChange={(e) => setEmail(e.target.value)}/>*/}
-            {/*        <p/>*/}
-            {/*        <button>Submit</button>*/}
-            {/*    </form>*/}
-            {/*</NewAdminPop>*/}
-
+            <Popup
+                className={styles.editUserPop}
+                onClose={popupCloseHandler}
+                show={userVisibility}
+                title="Edit user">
+                <form onSubmit={updateUserDetails} method="POST">
+                    <h5>Name</h5>
+                    <input value={userName} id="name" type="text" required onChange={(e) => setUserName(e.target.value)}/>
+                    <p/>
+                    <h5>Email</h5>
+                    <input value={userEmail} id="email" type="email" required onChange={(e) => setUserEmail(e.target.value)}/>
+                    <p/>
+                    <h5>Role</h5>
+                    <input value={userRole} id="type" type="text" required onChange={(e) => setUserRole(e.target.value)}/>
+                    <p/>
+                    <h5>Wallet Address</h5>
+                    <input value={userWallet} id="email" type="text" required onChange={(e) => setUserWallet(e.target.value)}/>
+                    <p/>
+                    <button>Save</button>
+                </form>
+            </Popup>
 
             <div className={styles.container}>
-
                 <div className={styles.listContainer}>
                     <div className={styles.titles}>
                         <h1>Admin Management </h1>
@@ -148,13 +188,13 @@ export default function adminDashboard(props) {
                         <div key="{admins}" className={styles.items}>
                             <p className={styles.item}>Name</p>
                             <p className={styles.item}>Email</p>
-                            <p>Remove</p>
+                            <p className={styles.icons}>Remove</p>
                         </div>
                         {admins.map((name, i) => (
                             <div key="{admins}" className={styles.items}>
                                 <p className={styles.item}>{admins[i].name}</p>
                                 <p className={styles.item}>{admins[i].email}</p>
-                                <MdDelete onClick={(e) => removeAdminAddFunc(admins[i].email)} className={styles.icons}/>
+                                <IoMdRemoveCircle onClick={(e) => removeAdminFunc(admins[i].email)} className={styles.icons}/>
                             </div>
                         ))}
                     </div>
@@ -172,16 +212,18 @@ export default function adminDashboard(props) {
                             <p className={styles.item}>Email</p>
                             <p className={styles.item}>Type</p>
                             <p className={styles.item}>Wallet Address</p>
-                            <p>Edit</p>
+                            <p className={styles.icons}>Edit</p>
+                            <p className={styles.icons}>Delete</p>
                         </div>
                         {users.map((name, i) => (
                             <div key="{users}" className={styles.items}>
                                 <p className={styles.item}>{users[i].id}</p>
                                 <p className={styles.item}>{users[i].name}</p>
                                 <p className={styles.item}>{users[i].email}</p>
-                                <p className={styles.item}>{users[i].type}</p>
-                                <p className={styles.item}>{users[i].wallet}</p>
-                                <AiOutlineEdit className={styles.icons} onClick={(e) => setUserVisibility(!userVisibility)}/>
+                                <p className={styles.item}>{users[i].role}</p>
+                                <p className={styles.item}>{users[i].ethWallet}</p>
+                                <AiOutlineEdit className={styles.icons} onClick={(e) => editUserFunc(users[i].id, users[i].name, users[i].email, users[i].role, users[i].ethWallet)}/>
+                                <MdDelete onClick={(e) => removeUserFunc(users[i].id)} className={styles.icons}/>
                             </div>
                         ))}
                     </div>
@@ -195,7 +237,7 @@ export default function adminDashboard(props) {
 export async function getServerSideProps(){
     // Adds all users types in a list
     const userRes = await getUserData()
-    const users = userRes.data
+    const users = userRes?.data
 
     // Adds all admins types in a list
     const adminRes = await getAdminData()
