@@ -45,31 +45,33 @@ export const getProject = (projectID) => {
 
 
 
-export const createNewProject = (id, projectname, projectimage1, projectimage2, projectimage3, projectimage4, cptgbp, latitude, longitude, streetname, city, county, country, totalsupply, remainingsupply, ownerpicture, type, website, description, datefounded, nftaddress) => {
+export const createNewProject = (data) => {
+  console.log(data)
   return prisma.project.create({
     data: {
-      id: '3',
-      projectname: 'Elsa Prisma',
-      projectimage1: 'elsa@prisma.io',
-      projectimage2: 'Elsa Prisma',
-      projectimage3: 'elsa@prisma.io',
-      projectimage4: 'Elsa Prisma',
-      cptgbp: 'elsa@prisma.io',
-      latitude: 'Elsa Prisma',
-      longitude: 'elsa@prisma.io',
-      streetname: 'Elsa Prisma',
-      city: 'elsa@prisma.io',
-      county: 'Elsa Prisma',
-      country: 'elsa@prisma.io',
-      totalsupply: 'Elsa Prisma',
-      remainingsupply: 'elsa@prisma.io',
-      ownerpicture: 'Elsa Prisma',
-      type: 'elsa@prisma.io',
-      website: 'Elsa Prisma',
-      description: 'elsa@prisma.io',
-      datefoudned: 'Elsa Prisma',
-      nftaddress: 'elsa@prisma.io',
-    },
+      projectname: data.projectname,
+      projectimage1: data.projectimage1,
+      projectimage2: data.projectimage2,
+      projectimage3: data.projectimage3,
+      projectimage4: data.projectimage4,
+      projectimage5: data.projectimage5,
+      cptgbp: data.cptgbp,
+      latitude: data.latitude,
+      longitude: data.longitude,
+      streetname: data.streetname,
+      city: data.city,
+      county: data.county,
+      country: data.country,
+      totalsupply: data.totalsupply,
+      remainingsupply: data.remainingsupply,
+      ownerpicture: data.ownerpicture,
+      type: data.type,
+      website: data.website,
+      description: data.description,
+      datefounded: data.datefounded,
+      nftaddress: data.nftaddress,
+    }
+
   })
 };
 
