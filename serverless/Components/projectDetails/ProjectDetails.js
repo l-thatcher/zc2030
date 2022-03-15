@@ -3,6 +3,8 @@ import {LocationMarkerIcon} from '@heroicons/react/solid'
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
+
+
 import Map from './Map'
 
 
