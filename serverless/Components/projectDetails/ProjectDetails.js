@@ -1,8 +1,8 @@
-
-import {LocationMarkerIcon} from '@heroicons/react/solid'
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
+import {HiLocationMarker} from "react-icons/Hi";
+
 
 
 import Map from './Map'
@@ -39,7 +39,7 @@ function ProjectDetails(props) {
                         <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                             <div className="mt-2 flex items-center text-sm text-gray-500 underline border-b mb-2 border-[#F2F2F2] capitalize">
                                 {/*location*/}
-                                <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                                <HiLocationMarker className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
                                 {props.detailsProps.streetname} | {props.detailsProps.city} {props.detailsProps.county} {props.detailsProps.country}
                             </div>
 
@@ -78,7 +78,7 @@ function ProjectDetails(props) {
 
                             <div className="hidden md:block  ">
                                 <div className="grid-cols-4 space-y-2 md:space-y-0 md:grid md:gap-3  ">
-                                    <div className=" w-full col-span-2 bg-yellow-600 row-span-2 rounded ">
+                                    <div className=" w-full col-span-2 row-span-2 rounded ">
                                         <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
                                             src={details.projectimage1}
                                             alt="image"/>
@@ -137,12 +137,12 @@ function ProjectDetails(props) {
 
 
                             {/*Header*/}
-                            <div className='flex'>
+                            <div className='flex justify-between'>
                                 <div>
                                     <AboutProject detailsProps={details} />
                                 </div>
-                                <div className="hidden md:block ">
-                                    <BuyCard detailsProps={details} />
+                                <div className="hidden md:block">
+                                    <BuyCard detailsProps={details}/>
                                 </div>
 
                             </div>
@@ -156,7 +156,7 @@ function ProjectDetails(props) {
                                 </h3>
                                 <div className="mt-2 flex items-center text-sm text-gray-500 border-b border-[#F2F2F2] capitalize">
                                     {/*location*/}
-                                    <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                                    <HiLocationMarker className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
                                      {props.detailsProps.streetname} | {props.detailsProps.city} {props.detailsProps.county} {props.detailsProps.country}
                                 </div>
                                 <Map location={location} />
