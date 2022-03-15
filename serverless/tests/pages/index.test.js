@@ -3,7 +3,7 @@
 import React from "react";
 // Using render and screen from test-utils.js instead of
 // @testing-library/react
-import {render, screen} from "../test-utils";
+import { render, screen } from "../test-utils";
 import Home from "../../pages/index";
 
 /**
@@ -14,6 +14,10 @@ test("use jsdom in this test file", () => {
   const element = document.createElement("div");
   expect(element).not.toBeNull();
 });
+
+describe("Home", () => {
+  it("should render the heading", () => {
+    render(<Home />);
 //
 // describe("Home", () => {
 //   it("should render the heading", () => {

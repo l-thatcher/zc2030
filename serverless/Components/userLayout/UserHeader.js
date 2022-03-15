@@ -1,5 +1,5 @@
 import styles from "../../styles/Header.module.css";
-import {Nav, Navbar} from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import Link from "next/link";
 import LoginSession from "../LoginSession";
 
@@ -13,13 +13,13 @@ const menuOptions = [
   "Register",
 ];
 
-const Header = () => {
+const UserHeader = () => {
   return (
     <header className="header">
       <Navbar className={styles.navbar} bg="white" expand="xxl" fixed="top">
         <div className="container-lg">
-          <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-          <Navbar.Collapse id="responsive-navbar-nav" style={{width: "0px"}}>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav" style={{ width: "0px" }}>
             <Nav className={styles.nav}>
               <Link href="/" passHref>
                 <Nav.Link className={styles.navFont}>{menuOptions[0]}</Nav.Link>
@@ -38,8 +38,8 @@ const Header = () => {
             />
           </Navbar.Brand>
           <Navbar.Collapse
-              id="responsive-navbar-nav"
-              style={{marginLeft: "45px"}}
+            id="responsive-navbar-nav"
+            style={{ marginLeft: "45px" }}
           >
             <Nav>
               <Link href={menuOptions[2].toLowerCase()} passHref>
@@ -50,11 +50,11 @@ const Header = () => {
               </Link>
             </Nav>
           </Navbar.Collapse>
-          <LoginSession/>
+          <LoginSession />
         </div>
       </Navbar>
     </header>
   );
 };
 
-export default Header;
+export default UserHeader;
