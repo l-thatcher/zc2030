@@ -5,10 +5,10 @@
 //         cy.visit("/")
 //     })
 //     it("Login with Google", () => {
-//         const username = Cypress.env("GOOGLE_USER")
-//         const password = Cypress.env("GOOGLE_PW")
-//         const loginUrl = Cypress.env("SITE_NAME")
-//         const cookieName = Cypress.env("COOKIE_NAME")
+//         const username = Cypress..env("GOOGLE_USER")
+//         const password = Cypress..env("GOOGLE_PW")
+//         const loginUrl = Cypress..env("SITE_NAME")
+//         const cookieName = Cypress..env("COOKIE_NAME")
 //         const socialLoginOptions = {
 //             username,
 //             password,
@@ -16,7 +16,7 @@
 //             headless: true,
 //             logs: false,
 //             isPopup: true,
-//             loginSelector: `a[href="${Cypress.env(
+//             loginSelector: `a[href="${Cypress..env(
 //                 "SITE_NAME"
 //             )}/api/auth/signin/google"]`,
 //         }
