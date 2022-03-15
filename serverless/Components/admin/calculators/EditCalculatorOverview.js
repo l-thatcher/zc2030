@@ -3,6 +3,7 @@ import UserList from "./UserList";
 import CalculatorCategory from "./CalculatorCategory";
 import {useState} from "react";
 import {
+    createUserCalculator,
     getCalculatorCategories, getCalculatorInputs, getCalculatorTypes,
     saveCalculatorCategories,
     saveCalculatorInputs, saveCalculatorType,
@@ -13,7 +14,7 @@ import {useRouter} from "next/router";
 const EditCalculatorOverview = (data) => {
     const router = useRouter()
     const [details, setDetails] = useState(data.details);
-    const users = data.users;
+    const [users, setUsers] = useState(data.users)
     const [categories, setCategories] = useState(data.categories)
     const [inputs, setInputs] = useState(data.inputs)
     const [categoryId, setCategoryId] = useState()
@@ -44,16 +45,30 @@ const EditCalculatorOverview = (data) => {
         setDetails(temp);
     }
 
+    async function saveUsers(type) {
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].id === "") {
+                await createUserCalculator(type.id, users[i].name);
+            }
+        }
+    }
+
     // "Save" handler button
     async function handleSave() {
-        const type = (await saveCalculatorType([details.name, details.public])).data
+        let type
+        if (details.id === undefined || details.id === "") {
+            type = (await saveCalculatorType([details.name, details.public])).data
+        } else{
+            type = await updateCalculatorType([details.id, details.name, details.public])
+        }
+        await saveUsers(type);
         await saveCategories(type);
         const cat = await getCalculatorCategories(type.id)
         setCategories(cat.data)
         for (let i = 0; i < cat.data.length; i++) {
             await saveInputs(cat.data[i].id, i, type)
         }
-        await router.replace("http://localhost:3000/admin/showCalculators")
+        //await router.replace("http://localhost:3000/admin/showCalculators")
     }
 
     //     const typeData = [ details.name,details.public];

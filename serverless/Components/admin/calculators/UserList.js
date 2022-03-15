@@ -44,14 +44,14 @@ const UserList = (data) => {
     }
 
 
-    if (details.public) {
+    if (details?.public) {
         return null
     } else {
         return (
             <div>
                 <Form.Group controlId="form.Users">
                     <Form.Label>Users that can access the calculator:</Form.Label>
-                    {users.map((user, i) => (
+                    {users?.map((user, i) => (
                         <div key={i} className="mt-2">
                             <Row>
                                 <Col><Form.Control type="text" placeholder="Enter email" value={user.email}
@@ -80,7 +80,7 @@ const UserList = (data) => {
                     keyboard={false}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Remove user {`"${users[optionSelected]?.email}"`}?</Modal.Title>
+                        <Modal.Title>Remove user {`"${users?[optionSelected].email : ""}"`}?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         The user won't be allowed to access the calculator

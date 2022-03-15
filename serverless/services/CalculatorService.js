@@ -27,8 +27,8 @@ export const saveCalculatorType = (data) => {
 };
 
 // PUT Request - Update calculator Type
-export const updateCalculatorType = (type_id, data) => {
-  return MainService.put(`/api/calculators/${type_id}`,
+export const updateCalculatorType = (data) => {
+  return MainService.put(`/api/calculators`,
       data
   );
 };
@@ -44,6 +44,11 @@ export const saveCalculatorCategories = (type_id, data) => {
       data
   );
 };
+
+// POST Request - Create User Calculator
+export const createUserCalculator = (typeId, userName) => {
+  return MainService.post(`/api/calculators/${typeId}/user/${userName}`)
+}
 
 // DELETE Request - Delete Calculator Category
 export const deleteCalculatorCategory = (type_id, categoryId) => {
