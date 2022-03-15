@@ -113,6 +113,7 @@ export default function CreateProject() {
                                     </label>
                                     <input
                                         type="text"
+                                        onChange={(e) => setDatefounded(e.target.value)}
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     />
                                 </div>
@@ -129,7 +130,7 @@ export default function CreateProject() {
                                     <textarea
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        rows="4"
+                                        rows="4"  onChange={(e) => setDescription(e.target.value)}
                                         defaultValue="A beautiful farm with lots of animals "
                                     ></textarea>
                                 </div>
