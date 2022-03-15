@@ -7,13 +7,13 @@ const logo = "/cz2030_logo.png";
 const menuOptions = [
   "Home",
   "About",
-  "Projects",
   "Calculator",
+  "Projects",
   "Sign In",
   "Register",
 ];
 
-const Header = () => {
+const UserHeader = () => {
   return (
     <header className="header">
       <Navbar className={styles.navbar} bg="white" expand="xxl" fixed="top">
@@ -29,13 +29,13 @@ const Header = () => {
               </Link>
             </Nav>
           </Navbar.Collapse>
-          <Navbar.Brand style={{ width: "250px" }}>
+          <Navbar.Brand style={{width: "140px"}}>
             <img
-              className={styles.img}
-              src={logo}
-              srcSet={logo}
-              alt="Zero Carbon 2030 logo"
-            ></img>
+                className={styles.img}
+                src={logo}
+                srcSet={logo}
+                alt="Zero Carbon 2030 logo"
+            />
           </Navbar.Brand>
           <Navbar.Collapse
             id="responsive-navbar-nav"
@@ -57,4 +57,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default UserHeader;

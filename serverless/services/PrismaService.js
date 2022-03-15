@@ -1,4 +1,4 @@
-import {PrismaClient, Prisma} from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 import MainService from "./MainService";
 
 const prisma = new PrismaClient();
@@ -165,3 +165,16 @@ export const createUserCalculatorEntity = (typeId, userId) => {
         }
     })
 }
+
+export const getListofProjects = () => {
+  return prisma.project.findMany();
+};
+
+
+export const getProject = (projectID) => {
+  return prisma.project.findUnique({
+    where: {
+      id: projectID,
+    },
+  })   ;
+};

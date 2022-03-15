@@ -123,7 +123,6 @@ model Project {
   projectimage2   String
   projectimage3   String
   projectimage4   String
-  projectimage5   String
   cptgbp          Decimal
   latitude        Float
   longitude       Float
@@ -140,5 +139,3 @@ model Project {
   datefounded     String
   nftaddress      String?
 }
-
-
