@@ -16,15 +16,6 @@ export default async function handler(req, res) {
 
         // Create data from database
         case "POST":
-            const typeId = req.query.typeId;
-            const userEmail = req.query.userId;
-            try {
-                const user = await getUsersByEmail(userEmail);
-                const response = await createUserCalculatorEntity(typeId, user[0].id)
-                res.status(200).json(response);
-            } catch (e) {
-                res.status(500).json({ message: e.message });
-            }
             break;
 
         // Delete data from database

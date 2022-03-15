@@ -22,6 +22,7 @@ const UserList = (data) => {
         let temp = [...users]
         temp[index] = {id: users[index].id, name: event.target.value};
         setUsers(temp);
+        data.getUserListCallback(temp);
     }
 
     function handleOpen(id, index) {
