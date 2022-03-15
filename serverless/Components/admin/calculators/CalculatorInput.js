@@ -51,32 +51,35 @@ const CalculatorInput = (data) => {
   function handleChange(e, indexCategory, indexInput, inputField) {
     let InputClone = [...input]; // Input clone data
 
-    if (inputField === "name") {
-      InputClone[indexCategory] = {
-        id: input[indexCategory].id,
-        name: e.target.value,
-        factor:input[indexCategory].factor,
-        unit: input[indexCategory].unit
-      };
-      setName(e.target.value);
-    } else if (inputField === "factor") {
-      InputClone[indexCategory] = {
-        id: input[indexCategory].id,
-        name: input[indexCategory].name,
-        factor:Number(e.target.value),
-        unit: input[indexCategory].unit
-      };
-      setFactor(Number(e.target.value));
-    } else if (inputField === "unit") {
-      InputClone[indexCategory] = {
-        id: input[indexCategory].id,
-        name: input[indexCategory].name,
-        factor: input[indexCategory].factor,
-        unit: e.target.value,
-      };
-      setUnit(e.target.value);
+    switch (inputField){
+      case "name":
+        InputClone[indexCategory] = {
+          id: input[indexCategory].id,
+          name: e.target.value,
+          factor:input[indexCategory].factor,
+          unit: input[indexCategory].unit
+        };
+        setInput(InputClone);
+        break;
+      case "factor":
+        InputClone[indexCategory] = {
+          id: input[indexCategory].id,
+          name: input[indexCategory].name,
+          factor:Number(e.target.value),
+          unit: input[indexCategory].unit,
+        };
+        setInput(InputClone);
+        break;
+      case "unit":
+        InputClone[indexCategory] = {
+          id: input[indexCategory].id,
+          name: input[indexCategory].name,
+          factor: input[indexCategory].factor,
+          unit: e.target.value,
+        };
+        setInput(InputClone);
+        break;
     }
-    setInput(InputClone);
   }
 
   // onChange handler
@@ -87,7 +90,11 @@ const CalculatorInput = (data) => {
   }
 
   function handleSave() {
-    for (let i = 0; i < input.length; i++) {
+    if (input === undefined) {
+      setErrorMsg("You might have forgotten to add an input");
+      setError(true);
+    }
+    for (let i = 0; i < input?.length; i++) {
       let num = i + 1;
       if (input[i].name === undefined) {
         setErrorMsg("You might have forgotten to add a value on Input " + num);
@@ -118,7 +125,6 @@ const CalculatorInput = (data) => {
       setShowModal(false)
     }
   }
-
 
   return (
     <div>
