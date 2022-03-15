@@ -21,16 +21,12 @@ export const getCalculatorType = (type_id) => {
 
 // POST Request - Save calculator Type
 export const saveCalculatorType = (data) => {
-  return MainService.post(`/api/calculators`,
-      data
-  );
+  return MainService.post(`/api/calculators`, data);
 };
 
 // PUT Request - Update calculator Type
 export const updateCalculatorType = (data) => {
-  return MainService.put(`/api/calculators`,
-      data
-  );
+  return MainService.put(`/api/calculators`, data);
 };
 
 // GET Request - Get Calculator Category
@@ -40,31 +36,31 @@ export const getCalculatorCategories = (type_id) => {
 
 // POST Request - Save Calculator Category
 export const saveCalculatorCategories = (type_id, data) => {
-  return MainService.post(`/api/calculators/${type_id}`,
-      data
-  );
+  return MainService.post(`/api/calculators/${type_id}`, data);
 };
 
 // POST Request - Create User Calculator
 export const createUserCalculator = (typeId, data) => {
-  return MainService.post(`/api/calculators/${typeId}/user/insertUsersIntoCalculator`,data)
-}
-
-// DELETE Request - Delete Calculator Category
-export const deleteCalculatorCategory = (type_id, categoryId) => {
-  return MainService.delete(`/api/calculators/${type_id}/${categoryId}`
+  return MainService.post(
+    `/api/calculators/${typeId}/user/insertUsersIntoCalculator`,
+    data
   );
 };
 
+// DELETE Request - Delete Calculator Category
+export const deleteCalculatorCategory = (type_id, categoryId) => {
+  return MainService.delete(`/api/calculators/${type_id}/${categoryId}`);
+};
+
 export const deleteCalculatorInput = (type_id, categoryId, inputId) => {
-  return MainService.delete(`/api/calculators/${type_id}/${categoryId}/${inputId}`)
-}
+  return MainService.delete(
+    `/api/calculators/${type_id}/${categoryId}/${inputId}`
+  );
+};
 
 // PUT Request - Update Calculator Category
 export const updateCalculatorCategories = (type_id, data) => {
-  return MainService.put(`/api/calculators/${type_id}`,
-      data
-  );
+  return MainService.put(`/api/calculators/${type_id}`, data);
 };
 
 // GET Request - Get Calculator Inputs
@@ -74,29 +70,24 @@ export const getCalculatorInputs = (type_id, category_id) => {
 
 // POST Request - Save Calculator Inputs
 export const saveCalculatorInputs = (type_id, category_id, data) => {
-  return MainService.post(`/api/calculators/${type_id}/${category_id}`,
-      data
-  );
+  return MainService.post(`/api/calculators/${type_id}/${category_id}`, data);
 };
 
 // DELETE Request - Delete Calculator Inputs
 export const deleteCalculatorInputs = (type_id, category_id, data) => {
-  return MainService.delete(`/api/calculators/${type_id}/${category_id}`,
-      {data}
-  );
+  return MainService.delete(`/api/calculators/${type_id}/${category_id}`, {
+    data,
+  });
 };
 
 // PUT Request - Update Calculator Inputs
 export const updateCalculatorInputs = (type_id, category_id, data) => {
-  return MainService.put(`/api/calculators/${type_id}/${category_id}`,
-      data
-  );
+  return MainService.put(`/api/calculators/${type_id}/${category_id}`, data);
 };
 
 export const getCalculatorUsers = (type_id) => {
   return MainService.get(`/api/calculators/getUsers/${type_id}`);
 };
-
 
 // POST Request - Save calculator result
 export const saveCalculatorResult = (type_id, category_id, input_id, data) => {
@@ -113,23 +104,21 @@ export const getUserCategoryProgress = (userId, categoryId) => {
   );
 };
 
-export const deleteCalculatorType = (idToDelete) =>{
+export const deleteCalculatorType = (idToDelete) => {
+  return MainService.delete(`/api/calculators/${idToDelete}`);
+};
+
+export const deleteUsersCalculator = (idToDelete, typeId) => {
   return MainService.delete(
-      `/api/calculators/${idToDelete}`
-  )
-}
+    `/api/calculators/${typeId}/user/${idToDelete}`,
+    {}
+  );
+};
 
-export const deleteUsersCalculator = (idToDelete, typeId) =>{
-  return MainService.delete(
-      `/api/calculators/${typeId}/user/${idToDelete}`, {}
-  )
-}
+export const getLogsByUser = (userId) => {
+  return MainService.get(`/api/calculators/user/${userId}/logs`);
+};
 
-export const getLogsByUser = (userId) =>{
-  return MainService.get(`/api/calculators/user/${userId}/logs`
-  )
-}
-
-export const getUserByEmail = (email) =>{
-  return MainService.get(`/api/users/${email}/getByEmail/`)
-}
+export const getUserByEmail = (email) => {
+  return MainService.get(`/api/users/${email}/getByEmail/`);
+};

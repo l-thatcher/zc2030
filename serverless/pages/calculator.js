@@ -2,7 +2,9 @@ import styles from "../styles/Calculator.module.css";
 import {
   getCalculatorCategories,
   getCalculatorInputs,
-  getCalculatorTypes, getCalculatorTypesForUser, getPublicCalculatorTypes,
+  getCalculatorTypes,
+  getCalculatorTypesForUser,
+  getPublicCalculatorTypes,
   getUserCategoryProgress,
 } from "../services/CalculatorService";
 import ListOfCalculators from "../Components/calculators/ListOfCalculators";
@@ -54,7 +56,7 @@ export async function getServerSideProps(context) {
   let typesRes = null;
   if (session) {
     userId = session.user.id;
-    typesRes = await getCalculatorTypesForUser(userId)
+    typesRes = await getCalculatorTypesForUser(userId);
   } else {
     typesRes = await getPublicCalculatorTypes();
   }

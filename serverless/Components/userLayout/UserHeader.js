@@ -29,12 +29,12 @@ const UserHeader = () => {
               </Link>
             </Nav>
           </Navbar.Collapse>
-          <Navbar.Brand style={{width: "140px"}}>
+          <Navbar.Brand style={{ width: "140px" }}>
             <img
-                className={styles.img}
-                src={logo}
-                srcSet={logo}
-                alt="Zero Carbon 2030 logo"
+              className={styles.img}
+              src={logo}
+              srcSet={logo}
+              alt="Zero Carbon 2030 logo"
             />
           </Navbar.Brand>
           <Navbar.Collapse

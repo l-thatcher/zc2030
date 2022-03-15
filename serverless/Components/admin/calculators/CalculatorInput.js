@@ -5,13 +5,17 @@ import {
   Form,
   FormControl,
   FormLabel,
-  InputGroup, Modal,
+  InputGroup,
+  Modal,
 } from "react-bootstrap";
 import styles from "../../../styles/Calculator.module.css";
 import { CgAddR } from "react-icons/cg";
 import { AiOutlineDelete } from "react-icons/ai";
-import {deleteCalculatorCategory, deleteCalculatorInput} from "../../../services/CalculatorService";
-import {useRouter} from "next/router";
+import {
+  deleteCalculatorCategory,
+  deleteCalculatorInput,
+} from "../../../services/CalculatorService";
+import { useRouter } from "next/router";
 
 const CalculatorInput = (data) => {
   const type = data.type;
@@ -24,22 +28,22 @@ const CalculatorInput = (data) => {
   const [category, setCategory] = useState([data.category]);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
-  const [idToRemove, setIdToRemove] = useState("")
-  const router = useRouter()
+  const [idToRemove, setIdToRemove] = useState("");
+  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
 
   function handleOpen(id, index) {
-    setIdToRemove(id)
-    setOptionSelected(index)
-    setShowModal(true)
+    setIdToRemove(id);
+    setOptionSelected(index);
+    setShowModal(true);
   }
 
   // "Add" button handler
   function handleAdd() {
     if (input === undefined) {
       setInput([""]);
-    } else if (input.length < 3){
+    } else if (input.length < 3) {
       setInput([...input, []]);
     } else {
       setErrorMsg("You reached the maximum number of inputs.");
@@ -51,13 +55,13 @@ const CalculatorInput = (data) => {
   function handleChange(e, indexCategory, indexInput, inputField) {
     let InputClone = [...input]; // Input clone data
 
-    switch (inputField){
+    switch (inputField) {
       case "name":
         InputClone[indexCategory] = {
           id: input[indexCategory].id,
           name: e.target.value,
-          factor:input[indexCategory].factor,
-          unit: input[indexCategory].unit
+          factor: input[indexCategory].factor,
+          unit: input[indexCategory].unit,
         };
         setInput(InputClone);
         break;
@@ -65,7 +69,7 @@ const CalculatorInput = (data) => {
         InputClone[indexCategory] = {
           id: input[indexCategory].id,
           name: input[indexCategory].name,
-          factor:Number(e.target.value),
+          factor: Number(e.target.value),
           unit: input[indexCategory].unit,
         };
         setInput(InputClone);
@@ -101,11 +105,13 @@ const CalculatorInput = (data) => {
         setError(true);
         break;
       } else if (category[0].name === undefined) {
-        setErrorMsg("You might have forgotten to add a value on Category Name ");
+        setErrorMsg(
+          "You might have forgotten to add a value on Category Name "
+        );
         setError(true);
         break;
       } else {
-        data.calculatorInputData(data.optionSelected, input, category[0])
+        data.calculatorInputData(data.optionSelected, input, category[0]);
       }
     }
   }
@@ -113,16 +119,16 @@ const CalculatorInput = (data) => {
   // "Delete" button handler
   async function handleDelete() {
     if (idToRemove !== "") {
-      await deleteCalculatorInput(type.id,category.id, idToRemove);
+      await deleteCalculatorInput(type.id, category.id, idToRemove);
       const temp = [...input];
       temp.splice(optionSelected, 1);
-      setInput(temp)
-      setShowModal(false)
-    } else{
+      setInput(temp);
+      setShowModal(false);
+    } else {
       const temp = [...category];
       temp.splice(optionSelected, 1);
-      setInput(temp)
-      setShowModal(false)
+      setInput(temp);
+      setShowModal(false);
     }
   }
 
@@ -136,10 +142,8 @@ const CalculatorInput = (data) => {
           </Alert>
         )}
         <Form.Group className="mt-5">
-          <Form.Label
-              style={{ fontSize: "25px" }}
-              htmlFor="category-name">
-              Category
+          <Form.Label style={{ fontSize: "25px" }} htmlFor="category-name">
+            Category
           </Form.Label>
           <Form.Control
             aria-labelledby={`category-name`}
@@ -165,7 +169,7 @@ const CalculatorInput = (data) => {
                 className="mt-4"
                 style={{ float: "right" }}
                 variant="danger"
-                onClick={(e) => handleOpen(inputVal.id,i)}
+                onClick={(e) => handleOpen(inputVal.id, i)}
               >
                 Delete
                 <AiOutlineDelete size={18} style={{ marginBottom: "3px" }} />
@@ -174,7 +178,11 @@ const CalculatorInput = (data) => {
 
             {inputTitles.map((inputTitle, b) => (
               <div key={b}>
-                <InputGroup style={{ width: "100%" }} size="lg" className="mt-2">
+                <InputGroup
+                  style={{ width: "100%" }}
+                  size="lg"
+                  className="mt-2"
+                >
                   <InputGroup.Text>{inputTitle}</InputGroup.Text>
                   <FormControl
                     id={`input-${b + 1}`}
@@ -214,15 +222,17 @@ const CalculatorInput = (data) => {
         </Button>
       </div>
 
-      { input !== undefined && (
+      {input !== undefined && (
         <Modal
-            show={showModal}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
+          show={showModal}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Delete input {`"${input[optionSelected]?.name}"`}?</Modal.Title>
+            <Modal.Title>
+              Delete input {`"${input[optionSelected]?.name}"`}?
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             You'll lose all Results collected from this category.
@@ -231,11 +241,12 @@ const CalculatorInput = (data) => {
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="danger" onClick={handleDelete}>Yes, delete it</Button>
+            <Button variant="danger" onClick={handleDelete}>
+              Yes, delete it
+            </Button>
           </Modal.Footer>
         </Modal>
-      )
-      }
+      )}
     </div>
   );
 };

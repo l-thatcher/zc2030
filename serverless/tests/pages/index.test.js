@@ -18,6 +18,8 @@ test("use jsdom in this test file", () => {
 describe("Home", () => {
   it("should render the heading", () => {
     render(<Home />);
+  });
+});
 //
 // describe("Home", () => {
 //   it("should render the heading", () => {
