@@ -13,43 +13,106 @@ import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
 import CalculatorInput from "./CalculatorInput";
 import {
-  deleteCalculatorCategory, deleteCalculatorInputs, deleteUsersCalculator,
-  saveCalculatorCategories, saveCalculatorInputs,
+  deleteCalculatorCategory, deleteCalculatorInputs, deleteUsersCalculator, getCalculatorCategories,
+  saveCalculatorCategories, saveCalculatorInputs, saveCalculatorType,
   updateCalculatorCategories, updateCalculatorInputs
 } from "../../../services/CalculatorService";
 import {useRouter} from "next/router";
 
 const CalculatorCategory = (data) => {
-  const [optionSelected, setOptionSelected] = useState(0);
   let type = data.type;
+  const router = useRouter()
+  const [optionSelected, setOptionSelected] = useState(0);
   const [showInput, setShowInput] = useState(false);
-  const [category, setCategory] = useState(data.categories);
-  const [input, setInput] = useState(data.inputs);
+  const [details, setDetails] = useState(data.type);
+  const [categories, setCategories] = useState(data.categories);
+  const [inputs, setInputs] = useState(data.inputs);
+  const [categoryId, setCategoryId] = useState()
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const handleBackPress = data.handleBackpress
   const [idToRemove, setIdToRemove] = useState("")
-  const router = useRouter()
-
+  
+  // Modal variables
   const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState();
+  const [modalMessage, setModalMessage] = useState();
+  const [modalBtnMessage, setModalBtnMessage] = useState()
+  const [modalVariantColor, setModalVariantColor] = useState()
+  const [isSaveHandler, setIsSaveHandler] = useState(false);
   const handleClose = () => setShowModal(false);
 
-  function handleOpen(id, index) {
-    setIdToRemove(id)
-    setOptionSelected(index)
-    setShowModal(true)
+  // "Save" handler button
+  async function handleSave() {
+
+    const type = (await saveCalculatorType([details.name, details.public])).data
+    await saveCategories(type);
+    const categoryData = await getCalculatorCategories(type.id)
+    setCategories(categoryData.data)
+    for (let i = 0; i < categoryData.data.length; i++) {
+      await saveInputs(categoryData.data[i].id, i, type)
+    }
+    await router.replace("http://localhost:3000/admin/showCalculators")
+    setShowModal(false)
   }
 
+
+  // Save or Update Categories
+  const saveCategories = async (type) => {
+    for (let i = 0; i < categories.length; i++) {
+
+      if (categories[i].id === undefined) {
+        const data = [type.id, categories[i].name]
+        await saveCalculatorCategories(type.id, data);
+
+      } else {
+        const data = [type.id, categories[i].name, categories[i].id]
+        await updateCalculatorCategories(type.id, data);
+
+      }
+    }
+  }
+
+  // // Save or Update Inputs
+  const saveInputs = async (category_id, index, type) => {
+    for (let b = 0; b < inputs[index].length; b++){
+
+      const newCategoryId = categoryId + 1;
+
+      if (inputs[index][b].id === undefined){
+
+        if (category_id === undefined){
+          const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+          await saveCalculatorInputs(type.id, newCategoryId, data);
+        } else {
+          const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+          await saveCalculatorInputs(type.id, category_id, data);
+        }
+
+      } else {
+
+        if (category_id === undefined){
+          const data = [newCategoryId, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit]
+          await saveCalculatorInputs(type.id, newCategoryId, data);
+        } else {
+          const data = [category_id, inputs[index][b].name, inputs[index][b].factor, inputs[index][b].unit, inputs[index][b].id]
+          await updateCalculatorInputs(type.id, category_id, data);
+        }
+      }
+    }
+  }
+
+
   // Receives data back from CalculatorInput
-  const getCalculatorInputData = (optionSelected, newInput, newCategory) => {
+  const getCalculatorInputData = async (optionSelected, newInput, newCategory) => {
 
-    let InputClone = [...input]; // Input clone data
+    let InputClone = [...inputs]; // Input clone data
     InputClone[optionSelected] = newInput
-    setInput(InputClone)
+    await setInputs(InputClone)
 
-    let CategoryClone = [...category]; // Category clone data
+    let CategoryClone = [...categories]; // Category clone data
     CategoryClone[optionSelected] = newCategory
-    setCategory(CategoryClone)
+    await setCategories(CategoryClone)
 
     setShowInput(false);
   };
@@ -57,9 +120,9 @@ const CalculatorCategory = (data) => {
 
   // "Add" button handler
   function handleAdd(input) {
-    if (category.length < 3) {
-      setCategory([...category, input]);
-      setOptionSelected(category.length);
+    if (categories.length < 3) {
+      setCategories([...categories, input]);
+      setOptionSelected(categories.length);
       setShowInput(true)
     } else {
       setErrorMsg("You reached the maximum number of categories.");
@@ -69,25 +132,9 @@ const CalculatorCategory = (data) => {
 
   // onChange handler
   function handleChange(e, index) {
-    let categoryClone = [...category];
+    let categoryClone = [...categories];
     categoryClone[index] = { id: index, name: e.target.value };
-    setCategory(categoryClone);
-  }
-
-  // "Create" button handler
-  async function handleCreate() {
-
-    data.calculatorCategoryData(input, category)
-    for (let i = 0; i < category.length; i++) {
-      let num = i + 1;
-      if (category[i].name === undefined) {
-        setErrorMsg(
-            "You might have forgotten to add a value on Category " + num
-        );
-        setError(true);
-        break;
-      }
-    }
+    setCategories(categoryClone);
   }
 
   // "Edit" button handler
@@ -100,15 +147,37 @@ const CalculatorCategory = (data) => {
   async function handleDelete() {
     if (idToRemove !== "") {
       await deleteCalculatorCategory(type.id, idToRemove);
-      const temp = [...category];
+      const temp = [...categories];
       temp.splice(optionSelected, 1);
-      setCategory(temp)
+      setCategories(temp)
       setShowModal(false)
     } else{
-      const temp = [...category];
+      const temp = [...categories];
       temp.splice(optionSelected, 1);
-      setCategory(temp)
+      setCategories(temp)
       setShowModal(false)
+    }
+  }
+
+  // Modal handler
+  async function handleOpen(id, index, isSave) {
+
+    if (isSave === true) {
+      setModalTitle("Save Type, Categories, and Inputs?")
+      setModalMessage("You will save all types, categories and inputs added")
+      setModalBtnMessage("Yes, save them")
+      setModalVariantColor("success")
+      setIsSaveHandler(true)
+      setShowModal(true)
+    } else {
+      setModalTitle(`Delete category "${categories[optionSelected]?.name}"?`)
+      setModalMessage("You'll lose all Inputs and Results collected from this category.")
+      setModalBtnMessage("Yes, delete it")
+      setModalVariantColor("danger")
+      setIdToRemove(id)
+      setOptionSelected(index)
+      setIsSaveHandler(false)
+      setShowModal(true)
     }
   }
 
@@ -139,7 +208,7 @@ const CalculatorCategory = (data) => {
             <FormLabel style={{ width: "100%", fontSize: "25px" }}>
               Categories
             </FormLabel>
-            {category?.map((category, i) => (
+            {categories?.map((category, i) => (
               <div key={i}>
                 <InputGroup size="lg" className="mt-2">
                   <FormControl
@@ -202,7 +271,7 @@ const CalculatorCategory = (data) => {
               type="submit"
               className={styles.button}
               data-testid="next_btn"
-              onClick={(e) => handleCreate(e)}
+              onClick={(e) => handleOpen(null, null, true)}
             >
               Save
             </Button>
@@ -211,8 +280,8 @@ const CalculatorCategory = (data) => {
         {showInput === true && (
           <div style={{ width: "100%" }}>
             <CalculatorInput
-              category={category[optionSelected]}
-              input={input[optionSelected]}
+              category={categories[optionSelected]}
+              input={inputs[optionSelected]}
               calculatorInputData={getCalculatorInputData}
               optionSelected={optionSelected}
               type={type}
@@ -220,26 +289,28 @@ const CalculatorCategory = (data) => {
           </div>
         )}
       </div>
-      { category !== undefined && (
-      <Modal
-          show={showModal}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Delete category {`"${category[optionSelected]?.name}"`}?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          You'll lose all Inputs and Results collected from this category.
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleDelete}>Yes, delete it</Button>
-        </Modal.Footer>
-      </Modal>
+      { categories !== undefined && (
+          <div>
+            <Modal
+                show={showModal}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>{modalTitle}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {modalMessage}
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Cancel
+                </Button>
+                <Button variant={modalVariantColor} onClick={() => isSaveHandler ? handleSave() : handleDelete()}>{modalBtnMessage}</Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
       )}
     </div>
   );

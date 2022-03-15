@@ -87,7 +87,7 @@ const CalculatorInput = (data) => {
     setCategory(categoryClone);
   }
 
-  function handleCreate() {
+  function handleSave() {
     for (let i = 0; i < input.length; i++) {
       let num = i + 1;
       if (input[i].name === undefined) {
@@ -203,7 +203,7 @@ const CalculatorInput = (data) => {
           type="submit"
           className={styles.button}
           data-testid="next_btn"
-          onClick={(e) => handleCreate()}
+          onClick={(e) => handleSave()}
         >
           Save
         </Button>
