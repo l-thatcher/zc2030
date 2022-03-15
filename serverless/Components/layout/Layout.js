@@ -17,6 +17,14 @@ const Layout = ({ children }) => {
                     <Footer />
                 </div>
             );
+        } else {
+            return (
+                <div className="content">
+                    <UserLayout/>
+                    <div>{children}</div>
+                    <Footer />
+                </div>
+            )
         }
     } else {
         return (
