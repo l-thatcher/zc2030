@@ -88,7 +88,11 @@ const CalculatorInput = (data) => {
   }
 
   function handleSave() {
-    for (let i = 0; i < input.length; i++) {
+    if (input === undefined) {
+      setErrorMsg("You might have forgotten to add an input");
+      setError(true);
+    }
+    for (let i = 0; i < input?.length; i++) {
       let num = i + 1;
       if (input[i].name === undefined) {
         setErrorMsg("You might have forgotten to add a value on Input " + num);
