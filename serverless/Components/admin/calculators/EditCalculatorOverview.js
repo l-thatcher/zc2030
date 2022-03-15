@@ -174,14 +174,15 @@ const EditCalculatorOverview = (data) => {
         <div className={styles.containerMargin5}>
             {overviewShowing === true && (
                 <div className={styles.main}>
-                <Form className={styles.pageContentMain}>
+                    <div className={styles.pageContentMain}>
+                <Form style={{padding:"5%"}}>
                     <Form.Group controlId="form.Name">
-                        <Form.Label>Calculator Name</Form.Label>
-                        <Form.Control data-testid="nameInput" type="text" placeholder="Enter name"
+                        <Form.Label style={{ width: "100%", fontSize: "25px" }}>Calculator Name</Form.Label>
+                        <Form.Control data-testid="nameInput" type="text" placeholder="Enter name" size="lg"
                                       onChange={e => handleNameChange(e)} value={details ? details.name : ""}/>
                     </Form.Group>
-                    <Form.Group controlId="form.Visibility">
-                        <Form.Label>Calculator Visibility</Form.Label>
+                    <Form.Group controlId="form.Visibility" style={{marginTop:"20px"}}>
+                        <Form.Label style={{ width: "100%", fontSize: "25px" }}>Calculator Visibility</Form.Label>
                         <div key={`default-radio`} className="mb-3">
                             <Form.Check
                                 type="radio"
@@ -206,6 +207,7 @@ const EditCalculatorOverview = (data) => {
                         </div>
                     </Form.Group>
                     <UserList details={details} users={users} data-testid="userList"/>
+                    <div style={{ width: "100%", textAlign: "center" }}>
                     <Button
                         style={{width: "125px", marginTop: "40px"}}
                         variant="secondary"
@@ -213,10 +215,13 @@ const EditCalculatorOverview = (data) => {
                         type="submit"
                         data-testid="next_btn"
                         onClick={(e) => handleEdit()}
+                        className={styles.button}
                     >
                         Next
                     </Button>
+                    </div>
                 </Form>
+                    </div>
                 </div>
             )
             }
