@@ -255,7 +255,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.6",
-  "updatedAt": "2022-03-16T20:55:48.765Z",
+  "updatedAt": "2022-03-16T21:55:57.599Z",
   "devdoc": {
     "details": "ERC1822: Universal Upgradeable Proxy Standard (UUPS) documents a method for upgradeability through a simplified proxy whose upgrades are fully controlled by the current implementation.",
     "kind": "dev",
