@@ -54,12 +54,6 @@ enum Role {
     BUSINESS
 }
 
-enum Role {
-  PERSONAL
-  ADMIN
-  BUSINESS
-}
-
 model VerificationToken {
   identifier String
   token      String   @unique
