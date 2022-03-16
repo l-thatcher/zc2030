@@ -35,6 +35,13 @@ export default async function handler(req, res) {
 
         // Update data from database
         case "PUT":
+            try {
+                const result = await editProjectById(req.body, id);
+                res.status(200).json(result);
+            } catch (e) {
+                console.log(e);
+                res.status(500).json({ message: e.message });
+            }
             break;
     }
 }
