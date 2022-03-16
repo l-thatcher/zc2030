@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <SSRProvider>
       <SessionProvider session={session}>
         <Layout>
-          <Component {...pageProps} />
+          <Component {...pageProps}/>
         </Layout>
       </SessionProvider>
     </SSRProvider>

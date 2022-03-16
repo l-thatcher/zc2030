@@ -63,6 +63,7 @@
 .calculatorBody {
   width: 59%;
   float: left;
+  text-transform: capitalize;
 }
 
 .progressBarBody {
@@ -77,6 +78,7 @@
   padding-right: 2rem;
   padding-left: 1rem;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .form {
@@ -98,10 +100,12 @@
   color: black;
   width: 90%;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .btnContainer {
   text-align: center;
+  text-transform: capitalize;
 }
 
 .button {
@@ -109,6 +113,7 @@
   background: #57bc90;
   border: solid 3px #57bc90;
   width: 150px;
+  text-transform: capitalize;
 }
 
 .buttonBack {
@@ -116,6 +121,7 @@
   background: #a5a5af;
   border: solid 3px #a5a5af;
   width: 150px;
+  text-transform: capitalize;
 }
 
 .buttonAdd {
@@ -124,16 +130,19 @@
   border: solid 0px #57bc90;
   width: 150px;
   font-size: 19px;
+  text-transform: capitalize;
 }
 
 .nav {
   background: #57bc90 !important;
+  text-transform: capitalize;
 }
 
 .navItems {
   color: black !important;
   font-size: 21px !important;
   border-top: solid 1px #d2ede3 !important;
+  text-transform: capitalize;
 }
 
 .navItems:hover {
