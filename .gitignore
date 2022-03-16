@@ -108,3 +108,4 @@ dist
 
 # Certificates
 .certificates/
+.openzeppelin\.session
