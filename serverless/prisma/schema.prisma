@@ -133,6 +133,7 @@ model Project {
   country         String
   totalsupply     Decimal
   remainingsupply Decimal
+  ownername       String
   ownerpicture    String
   type            String
   website         String?
