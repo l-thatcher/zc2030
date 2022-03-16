@@ -1,6 +1,6 @@
-import {render} from "../test-utils";
+import { render } from "../test-utils";
 import React from "react";
-import {ProgressBar} from "react-bootstrap";
+import { ProgressBar } from "react-bootstrap";
 
 const data = [
   {
@@ -36,10 +36,10 @@ const data = [
 ];
 
 test("Should render Progress Bar component with [0] data", () => {
-  render(<ProgressBar category={data[0].category} results={data[0].results}/>);
+  render(<ProgressBar category={data[0].category} results={data[0].results} />);
 
-  const {container} = render(
-      <ProgressBar category={data[0].category} results={data[0].results}/>
+  const { container } = render(
+    <ProgressBar category={data[0].category} results={data[0].results} />
   );
   const categories = container.querySelector("div");
 

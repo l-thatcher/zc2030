@@ -69,7 +69,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+serverless/.env
 .env.test
 
 # cypress environment variables file

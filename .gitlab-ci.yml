@@ -1,0 +1,29 @@
+stages:
+  - build
+  - test-cypress
+  - test-jest
+
+build job:
+  image: node:14
+  stage: build
+  script:
+    - cd serverless/
+    - npm install
+    - npm run build  
+
+test cypress job:
+  image: cypress/base:14.16.0
+  stage: test-cypress
+  script:
+    - cd serverless/
+    - npm ci --prefer-offline
+    - npm run dev &
+    - npx cypress run  
+
+test jest job:
+  image: node:14
+  stage: test-jest
+  script:
+    - cd serverless/
+    - npm install
+    - npm test    
