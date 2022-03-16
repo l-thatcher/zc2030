@@ -1,5 +1,4 @@
-import { PrismaClient, Prisma } from "@prisma/client";
-import MainService from "./MainService";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
