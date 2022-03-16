@@ -139,10 +139,3 @@ model Project {
   datefounded     String
   nftaddress      String?
 }
-
-//model projectImage {
-//  id               String  @id @default(cuid())
-//  profileimage     String
-//  project          Project @relation(fields: [projectId], references: [id])
-//  projectId        String
-//}

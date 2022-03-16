@@ -1,10 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminHeader from "./AdminHeader";
 
-
 const AdminLayout = ({ children }) => {
-
-    return (
+  return (
     <div>
       <AdminHeader />
       <div>{children}</div>

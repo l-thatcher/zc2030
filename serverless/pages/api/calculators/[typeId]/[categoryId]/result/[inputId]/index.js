@@ -1,5 +1,6 @@
-import { execute_query } from "../../../../../../utils/db";
+import { execute_query } from "../../../../../../../utils/db";
 import { useRouter } from "next/router";
+import { getSession } from "next-auth/react";
 
 const getCalculatorInputsByCategoryId = `SELECT *
                                          FROM CalculatorResult
@@ -11,6 +12,9 @@ const saveCalculatorInputsByCategoryId = ` INSERT INTO CalculatorResult(input_id
 
 export default async function handler(req, res) {
   const { input_id } = req.query;
+  // const session = await getSession({ req })
+
+  // if (session) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -25,7 +29,7 @@ export default async function handler(req, res) {
 
     // Create data from database
     case "POST":
-      const input_id = req.query.resultId;
+      const input_id = req.query.inputId;
       const result = req.body[0];
       const quantity = req.body[1];
       const userId = req.body[2];
@@ -52,4 +56,9 @@ export default async function handler(req, res) {
     case "PUT":
       break;
   }
+  // } else {
+  //   // Not Signed in
+  //   res.status(200)
+  // }
+  // res.end()
 }

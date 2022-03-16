@@ -3,6 +3,8 @@ import {
   getCalculatorCategories,
   getCalculatorInputs,
   getCalculatorTypes,
+  getCalculatorTypesForUser,
+  getPublicCalculatorTypes,
   getUserCategoryProgress,
 } from "../services/CalculatorService";
 import ListOfCalculators from "../Components/calculators/ListOfCalculators";
@@ -51,12 +53,15 @@ export async function getServerSideProps(context) {
   let categoryId = [];
   const session = await getSession(context);
   let userId = null;
+  let typesRes = null;
   if (session) {
     userId = session.user.id;
+    typesRes = await getCalculatorTypesForUser(userId);
+  } else {
+    typesRes = await getPublicCalculatorTypes();
   }
 
   // Adds all Calculator types in a list
-  const typesRes = await getCalculatorTypes();
   const types = typesRes.data;
 
   // Adds the IDs of calculators in a list
@@ -74,12 +79,8 @@ export async function getServerSideProps(context) {
       const temp = [];
       for (let j = 0; j < calculatorCategories.length; j++) {
         temp.push(
-          (
-            await getUserCategoryProgress(
-                userId,
-              calculatorCategories[j].id
-            )
-          ).data.count
+          (await getUserCategoryProgress(userId, calculatorCategories[j].id))
+            .data.count
         );
       }
       categoriesCount.push(temp);
