@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import * as PrismaService from "../../../services/PrismaService";
+import {addWalletToUserId} from "../../../services/PrismaService";
+import {createEncryptedWallet} from "../../../services/Web3jsService";
 
 dotenv.config();
 
@@ -42,4 +44,12 @@ export default NextAuth({
       return session;
     },
   },
+  events: {
+    createUser: async ({user}) => {
+      const wallet = createEncryptedWallet()
+      console.log("hei there")
+      await addWalletToUserId(user.id, JSON.stringify(wallet
+      ))
+    }
+  }
 });

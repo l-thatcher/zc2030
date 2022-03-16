@@ -106,6 +106,25 @@ export const editProjectById = (data, id) => {
     })
 };
 
+export const addWalletToUserId = (userId, wallet) => {
+    return prisma.user.update({
+        where: {
+            id: userId,
+        },
+        data: {
+            ethWallet: wallet
+        }
+    });
+};
 
-
+export const getWalletById = (userId) => {
+    return prisma.user.findUnique({
+        where: {
+            id: userId
+        },
+        select: {
+            id: true,
+        },
+    });
+}
 
