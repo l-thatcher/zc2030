@@ -5,18 +5,11 @@ import CarbonCalculator from "./CarbonCalculator";
 
 const ListOfCalculators = (props) => {
   const [value, setValue] = useState(0);
-  const inputs = [];
-
   const types = props.types;
   const categories = props.categories;
   const categoriesCount = props.categoriesCount;
   const allInputs = props.inputs[0];
   const userId = props.userId;
-
-  // Add inputs for a specific calculator type
-  categories[value]?.map((category, i) =>
-    inputs.push(allInputs[category.id - 1])
-  );
 
   return (
     <Fragment>
@@ -51,7 +44,7 @@ const ListOfCalculators = (props) => {
         type={types[value]}
         category={categories[value]}
         categoriesCount={categoriesCount[value]}
-        input={inputs}
+        input={allInputs}
         results={0}
         userId={userId}
       />

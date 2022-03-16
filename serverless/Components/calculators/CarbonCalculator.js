@@ -122,7 +122,7 @@ const CarbonCalculator = (data) => {
                   Select a Category:
                 </h3>
                 <div className={styles.formDiv}>
-                  {inputs[step1Value].map((input, i) => (
+                  {inputs[step1Value]?.map((input, i) => (
                     <ToggleButton
                       className={styles.form}
                       variant="secondary"
