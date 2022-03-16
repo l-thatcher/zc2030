@@ -34,7 +34,7 @@ const CalculatorTypes = (data) => {
         </Link>
       </h1>
       <div className="d-grid gap-2">
-        {types.map((it) => (
+        {types.map((it,i) => (
           <div>
             <Link href={`/admin/editCalculator/${it.id}`}>
               <Button variant="primary">{it.name}</Button>
@@ -42,6 +42,7 @@ const CalculatorTypes = (data) => {
             <Button
               variant="danger"
               id="button-addon2"
+              data-testid={`open${i}`}
               onClick={(e) => handleOpen(it.id)}
             >
               {" "}
