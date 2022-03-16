@@ -1,24 +1,23 @@
-import React, {useState } from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
+import {createNewProject} from '../../../services/ProjectService'
 
 // components
 
 // import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
 import AdminSidebar from '../AdminSidebar'
 
-export default function CreateProject() {
-    const [navbarOpen, setNavbarOpen] = React.useState(false);
-
+const CreateProject =()=> {
     const [projectname, setProjectname] = useState('');
     const [cptgbp, setCptgbp] = useState('');
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
     const [streetname, setStreetname] = useState('');
     const [city, setCity] = useState('');
     const [county, setCounty] = useState('');
     const [country, setCountry] = useState('');
     const [totalsupply, setTotalsupply] = useState('');
-    const [remainingsupply, setRemainingsupply] = useState(0);
+    const [remainingsupply, setRemainingsupply] = useState('0');
     const [ownerpicture, setOwnerpicture] = useState('');
     const [type, setType] = useState('');
     const [website, setWebsite] = useState('');
@@ -26,11 +25,29 @@ export default function CreateProject() {
     const [datefounded, setDatefounded] = useState('');
     const [nftaddress, setNftaddress] = useState('');
 
+    const project= {projectname:projectname,cptgbp:cptgbp,latitude:latitude,longitude:longitude,streetname:streetname
+                    , city:city, county:county,
+                country:country,totalsupply:totalsupply,remainingsupply:remainingsupply,ownerpicture:ownerpicture
+        ,type:type,website:website,description:description,datefounded:datefounded,nftaddress:nftaddress}
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+                try {
+                    console.log(project)
+                    await createNewProject(project)
+                } catch (err) {
+                    console.log(err);
+                }
+    }
+
+
 
     return (
         <>
 
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blue-50 border-0">
+            <div
+                className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blue-50 border-0">
                 <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">
                         <h6 className="text-blueGray-700 bg-gray-50 text-xl font-bold">My account</h6>
@@ -43,7 +60,7 @@ export default function CreateProject() {
                     </div>
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                             Project Information
                         </h6>
@@ -72,9 +89,9 @@ export default function CreateProject() {
                                         NFT address
                                     </label>
                                     <input
-                                        type="email"
+                                        required
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        defaultValue="jesse@example.com"  onChange={(e) => setNftaddress(e.target.value)}
+                                        defaultValue="jesse@example.com" onChange={(e) => setNftaddress(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -130,14 +147,14 @@ export default function CreateProject() {
                                     <textarea
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        rows="4"  onChange={(e) => setDescription(e.target.value)}
+                                        rows="4" onChange={(e) => setDescription(e.target.value)}
                                         defaultValue="A beautiful farm with lots of animals "
                                     ></textarea>
                                 </div>
                             </div>
                         </div>
 
-                        <hr className="mt-6 border-b-1 border-blueGray-300" />
+                        <hr className="mt-6 border-b-1 border-blueGray-300"/>
 
                         <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                             Location Information
@@ -152,7 +169,7 @@ export default function CreateProject() {
                                         Address
                                     </label>
                                     <input
-                                        type="text"
+                                        type="text" onChange={(e) => setStreetname(e.target.value)}
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
                                     />
@@ -166,10 +183,10 @@ export default function CreateProject() {
                                     >
                                         City
                                     </label>
-                                    <input
-                                        type="email"
-                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        defaultValue="New York"
+                                    <input onChange={(e) => setCity(e.target.value)}
+                                           required
+                                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                           placeholder="New York"
                                     />
                                 </div>
                             </div>
@@ -181,10 +198,10 @@ export default function CreateProject() {
                                     >
                                         County/State
                                     </label>
-                                    <input
-                                        type="text"
-                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        defaultValue="Essex"
+                                    <input onChange={(e) => setCounty(e.target.value)}
+                                           type="text"
+                                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                           defaultValue="Essex"
                                     />
                                 </div>
                             </div>
@@ -196,10 +213,10 @@ export default function CreateProject() {
                                     >
                                         Country
                                     </label>
-                                    <input
-                                        type="text"
-                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        defaultValue="United Kingdom"
+                                    <input onChange={(e) => setCountry(e.target.value)}
+                                           type="text"
+                                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                           defaultValue="United Kingdom"
                                     />
                                 </div>
                             </div>
@@ -210,18 +227,34 @@ export default function CreateProject() {
                                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlFor="grid-password"
                                     >
-                                        Country
+                                        latitude
                                     </label>
-                                    <input
-                                        type="text"
-                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        defaultValue="United Kingdom"
+                                    <input onChange={(e) => setLatitude(e.target.value)}
+                                           type="text"
+                                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                           defaultValue="United Kingdom"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="w-full lg:w-4/12 px-4">
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        longitude
+                                    </label>
+                                    <input onChange={(e) => setLongitude(e.target.value)}
+                                           type="text"
+                                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                           defaultValue="United Kingdom"
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        <hr className="mt-6 border-b-1 border-blueGray-300" />
+                        <hr className="mt-6 border-b-1 border-blueGray-300"/>
 
                         <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                             About Owner
@@ -236,7 +269,7 @@ export default function CreateProject() {
                                     Owner Name
                                 </label>
                                 <input
-                                    type="email"
+                                    required
                                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     defaultValue="Jack Smith"
                                 />
@@ -250,10 +283,10 @@ export default function CreateProject() {
                                 >
                                     Type of Owner
                                 </label>
-                                <input
-                                    type="text"
-                                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    defaultValue="Farm owner"
+                                <input onChange={(e) => setType(e.target.value)}
+                                       type="text"
+                                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                       defaultValue="Farm owner"
                                 />
                             </div>
                         </div>
@@ -265,18 +298,24 @@ export default function CreateProject() {
                                 >
                                     website
                                 </label>
-                                <input
-                                    type="text"
-                                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    defaultValue="www.cardiff.com"
+                                <input onChange={(e) => setWebsite(e.target.value)}
+                                       type="text"
+                                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                       defaultValue="www.cardiff.com"
                                 />
                             </div>
                         </div>
-
-
+                        <div>
+                            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent
+                    rounded-full shadow-sm text-sm font-medium text-white bg-blue-300
+                     hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "
+                            >Generate Item</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </>
     );
 }
+
+export default CreateProject;

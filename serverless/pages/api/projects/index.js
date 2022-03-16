@@ -1,6 +1,6 @@
 import {getListofProjects} from "../../../services/PrismaService";
 import {createNewProject} from "../../../services/PrismaService";
-
+import {getSession} from "next-auth/react";
 
 export default async function handler(req, res) {
     switch (req.method) {
