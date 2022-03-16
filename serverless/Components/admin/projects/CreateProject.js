@@ -19,6 +19,7 @@ const CreateProject =()=> {
     const [totalsupply, setTotalsupply] = useState('');
     const [remainingsupply, setRemainingsupply] = useState('0');
     const [ownerpicture, setOwnerpicture] = useState('');
+    const [ownername, setOwnername] = useState('');
     const [type, setType] = useState('');
     const [website, setWebsite] = useState('');
     const [description, setDescription] = useState('');
@@ -30,11 +31,11 @@ const CreateProject =()=> {
     let projectimage3= 'https://www.greenqueen.com.hk/wp-content/uploads/2020/12/Veganic-Farming.png'
     let projectimage4= 'https://i.guim.co.uk/img/media/92ff23fe9c9b9372d2bf6bc5f58b5317d09640ba/140_163_3360_2017/master/3360.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=a50edccf40f1867e8ae0407b8f249ef2'
     let projectimage5= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRagVhujggQsNickn5lifRjb4EQzXgYvuaoyaqY06JjzDmgf6BLQ0qQGJQm-gUs0YQkNu4&usqp=CAU'
-
-    const project= {projectname:projectname,cptgbp:cptgbp,latitude:parseFloat(latitude),longitude:parseFloat(latitude),streetname:streetname
+    let ownerpic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'
+    const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(latitude),streetname:streetname
                     , city:city, county:county,
-                country:country,totalsupply:totalsupply,remainingsupply:remainingsupply,ownerpicture:ownerpicture
-        ,type:type,website:website,description:description,datefounded:datefounded,
+                country:country,totalsupply:parseFloat(totalsupply),remainingsupply:remainingsupply,ownerpicture:ownerpic
+        ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
         projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
         projectimage5:projectimage5,
         nftaddress:nftaddress}
@@ -301,6 +302,7 @@ const CreateProject =()=> {
                                 </label>
                                 <input
                                     required
+                                    onChange={(e) => setOwnername(e.target.value)}
                                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     placeholder="Jack Smith"
                                 />
