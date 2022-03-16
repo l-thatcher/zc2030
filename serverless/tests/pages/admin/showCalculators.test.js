@@ -24,6 +24,7 @@ describe("Show calculators admin page", () => {
         expect(button1).toBeInTheDocument();
         expect(button5).toBeInTheDocument();
     });
-})
-;
+});
+
+
 
