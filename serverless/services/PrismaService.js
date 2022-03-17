@@ -61,6 +61,7 @@ export const createNewProject = (data) => {
             country: data.country,
             totalsupply: data.totalsupply,
             remainingsupply: data.remainingsupply,
+            ownername: data.ownername,
             ownerpicture: data.ownerpicture,
             type: data.type,
             website: data.website,
