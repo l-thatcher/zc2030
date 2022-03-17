@@ -47,7 +47,15 @@ module.exports = {
         },
 
         matic: {
-            provider: () => HDWalletProvider(mnemonic, `https://rpc-mumbai.maticvigil.com`),
+            provider: () => new HDWalletProvider(mnemonic, `https://rpc-mainnet.maticvigil.com`),
+            network_id: 137,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true
+        },
+
+        mumbai: {
+            provider: () => new HDWalletProvider(mnemonic, `https://rpc-mumbai.maticvigil.com`),
             network_id: 80001,
             confirmations: 2,
             timeoutBlocks: 200,
