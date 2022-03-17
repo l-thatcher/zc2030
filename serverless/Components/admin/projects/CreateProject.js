@@ -17,7 +17,6 @@ const CreateProject =()=> {
     const [county, setCounty] = useState('');
     const [country, setCountry] = useState('');
     const [totalsupply, setTotalsupply] = useState('');
-    const [remainingsupply, setRemainingsupply] = useState('0');
     const [ownerpicture, setOwnerpicture] = useState('');
     const [ownername, setOwnername] = useState('');
     const [type, setType] = useState('');
@@ -34,7 +33,7 @@ const CreateProject =()=> {
     let ownerpic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'
     const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(latitude),streetname:streetname
                     , city:city, county:county,
-                country:country,totalsupply:parseFloat(totalsupply),remainingsupply:remainingsupply,ownerpicture:ownerpic
+                country:country,totalsupply:parseFloat(totalsupply),remainingsupply:parseFloat(totalsupply),ownerpicture:ownerpic
         ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
         projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
         projectimage5:projectimage5,

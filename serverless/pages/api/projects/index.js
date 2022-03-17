@@ -1,6 +1,7 @@
-import {getListofProjects} from "../../../services/PrismaService";
+import {editProjectById, getListofProjects} from "../../../services/PrismaService";
 import {createNewProject} from "../../../services/PrismaService";
 import {getSession} from "next-auth/react";
+import {createEncryptedWallet} from "../../../services/Web3jsService";
 
 export default async function handler(req, res) {
     switch (req.method) {
@@ -20,7 +21,8 @@ export default async function handler(req, res) {
         case "POST":
 
             try {
-                const result = await createNewProject(req.body);
+                const wallet = createEncryptedWallet();
+                const result = await createNewProject(req.body, JSON.stringify(wallet), wallet.address);
                 res.status(200).json(result);
             } catch (e) {
                 console.log(e);

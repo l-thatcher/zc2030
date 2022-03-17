@@ -42,8 +42,7 @@ export const getProject = (projectID) => {
 };
 
 
-export const createNewProject = (data) => {
-    console.log(data)
+export const createNewProject = (data, wallet, publicAddress) => {
     return prisma.project.create({
         data: {
             projectname: data.projectname,
@@ -61,12 +60,15 @@ export const createNewProject = (data) => {
             country: data.country,
             totalsupply: data.totalsupply,
             remainingsupply: data.remainingsupply,
+            ownername: data.ownername,
             ownerpicture: data.ownerpicture,
             type: data.type,
             website: data.website,
             description: data.description,
             datefounded: data.datefounded,
             nftaddress: data.nftaddress,
+            ethWallet: wallet,
+            publicAddress: publicAddress
         }
 
     })
@@ -106,13 +108,14 @@ export const editProjectById = (data, id) => {
     })
 };
 
-export const addWalletToUserId = (userId, wallet) => {
+export const addWalletToUserId = (userId, wallet, publicAddress) => {
     return prisma.user.update({
         where: {
             id: userId,
         },
         data: {
-            ethWallet: wallet
+            ethWallet: wallet,
+            publicAddress: publicAddress
         }
     });
 };
