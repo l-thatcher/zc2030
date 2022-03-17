@@ -35,7 +35,6 @@ const CreateProject =()=> {
         projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
         projectimage5:projectimage5,
         nftaddress:nftaddress}
-    
     const handleSubmit = async (e) => {
 
         e.preventDefault();
