@@ -1,4 +1,6 @@
 import styles from "../styles/Home.module.css";
+import ProjectCard from "../Components/ProjectCard";
+import {getProjectsList} from "../services/ProjectService";
 
 const calculatorImg = "/calculator-logo.png";
 const discoverImg = "/discover-logo2.png";
@@ -6,7 +8,8 @@ const purchaseImg = "/purchase-logo.png";
 const offsetImg = "/offset-logo.png";
 const profileImg = "/profile-default.png";
 
-export default function Home() {
+export default function Home(props) {
+  const allProjects = props.allProjects
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -70,6 +73,10 @@ export default function Home() {
 
         <div className={styles.projects}>
           <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
+          {allProjects.map((project) => (
+              // <ProjectCard project={project} key={project.name} />
+              <ProjectCard project={project} />
+          ))}
         </div>
 
         <div className={styles.team}>
@@ -89,4 +96,14 @@ export default function Home() {
       </main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const projectsRes = await getProjectsList();
+  const allProjects = projectsRes.data.slice(-5);
+
+  return {
+    props: { allProjects },
+    revalidate: 60 //Regenerates page every minute
+  };
 }

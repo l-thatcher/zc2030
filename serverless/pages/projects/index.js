@@ -18,20 +18,12 @@ export default function Projects(props) {
   );
 }
 
-export async function getServerSideProps() {
-  // const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  // const data = await res.json();
-
-  // const res = await getListofProjects();
-  // console.log(res)
-  // const allProjects = JSON.stringify(res);
-  // console.log("here");
-  // console.log(allProjects);
-
+export async function getStaticProps() {
   const projectsRes = await getProjectsList();
   const allProjects = projectsRes.data;
 
   return {
     props: { allProjects },
+    revalidate: 60 //Regenerates page every minute
   };
 }
