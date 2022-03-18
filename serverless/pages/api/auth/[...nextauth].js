@@ -46,10 +46,9 @@ export default NextAuth({
     },
   },
   events: {
-    createUser: async ({ user }) => {
-      const wallet = createEncryptedWallet();
-      console.log("hei there");
-      await addWalletToUserId(user.id, JSON.stringify(wallet));
-    },
-  },
+    createUser: async ({user}) => {
+      const wallet = createEncryptedWallet()
+      await addWalletToUserId(user.id, JSON.stringify(wallet),wallet.address)
+    }
+  }
 });
