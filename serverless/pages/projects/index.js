@@ -24,6 +24,6 @@ export async function getStaticProps() {
 
   return {
     props: { allProjects },
-    revalidate: 60 //Regenerates page every minute
+    revalidate: 60, //Regenerates page every minute
   };
 }
