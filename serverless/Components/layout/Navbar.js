@@ -1,4 +1,6 @@
 import LoginSession from "../LoginSession";
+import Link from 'next/link'
+
 
 const Navbar = () => {
 
@@ -17,28 +19,36 @@ const Navbar = () => {
           </svg>
         </button>
         <div className="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
-          <a className="Flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt- mr-1" href="#">
-            <img src={logo} style={{ height: 70}} alt="" loading="lazy"/>
-          </a>
+
+          <Link href="/">
+            <a className="Flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt- mr-1" href="#">
+              <img src={logo} style={{ height: 70}} alt="" loading="lazy"/>
+            </a>
+          </Link>
           {/*  Left links */}
           <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
             <li className="nav-item p-2">
-              <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">
-                About
-              </a>
+              <Link href="/about">
+                <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">
+                  About
+                </a>
+              </Link>
             </li>
             <li className="nav-item p-2">
-              <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">
-                Projects
-              </a>
+
+              <Link href="/projects">
+                <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">
+                  Projects
+                </a>
+              </Link>
             </li>
             <li className="nav-item p-2">
-              <a
-                className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
-                href="#"
-              >
-                Calculator
-              </a>
+
+                <Link href="/calculator">
+                  <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#"
+                  >Calculator</a>
+                </Link>
+
             </li>
           </ul>
           {/* <!-- Left links --> */}

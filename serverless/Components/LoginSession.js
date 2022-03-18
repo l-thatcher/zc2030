@@ -1,5 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { IoMdWallet } from "react-icons/io";
+import Link from 'next/link'
 
 function LoginPage() {
   const { data: session } = useSession();
@@ -11,7 +12,11 @@ function LoginPage() {
           <button className=" mt-4 -ml-1 flex items-center text-sm font-medium  mr-6 text-white bg-blue-500 hover:bg-blue-800  font-medium rounded-lg text-sm px-3 py-1 text-center mr-2 mb-2">
               <IoMdWallet className=''/>
 
-              <span className="ml-1">Wallet</span>
+              <Link href="/wallet">
+                  <a className='text-white no-underline ' ><span className="ml-1">Wallet</span></a>
+              </Link>
+
+
           </button>
 
           <button className=" mt-4 -ml-1 flex items-center text-sm font-medium text-white bg-green-400 hover:bg-green-800  font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 "
@@ -26,7 +31,7 @@ function LoginPage() {
   }
   return (
     <>
-      <br />
+
       {/*TODO: Remove In-Line Styling - Mix Bootstrap and External Styling?*/}
       <button
         className=" mt-4 -ml-1 flex items-center text-sm font-medium text-white bg-green-400 hover:bg-green-800  font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2"
@@ -34,6 +39,7 @@ function LoginPage() {
         onClick={() => signIn()}
       >
         Sign in
+
       </button>
     </>
   );
