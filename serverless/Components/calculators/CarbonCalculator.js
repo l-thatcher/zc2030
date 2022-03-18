@@ -86,7 +86,6 @@ const CarbonCalculator = (data) => {
   return (
     <main className={styles.main}>
       <div className={styles.pageContentMain}>
-
         <h2 className={styles.h2} data-testid="calculator_heading">
           {type.name} Calculator
         </h2>

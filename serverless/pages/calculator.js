@@ -74,12 +74,8 @@ export async function getServerSideProps(context) {
       const temp = [];
       for (let j = 0; j < calculatorCategories.length; j++) {
         temp.push(
-          (
-            await getUserCategoryProgress(
-                userId,
-              calculatorCategories[j].id
-            )
-          ).data.count
+          (await getUserCategoryProgress(userId, calculatorCategories[j].id))
+            .data.count
         );
       }
       categoriesCount.push(temp);

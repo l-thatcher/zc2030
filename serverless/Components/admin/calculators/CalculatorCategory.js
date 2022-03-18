@@ -1,5 +1,3 @@
-const CalculatorCategory = (data) => {
-
-};
+const CalculatorCategory = (data) => {};
 
 export default CalculatorCategory;

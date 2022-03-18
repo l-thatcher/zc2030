@@ -1,11 +1,10 @@
 //Test while this one is commented
 
 describe("Calculator tests", () => {
-    test('rounding 1.1 should be 1', () => {
-        expect(Math.round(1.1)).toBe(1);
-    });
-})
-
+  test("rounding 1.1 should be 1", () => {
+    expect(Math.round(1.1)).toBe(1);
+  });
+});
 
 // import React from "react";
 // import { render, screen } from "../test-utils";
