@@ -259,7 +259,7 @@ export default function AccountDashboard(props) {
               <p className={styles.icons}>Edit</p>
               <p className={styles.icons}>Delete</p>
             </div>
-            {users.map((name, i) => (
+            {users.map((user, i) => (
               <div key="{users}" className={styles.items}>
                 <p className={styles.item}>{users[i].id}</p>
                 <p className={styles.item}>{users[i].name}</p>
