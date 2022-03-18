@@ -15,7 +15,7 @@ const ProgressBar = (data) => {
     return (
       <div className="justify-content-center">
         <div className={styles.container}>
-          {categories.map((category, i) => (
+          {categories?.map((category, i) => (
             <div className={styles.column}>
               <div className={styles.row} style={{ marginTop: "30px" }}>
                 <h1 className={styles.h1}>{category.name}</h1>

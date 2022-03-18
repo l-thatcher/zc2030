@@ -80,7 +80,8 @@ const UserList = (data) => {
           style={{ width: "100%", marginTop: "10px" }}
           onClick={(e) => handleAdd()}
         >
-          Add <CgAddR size={20} style={{ marginBottom: "4px" }} />
+          Add User
+          <CgAddR size={20} style={{ marginBottom: "4px" }} />
         </Button>
         <Modal
           show={showModal}
