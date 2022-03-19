@@ -47,7 +47,7 @@ module.exports = {
         },
 
         matic: {
-            provider: () => new HDWalletProvider(mnemonic, `https://rpc-mainnet.maticvigil.com`),
+            provider: () => new HDWalletProvider(mnemonic, `https://polygon-mainnet.infura.io/v3/b195c12440a14ca78345544c74bc58fb`),
             network_id: 137,
             confirmations: 2,
             timeoutBlocks: 200,
@@ -55,7 +55,7 @@ module.exports = {
         },
 
         mumbai: {
-            provider: () => new HDWalletProvider(mnemonic, `https://rpc-mumbai.maticvigil.com`),
+            provider: () => new HDWalletProvider(mnemonic, `https://polygon-mumbai.infura.io/v3/b195c12440a14ca78345544c74bc58fb`),
             network_id: 80001,
             confirmations: 2,
             timeoutBlocks: 200,
@@ -118,7 +118,7 @@ module.exports = {
   // After you backed up your artifacts you can utilize db by running migrate as follows: 
   // $ truffle migrate --reset --compile-all
   //
-  // db: {
+    // db: {
     // enabled: false,
     // host: "127.0.0.1",
     // adapter: {
@@ -127,5 +127,9 @@ module.exports = {
     //     directory: ".db"
     //   }
     // }
-  // }
+    // }
+    plugins: ['truffle-plugin-verify'],
+    api_keys: {
+        polygonscan: 'MZHUFBD5VPXKWHQASUTPUZP248J5DTBJZX'
+    }
 };

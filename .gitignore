@@ -109,3 +109,7 @@ dist
 # Certificates
 .certificates/
 .openzeppelin\.session
+
+# Secret file
+.secret
+.openzeppelin\.session
