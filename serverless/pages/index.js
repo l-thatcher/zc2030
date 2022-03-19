@@ -73,24 +73,48 @@ export default function Home(props) {
 
         <div className={styles.projects}>
           <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
-          {allProjects.map((project) => (
-            // <ProjectCard project={project} key={project.name} />
-            <ProjectCard project={project} />
-          ))}
+          <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
+            {allProjects.map((project) => (
+                // <ProjectCard project={project} key={project.name} />
+                <ProjectCard project={project} />
+            ))}
+          </div>
         </div>
 
         <div className={styles.team}>
           <h1 className={styles.teamHeader}>Meet the team</h1>
 
-          <div className={styles.profileCard}>
-            <img
-              src={profileImg}
-              srcSet={profileImg}
-              className={styles.profilePic}
-              alt="Calculate"
-            />
-            <h2>Peter Trott</h2>
-            <h4>CEO</h4>
+          <div className={styles.teamCards}>
+            <div className={styles.profileCard}>
+              <img
+                  src={profileImg}
+                  srcSet={profileImg}
+                  className={styles.profilePic}
+                  alt="Calculate"
+              />
+              <h2>Peter Trott</h2>
+              <h4>CEO</h4>
+            </div>
+            <div className={styles.profileCard}>
+              <img
+                  src={profileImg}
+                  srcSet={profileImg}
+                  className={styles.profilePic}
+                  alt="Calculate"
+              />
+              <h2>Peter Trott</h2>
+              <h4>CEO</h4>
+            </div>
+            <div className={styles.profileCard}>
+              <img
+                  src={profileImg}
+                  srcSet={profileImg}
+                  className={styles.profilePic}
+                  alt="Calculate"
+              />
+              <h2>Peter Trott</h2>
+              <h4>CEO</h4>
+            </div>
           </div>
         </div>
       </main>
