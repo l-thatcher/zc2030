@@ -1,39 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./Header";
 import Footer from "./Footer";
-import { useSession } from "next-auth/react";
-import UserLayout from "../userLayout/UserLayout";
-import AdminLayout from "../adminLayout/AdminLayout";
+import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
-  const { data: session } = useSession();
+  return (
+    <div className="">
+      {/*<Header />*/}
+      <Navbar />
 
-  if (session) {
-    if (session.user.role === "ADMIN") {
-      return (
-        <div className="content">
-          <AdminLayout />
-          <div>{children}</div>
-          <Footer />
-        </div>
-      );
-    } else {
-      return (
-        <div className="content">
-          <UserLayout />
-          <div>{children}</div>
-          <Footer />
-        </div>
-      );
-    }
-  } else {
-    return (
-      <div className="content">
-        <UserLayout />
-        <div>{children}</div>
-        <Footer />
-      </div>
-    );
-  }
+      <div>{children}</div>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default Layout;

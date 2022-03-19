@@ -11,14 +11,10 @@ export const getProjectById = (projectId) => {
 
 // POST Request - Create a new project
 export const createNewProject = (data) => {
-    return MainService.post(`/api/projects`,
-        data
-    );
+  return MainService.post(`/api/projects`, data);
 };
 
 // PUT Request - Create a new project
 export const editProjectById = (data, id) => {
-    return MainService.put(`/api/projects/${id}/edit`,
-        data
-    );
+  return MainService.put(`/api/projects/${id}/edit`, data);
 };
