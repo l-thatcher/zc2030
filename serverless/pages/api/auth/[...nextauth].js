@@ -5,7 +5,6 @@ import Auth0Provider from "next-auth/providers/auth0";
 import dotenv from "dotenv";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
-import * as PrismaService from "../../../services/PrismaService";
 import {addWalletToUserId} from "../../../services/PrismaService";
 import {createEncryptedWallet} from "../../../services/Web3jsService";
 

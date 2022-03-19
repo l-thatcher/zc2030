@@ -1,4 +1,3 @@
-import { getListofProjects } from "../../../services/PrismaService";
 import {editProjectById, getListofProjects} from "../../../services/PrismaService";
 import {createNewProject} from "../../../services/PrismaService";
 import {getSession} from "next-auth/react";
