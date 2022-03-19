@@ -18,12 +18,26 @@ posClient.init({
             },
             providerOrUrl: parentRPC
         }),
+        defaultConfig: {
+            from: "0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B"
+        }
     },
+    child: {
+        provider: new HDWalletProvider({
+            mnemonic: {
+                phrase: "labor evoke bounce thank discover badge history great peasant isolate jazz ahead" //TODO: Make new wallet and store securely
+            },
+            providerOrUrl: 'https://rpc-mumbai.maticvigil.com/'
+        }),
+        defaultConfig: {
+            from: "0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B"
+        }
+    }
 });
 
-const erc20ParentToken = posClient.erc20("0000000000000000000000000000000000001010", true);
+const erc20ParentToken = posClient.erc20("0000000000000000000000000000000000001010");
 
 export async function getMaticBalance(userAddress) {
-    return await erc20ParentToken.getBalance("0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B")/1000000000000000000;
+    return await erc20ParentToken.getBalance(userAddress)/1000000000000000000;
 }
 
