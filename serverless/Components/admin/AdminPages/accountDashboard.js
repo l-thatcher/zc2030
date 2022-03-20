@@ -128,12 +128,12 @@ export default function AccountDashboard(props) {
     });
   }
 
-  function editUserFunc(id, name, email, role, ethWallet) {
+  function editUserFunc(id, name, email, role, publicAddress) {
     setUserId(id);
     setUserName(name);
     setUserEmail(email);
     setUserRole(role);
-    setUserWallet(ethWallet);
+    setUserWallet(publicAddress);
 
     setUserVisibility(!userVisibility);
   }
@@ -201,91 +201,154 @@ export default function AccountDashboard(props) {
           />
           <p />
           <h5>Wallet Address</h5>
-          <input
-            value={userWallet}
-            id="email"
-            type="text"
-            required
-            onChange={(e) => setUserWallet(e.target.value)}
-          />
+          <p>{userWallet}</p>
           <p />
           <button>Save</button>
         </form>
       </Popup>
 
       <div className={styles.container}>
+        <div className={styles.titles}>
+          <h1>Admin Management </h1>
+          <AiOutlinePlusSquare
+              className={styles.icons}
+              onClick={(e) => setAdminVisibility(!adminVisibility)}
+          />
+        </div>
         <div className={styles.listContainer}>
-          <div className={styles.titles}>
-            <h1>Admin Management </h1>
-            <div>
-              <AiOutlinePlusSquare
-                className={styles.icons}
-                onClick={(e) => setAdminVisibility(!adminVisibility)}
-              />
-              {/*<AiOutlineSearch className={styles.icons}/>*/}
-            </div>
-          </div>
-          <div className={styles.lists}>
-            <div key="{admins}" className={styles.items}>
-              <p className={styles.item}>Name</p>
-              <p className={styles.item}>Email</p>
-              <p className={styles.icons}>Remove</p>
-            </div>
+          <table className="table-auto w-100 shadow-md rounded">
+            <thead className="bg-[#77C9D480]">
+            <tr>
+              <th className="p-2 text-left font-bold">Name</th>
+              <th className="p-2 text-left font-bold">Email</th>
+              <th className="p-2 text-left font-bold">Remove</th>
+            </tr>
+            </thead>
+            <tbody className={"divide-y divide-gray-300"}>
             {admins.map((name, i) => (
-              <div key="{admins}" className={styles.items}>
-                <p className={styles.item}>{admins[i].name}</p>
-                <p className={styles.item}>{admins[i].email}</p>
-                <IoMdRemoveCircle
-                  onClick={(e) => removeAdminFunc(admins[i].email)}
-                  className={styles.icons}
-                />
-              </div>
+                <tr key={"admins"} className={styles.tr}>
+                  <td className="p-2">{admins[i].name}</td>
+                  <td className="p-2">{admins[i].email}</td>
+                  <td className="p-2">
+                    <IoMdRemoveCircle
+                        onClick={(e) => removeAdminFunc(admins[i].email)}
+                        className={styles.iconsBin}
+                    />
+                  </td>
+                </tr>
             ))}
-          </div>
+            </tbody>
+          </table>
         </div>
 
-        <div className={styles.listContainer}>
-          <div className={styles.titles}>
-            <h1>User Management </h1>
-            {/*<AiOutlineSearch className={styles.icons}/>*/}
-          </div>
-          <div className={styles.lists}>
-            <div key="{users}" className={styles.items}>
-              <p className={styles.item}>ID</p>
-              <p className={styles.item}>Name</p>
-              <p className={styles.item}>Email</p>
-              <p className={styles.item}>Type</p>
-              <p className={styles.item}>Wallet Address</p>
-              <p className={styles.icons}>Edit</p>
-              <p className={styles.icons}>Delete</p>
-            </div>
-            {users.map((user, i) => (
-              <div key="{users}" className={styles.items}>
-                <p className={styles.item}>{users[i].id}</p>
-                <p className={styles.item}>{users[i].name}</p>
-                <p className={styles.item}>{users[i].email}</p>
-                <p className={styles.item}>{users[i].role}</p>
-                <p className={styles.item}>{users[i].ethWallet}</p>
-                <AiOutlineEdit
-                  className={styles.icons}
-                  onClick={(e) =>
-                    editUserFunc(
-                      users[i].id,
-                      users[i].name,
-                      users[i].email,
-                      users[i].role,
-                      users[i].ethWallet
-                    )
-                  }
-                />
-                <MdDelete
-                  onClick={(e) => removeUserFunc(users[i].id)}
-                  className={styles.icons}
-                />
-              </div>
-            ))}
-          </div>
+        <div className={styles.titles}>
+          <h1>User Management </h1>
+          {/*<AiOutlineSearch className={styles.icons}/>*/}
         </div>
+        <div className={styles.listContainer}>
+          <table className="table-fixed w-100 shadow-md rounded h-0.25">
+            <thead className="bg-[#77C9D480]">
+            <tr>
+              <th className="hidden sm:block p-2 text-left font-bold">ID</th>
+              <th className="p-2 text-left font-bold">Name</th>
+              <th className="p-2 text-left font-bold">Email</th>
+              <th className="p-2 text-left font-bold">Role</th>
+              <th className="p-2 text-left font-bold overflow-x-auto">Wallet Address</th>
+              <th className="p-2 text-left font-bold">Edit</th>
+              <th className="p-2 text-left font-bold">Delete</th>
+            </tr>
+            </thead>
+            <tbody className= "divide-y divide-gray-300 overflow-y-auto">
+            {users.map((name, i) => (
+                <tr key={"users"} className={styles.tr}>
+                  <td className="hidden sm:block p-2 overflow-x-auto">{users[i].id}</td>
+                  <td className="p-2 overflow-x-auto">{users[i].name}</td>
+                  <td className="p-2 overflow-x-auto">{users[i].email}</td>
+                  <td className="p-2 overflow-x-auto">{users[i].role}</td>
+                  <td className="p-2 overflow-x-auto">{users[i].publicAddress}</td>
+                  <td className="p-2">
+                    <AiOutlineEdit
+                        className={styles.iconsEdit}
+                        onClick={(e) =>
+                            editUserFunc(
+                                users[i].id,
+                                users[i].name,
+                                users[i].email,
+                                users[i].role,
+                                users[i].publicAddress
+                            )
+                        }
+                    />
+                  </td>
+                  <td>
+                    <MdDelete
+                        onClick={(e) => removeUserFunc(users[i].id)}
+                        className={styles.iconsBin}
+                    />
+                  </td>
+                </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
+        
+        {/*<div className={styles.listContainer}>*/}
+          {/*<div className={styles.lists}>*/}
+          {/*  <div key="{admins}" className={styles.items}>*/}
+          {/*    <p className={styles.item}>Name</p>*/}
+          {/*    <p className={styles.item}>Email</p>*/}
+          {/*    <p className={styles.icons}>Remove</p>*/}
+          {/*  </div>*/}
+          {/*  {admins.map((name, i) => (*/}
+          {/*    <div key="{admins}" className={styles.items}>*/}
+          {/*      <p className={styles.item}>{admins[i].name}</p>*/}
+          {/*      <p className={styles.item}>{admins[i].email}</p>*/}
+          {/*      <IoMdRemoveCircle*/}
+          {/*        onClick={(e) => removeAdminFunc(admins[i].email)}*/}
+          {/*        className={styles.icons}*/}
+          {/*      />*/}
+          {/*    </div>*/}
+          {/*  ))}*/}
+          {/*</div>*/}
+        {/*</div>*/}
+        {/*<div className={styles.listContainer}>*/}
+          {/*<div className={styles.lists}>*/}
+          {/*  <div key="{users}" className={styles.items}>*/}
+          {/*    <p className={styles.item}>ID</p>*/}
+          {/*    <p className={styles.item}>Name</p>*/}
+          {/*    <p className={styles.item}>Email</p>*/}
+          {/*    <p className={styles.item}>Type</p>*/}
+          {/*    <p className={styles.item}>Wallet Address</p>*/}
+          {/*    <p className={styles.icons}>Edit</p>*/}
+          {/*    <p className={styles.icons}>Delete</p>*/}
+          {/*  </div>*/}
+          {/*  {users.map((user, i) => (*/}
+          {/*    <div key="{users}" className={styles.items}>*/}
+          {/*      <p className={styles.item}>{users[i].id}</p>*/}
+          {/*      <p className={styles.item}>{users[i].name}</p>*/}
+          {/*      <p className={styles.item}>{users[i].email}</p>*/}
+          {/*      <p className={styles.item}>{users[i].role}</p>*/}
+          {/*      <p className={styles.item}>{users[i].ethWallet}</p>*/}
+          {/*      <AiOutlineEdit*/}
+          {/*        className={styles.icons}*/}
+          {/*        onClick={(e) =>*/}
+          {/*          editUserFunc(*/}
+          {/*            users[i].id,*/}
+          {/*            users[i].name,*/}
+          {/*            users[i].email,*/}
+          {/*            users[i].role,*/}
+          {/*            users[i].ethWallet*/}
+          {/*          )*/}
+          {/*        }*/}
+          {/*      />*/}
+          {/*      <MdDelete*/}
+          {/*        onClick={(e) => removeUserFunc(users[i].id)}*/}
+          {/*        className={styles.icons}*/}
+          {/*      />*/}
+          {/*    </div>*/}
+          {/*  ))}*/}
+          {/*</div>*/}
+        {/*</div>*/}
       </div>
     </div>
   );
