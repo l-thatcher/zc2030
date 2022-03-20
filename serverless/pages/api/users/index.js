@@ -2,15 +2,6 @@ import { execute_query } from "../../../utils/db";
 
 const getAllUserData = `SELECT * FROM USER`;
 
-const updateUser = `UPDATE USER 
-SET 
-    name = ?,
-    email = ?,
-    role = ?,
-    ethWallet = ?
-WHERE
-    id = ?`;
-
 // const handler = async (_, res) => {
 //     try {
 //         const result = await sql_query(getAllUserData);
@@ -42,24 +33,8 @@ export default async function handler(req, res) {
     case "DELETE":
       break;
 
+    // Update data from database
     case "PUT":
-      try {
-        const id = req.body[0];
-        const name = req.body[1];
-        const email = req.body[2];
-        const role = req.body[3];
-        const ethAddress = req.body[4];
-        const result = await execute_query(updateUser, [
-          name,
-          email,
-          role,
-          ethAddress,
-          id,
-        ]);
-        res.status(200).json(result);
-      } catch (e) {
-        res.status(500).json({ message: e.message });
-      }
       break;
   }
 }

@@ -54,7 +54,7 @@ export const deleteCalculatorCategory = (type_id, categoryId) => {
 
 export const deleteCalculatorInput = (type_id, categoryId, inputId) => {
   return MainService.delete(
-    `/api/calculators/${type_id}/${categoryId}/${inputId}`
+    `/api/calculators/${type_id}/${categoryId}/input/${inputId}`
   );
 };
 

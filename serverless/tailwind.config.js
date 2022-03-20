@@ -18,8 +18,14 @@ module.exports = {
       gray: "#8492a6",
       "gray-light": "#d3dce6",
     },
-
-    extend: {},
+    fontFamily: {
+      nunito: ["nunito", "sans-serif"],
+    },
+    extend: {
+      fontFamily: {
+        nunito: ["nunito", "sans-serif"],
+      },
+    },
   },
   plugins: [
     require("daisyui"),
