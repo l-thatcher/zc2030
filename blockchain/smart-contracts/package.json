@@ -4,6 +4,7 @@
     "truffle": "^5.5.4"
   },
   "devDependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.14.0",
     "@truffle/hdwallet-provider": "^2.0.4",
     "truffle-plugin-verify": "^0.5.24"
   }

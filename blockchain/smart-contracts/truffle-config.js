@@ -47,7 +47,7 @@ module.exports = {
         },
 
         matic: {
-            provider: () => new HDWalletProvider(mnemonic, `https://polygon-mainnet.infura.io/v3/b195c12440a14ca78345544c74bc58fb`),
+            provider: () => new HDWalletProvider(mnemonic, `https://polygon-mainnet.infura.io/v3/579ec05cfce44d31854d6f693d5fa907`),
             network_id: 137,
             confirmations: 2,
             timeoutBlocks: 200,
@@ -55,11 +55,12 @@ module.exports = {
         },
 
         mumbai: {
-            provider: () => new HDWalletProvider(mnemonic, `https://polygon-mumbai.infura.io/v3/b195c12440a14ca78345544c74bc58fb`),
+            provider: () => new HDWalletProvider(mnemonic, `https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907`),
             network_id: 80001,
             confirmations: 2,
             timeoutBlocks: 200,
-            skipDryRun: true
+            networkCheckTimeout: 1000000,
+            skipDryRun: false,
         },
         // Another network with more advanced options...
         // advanced: {
@@ -72,14 +73,15 @@ module.exports = {
         // },
         // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-    // network_id: 3,       // Ropsten's id
-    // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-    // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-    // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
+        ropsten: {
+        provider: () => new HDWalletProvider(mnemonic, `wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907`),
+        network_id: 3,       // Ropsten's id
+        gas: 5500000,        // Ropsten has a lower block limit than mainnet
+        confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+        timeoutBlocks: 400,  // # of blocks before a deployment times out  (minimum/default: 50)
+        networkCheckTimeout: 1000000,
+        skipDryRun: false,     // Skip dry run before migrations? (default: false for public nets )
+        },
     // Useful for private networks
     // private: {
     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
