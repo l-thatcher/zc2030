@@ -1,8 +1,8 @@
 import styles from "../../styles/AdminSidebar.module.css";
 import Link from "next/link";
-import { MdAccountBox } from "react-icons/Md";
-import { ImCalculator } from "react-icons/Im";
-import { AiFillProject } from "react-icons/Ai";
+import { MdAccountBox } from "react-icons/md";
+import { ImCalculator } from "react-icons/im";
+import { AiFillProject } from "react-icons/ai";
 
 export default function adminSidebar() {
   return (

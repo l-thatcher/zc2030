@@ -8,13 +8,6 @@
   height: fit-content;
 }
 
-.adminPop {
-  z-index: 2;
-}
-
-.editUserPop {
-  z-index: 2;
-}
 
 .listContainer {
   padding-bottom: 2rem;
