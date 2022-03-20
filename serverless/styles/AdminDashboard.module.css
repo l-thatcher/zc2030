@@ -28,6 +28,12 @@
   justify-content: space-between;
 }
 
+.icons{
+  height: 2rem;
+  width: 2rem;
+  color: rgba(0, 105, 117, 0.82);
+}
+
 .iconsBin{
   height: 2rem;
   width: 2rem;
@@ -38,6 +44,11 @@
   height: 2rem;
   width: 2rem;
   color: rgba(0, 105, 117, 0.82);
+}
+
+.icons:hover {
+  cursor: pointer;
+  color: #000;
 }
 
 .iconsBin:hover {
