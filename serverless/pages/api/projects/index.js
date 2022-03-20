@@ -5,7 +5,8 @@ import {
 import { createNewProject } from "../../../services/PrismaService";
 import { getSession } from "next-auth/react";
 import { createEncryptedWallet } from "../../../services/Web3jsService";
-import { mintZCT } from "../../../services/ZCTService";
+import {getZCTBalance, mintZCT} from "../../../services/ZCTService";
+import log from "tailwindcss/lib/util/log";
 
 const getCalculatorTypes = `SELECT * FROM Projects`;
 
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
           JSON.stringify(wallet),
           wallet.address
         );
-        await mintZCT(wallet.address, req.body.totalsupply);
+        mintZCT(`0x${wallet.address}`, req.body.totalsupply.toString())
         res.status(200).json(result);
       } catch (e) {
         console.log(e);
