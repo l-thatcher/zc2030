@@ -2,7 +2,7 @@ import styles from "../styles/Home.module.css";
 import ProjectCard from "../Components/ProjectCard";
 import { getProjectsList } from "../services/ProjectService";
 import {getBalance, getMaticBalance, mintTokens} from "../services/MaticService";
-import {getZCTBalance, mintZCT} from "../services/ZCTService";
+import {getZCTBalance, mintZCT, transferZCT} from "../services/ZCTService";
 
 const calculatorImg = "/calculator-logo.png";
 const discoverImg = "/discover-logo2.png";
@@ -103,15 +103,7 @@ export default function Home(props) {
 export async function getStaticProps() {
   const projectsRes = await getProjectsList();
   const allProjects = projectsRes.data.slice(-5);
-  // await mintTokens(0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B)
-  // const temp = await getZCTBalance("0x4Ae72584552DC5704f3DFb00f79601c932E6813A")
-  const maticTokens = await getMaticBalance("0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B")
-  // console.log(temp)
-  console.log("matic tokens")
-  console.log(maticTokens)
-  const newBalance = await mintZCT("0x4Ae72584552DC5704f3DFb00f79601c932E6813A", 10000)
-  console.log("hi")
-  console.log(newBalance)
+
   return {
     props: { allProjects },
     revalidate: 60, //Regenerates page every minute
