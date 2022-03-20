@@ -11,6 +11,8 @@ module.exports = {
             'zc30-blue': '#77C9D4',
             'zc30-grey': '#A5A5AF',
             'zc30-light-green': '#D2EDE3',
+            'purp-blue' : '#5e72e4',
+
             'blue': '#1fb6ff',
             'pink': '#ff49db',
             'orange': '#ff7849',
@@ -20,14 +22,11 @@ module.exports = {
             'gray-light': '#d3dce6',
         },
         fontFamily: {
-            'nunito': ['nunito', 'sans-serif'],
+            'sans': ['Poppins', 'sans-serif'],
             },
         extend: {
-            fontFamily : {
-                'nunito' : ['nunito', 'sans-serif']
-            },
         },
 
     },
-    plugins: [require("daisyui"),require('flowbite/plugin'),require('@tailwindcss/line-clamp')],
+    plugins: [require("daisyui"),require('flowbite/plugin'),require('@tailwindcss/line-clamp'),require('tailwind-scrollbar-hide')],
 }

@@ -2,7 +2,7 @@ import React, { useState} from "react";
 
 import {createNewProject} from '../../../services/ProjectService'
 // components
-
+import { AiFillCloseCircle } from "react-icons/ai";
 // import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
 
 const CreateProject =()=> {
@@ -51,16 +51,10 @@ const CreateProject =()=> {
         <>
 
             <div
-                className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blue-50 border-0">
+                className="relative flex flex-col min-w-0 break-words w-[750px] m-4 mb-6 shadow-lg rounded-lg bg-blue-50 border-0">
                 <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">
-                        <h6 className="text-blueGray-700 bg-gray-50 text-xl font-bold">My account</h6>
-                        <button
-                            className="bg-gray-700 active:bg-blue-600 text-white font-bold capitalize text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                            type="ref"
-                        >
-                            Submit
-                        </button>
+                        <h6 className="text-blueGray-700 bg-gray-50 text-xl font-bold">Create New Project</h6>
                     </div>
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
