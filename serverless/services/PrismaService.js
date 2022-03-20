@@ -202,18 +202,16 @@ export const createNewProject = (data, wallet, publicAddress) => {
       datefounded: data.datefounded,
       nftaddress: data.nftaddress,
       ethWallet: wallet,
-      publicAddress: publicAddress
-    }
-
-  })
+      publicAddress: publicAddress,
+    },
+  });
 };
 
-
 export const editProjectById = (data, id) => {
-  console.log("Here: " + data)
+  console.log("Here: " + data);
   return prisma.project.update({
     where: {
-      id: id
+      id: id,
     },
     data: {
       projectname: data.projectname,
@@ -238,8 +236,7 @@ export const editProjectById = (data, id) => {
       datefounded: data.datefounded,
       nftaddress: data.nftaddress,
     },
-
-  })
+  });
 };
 
 export const addWalletToUserId = (userId, wallet, publicAddress) => {
@@ -249,19 +246,18 @@ export const addWalletToUserId = (userId, wallet, publicAddress) => {
     },
     data: {
       ethWallet: wallet,
-      publicAddress: publicAddress
-    }
+      publicAddress: publicAddress,
+    },
   });
 };
 
 export const getWalletById = (userId) => {
   return prisma.user.findUnique({
     where: {
-      id: userId
+      id: userId,
     },
     select: {
       id: true,
     },
   });
-}
-
+};

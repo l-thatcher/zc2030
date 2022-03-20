@@ -24,7 +24,7 @@ function ProjectDetails(props) {
   return (
     <div className="lg:flex lg:items-center lg:justify-between container mx-auto  ">
       <div className="flex-1 min-w-0   ">
-        <main className='lg:w-[1000px] lg:mx-auto'>
+        <main className="lg:w-[1000px] lg:mx-auto">
           {/*Name*/}
           <div className=" mt-10">
             <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl capitalize sm:truncate">

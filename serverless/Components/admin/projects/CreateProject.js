@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import {createNewProject} from '../../../services/ProjectService'
+import { createNewProject } from "../../../services/ProjectService";
 
 // components
 
@@ -409,5 +409,3 @@ const CreateProject = () => {
 };
 
 export default CreateProject;
-
-

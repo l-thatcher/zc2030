@@ -1,8 +1,12 @@
 import styles from "../styles/Home.module.css";
 import ProjectCard from "../Components/ProjectCard";
 import { getProjectsList } from "../services/ProjectService";
-import {getBalance, getMaticBalance, mintTokens} from "../services/MaticService";
-import {getZCTBalance, mintZCT, transferZCT} from "../services/ZCTService";
+import {
+  getBalance,
+  getMaticBalance,
+  mintTokens,
+} from "../services/MaticService";
+import { getZCTBalance, mintZCT, transferZCT } from "../services/ZCTService";
 
 const calculatorImg = "/calculator-logo.png";
 const discoverImg = "/discover-logo2.png";
