@@ -77,10 +77,10 @@ const UserList = (data) => {
           variant="outline-secondary"
           id="button-addon2"
           size={"md"}
-          style={{ width: "100%", marginTop: "10px" }}
+          style={{ width: "100%", display: "flex", flexDirection: "row"}}
           onClick={(e) => handleAdd()}
         >
-          Add User
+          <p>Add User</p>
           <CgAddR size={20} style={{ marginBottom: "4px" }} />
         </Button>
         <Modal
