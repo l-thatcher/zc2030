@@ -14,14 +14,10 @@ describe("Show calculators admin page", () => {
     render(<CalculatorTypes types={types} />);
 
     const heading = screen.getByText(/Edit Calculators/i);
-    const button1 = screen.getByRole("button", {
-      name: /Business/i,
-    });
-    const button5 = screen.getByRole("button", {
-      name: /Supermarket/i,
-    });
+    const row1 = screen.getByText(/Business/i);
+    const row5 = screen.getByText(/Supermarket/i);
     expect(heading).toBeInTheDocument();
-    expect(button1).toBeInTheDocument();
-    expect(button5).toBeInTheDocument();
+    expect(row1).toBeInTheDocument();
+    expect(row5).toBeInTheDocument();
   });
 });

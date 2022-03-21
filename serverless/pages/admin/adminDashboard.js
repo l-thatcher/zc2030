@@ -4,6 +4,77 @@ import { getUserData, getAdminData } from "../../services/adminService";
 import AccountDashboard from "../../Components/admin/AdminPages/accountDashboard";
 
 export default function adminDashboard(props) {
+  const users = props.users;
+  const admins = props.admins;
+  // const adminJsonData = {
+  //     Category1: [
+  //         {
+  //             id: "1",
+  //             name: `peter`,
+  //             email: 'peter@zc30.com',
+  //         },
+  //         {
+  //             id: "2",
+  //             name: `peter`,
+  //             email: 'peter@zc30.com',
+  //         },
+  //         {
+  //             id: "3",
+  //             name: `alfred`,
+  //             email: 'alfred@zc30.com',
+  //         },
+  //         {
+  //             id: "4",
+  //             name: `alfred`,
+  //             email: 'alfred@zc30.com',
+  //         },
+  //     ]
+  // };
+  //
+  // const userJsonData = {
+  //     Category1: [
+  //         {
+  //             id: "1",
+  //             name: `bob`,
+  //             email: 'alfred@zc30.com',
+  //             type: 'personal',
+  //         },
+  //         {
+  //             id: "2",
+  //             name: `tod`,
+  //             email: 'alfred@zc30.com',
+  //             type: 'business',
+  //         },
+  //         {
+  //             id: "3",
+  //             name: `hob`,
+  //             email: 'alfred@zc30.com',
+  //             type: 'business',
+  //         },
+  //         {
+  //             id: "4",
+  //             name: `lob`,
+  //             email: 'alfred@zc30.com',
+  //             type: 'school',
+  //         },
+  //
+  //     ]
+  // };
+
+  // const adminData = Object.keys(adminJsonData).reduce((accumulator, iterator) => {
+  //     return [...accumulator, ...adminJsonData[iterator]];
+  // }, []);
+  //
+  // const userData = Object.keys(userJsonData).reduce((accumulator, iterator) => {
+  //     return [...accumulator, ...userJsonData[iterator]];
+  // }, [])
+
+  const [visibility, setVisibility] = useState(false);
+
+  const popupCloseHandler = (e) => {
+    setVisibility(e);
+  };
+
   return (
     <div className={styles.main}>
         <div className="w-48 h-full shadow-md bg-white px-1 absolute">
@@ -33,7 +104,7 @@ export default function adminDashboard(props) {
 export async function getServerSideProps() {
   // Adds all users types in a list
   const userRes = await getUserData();
-  const users = userRes?.data;
+  const users = userRes.data;
 
   // Adds all admins types in a list
   const adminRes = await getAdminData();
