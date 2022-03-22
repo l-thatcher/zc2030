@@ -1,15 +1,31 @@
 import ProgressB from "./ProgressB";
 import {PayPalButtons, PayPalScriptProvider} from "@paypal/react-paypal-js";
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PaymentGateway from "../payment/PaymentGateway";
 
 const BuyCard = (props) => {
     const [tonnesBuying, setTonnesBuying] = useState(1);
     const [displayPaymentGateway, setDisplayPaymentGateway] = useState(false);
     let paymentDiv;
+    const remainingSupply = Number(props.detailsProps.remainingsupply)
+    console.log(remainingSupply)
 
     const showPaymentGateway = () => {
-        setDisplayPaymentGateway(true)
+        console.log("HEREE: " + remainingSupply)
+        console.log("HEREE2: " + tonnesBuying)
+
+        if(tonnesBuying > remainingSupply) {
+            console.log("HEREE3: " + remainingSupply)
+            console.log("HEREE4: " + tonnesBuying)
+            alert("Cannot exceed maximum supply")
+            setTonnesBuying(remainingSupply)
+            // setDisplayPaymentGateway(true)
+        } else if (0 < tonnesBuying <= remainingSupply) {
+            setDisplayPaymentGateway(true)
+
+        } else if (tonnesBuying < 0.1) {
+            alert("Cannot purchase less than 0.1 Tokens")
+        }
     }
 
     if (!displayPaymentGateway) {
@@ -21,15 +37,16 @@ const BuyCard = (props) => {
                     placeholder="tonnes"
                     value={tonnesBuying}
                     onChange={(e) => handleTonnesChanged(e)}
+                    max={remainingSupply}
                 />
 
                 <button onClick={showPaymentGateway}
-                    type="button"
-                    className="mb-2 w-full inline-block px-6 py-2.5 bg-green-500 text-white font-medium
+                        type="button"
+                        className="mb-2 w-full inline-block px-6 py-2.5 bg-green-500 text-white font-medium
                     text-xs leading-normal uppercase rounded shadow-md hover:bg-green-800 hover:shadow-lg
                     focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800
                     active:shadow-lg duration-150 ease-in-out"
-                    >
+                >
                     Checkout with Paypal
                 </button>
             </div>
@@ -37,7 +54,7 @@ const BuyCard = (props) => {
     } else {
         paymentDiv = (
             <div>
-                <PaymentGateway orderDetails={(props.detailsProps.cptgbp*tonnesBuying)}></PaymentGateway>
+                <PaymentGateway orderDetails={(props.detailsProps.cptgbp * tonnesBuying)}></PaymentGateway>
             </div>
         )
     }
@@ -48,12 +65,15 @@ const BuyCard = (props) => {
         const amount = event.target.value;
 
 
-        if (amount > props.detailsProps.remainingsupply) {
+        if (amount > remainingSupply) {
+            console.log(remainingSupply)
             alert("Cannot purchase more than remaining supply")
-            setTonnesBuying(props.detailsProps.remainingsupply)
+            setTonnesBuying(remainingSupply)
         } else {
+            console.log(remainingSupply)
+
             setTonnesBuying(event.target.value)
-            }
+        }
     }
 
 
@@ -90,7 +110,7 @@ const BuyCard = (props) => {
                 </p>
                 <p className="font-semibold text-gray-400">
                     {" "}
-                    Available Supply: {props.detailsProps.remainingsupply}{" "}
+                    Available Supply: {remainingSupply}{" "}
                 </p>
                 <p className="font-bold">
                     How many tonnes of carbon would you like to buy?
