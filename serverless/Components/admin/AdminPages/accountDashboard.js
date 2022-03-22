@@ -335,26 +335,26 @@ export default function AccountDashboard(props) {
           {/*<AiOutlineSearch className={styles.icons}/>*/}
         </div>
         <div className={styles.listContainer}>
-          <table className="table-auto w-100 shadow-md rounded h-0.25">
+          <table className="table-auto w-100 shadow-md rounded-lg">
             <thead className="bg-[#77C9D480]">
             <tr>
-              <th className="hidden sm:block p-2 text-left font-bold">ID</th>
-              <th className="p-2 text-left font-bold">Name</th>
-              <th className="p-2 text-left font-bold">Email</th>
-              <th className="hidden sm:block p-2 text-left font-bold overflow-x-auto">Wallet Address</th>
-              <th className="p-2 text-left font-bold w-24">Role</th>
-              <th className="p-2 text-left font-bold w-16">Edit</th>
-              <th className="p-2 text-left font-bold w-16">Delete</th>
+              <th className="hidden sm:block p-2 text-left font-bold text-xs font-medium tracking-wider text-left text-gray-700 uppercase">ID</th>
+              <th className="p-2 text-left font-bold text-xs font-medium tracking-wider text-left text-gray-700 uppercase">Name</th>
+              <th className="p-2 text-left font-bold text-xs font-medium tracking-wider text-left text-gray-700 uppercase">Email</th>
+              <th className="hidden sm:block p-2 text-left font-bold overflow-x-auto text-xs font-medium tracking-wider text-left text-gray-700 uppercase">Wallet Address</th>
+              <th className="p-2 text-left font-bold w-24 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">Role</th>
+              <th className="p-2 text-left font-bold w-16 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">Edit</th>
+              <th className="p-2 text-left font-bold w-16 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">Delete</th>
             </tr>
             </thead>
             <tbody className= "divide-y divide-gray-300 overflow-y-auto">
             {users.map((name, i) => (
                 <tr key={"users"} className={styles.tr}>
-                  <td className="hidden sm:block p-2 overflow-x-auto">{users[i].id}</td>
-                  <td className="p-2 overflow-x-auto">{users[i].name}</td>
-                  <td className="p-2 overflow-x-auto">{users[i].email}</td>
-                  <td className="hidden sm:block p-2 overflow-x-auto">{users[i].publicAddress}</td>
-                  <td className="p-2 overflow-x-auto">{users[i].role}</td>
+                  <td className="hidden sm:block p-2 overflow-x-auto text-m font-medium text-gray-900 whitespace-nowrap">{users[i].id}</td>
+                  <td className="p-2 overflow-x-auto text-m font-medium text-gray-900 whitespace-nowrap">{users[i].name}</td>
+                  <td className="p-2 overflow-x-auto text-m font-medium text-gray-900 whitespace-nowrap">{users[i].email}</td>
+                  <td className="hidden sm:block p-2 overflow-x-auto text-m font-medium text-gray-900 whitespace-nowrap">{users[i].publicAddress}</td>
+                  <td className="p-2 overflow-x-auto text-m font-medium text-gray-900 whitespace-nowrap">{users[i].role}</td>
                   <td className="p-2">
                     <AiOutlineEdit
                         className={styles.iconsEdit}
