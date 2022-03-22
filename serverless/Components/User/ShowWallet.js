@@ -8,7 +8,7 @@ import { data } from "autoprefixer";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const ShowWallet = async () => {
+const ShowWallet = () => {
   const { data: session } = useSession();
   const logo = "/cz2030_logo.png";
   const [view, setView] = useState("create");
@@ -87,7 +87,7 @@ const ShowWallet = async () => {
                 className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
                 href="#"
               >
-                0x{session.user.publicAddress}r
+                0x{session.user.publicAddress}
               </a>
             </Link>{" "}
           </span>
@@ -131,18 +131,18 @@ const ShowWallet = async () => {
         <>
           {view === "history" && (
             <div className="container mx- justify-center">
-              <div
-                className="px-3 py-10 gap-y-10 sm:grid
-                                             mdsm2:grid-cols mdsm1:grid-cols-3
+              {/*<div*/}
+              {/*  className="px-3 py-10 gap-y-10 sm:grid*/}
+              {/*                               mdsm2:grid-cols mdsm1:grid-cols-3*/}
 
-                                             md:grid-cols-3 xl:grid-cols-3"
-              >
-                {/*{*/}
-                {/*    itemData.map((item) =>  (*/}
-                {/*        <ItemCard key={item._id} item ={item}  />*/}
-                {/*    ))*/}
-                {/*}*/}
-              </div>
+              {/*                               md:grid-cols-3 xl:grid-cols-3"*/}
+              {/*>*/}
+              {/*  /!*{*!/*/}
+              {/*  /!*    itemData.map((item) =>  (*!/*/}
+              {/*  /!*        <ItemCard key={item._id} item ={item}  />*!/*/}
+              {/*  /!*    ))*!/*/}
+              {/*  /!*}*!/*/}
+              {/*</div>*/}
             </div>
           )}
         </>
