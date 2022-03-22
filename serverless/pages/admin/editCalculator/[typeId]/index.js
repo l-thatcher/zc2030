@@ -32,7 +32,7 @@ export default function editCalculator(props) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const typeId = context.params.typeId;
   const [typeRes, categoriesRes, usersRes] = await Promise.all([
     getCalculatorType(typeId),
@@ -65,23 +65,5 @@ export async function getStaticProps(context) {
       users: users,
       inputs: inputs,
     },
-  };
-}
-
-export async function getStaticPaths() {
-  return {
-    fallback: true,
-    paths: [
-      {
-        params: {
-          typeId: "1",
-        },
-      },
-      {
-        params: {
-          typeId: "2",
-        },
-      },
-    ],
   };
 }
