@@ -1,21 +1,59 @@
 import ProgressB from "./ProgressB";
 import {PayPalButtons, PayPalScriptProvider} from "@paypal/react-paypal-js";
 import {useState} from "react";
+import PaymentGateway from "../payment/PaymentGateway";
 
-function BuyCard(props) {
+const BuyCard = (props) => {
     const [tonnesBuying, setTonnesBuying] = useState(0);
+    const [displayPaymentGateway, setDisplayPaymentGateway] = useState(false);
+    let paymentDiv;
 
+    const showPaymentGateway = () => {
+        setDisplayPaymentGateway(true)
+    }
+
+    if (!displayPaymentGateway) {
+        paymentDiv = (
+            <div>
+                <input
+                    className="w-full form-control border border-solid border-gray-300 rounded block px-6 py-2.5 mb-3"
+                    type="number"
+                    placeholder="tonnes"
+                    value={tonnesBuying}
+                    onChange={(e) => handleTonnesChanged(e)}
+                />
+
+                <button onClick={showPaymentGateway}
+                    type="button"
+                    className="mb-2 w-full inline-block px-6 py-2.5 bg-green-500 text-white font-medium
+                    text-xs leading-normal uppercase rounded shadow-md hover:bg-green-800 hover:shadow-lg
+                    focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800
+                    active:shadow-lg duration-150 ease-in-out"
+                    >
+                    Checkout with Paypal
+                </button>
+            </div>
+        )
+    } else {
+        paymentDiv = (
+            <div>
+                <PaymentGateway orderDetails={(props.detailsProps.cptgbp*tonnesBuying)}></PaymentGateway>
+            </div>
+        )
+    }
 
     function handleTonnesChanged(event) {
         //If enters too much
         //alert "too high"
         const amount = event.target.value;
-        if(amount > props.detailsProps.remainingsupply) {
+
+
+        if (amount > props.detailsProps.remainingsupply) {
             alert("Cannot purchase more than remaining supply")
             setTonnesBuying(props.detailsProps.remainingsupply)
         } else {
-            setTonnesBuying(event.target.value).then(it=>
-            console.log(it))
+            setTonnesBuying(event.target.value).then(it =>
+                console.log(it))
         }
     }
 
@@ -58,51 +96,8 @@ function BuyCard(props) {
                 <p className="font-bold">
                     How many tonnes of carbon would you like to buy?
                 </p>
-                <input
-                    className="w-full form-control border border-solid border-gray-300 rounded block px-6 py-2.5 mb-3"
-                    type="number"
-                    placeholder="tonnes"
-                    onChange={(e) => handleTonnesChanged(e)}
-                />
-                {/*<button*/}
-                {/*  type="button"*/}
-                {/*  className="mb-2 w-full inline-block px-6 py-2.5 bg-green-500 text-white font-medium*/}
-                {/*                                     text-xs leading-normal uppercase rounded shadow-md hover:bg-green-800 hover:shadow-lg*/}
-                {/*                                    focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800*/}
-                {/*                                      active:shadow-lg  duration-150 ease-in-out"*/}
-                {/*>*/}
-                {/*  Buy Carbon*/}
-                {/*</button>*/}
 
-                {/*Paypal Button*/}
-                <PayPalScriptProvider
-                    options={{
-                        "client-id": "AXEtfxC428uLLJR3HGUzT5ZywDHc3XeGG_ZUdXN41yspvFPvl1fLmcvNYHJlgQdLW5L6elWYHIMxQ1RQ",
-                        currency: "GBP"
-                    }}>
-                    <PayPalButtons
-                        createOrder={(data, actions) => {
-                            return actions.order.create({
-                                purchase_units: [
-                                    {
-                                        amount: {
-                                            currency_code: "GBP",
-                                            value: `${props.detailsProps.cptgbp * tonnesBuying}`,
-                                        },
-                                    },
-                                ],
-                            });
-                        }}
-                        onApprove={(data, actions) => {
-                            return actions.order.capture().then((details) => {
-                                const name = details.payer.name.given_name;
-                                alert(`Transaction completed by ${name}`);
-                            });
-                        }}
-                    />
-                </PayPalScriptProvider>
-
-            </div>
+                {paymentDiv}            </div>
         </div>
     );
 }
