@@ -2,7 +2,7 @@ import {React,useState} from "react";
 import Card from './Card';
 import CreateProject from "./CreateProject";
 import Link from "next/link";
-
+import {ViewContext} from "../../../Contexts/ViewContext";
 
 const Projects= (props) => {
 
@@ -48,37 +48,38 @@ const Projects= (props) => {
                     </div>
 
 
-                </div>
+                    </div>
 
 
-                {view === 'current projects' && (
+                {view === 'current projects' ? (
                     <div>
-                <div>
-                    <h4 className='font-semibold text-xs py-6 capitalize font-serif text-gray-700 text-2xl px-10 '>
-                        {view}
-                    </h4>
-                </div>
-                <div className="flex overflow-x-scroll pb-10 scrollbar-hide">
+                         <div>
+                            <h4 className='font-semibold text-xs py-6 capitalize font-serif text-gray-700 text-2xl px-10 '>
+                                {view}
+                            </h4>
+                        </div>
 
-                    <div className="flex flex-nowrap lg:ml-5 md:ml-5 ml-5 ">
-                        {allProjects.map((project) => (
-                            // <ProjectCard project={project} key={project.name} />
-                            <Card projects={project} />
 
-                        ))}
+                        <div className="flex overflow-x-scroll pb-10 scrollbar-hide">
+
+                            <div className="flex flex-nowrap lg:ml-5 md:ml-5 ml-5 ">
+                                {allProjects.map((project) => (
+                                    // <ProjectCard project={project} key={project.name} />
+                                    <Card projects={project} />
+
+                                ))}
+                            </div>
                     </div>
-                </div>
-
                     </div>
-                )}
+                ) :
 
-                {view === 'create project' && (
+                view === 'create project' ? (
 
                     <CreateProject/>
 
-                )}
+                ) :
 
-                {view === 'edit' && (
+                view === 'edit' && (
 
                     <EditProject/>
 

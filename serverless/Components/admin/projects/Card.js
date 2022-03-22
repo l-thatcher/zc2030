@@ -27,16 +27,6 @@ const Card = (props) => {
     return(
         <div className="inline-block px-3">
 
-            <Modal size="large" active={showModal} toggler={() => setShowModal(false)}>
-                <ModalHeader toggler={() => setShowModal(false)}>
-                    Modal Title
-                </ModalHeader>
-                <ModalBody>
-                    <EditProject projects={project} />
-                </ModalBody>
-
-            </Modal>
-
 
             <div className="w-80 h-80 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
                 <img
