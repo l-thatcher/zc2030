@@ -14,17 +14,17 @@ const BuyCard = (props) => {
         console.log("HEREE: " + remainingSupply)
         console.log("HEREE2: " + tonnesBuying)
 
-        if(tonnesBuying > remainingSupply) {
+        if (tonnesBuying <= 0.1) {
+            alert("Cannot purchase less than 0.1 Tokens")
+            setTonnesBuying(0.1)
+        } else if (tonnesBuying > remainingSupply) {
             console.log("HEREE3: " + remainingSupply)
             console.log("HEREE4: " + tonnesBuying)
             alert("Cannot exceed maximum supply")
             setTonnesBuying(remainingSupply)
             // setDisplayPaymentGateway(true)
-        } else if (0 < tonnesBuying <= remainingSupply) {
+        } else {
             setDisplayPaymentGateway(true)
-
-        } else if (tonnesBuying < 0.1) {
-            alert("Cannot purchase less than 0.1 Tokens")
         }
     }
 
