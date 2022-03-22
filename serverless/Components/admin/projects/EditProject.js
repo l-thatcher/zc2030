@@ -1,9 +1,7 @@
 import React, { useState} from "react";
 
 import {editProjectById} from '../../../services/ProjectService'
-// components
-import { AiFillCloseCircle } from "react-icons/ai";
-// import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
+
 
 const EditProject =(props)=> {
 
@@ -334,7 +332,7 @@ const EditProject =(props)=> {
                             <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent
                     rounded-full shadow-sm text-sm font-medium bg-gray-700 active:bg-blue-600 text-white font-bold capitalize
                      hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "
-                            >Create Project</button>
+                            >Edit Project</button>
                         </div>
                     </form>
                 </div>

@@ -1,8 +1,5 @@
-import React, {useState} from "react";
-import Modal from "@material-tailwind/react/Modal";
-import ModalHeader from "@material-tailwind/react/ModalHeader";
-import ModalBody from "@material-tailwind/react/ModalBody";
-import EditProject from "./EditProject";
+import React, {useContext, useState} from "react";
+import {ViewContext} from "../../../Contexts/ViewContext";
 
 
 
@@ -11,12 +8,15 @@ const Card = (props) => {
     const [showModal, setShowModal] = React.useState(false);
     const project= props.projects
 
+    const {setView} = useContext(ViewContext);
+    const {view} = useContext(ViewContext);
 
-
+    const {setEditPrj} = useContext(ViewContext);
 
     function changeView() {
-        console.log("true")
-        setShowModal(true)
+        setEditPrj(project)
+        setView('edit')
+
     }
         // storing input name
 
