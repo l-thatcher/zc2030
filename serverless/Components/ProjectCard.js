@@ -56,6 +56,7 @@ export default function ProjectCard(props) {
                 Available Carbon: {props.project.remainingsupply}t
               </span>
             </div>
+
           </div>
 
           <div className="overflow-hidden flex h-2 mb-2 text-xs rounded shadow-md">

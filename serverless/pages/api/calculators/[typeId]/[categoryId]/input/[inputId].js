@@ -1,7 +1,7 @@
 import {
   deleteCategoryByCategoryId,
   deleteInputByInputId,
-} from "../../../../../services/PrismaService";
+} from "../../../../../../services/PrismaService";
 
 export default async function handler(req, res) {
   switch (req.method) {

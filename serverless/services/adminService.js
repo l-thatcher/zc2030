@@ -11,16 +11,6 @@ export const getAdminData = () => {
 };
 
 // PUT Request - Set a new admin
-export const updateRole = (data) => {
-  return MainService.put(`/api/admin/`, data);
-};
-
-// DELETE Request - Set a new admin
-export const removeUser = (data) => {
-  return MainService.delete(`/api/admin/`, { data });
-};
-
-// PUT Request - Edit user data
-export const updateUser = (data) => {
-  return MainService.put(`/api/users/`, data);
+export const addNewAdmin = (email) => {
+  return MainService.put(`/api/admin/${email}`);
 };
