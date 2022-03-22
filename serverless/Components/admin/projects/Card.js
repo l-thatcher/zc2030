@@ -1,18 +1,14 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {ViewContext} from "../../../Contexts/ViewContext";
 
-
+import ProgressBar from "@ramonak/react-progress-bar";
 
 
 const Card = (props) => {
-    const [showModal, setShowModal] = React.useState(false);
     const project= props.projects
-
     const {setView} = useContext(ViewContext);
     const {view} = useContext(ViewContext);
-
     const {setEditPrj} = useContext(ViewContext);
-
     function changeView() {
         setEditPrj(project)
         setView('edit')
@@ -48,12 +44,15 @@ const Card = (props) => {
                     {/*</div>*/}
 
                     <div>
-                        <div className="w-[180px] ml-5 bg-gray-200 rounded-full">
-                            <div
-                                className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full"
-                                style={{width: "25%" }}> {widthPercentage}%
+                        <div className="w-[250px] ml-5 bg-gray-200 rounded-full">
 
-                            </div>
+
+                                <ProgressBar completed={widthPercentage} />
+
+
+
+
+
                         </div>
                     </div>
 

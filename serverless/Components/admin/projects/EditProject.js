@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 
 import {editProjectById} from '../../../services/ProjectService'
-
+import { useRouter } from 'next/router'
 
 const EditProject =(props)=> {
 
@@ -36,12 +36,18 @@ const EditProject =(props)=> {
         projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
         projectimage5:projectimage5,
         nftaddress:nftaddress}
+
+    const router = useRouter()
+
+
     const handleSubmit = async (e) => {
 
         e.preventDefault();
                 try {
                     console.log(project)
                     await editProjectById(project,current.id)
+
+                    await router.push('/admin/adminProjects')
                 } catch (err) {
                     console.log(err);
                 }

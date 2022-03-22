@@ -1,5 +1,5 @@
-import {PrismaClient, Prisma} from "@prisma/client";
-import MainService from "./MainService";
+import {PrismaClient} from "@prisma/client";
+
 
 const prisma = new PrismaClient();
 
@@ -101,8 +101,6 @@ export const createNewProject = (data, wallet, publicAddress) => {
                 description: data.description,
                 datefounded: data.datefounded,
                 nftaddress: data.nftaddress,
-                ethWallet: wallet,
-                publicAddress: publicAddress,
             },
         });
     }
