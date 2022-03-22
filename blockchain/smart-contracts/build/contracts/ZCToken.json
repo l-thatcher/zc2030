@@ -157,7 +157,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -181,7 +182,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -224,7 +226,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -237,7 +240,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -298,7 +302,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -317,7 +322,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -330,7 +336,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -343,7 +350,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -399,7 +407,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -419,7 +428,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -432,7 +442,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -529,7 +540,8 @@
       "name": "upgradeToAndCall",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [],
@@ -23744,8 +23756,8 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x8A11780BBe13136645375933580A79F48026D9E4",
-      "transactionHash": "0x09f3efe158ba663cd71bf8d7731880169359487af22b49e31c15e45b43edbd53"
+      "address": "0xa3fb81faA137697881a9Fb910c3C64C6fB47d525",
+      "transactionHash": "0x0940b366ce6fe9eaac049675a96f51f4349f9d89a35930204533b03d7057a678"
     },
     "80001": {
       "events": {
@@ -23891,12 +23903,13 @@
         }
       },
       "links": {},
-      "address": "0x4Ae72584552DC5704f3DFb00f79601c932E6813A",
+      "address": "0x26B82ef7812D5D2f4Ca3bD8140FC5642702D9e0e",
       "transactionHash": "0x66748623104874ae3ef644c3be3c07581b480541603034bca0187fdc85b9c672"
     }
   },
   "schemaVersion": "3.4.6",
-  "updatedAt": "2022-03-21T15:40:39.947Z",
+  "updatedAt": "2022-03-22T11:51:17.462Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {
