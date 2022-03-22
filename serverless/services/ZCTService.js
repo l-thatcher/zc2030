@@ -15,6 +15,7 @@ const web3 = new Web3(
   })
 );
 
+
 const tokenAddress = "0x66e2a2b24a8f57b059042ee3532ac836b2bb1ae1";
 
 const erc20Contract = new web3.eth.Contract(abiJson().abi, tokenAddress);

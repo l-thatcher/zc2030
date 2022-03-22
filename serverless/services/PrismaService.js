@@ -257,7 +257,18 @@ export const getWalletById = (userId) => {
       id: userId,
     },
     select: {
-      id: true,
+      publicAddress: true,
+    },
+  });
+};
+
+export const getProjectWalletById = (userId) => {
+  return prisma.project.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      publicAddress: true,
     },
   });
 };

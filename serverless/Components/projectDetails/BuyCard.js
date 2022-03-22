@@ -8,7 +8,7 @@ const BuyCard = (props) => {
     const [displayPaymentGateway, setDisplayPaymentGateway] = useState(false);
     let paymentDiv;
     const remainingSupply = Number(props.detailsProps.remainingsupply)
-    console.log(remainingSupply)
+    const projectId = props.detailsProps.id
 
     const showPaymentGateway = () => {
         console.log("HEREE: " + remainingSupply)
@@ -54,7 +54,7 @@ const BuyCard = (props) => {
     } else {
         paymentDiv = (
             <div>
-                <PaymentGateway orderDetails={(props.detailsProps.cptgbp * tonnesBuying)}></PaymentGateway>
+                <PaymentGateway orderDetails={(props.detailsProps.cptgbp * tonnesBuying)} projectId={projectId}></PaymentGateway>
             </div>
         )
     }

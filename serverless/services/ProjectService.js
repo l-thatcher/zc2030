@@ -18,3 +18,8 @@ export const createNewProject = (data) => {
 export const editProjectById = (data, id) => {
   return MainService.put(`/api/projects/${id}/edit`, data);
 };
+
+// POST Request - Transfer tokens request from farm to user
+export const transferCarbonFromFarm = (data, id) => {
+  return MainService.put(`/api/projects/${id}/purchase`, data);
+};

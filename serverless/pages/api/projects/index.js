@@ -31,7 +31,9 @@ export default async function handler(req, res) {
           JSON.stringify(wallet),
           wallet.address
         );
-        mintZCT(`0x${wallet.address}`, req.body.totalsupply)
+        mintZCT(`0x${wallet.address}`, req.body.totalsupply).then(
+            console.log("Minted in farm wallet")
+        )
         res.status(200).json(result);
       } catch (e) {
         console.log(e);

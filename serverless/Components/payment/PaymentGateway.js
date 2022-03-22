@@ -1,8 +1,10 @@
 import React from "react";
 import {PayPalButtons, PayPalScriptProvider} from "@paypal/react-paypal-js";
+import {transferCarbonFromFarm} from "../../services/ProjectService";
 
 export default function PaymentGateway(props) {
     const orderDetails = props.orderDetails
+    const projectId = props.projectId
 
     return (
 
@@ -30,8 +32,14 @@ export default function PaymentGateway(props) {
                     }}
                     onApprove={(data, actions) => {
                         return actions.order.capture().then((details) => {
+                            //Call an API
+                            //Send transfer token request and add to database
+                            //Once transferred remove from database
                             const name = details.payer.name.given_name;
+                            const data = [orderDetails];
+                            transferCarbonFromFarm(data,projectId)
                             alert(`Transaction completed by ${name}`);
+
                         });
                     }}
                 />
