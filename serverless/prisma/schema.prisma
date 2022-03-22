@@ -40,7 +40,8 @@ model User {
   email            String?            @unique
   emailVerified    DateTime?
   image            String?
-  ethWallet        String?
+  publicAddress   String?            @db.Text
+  ethWallet        String?            @db.Text
   role             Role               @default(PERSONAL)
   accounts         Account[]
   sessions         Session[]
@@ -137,9 +138,11 @@ model Project {
   ownerpicture    String
   type            String
   website         String?
-  description     String
+  description     String             @db.Text
   datefounded     String
   nftaddress      String?
+  publicAddress   String?            @db.Text
+  ethWallet       String?            @db.Text
 }
 
 

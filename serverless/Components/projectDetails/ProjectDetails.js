@@ -1,10 +1,8 @@
-
-import {LocationMarkerIcon} from '@heroicons/react/solid'
+import { LocationMarkerIcon } from "@heroicons/react/solid";
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
-import Map from './Map'
-
+import Map from "./Map";
 
 function ProjectDetails(props) {
 
@@ -71,7 +69,6 @@ function ProjectDetails(props) {
                                 {/*        ))}*/}
                                 {/*    </div>*/}
                                 {/*</div>*/}
-
                             <div className="hidden md:block  ">
                                 <div className="grid-cols-4 space-y-2 md:space-y-0 md:grid md:gap-3  ">
                                     <div className=" w-full col-span-2 bg-yellow-600 row-span-2 rounded ">
@@ -79,7 +76,6 @@ function ProjectDetails(props) {
                                             src={details.projectimage1}
                                             alt="image"/>
                                     </div>
-
                                     <div className=" w-full   rounded ">
                                         <img className='rounded-xl h-full object-cover  hover:scale-105 transition duration-200 ease-in-out'
                                              src={details.projectimage2}
@@ -102,10 +98,7 @@ function ProjectDetails(props) {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
-
                         {/*ABOUT Project*/}
                         <div className='mt-4 border-t border-[#F2F2F2] p-4'>
                             {/*BUY Carbon*/}
@@ -127,11 +120,7 @@ function ProjectDetails(props) {
                                               active:shadow-lg transition duration-150 ease-in-out">Buy Carbon
                                     </button>
                                 </div>
-
                             </div>
-
-
-
                             {/*Header*/}
                             <div className='flex'>
                                 <div>
@@ -140,11 +129,7 @@ function ProjectDetails(props) {
                                 <div className="hidden md:block ">
                                     <BuyCard detailsProps={details} />
                                 </div>
-
                             </div>
-
-
-
                             {/*Where are we based?*/}
                             <div>
                                 <h3 className='flex justify-between items-center py-3 w-full font-normal text-left text-gray-900 rounded-t-xl  '>
@@ -156,24 +141,13 @@ function ProjectDetails(props) {
                                      {props.detailsProps.streetname} | {props.detailsProps.city} {props.detailsProps.county} {props.detailsProps.country}
                                 </div>
                                 <Map location={location} />
-
                                 <div>
-
                                 </div>
                             </div>
-
-
-
                         </div>
-
-
                     </section>
-
                 </main>
-
             </div>
-
-
         </div>
     )
 }

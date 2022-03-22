@@ -43,8 +43,7 @@ describe("Progress Bar Elements", () => {
     // Checks Progress Bar heading
     cy.get("h3").contains("Progress Bar");
 
-    cy.get('button.btn.btn-secondary').contains("Sign in to view progress")
-
+    cy.get("button.btn.btn-secondary").contains("Sign in to view progress");
   });
 });
 
@@ -63,7 +62,9 @@ describe("Nav Items Elements", () => {
     cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Cars");
 
     // Checks category name and percentage
-    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Bicycles");
+    cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains(
+      "Bicycles"
+    );
 
     // Checks category name and percentage
     cy.get("label.Calculator_form__Woycm.btn.btn-secondary").contains("Bike");
