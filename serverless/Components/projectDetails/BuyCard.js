@@ -1,10 +1,10 @@
 import ProgressB from "./ProgressB";
 import {PayPalButtons, PayPalScriptProvider} from "@paypal/react-paypal-js";
-import {useState} from "react";
+import React, { useState } from 'react';
 import PaymentGateway from "../payment/PaymentGateway";
 
 const BuyCard = (props) => {
-    const [tonnesBuying, setTonnesBuying] = useState(0);
+    const [tonnesBuying, setTonnesBuying] = useState(1);
     const [displayPaymentGateway, setDisplayPaymentGateway] = useState(false);
     let paymentDiv;
 
@@ -52,9 +52,8 @@ const BuyCard = (props) => {
             alert("Cannot purchase more than remaining supply")
             setTonnesBuying(props.detailsProps.remainingsupply)
         } else {
-            setTonnesBuying(event.target.value).then(it =>
-                console.log(it))
-        }
+            setTonnesBuying(event.target.value)
+            }
     }
 
 

@@ -22,7 +22,7 @@ export default function PaymentGateway(props) {
                                 {
                                     amount: {
                                         currency_code: "GBP",
-                                        value: `${orderDetails.price}`,
+                                        value: `${orderDetails}`,
                                     },
                                 },
                             ],
