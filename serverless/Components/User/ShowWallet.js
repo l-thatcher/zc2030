@@ -133,20 +133,42 @@ const ShowWallet = (props) => {
                                 {/*  className="px-3 py-10 gap-y-10 sm:grid*/}
                                 {/*                               mdsm2:grid-cols mdsm1:grid-cols-3*/}
 
-              {/*                               md:grid-cols-3 xl:grid-cols-3"*/}
-              {/*>*/}
-              {/*  /!*{*!/*/}
-              {/*  /!*    itemData.map((item) =>  (*!/*/}
-              {/*  /!*        <ItemCard key={item._id} item ={item}  />*!/*/}
-              {/*  /!*    ))*!/*/}
-              {/*  /!*}*!/*/}
-              {/*</div>*/}
-            </div>
-          )}
-        </>
-      </div>
-    </>
-  );
+                                {/*                               md:grid-cols-3 xl:grid-cols-3"*/}
+                                {/*>*/}
+                                {/*  /!*{*!/*/}
+                                {/*  /!*    itemData.map((item) =>  (*!/*/}
+                                {/*  /!*        <ItemCard key={item._id} item ={item}  />*!/*/}
+                                {/*  /!*    ))*!/*/}
+                                {/*  /!*}*!/*/}
+                                {/*</div>*/}
+                            </div>
+                        )}
+                    </>
+
+                    <table className="table-fixed">
+                        <thead>
+                        <tr>
+                            <th>Transaction</th>
+                            <th>Provider</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>#42069</td>
+                            <td>Paypal</td>
+                            <td>£500</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </>
+        );
+    } else{
+        return (<div>Error</div>)
+    }
 };
 
 export default ShowWallet;

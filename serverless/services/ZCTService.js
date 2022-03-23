@@ -64,3 +64,13 @@ export const mintZCT = async (address, amount) => {
             return Web3.utils.fromWei(balance);
         });
 };
+
+export const fetchTransactionsByAddress = async (address) => {
+
+    const res = await fetch(`https://api-testnet.polygonscan.com/api?module=account&action=txlist&address=0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=DKKBHH9D4HYB15JA4P1YVEZQX316D78JAR`);
+    console.log(await res.json());
+
+
+
+}
+
