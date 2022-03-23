@@ -5,7 +5,7 @@ import {
 import { createNewProject } from "../../../services/PrismaService";
 import { getSession } from "next-auth/react";
 import { createEncryptedWallet } from "../../../services/Web3jsService";
-import {getZCTBalance, mintZCT} from "../../../services/ZCTService";
+import {getZCTBalance, getZCTBalances, mintZCT} from "../../../services/ZCTService";
 import log from "tailwindcss/lib/util/log";
 
 const getCalculatorTypes = `SELECT * FROM Projects`;
@@ -15,9 +15,11 @@ export default async function handler(req, res) {
     // Get data from database
     case "GET":
       try {
-        const result = await getListofProjects(getCalculatorTypes);
-        res.status(200).json(result);
+        let result = await getListofProjects(getCalculatorTypes);
+        const addresses = await getZCTBalances(result)
+        res.status(200).json(addresses);
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
       break;

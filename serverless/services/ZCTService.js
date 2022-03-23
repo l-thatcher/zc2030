@@ -1,10 +1,12 @@
 import Web3 from "web3";
 import HDWalletProvider from "@truffle/hdwallet-provider";
 import {abiJson} from "../utils/constants";
+import log from "tailwindcss/lib/util/log";
 
-// const childRPC = 'https://rpc-mumbai.maticvigil.com/'
-const childRPC =
-    "wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907";
+const childRPC = 'https://rpc-mumbai.maticvigil.com/'
+// https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907
+// const childRPC =
+//     "wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907";
 const web3 = new Web3(
     new HDWalletProvider({
         mnemonic: {
@@ -29,6 +31,14 @@ export const getZCTBalance = async (address) => {
             return Web3.utils.fromWei(balance);
         });
 };
+
+export const getZCTBalances = async (addresses) => {
+    for (let i = 0; i < addresses.length; i++) {
+        addresses[i].balance = await getZCTBalance(`0x${addresses[i].publicAddress}`)
+    }
+    return addresses
+};
+
 
 //Transfers tokens from one address to another. Request sent by dev wallet so dev wallet pays gas fees.
 export const transferZCT = async (from, to, amount) => {

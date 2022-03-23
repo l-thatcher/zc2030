@@ -48,12 +48,12 @@ export default function ProjectCard(props) {
             <div>
               <span className="text-xs font-semibold inline-block py-1 px-2 rounded-full">
                 Captured Carbon:{" "}
-                {props.project.totalsupply - props.project.remainingsupply}t
+                {props.project.totalsupply - props.project.balance} tCO2e
               </span>
             </div>
             <div className="text-right">
               <span className="text-xs font-semibold inline-block opacity-80">
-                Available Carbon: {props.project.remainingsupply}t
+                Carbon Remaining: {props.project.balance} tCO2e
               </span>
             </div>
 

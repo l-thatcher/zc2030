@@ -124,6 +124,7 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   const projectsRes = await getProjectsList();
+  console.log(projectsRes.data)
   const allProjects = projectsRes.data.slice(-5);
 
   return {
