@@ -2,16 +2,18 @@ import Web3 from "web3";
 import HDWalletProvider from "@truffle/hdwallet-provider";
 import {abiJson} from "../utils/constants";
 import log from "tailwindcss/lib/util/log";
+import * as fs from "fs";
 
 const childRPC = 'https://rpc-mumbai.maticvigil.com/'
 // https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907
 // const childRPC =
 //     "wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907";
+const mnemonic = fs.readFileSync(".secret").toString().trim();
 const web3 = new Web3(
     new HDWalletProvider({
         mnemonic: {
             phrase:
-                "labor evoke bounce thank discover badge history great peasant isolate jazz ahead", //TODO: Make new wallet and store securely
+            mnemonic,
         },
         providerOrUrl: childRPC,
         pollingInterval: 8000
@@ -19,7 +21,7 @@ const web3 = new Web3(
 );
 
 
-const tokenAddress = "0x66e2a2b24a8f57b059042ee3532ac836b2bb1ae1";
+const tokenAddress = "0x26B82ef7812D5D2f4Ca3bD8140FC5642702D9e0e";
 
 const erc20Contract = new web3.eth.Contract(abiJson().abi, tokenAddress);
 
