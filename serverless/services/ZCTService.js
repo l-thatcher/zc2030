@@ -9,6 +9,7 @@ const childRPC = 'https://rpc-mumbai.maticvigil.com/'
 // const childRPC =
 //     "wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907";
 const mnemonic = fs.readFileSync(".secret").toString().trim();
+const devWallet="0x427897086E5Ac14561a7559B694617EaF5e0c1d8"
 const web3 = new Web3(
     new HDWalletProvider({
         mnemonic: {
@@ -46,10 +47,10 @@ export const getZCTBalances = async (addresses) => {
 export const transferZCT = async (from, to, amount) => {
     await erc20Contract.methods
         .approve(from, String(BigInt(amount) * 1000000000000000000n))
-        .send({from: "0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B"});
+        .send({from: devWallet});
     return erc20Contract.methods
         .transferFrom(from, to, String(BigInt(amount) * 1000000000000000000n))
-        .send({from: "0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B"})
+        .send({from: devWallet})
         .then((balance) => {
             return Web3.utils.fromWei(balance.toString());
         });
@@ -58,7 +59,7 @@ export const transferZCT = async (from, to, amount) => {
 export const mintZCT = async (address, amount) => {
     return erc20Contract.methods
         .mint(address, String(BigInt(amount) * 1000000000000000000n))
-        .send({from: "0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B", value: 0})
+        .send({from: devWallet, value: "0"})
         .then((balance) => {
             return Web3.utils.fromWei(balance);
         });
