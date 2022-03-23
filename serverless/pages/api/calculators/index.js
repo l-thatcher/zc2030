@@ -20,8 +20,9 @@ const updateCalculatorType = ` UPDATE CalculatorType
 const getLastId = `SELECT LAST_INSERT_ID()`;
 
 export default async function handler(req, res) {
-  // const session = await getSession({ req })
-  // if (session) {
+  const session = await getSession({ req })
+  console.log(session)
+  if (session) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -72,9 +73,9 @@ export default async function handler(req, res) {
       }
       break;
   }
-  // } else {
-  //     // Not Signed in
-  //     res.status(200)
-  // }
-  // res.end()
+  } else {
+      // Not Signed in
+      res.status(200)
+  }
+  res.end()
 }
