@@ -1,8 +1,9 @@
 import React, { useState} from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {editProjectById} from '../../../services/ProjectService'
 import { useRouter } from 'next/router'
-
+import 'react-toastify/dist/ReactToastify.css';
 const EditProject =(props)=> {
 
     const current = props.projects;
@@ -31,11 +32,11 @@ const EditProject =(props)=> {
     let ownerpic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'
     const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(latitude),streetname:streetname
                     , city:city, county:county,
-                country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
-        ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
-        projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
-        projectimage5:projectimage5,
-        nftaddress:nftaddress}
+                    country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
+                ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
+                projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
+                 projectimage5:projectimage5,
+                nftaddress:nftaddress}
 
     const router = useRouter()
 
@@ -43,14 +44,24 @@ const EditProject =(props)=> {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-                try {
                     console.log(project)
-                    await editProjectById(project,current.id)
+        await editProjectById(project,current.id).then(res => {
+            if (res.status === 200)
+                toast.success('Success! project has been edited', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                router.push('/admin/adminProjects')} )
+            .catch(err => {
+                console.log(err);
+            });
 
-                    await router.push('/admin/adminProjects')
-                } catch (err) {
-                    console.log(err);
-                }
+
     }
 
 
@@ -58,11 +69,22 @@ const EditProject =(props)=> {
         <>
 
             <div
-                className="relative flex flex-col min-w-0 break-words w-[750px] m-4 mb-6 shadow-lg rounded-lg bg-blue-50 border-0">
+                className="relative flex flex-col min-w-0 break-words shadow-lg m-10 rounded-lg bg-blue-50 border-0">
                 <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">
                         <h6 className="text-blueGray-700 bg-gray-50 text-xl font-bold">Edit Project</h6>
                     </div>
+                    <ToastContainer position="top-right"
+                                    autoClose={5000}
+                                    hideProgressBar={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                    pauseOnHover
+                    />
+
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                     <form onSubmit={handleSubmit}>
