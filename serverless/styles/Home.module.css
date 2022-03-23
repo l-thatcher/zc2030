@@ -2,22 +2,26 @@
   padding: 0 0;
 }
 
-.main {
-  flex-direction: column;
+/*.main {*/
+/*  flex-direction: column;*/
+/*  position: relative;*/
+/*  z-index: 1;*/
+/*}*/
 
-  background: linear-gradient(329deg, #57bc90, #77c9d4);
-  background-size: 400% 400%;
+/*.summary {*/
+/*  padding: 3rem 3rem;*/
+/*  display: flex;*/
+/*  width: 100%;*/
+/*  max-height: 40rem;*/
+/*  justify-content: space-between;*/
+/*}*/
 
-  -webkit-animation: topBoxAnimation 6s ease infinite;
-  -moz-animation: topBoxAnimation 6s ease infinite;
-  animation: topBoxAnimation 6s ease infinite;
-}
-
-.summary {
-  padding: 3rem 3rem;
-  display: flex;
-  max-height: 40rem;
-  justify-content: space-between;
+.video {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
 }
 
 @-webkit-keyframes topBoxAnimation {
@@ -61,6 +65,8 @@
   animation-name: headerTextAnimation;
   animation-duration: 1s;
   position: relative;
+  width: 70%;
+  padding: 20px 0 0 20px;
 }
 
 @keyframes headerTextAnimation {
@@ -73,17 +79,18 @@
   }
 }
 
-.leftSideHeader {
-  padding: 3rem 0;
-}
+/*.leftSideHeader {*/
+/*  padding: 3rem 0;*/
+/*}*/
 
 .summaryPara {
-  max-width: 50%;
+  width: 70%;
   color: white;
   font-size: 17pt;
   position: relative;
   animation-name: paraTextAnimation;
   animation-duration: 2s;
+  padding: 0 0 0 20px;
 }
 
 @keyframes paraTextAnimation {
@@ -96,27 +103,36 @@
   }
 }
 
-.promptsCollection {
-  color: black;
-  font-size: 32pt;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+/*.promptsCollection {*/
+/*  color: black;*/
+/*  font-size: 32pt;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  margin: 20px;*/
+/*  padding: 40px;*/
+/*}*/
 
 .prompts {
   display: flex;
-  padding: 1rem;
-  height: 25%;
+  padding: 1rem;;
+  position: relative;
+  z-index: 4;
+}
+
+.promptImages{
+  height: 8rem;
 }
 
 .promptText {
+  font-size: 24pt;
   position: relative;
-  left: -25px;
-  top: 4rem;
+  left: -20px;
+  top: 6rem;
+  height: min-content;
   animation-name: promptTextAnimation;
   animation-duration: 2s;
   color: white;
+  text-shadow: 3px 3px 12px #000000;
 }
 
 @keyframes promptTextAnimation {
@@ -129,16 +145,13 @@
   }
 }
 
-.img {
-  max-width: 20%;
-}
-
-.projects {
-  min-height: 30vh;
-  padding: 3rem 3rem;
-  color: black;
-  background: white;
-}
+/*.projects {*/
+/*  min-height: 30vh;*/
+/*  padding: 3rem 3rem;*/
+/*  color: black;*/
+/*  background: white;*/
+/*  width: 100%;*/
+/*}*/
 
 .projectsHeader {
 }
@@ -146,12 +159,18 @@
 .team {
   min-height: 30vh;
   padding: 3rem 3rem;
+  background: linear-gradient(329deg, #57bc90, #77c9d4);
+  background-size: 400% 400%;
+
+  -webkit-animation: topBoxAnimation 6s ease infinite;
+  -moz-animation: topBoxAnimation 6s ease infinite;
+  animation: topBoxAnimation 6s ease infinite;
 }
 
-.teamCards{
-  display: flex;
-  flex-direction: row;
-}
+/*.teamCards{*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*}*/
 
 .teamHeader {
   color: white;
@@ -159,8 +178,6 @@
 }
 
 .profileCard {
-  height: 20rem;
-  width: 15rem;
   background: rgba(255, 255, 255, 0.5);
   padding: 1rem;
   border-radius: 0.25rem;
