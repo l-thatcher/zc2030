@@ -7,19 +7,15 @@ const BuyCard = (props) => {
     const [tonnesBuying, setTonnesBuying] = useState(1);
     const [displayPaymentGateway, setDisplayPaymentGateway] = useState(false);
     let paymentDiv;
-    const remainingSupply = Number(props.detailsProps.remainingsupply)
+    const remainingSupply = Number(props.detailsProps.balance)
     const projectId = props.detailsProps.id
 
     const showPaymentGateway = () => {
-        console.log("HEREE: " + remainingSupply)
-        console.log("HEREE2: " + tonnesBuying)
 
         if (tonnesBuying <= 0.1) {
             alert("Cannot purchase less than 0.1 Tokens")
             setTonnesBuying(0.1)
         } else if (tonnesBuying > remainingSupply) {
-            console.log("HEREE3: " + remainingSupply)
-            console.log("HEREE4: " + tonnesBuying)
             alert("Cannot exceed maximum supply")
             setTonnesBuying(remainingSupply)
             // setDisplayPaymentGateway(true)
@@ -28,32 +24,55 @@ const BuyCard = (props) => {
         }
     }
 
+    const hidePaymentGateway = () => {
+        setDisplayPaymentGateway(false)
+    }
+
     if (!displayPaymentGateway) {
         paymentDiv = (
             <div>
+                <p className="font-bold">
+                    How many tonnes of carbon would you like to buy?
+                </p>
                 <input
                     className="w-full form-control border border-solid border-gray-300 rounded block px-6 py-2.5 mb-3"
                     type="number"
                     placeholder="tonnes"
                     value={tonnesBuying}
                     onChange={(e) => handleTonnesChanged(e)}
+                    min={0}
                     max={remainingSupply}
                 />
 
                 <button onClick={showPaymentGateway}
                         type="button"
                         className="mb-2 w-full inline-block px-6 py-2.5 bg-green-500 text-white font-medium
-                    text-xs leading-normal uppercase rounded shadow-md hover:bg-green-800 hover:shadow-lg
+                    text-s leading-normal uppercase rounded shadow-md hover:bg-green-800 hover:shadow-lg
                     focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800
-                    active:shadow-lg duration-150 ease-in-out"
+                    active:shadow-lg duration-150 ease-in-out capitalize"
                 >
-                    Checkout with Paypal
+                    Purchase
                 </button>
             </div>
         )
     } else {
         paymentDiv = (
             <div>
+                <p className="font-bold">
+                    Purchasing: {tonnesBuying} tCO2e
+                </p>
+                <p className="font-bold">
+                    Total To Pay: £{(props.detailsProps.cptgbp * tonnesBuying)}
+                </p>
+                <button onClick={hidePaymentGateway}
+                        type="button"
+                        className="mb-2 w-full inline-block px-6 py-2.5 bg-green-500 text-white font-medium
+                    text-s leading-normal uppercase rounded shadow-md hover:bg-green-800 hover:shadow-lg
+                    focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800
+                    active:shadow-lg duration-150 ease-in-out capitalize"
+                >
+                    Change Purchase Amount
+                </button>
                 <PaymentGateway orderDetails={(props.detailsProps.cptgbp * tonnesBuying)} projectId={projectId}></PaymentGateway>
             </div>
         )
@@ -111,9 +130,6 @@ const BuyCard = (props) => {
                 <p className="font-semibold text-gray-400">
                     {" "}
                     Available Supply: {remainingSupply}{" "}
-                </p>
-                <p className="font-bold">
-                    How many tonnes of carbon would you like to buy?
                 </p>
 
                 {paymentDiv}            </div>

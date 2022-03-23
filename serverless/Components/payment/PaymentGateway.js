@@ -9,7 +9,6 @@ export default function PaymentGateway(props) {
     return (
 
         <div>
-            <h2>Purchasing: ${props.orderDetails}</h2>
             {/*Paypal Button*/}
             <PayPalScriptProvider
                 options={{

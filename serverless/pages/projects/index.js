@@ -1,5 +1,5 @@
 import ProjectCard from "../../Components/ProjectCard";
-import { getProjectsList } from "../../services/ProjectService";
+import {getListedProjectsList, getProjectsList} from "../../services/ProjectService";
 
 export default function Projects(props) {
   const allProjects = props.allProjects;
@@ -19,7 +19,7 @@ export default function Projects(props) {
 }
 
 export async function getStaticProps() {
-  const projectsRes = await getProjectsList();
+  const projectsRes = await getListedProjectsList();
   const allProjects = projectsRes.data;
 
   return {

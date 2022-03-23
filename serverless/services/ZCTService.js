@@ -46,10 +46,10 @@ export const getZCTBalances = async (addresses) => {
 //Transfers tokens from one address to another. Request sent by dev wallet so dev wallet pays gas fees.
 export const transferZCT = async (from, to, amount) => {
     await erc20Contract.methods
-        .approve(from, String(BigInt(amount) * 1000000000000000000n))
+        .approve(from, Web3.utils.toWei(amount))
         .send({from: devWallet});
     return erc20Contract.methods
-        .transferFrom(from, to, String(BigInt(amount) * 1000000000000000000n))
+        .transferFrom(from, to, Web3.utils.toWei(amount))
         .send({from: devWallet})
         .then((balance) => {
             return Web3.utils.fromWei(balance.toString());
@@ -58,7 +58,7 @@ export const transferZCT = async (from, to, amount) => {
 
 export const mintZCT = async (address, amount) => {
     return erc20Contract.methods
-        .mint(address, String(BigInt(amount) * 1000000000000000000n))
+        .mint(address, Web3.utils.toWei(amount))
         .send({from: devWallet, value: "0"})
         .then((balance) => {
             return Web3.utils.fromWei(balance);

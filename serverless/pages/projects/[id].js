@@ -18,7 +18,6 @@ export async function getServerSideProps(context) {
 
 const Details = (props) => {
   const project = props.project;
-  console.log("here:" + project);
   return (
     <div className="bg-gray-10">
       <ProjectDetails detailsProps={project} />

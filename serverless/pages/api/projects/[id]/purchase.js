@@ -1,6 +1,6 @@
 import { getSession, useSession } from "next-auth/react";
 import {getProjectWalletById} from "../../../../services/PrismaService";
-import {transferZCT} from "../../../../services/ZCTService";
+import {getZCTBalance, transferZCT} from "../../../../services/ZCTService";
 
 export default async function handler(req, res) {
     const session = await getSession({req})
@@ -14,7 +14,10 @@ export default async function handler(req, res) {
             if (session){
                 const amount = req.body[0];
                 const projectWallet = await getProjectWalletById(req.query.id)
-                transferZCT(projectWallet, session.user.walletAddress, String(amount))
+                console.log(await getZCTBalance(`0x${projectWallet.publicAddress}`))
+                console.log(await getZCTBalance(`0x${session.user.walletAddress}`))
+                console.log(amount)
+                await transferZCT(`0x${projectWallet.publicAddress}`, `0x${session.user.walletAddress}`, String(amount))
             }
             break;
     }

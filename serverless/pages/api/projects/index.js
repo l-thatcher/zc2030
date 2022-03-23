@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       try {
         let result = await getListofProjects(getCalculatorTypes);
         const addresses = await getZCTBalances(result)
-        await fetchTransactionsByAddress("0x6c578c393dc9176497e797a54631f8c7c1e0522e")
+        // await fetchTransactionsByAddress("0x6c578c393dc9176497e797a54631f8c7c1e0522e")
         res.status(200).json(addresses);
       } catch (e) {
         console.log(e)
