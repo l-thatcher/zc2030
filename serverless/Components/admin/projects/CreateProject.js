@@ -1,5 +1,7 @@
 import React, { useState} from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router'
 import {createNewProject} from '../../../services/ProjectService'
 // components
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -35,15 +37,28 @@ const CreateProject =()=> {
         projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
         projectimage5:projectimage5,
         nftaddress:nftaddress}
+
+    const router = useRouter()
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-                try {
-                    console.log(project)
-                    await createNewProject(project)
-                } catch (err) {
-                    console.log(err);
-                }
+
+                    await createNewProject(project).then(res => {
+                        if (res.status === 200)
+                            toast.success('Success! project has been created', {
+                                position: "top-right",
+                                autoClose: 3000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                            });
+                        router.push('/admin/adminProjects')} )
+                        .catch(err => {
+                            console.log(err);
+                        });
+
     }
 
 
@@ -51,12 +66,24 @@ const CreateProject =()=> {
         <>
 
             <div
-                className="relative flex flex-col min-w-0 break-words w-[750px] m-4 mb-6 shadow-lg rounded-lg bg-blue-50 border-0">
+                className="relative flex flex-col min-w-0 break-words m-10 shadow-lg rounded-lg bg-blue-50 border-0">
                 <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">
                         <h6 className="text-blueGray-700 bg-gray-50 text-xl font-bold">Create New Project</h6>
                     </div>
                 </div>
+
+                <ToastContainer position="top-right"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                />
+
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                     <form onSubmit={handleSubmit}>
                         <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold capitalize">

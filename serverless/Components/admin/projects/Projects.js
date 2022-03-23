@@ -21,8 +21,8 @@ const Projects= (props) => {
 
     return(
 
-        <>
-            <div className="bg-white m-4 rounded-lg ">
+        <div className='w-11/12'>
+            <div className="bg-blue-500 md:w-8/12  lg:w-9/12 m-10 rounded  ">
 
                 <div className="flex justify-between mb-5" >
                     <h3 className='font-bold py-6 capitalize font-serif text-gray-700 text-2xl px-10 '>
@@ -43,14 +43,17 @@ const Projects= (props) => {
 
 
 
+                <div className=''>
 
-                { view === 'current projects' ? <CurrentProject projects={allProjects}/> : view === 'create project' ? <CreateProject/> : view === 'edit' ? <EditProject projects={editPrj}/> : "loading ..."}
+                    { view === 'current projects' ? <CurrentProject projects={allProjects}/> : view === 'create project' ? <CreateProject /> : view === 'edit' ? <EditProject projects={editPrj}/> : "loading ..."}
+
+                </div>
 
 
             </div>
 
 
-        </>
+        </div>
 
     )
 

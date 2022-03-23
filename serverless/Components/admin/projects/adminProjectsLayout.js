@@ -4,6 +4,7 @@ import CreateProject from "./CreateProject";
 import ProjectCard from "../../ProjectCard";
 import {ViewContext} from "../../../Contexts/ViewContext";
 import {useState} from "react";
+import ProfileHeader from "./ProfileHeader";
 
 const AdminProjectsLayout = (props) => {
 
@@ -15,14 +16,23 @@ const AdminProjectsLayout = (props) => {
 
     return(
 
-        <div className="h-screen bg-gray-100"  style={{width:"100%"}}>
-            <h1 className='font-bold text-3xl px-10 mt-10'>
+            <ViewContext.Provider value={{view,setView,editPrj,setEditPrj}} >
+                <div className='w-full '>
+                    <div className=''>
+                        {/*<ProfileHeader/>*/}
+                    </div>
 
-            </h1>
-            <ViewContext.Provider value={{view,setView,editPrj,setEditPrj}}>
-                <Projects projects={allProjects}/>
+                    <div className=' '>
+
+                        <Projects projects={allProjects} />
+
+                    </div>
+
+
+                </div>
+
             </ViewContext.Provider>
-        </div>
+
     )
 
 }
