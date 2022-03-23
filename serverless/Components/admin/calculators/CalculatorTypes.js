@@ -39,7 +39,7 @@ const CalculatorTypes = (data) => {
           <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden shadow-md sm:rounded-lg">
               <table className="min-w-full">
-                <thead className="bg-gray-50 dark:bg-gray-700">
+                <thead className="bg-[#77C9D480] dark:bg-gray-700">
                   <tr>
                     <th
                       scope="col"
@@ -66,7 +66,7 @@ const CalculatorTypes = (data) => {
                           Edit
                         </Link>
                       </td>
-                      <td className="py-4 px-6 text-m font-medium text-right whitespace-nowrap">
+                      <td className="py-4 px-6 text-m font-medium text-right whitespace-nowrap hover:cursor-pointer">
                         <span onClick={(e) => handleOpen(it.id)}>
                           <AiFillDelete size={20} />
                         </span>
