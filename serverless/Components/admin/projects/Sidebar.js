@@ -13,24 +13,14 @@ export default function  Sidebar ()  {
                             <div
                                 className="relative flex flex-row items-center h-11 focus:outline-none text-white-600 hover:text-white-800 pr-6">
             <span className="inline-flex justify-center items-center ml-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                   stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-              </svg>
+
             </span>
-                                <span className="text-sm tracking-wide truncate">
-              <input type="text" name="Search"
-                     className="w-full py-2 bg-indigo-600 text-sm text-white placeholder-gray-100 border-transparent focus:border-transparent focus:ring-0"
-                     placeholder="Search"/>
+                                <span className="text-bold tracking-wide truncate">
+                    <h6>Zero Carbon dashboard</h6>
             </span>
                             </div>
                         </li>
-                        <li className="px-5 hidden md:block">
-                            <div className="flex flex-row items-center h-8">
-                                <div className="text-sm font-light tracking-wide text-gray-200 uppercase">Menu</div>
-                            </div>
-                        </li>
+
                         <li className="md:px-4">
                             <div
                                className="active relative flex flex-row items-center h-11 focus:outline-none bg-indigo-800 hover:bg-indigo-500 rounded-lg text-white-600 hover:text-white-800 pr-6">
@@ -42,7 +32,7 @@ export default function  Sidebar ()  {
                                     </path>
                                   </svg>
                                 </span>
-                                <span className="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+                                <span className="ml-2 text-sm tracking-wide truncate">Projects</span>
                             </div>
                         </li>
                         <li className="md:px-4">
