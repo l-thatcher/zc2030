@@ -6,7 +6,7 @@ import {getSession} from "next-auth/react";
 export default function showCalculators(props) {
   const types = props.types;
 
-  return <CalculatorTypes types={types}/>;
+  return <CalculatorTypes types={types} />;
 }
 
 export async function getServerSideProps(context) {

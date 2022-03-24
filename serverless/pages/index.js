@@ -1,4 +1,6 @@
 import styles from "../styles/Home.module.css";
+import ProjectCard from "../Components/ProjectCard";
+import { getProjectsList } from "../services/ProjectService";
 
 const calculatorImg = "/calculator-logo.png";
 const discoverImg = "/discover-logo2.png";
@@ -6,7 +8,8 @@ const purchaseImg = "/purchase-logo.png";
 const offsetImg = "/offset-logo.png";
 const profileImg = "/profile-default.png";
 
-export default function Home() {
+export default function Home(props) {
+  const allProjects = props.allProjects;
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -70,23 +73,61 @@ export default function Home() {
 
         <div className={styles.projects}>
           <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
+          <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
+            {allProjects.map((project) => (
+                // <ProjectCard project={project} key={project.name} />
+                <ProjectCard project={project} />
+            ))}
+          </div>
         </div>
 
         <div className={styles.team}>
           <h1 className={styles.teamHeader}>Meet the team</h1>
 
-          <div className={styles.profileCard}>
-            <img
-              src={profileImg}
-              srcSet={profileImg}
-              className={styles.profilePic}
-              alt="Calculate"
-            />
-            <h2>Peter Trott</h2>
-            <h4>CEO</h4>
+          <div className={styles.teamCards}>
+            <div className={styles.profileCard}>
+              <img
+                  src={profileImg}
+                  srcSet={profileImg}
+                  className={styles.profilePic}
+                  alt="Calculate"
+              />
+              <h2>Peter Trott</h2>
+              <h4>CEO</h4>
+            </div>
+            <div className={styles.profileCard}>
+              <img
+                  src={profileImg}
+                  srcSet={profileImg}
+                  className={styles.profilePic}
+                  alt="Calculate"
+              />
+              <h2>Peter Trott</h2>
+              <h4>CEO</h4>
+            </div>
+            <div className={styles.profileCard}>
+              <img
+                  src={profileImg}
+                  srcSet={profileImg}
+                  className={styles.profilePic}
+                  alt="Calculate"
+              />
+              <h2>Peter Trott</h2>
+              <h4>CEO</h4>
+            </div>
           </div>
         </div>
       </main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const projectsRes = await getProjectsList();
+  const allProjects = projectsRes.data.slice(-5);
+
+  return {
+    props: { allProjects },
+    revalidate: 60, //Regenerates page every minute
+  };
 }
