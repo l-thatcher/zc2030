@@ -1,8 +1,9 @@
 import MainService from "./MainService";
+import {getSession} from "next-auth/react";
 
 // GET Request - Get Calculator Types
-export const getCalculatorTypes = () => {
-  return MainService.get("/api/calculators");
+export const getCalculatorTypes = (data) => {
+  return MainService.get("/api/calculators", {data});
 };
 
 // GET Request - Get Calculator Types
@@ -15,8 +16,8 @@ export const getCalculatorTypesForUser = (userId) => {
 };
 
 // GET Request - Get Calculator Types
-export const getCalculatorType = (type_id) => {
-  return MainService.get(`/api/calculators/overview/${type_id}`);
+export const getCalculatorType = (type_id, data) => {
+  return MainService.get(`/api/calculators/overview/${type_id}`, {data});
 };
 
 // POST Request - Save calculator Type
@@ -30,8 +31,13 @@ export const updateCalculatorType = (data) => {
 };
 
 // GET Request - Get Calculator Category
-export const getCalculatorCategories = (type_id) => {
-  return MainService.get(`/api/calculators/${type_id}`);
+export const getCalculatorCategories = (type_id, data) => {
+  return MainService.get(`/api/calculators/${type_id}`, {data});
+};
+
+// GET Request - Get Public Calculator Category
+export const getPublicCalculatorCategories = (type_id, data) => {
+  return MainService.get(`/api/calculators/public/${type_id}`, {data});
 };
 
 // POST Request - Save Calculator Category
@@ -48,8 +54,8 @@ export const createUserCalculator = (typeId, data) => {
 };
 
 // DELETE Request - Delete Calculator Category
-export const deleteCalculatorCategory = (type_id, categoryId) => {
-  return MainService.delete(`/api/calculators/${type_id}/${categoryId}`);
+export const deleteCalculatorCategory = (type_id, categoryId, data) => {
+  return MainService.delete(`/api/calculators/${type_id}/${categoryId}`, {data});
 };
 
 export const deleteCalculatorInput = (type_id, categoryId, inputId) => {
@@ -64,8 +70,13 @@ export const updateCalculatorCategories = (type_id, data) => {
 };
 
 // GET Request - Get Calculator Inputs
-export const getCalculatorInputs = (type_id, category_id) => {
-  return MainService.get(`/api/calculators/${type_id}/${category_id}`);
+export const getCalculatorInputs = (type_id, category_id, data) => {
+  return MainService.get(`/api/calculators/${type_id}/${category_id}`, {data});
+};
+
+// GET Request - Get Public Calculator Inputs
+export const getPublicCalculatorInputs = (type_id, category_id) => {
+  return MainService.get(`/api/calculators/public/${type_id}/${category_id}`);
 };
 
 // POST Request - Save Calculator Inputs
@@ -85,8 +96,8 @@ export const updateCalculatorInputs = (type_id, category_id, data) => {
   return MainService.put(`/api/calculators/${type_id}/${category_id}`, data);
 };
 
-export const getCalculatorUsers = (type_id) => {
-  return MainService.get(`/api/calculators/getUsers/${type_id}`);
+export const getCalculatorUsers = (type_id, data) => {
+  return MainService.get(`/api/calculators/getUsers/${type_id}`, {data});
 };
 
 // POST Request - Save calculator result

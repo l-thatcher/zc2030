@@ -17,12 +17,14 @@ const updateCalculatorType = ` UPDATE CalculatorType
                                    public = ?
                                WHERE id = ?`;
 
-const getLastId = `SELECT LAST_INSERT_ID()`;
 
 export default async function handler(req, res) {
-  const session = await getSession({ req })
-  console.log(session)
-  if (session) {
+
+  const calculatorSession = req.body[0]?.user?.role;
+  console.log("CALCULATORS: " + calculatorSession)
+  const apiSession = await getSession({ req });
+
+  if ((calculatorSession === "PERSONAL") || (calculatorSession === "ADMIN") || (apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -75,7 +77,7 @@ export default async function handler(req, res) {
   }
   } else {
       // Not Signed in
-      res.status(200)
+      res.status(401)
   }
   res.end()
 }
