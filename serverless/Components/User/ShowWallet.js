@@ -34,6 +34,7 @@ const ShowWallet = (props) => {
                                     alt="Profile picture"
                                     raised
                                     rounded
+
                                 />
                             </div>
                         </div>

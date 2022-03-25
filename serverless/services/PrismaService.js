@@ -274,8 +274,8 @@ export const getProjectWalletById = (userId) => {
     });
 };
 
-export const createNewTransaction = (date, tonnes, price, paypalId, projectId) => {
-    return prisma.project.create({
+export const createNewTransaction = (date, tonnes, price, paypalId, projectId, userId) => {
+    return prisma.transaction.create({
         data: {
             date: date,
             amountTonnes: tonnes,
