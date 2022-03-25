@@ -1,7 +1,6 @@
 import styles from "../styles/Calculator.module.css";
 import {
   getCalculatorCategories,
-  getCalculatorInputs,
   getCalculatorTypes,
   getCalculatorTypesForUser, getPublicCalculatorCategories, getPublicCalculatorInputs,
   getPublicCalculatorTypes,
