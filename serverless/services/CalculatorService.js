@@ -126,8 +126,8 @@ export const deleteUsersCalculator = (idToDelete, typeId) => {
   );
 };
 
-export const getLogsByUser = (userId) => {
-  return MainService.get(`/api/calculators/user/${userId}/logs`);
+export const getLogsByUser = (userId, data) => {
+  return MainService.get(`/api/calculators/user/${userId}/logs`, {data});
 };
 
 export const getUserByEmail = (email) => {

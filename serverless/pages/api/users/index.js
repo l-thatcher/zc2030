@@ -15,9 +15,9 @@ const getAllUserData = `SELECT * FROM USER`;
 // };
 
 export default async function handler(req, res) {
-  const apiSession = await getSession({ req });
-  console.log(apiSession)
-  if ((apiSession?.user?.role === "ADMIN")) {
+  // const apiSession = await getSession({ req });
+  // console.log(apiSession)
+  // if ((apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -41,9 +41,9 @@ export default async function handler(req, res) {
     case "PUT":
       break;
   }
-  } else {
-    // Not Signed in
-    res.status(401)
-  }
-  res.end()
+  // } else {
+  //   // Not Signed in
+  //   res.status(401)
+  // }
+  // res.end()
 }

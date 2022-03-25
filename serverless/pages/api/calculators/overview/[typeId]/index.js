@@ -5,6 +5,7 @@ import {
   getUsersThatCanViewCalculator,
 } from "../../../../../services/PrismaService";
 import { execute_query } from "../../../../../utils/db";
+import {getSession} from "next-auth/react";
 
 // const saveCalculatorType = ` INSERT INTO CalculatorType(name, public)
 //                              VALUES (?, ?)`;
@@ -14,6 +15,9 @@ import { execute_query } from "../../../../../utils/db";
 //                                WHERE id = ?`;
 
 export default async function handler(req, res) {
+  const session = await getSession({ req })
+
+  if ((session?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
 
@@ -72,4 +76,8 @@ export default async function handler(req, res) {
 
       break;
   }
+  } else {
+    res.status(401)
+  }
+  res.end()
 }

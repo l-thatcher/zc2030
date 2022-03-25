@@ -25,11 +25,10 @@ const deleteCalculatorInput = `DELETE FROM CalculatorInput
 export default async function handler(req, res) {
   const { categoryId } = req.query;
   const apiSession = await getSession({ req });
-  // console.log(req.body[0])
-  const calculatorSession = req.body[0]?.user?.role;
+  const calculatorSession = await req.body[0]?.user?.role;
   console.log("Category: " + req.body[0]?.user?.role)
 
-  if ((calculatorSession === undefined) || (calculatorSession === "ADMIN") || (apiSession?.user?.role === "ADMIN")) {
+  if ((calculatorSession === "PERSONAL") || (calculatorSession === "ADMIN") || (calculatorSession === undefined) || (apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
