@@ -132,7 +132,7 @@ const ShowWallet = (props) => {
                                 <section className="w-full">
                                     <div className="flex flex-col justify-center h-full w-full">
                                         <div
-                                            className="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+                                            className="w-full mx-auto bg-white rounded-sm border border-zc30-green">
                                             <header className="px-5 py-4 border-b border-gray-100">
                                                 <h2 className="font-semibold text-gray-800">Transaction History</h2>
                                             </header>
@@ -153,6 +153,9 @@ const ShowWallet = (props) => {
                                                             </th>
                                                             <th className="p-2 whitespace-nowrap">
                                                                 <div className="font-semibold text-center">Date</div>
+                                                            </th>
+                                                            <th className="p-2 whitespace-nowrap">
+                                                                <div className="font-semibold text-center">Status</div>
                                                             </th>
                                                         </tr>
                                                         </thead>
