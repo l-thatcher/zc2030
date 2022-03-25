@@ -24,44 +24,59 @@ const Card = (props) => {
         <div className="inline-block px-3">
 
 
-            <div className="w-80 h-80 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
-                <img
-                    src={project.projectimage1}
-                    alt="uploaded cover image"
-                    className="object-cover h-1/2 w-full rounded-lg rounded-b-none"/>
-                <h5 className=' ml-5 font-bold font-serif'>{project.projectname}  </h5>
+            <div className="w-80 static h-100 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
+                <div>
+                    <div className="relative rounded-lg cursor-pointer ">
+                    <img
+                        src={project.projectimage1}
+                        alt="uploaded cover image"
+                        className="object-cover h-1/2 w-full rounded-lg ">
 
-                    <div className="mt-2 ml-5 flex items-center text-sm text-gray-500 underline mb-2 ml-4 capitalize">
-                        {/*location*/}
-                        {project.streetname} | {project.city} {project.county} {project.country}
-                    </div>
-
-                <div className='flex items-center '>
-
-                    {/*<div>*/}
-                    {/*    <h5 className='font-sans text-xs '>Remaining  </h5>*/}
-                    {/*    <h5 className='font-sans text-xs'> supply</h5>*/}
-                    {/*</div>*/}
-
-                    <div>
-                        <div className="w-[250px] ml-5 bg-gray-200 rounded-full">
-
-
-                                <ProgressBar completed={widthPercentage} />
-
-
-
-
-
+                    </img>
+                        <div className=" absolute   bottom-0 w-[100px] bg-zc30-blue py-1 text-black text-center font-light">
+                            <div className='text-white text font-semibold text-sm'>
+                                £{project.cptgbp} <span > /tCo2e</span>
+                            </div>
                         </div>
                     </div>
+
+                    <h5 className=' ml-5 py-2 text-gray-700 font-medium font-serif'>{project.projectname}  </h5>
+
+                    <div className=" font-semibold mt-2 py-2 ml-5 underline flex items-center text-sm text-gray-300  mb-2 ml-4 capitalize">
+                        {/*location*/}
+                         {project.city} , {project.county}, {project.country}
+                    </div>
+
+                    <div className="mt-2  ml-5 no-underline flex items-center font-semibold text-xs text-gray-600  mb-2 ml-4 capitalize">
+                        {/*total supply*/}
+                        Total Carbon Supply:  <span className='text-gray-400 ml-2'> {project.totalsupply} tonnes of C02e</span>
+                    </div>
+
+                    <div className=' mt-1 flex items-center '>
+                        {/*<div>*/}
+                        {/*    <h5 className='font-sans text-xs '>Remaining  </h5>*/}
+                        {/*    <h5 className='font-sans text-xs'> supply</h5>*/}
+                        {/*</div>*/}
+                        <div>
+                            <div className=" flex items-center  rounded-full">
+
+                                <div className='mt-2 py-2 ml-5 no-underline flex items-center text-xs text-gray-600 font-semibold mb-2 ml-4 capitalize'>Available Carbon Supply:</div>
+                                <div className='w-[150px] ml-2'> <ProgressBar completed={widthPercentage} /> </div>
+
+
+                            </div>
+                        </div>
+
+
+                </div>
+
 
                 </div>
 
                 <div className="flex justify-end">
 
                     <button
-                        className=" mt-6 mr-5 bg-gray-700 active:bg-blue-600 text-white font-bold capitalize text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                        className=" mt-6 mr-5 bg-specblue active:bg-zer text-white font-bold capitalize text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                         type="button" onClick={changeView}>
                         Edit
                     </button>
