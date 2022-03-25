@@ -99,7 +99,7 @@ const ShowWallet = (props) => {
                             aria-current="page"
                             onClick={() => setToWallet()}
                         >
-                            Wallet
+                            Projects
                         </button>
                     </div>
                     <div className="mb-3 text-gray-700 text-center  gap-6">
@@ -129,38 +129,73 @@ const ShowWallet = (props) => {
                     <>
                         {view === "history" && (
                             <div className="container mx- justify-center">
-                                {/*<div*/}
-                                {/*  className="px-3 py-10 gap-y-10 sm:grid*/}
-                                {/*                               mdsm2:grid-cols mdsm1:grid-cols-3*/}
+                                <section className="w-full">
+                                    <div className="flex flex-col justify-center h-full w-full">
+                                        <div
+                                            className="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+                                            <header className="px-5 py-4 border-b border-gray-100">
+                                                <h2 className="font-semibold text-gray-800">Transaction History</h2>
+                                            </header>
+                                            <div className="p-3">
+                                                <div className="overflow-x-auto">
+                                                    <table className="table-auto w-full">
+                                                        <thead
+                                                            className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                                                        <tr>
+                                                            <th className="p-2 whitespace-nowrap">
+                                                                <div className="font-semibold text-left">Name</div>
+                                                            </th>
+                                                            <th className="p-2 whitespace-nowrap">
+                                                                <div className="font-semibold text-left">Tonnes</div>
+                                                            </th>
+                                                            <th className="p-2 whitespace-nowrap">
+                                                                <div className="font-semibold text-left">Spent</div>
+                                                            </th>
+                                                            <th className="p-2 whitespace-nowrap">
+                                                                <div className="font-semibold text-center">Date</div>
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody className="text-sm divide-y divide-gray-100">
 
-                                {/*                               md:grid-cols-3 xl:grid-cols-3"*/}
-                                {/*>*/}
-                                {/*  /!*{*!/*/}
-                                {/*  /!*    itemData.map((item) =>  (*!/*/}
-                                {/*  /!*        <ItemCard key={item._id} item ={item}  />*!/*/}
-                                {/*  /!*    ))*!/*/}
-                                {/*  /!*}*!/*/}
-                                {/*</div>*/}
+                                                        <tr>
+                                                            <td className="p-2 whitespace-nowrap">
+                                                                <div className="flex items-center">
+                                                                    <div
+                                                                        className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
+                                                                        <img className="rounded-full"
+                                                                             src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-05.jpg"
+                                                                             width="40" height="40" alt="Alex Shatov"/>
+                                                                    </div>
+                                                                    <div className="font-medium text-gray-800">Alex
+                                                                        Shatov
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td className="p-2 whitespace-nowrap">
+                                                                <div className="text-left">alexshatov@gmail.com</div>
+                                                            </td>
+                                                            <td className="p-2 whitespace-nowrap">
+                                                                <div
+                                                                    className="text-left font-medium text-green-500">$2,890.66
+                                                                </div>
+                                                            </td>
+                                                            <td className="p-2 whitespace-nowrap">
+                                                                <div className="text-lg text-center">🇺🇸</div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
+
+
                         )}
                     </>
-
-                    <table className="table-fixed">
-                        <thead>
-                        <tr>
-                            <th>Transaction</th>
-                            <th>Provider</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>#42069</td>
-                            <td>Paypal</td>
-                            <td>£500</td>
-                        </tr>
-                        </tbody>
-                    </table>
 
 
                 </div>
