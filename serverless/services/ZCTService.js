@@ -57,6 +57,11 @@ export const transferZCT = async (from, to, amount) => {
     );
     const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
     //Called from the farm wallet
+
+    await localErc20Contract.methods
+        .permit(devWallet, fromWallet.address, 1, 9999999999999)
+        .send({from: devWallet.address});
+
     await localErc20Contract.methods
         .approve(devWallet, Web3.utils.toWei(amount))
         .permit(devWallet, fromWallet.address, 1, 9999999999999)
