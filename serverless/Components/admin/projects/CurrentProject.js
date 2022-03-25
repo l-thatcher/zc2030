@@ -10,7 +10,7 @@ const CurrentProject = (props) => {
      return   (
             <div>
                 <div>
-                    <h4 className='font-semibold text-xs py-6 capitalize font-serif text-gray-700 text-2xl px-10 '>
+                    <h4 className='font-semibold text-xl py-6 capitalize font-serif text-gray-700 text-2xl px-10 '>
                         Current Projects
                     </h4>
                 </div>

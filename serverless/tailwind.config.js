@@ -10,6 +10,7 @@ module.exports = {
       "zc30-blue": "#77C9D4",
       "zc30-grey": "#A5A5AF",
       "zc30-light-green": "#D2EDE3",
+      "specblue": "#77C9D4",
       blue: "#1fb6ff",
       pink: "#ff49db",
       orange: "#ff7849",
