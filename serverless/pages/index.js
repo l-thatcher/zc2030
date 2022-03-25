@@ -84,54 +84,67 @@ export default function Home(props) {
           </div>
         </div>
 
-        <div className={styles.team}>
-          <h1 className={styles.teamHeader}>Meet the team</h1>
+        <div className={styles.teamBackground}>
+        <div className="px-0 h-fit py-3">
 
-          <div className='overflow-scroll flex flex-row'>
-            <div className="bg-white font-semibold text-center rounded-3xl border p-8 w-60 mx-2">
-              <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
-                   src={profileImg}
-                   srcSet={profileImg}
-                   alt="CEO"/>
-              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-              <h3 className="text-sm text-gray-400 "> CEO </h3>
-              <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
+            <h1 className="text-white pl-2 pb-2">Meet the team</h1>
 
-            <div className="bg-white font-semibold text-center rounded-3xl border p-8 w-60 mx-2">
-              <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
-                   src={profileImg}
-                   srcSet={profileImg}
-                   alt="CEO"/>
-              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-              <h3 className="text-sm text-gray-400 "> CEO </h3>
-              <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
+            <div className='overflow-scroll flex flex-row w-full'>
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
 
-            <div className="bg-white font-semibold text-center rounded-3xl border p-8 w-60 mx-2">
-              <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
-                   src={profileImg}
-                   srcSet={profileImg}
-                   alt="CEO"/>
-              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-              <h3 className="text-sm text-gray-400 "> CEO </h3>
-              <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
 
-            <div className="bg-white font-semibold text-center rounded-3xl border p-8 w-60 mx-2">
-              <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
-                   src={profileImg}
-                   srcSet={profileImg}
-                   alt="CEO"/>
-              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-              <h3 className="text-sm text-gray-400 "> CEO </h3>
-              <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
 
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="hidden sm:block text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+          </div>
           </div>
         </div>
       </main>
