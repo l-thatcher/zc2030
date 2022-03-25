@@ -42,14 +42,14 @@ const Card = (props) => {
 
                     <h5 className=' ml-5 py-2 text-gray-700 font-medium font-serif'>{project.projectname}  </h5>
 
-                    <div className=" font-semibold mt-2 py-2 ml-5 underline flex items-center text-sm text-gray-300  mb-2 ml-4 capitalize">
+                    <div className=" font-semibold mt-2 py-2 ml-5 underline flex items-center text-sm text-gray-300 truncate mb-2 ml-4 capitalize">
                         {/*location*/}
                          {project.city} , {project.county}, {project.country}
                     </div>
 
-                    <div className="mt-2  ml-5 no-underline flex items-center font-semibold text-xs text-gray-600  mb-2 ml-4 capitalize">
+                    <div className="mt-2  ml-5 no-underline flex items-center font-semibold text-xs text-gray-600  mb-2 ml-4 ">
                         {/*total supply*/}
-                        Total Carbon Supply:  <span className='text-gray-400 ml-2'> {project.totalsupply} tonnes of C02e</span>
+                        Total Carbon Supply:  <span className='text-gray-400 ml-2'> {project.totalsupply} /tC02e</span>
                     </div>
 
                     <div className=' mt-1 flex items-center '>
@@ -76,7 +76,7 @@ const Card = (props) => {
                 <div className="flex justify-end">
 
                     <button
-                        className=" mt-6 mr-5 bg-specblue active:bg-zer text-white font-bold capitalize text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                        className=" mt-3 mb-3 mr-5 bg-specblue active:bg-zer text-white font-bold capitalize text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                         type="button" onClick={changeView}>
                         Edit
                     </button>
