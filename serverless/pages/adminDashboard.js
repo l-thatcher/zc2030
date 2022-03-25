@@ -4,6 +4,7 @@ import AccountDashboard from "../Components/admin/AdminPages/accountDashboard";
 import ShowCalculators from "../Components/admin/AdminPages/showCalculators";
 import {getCalculatorTypes} from "../services/CalculatorService";
 import {useState} from "react";
+import Sidebar from "../Components/admin/projects/Sidebar";
 
 export default function adminDashboard(props) {
 
@@ -37,6 +38,11 @@ export default function adminDashboard(props) {
                        data-mdb-ripple="true" data-mdb-ripple-color="dark">Projects</a>
                 </li>
             </ul>
+        </div>
+        <div>
+
+            <Sidebar/>
+
         </div>
         <div className={styles.content}>
             <div style={{display: userVisibility ? "block":"none"}}>

@@ -2,27 +2,27 @@ import React, { useState} from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
-import {createNewProject} from '../../../services/ProjectService'
-// components
-import { AiFillCloseCircle } from "react-icons/ai";
-// import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
+import {editProjectById} from '../../../services/ProjectService'
 
-const CreateProject =()=> {
-    const [projectname, setProjectname] = useState('');
-    const [cptgbp, setCptgbp] = useState('');
-    const [latitude, setLatitude] = useState(0);
-    const [longitude, setLongitude] = useState(0);
-    const [streetname, setStreetname] = useState('');
-    const [city, setCity] = useState('');
-    const [county, setCounty] = useState('');
-    const [country, setCountry] = useState('');
-    const [totalsupply, setTotalsupply] = useState('');
-    const [ownername, setOwnername] = useState('');
-    const [type, setType] = useState('');
-    const [website, setWebsite] = useState('');
-    const [description, setDescription] = useState('');
-    const [datefounded, setDatefounded] = useState('');
-    const [nftaddress, setNftaddress] = useState('');
+const EditProject =(props)=> {
+
+    const current = props.projects;
+
+    const [projectname, setProjectname] = useState(current.projectname);
+    const [cptgbp, setCptgbp] = useState(current.cptgbp);
+    const [latitude, setLatitude] = useState(current.latitude);
+    const [longitude, setLongitude] = useState(current.longitude);
+    const [streetname, setStreetname] = useState(current.streetname);
+    const [city, setCity] = useState(current.streetname);
+    const [county, setCounty] = useState(current.county);
+    const [country, setCountry] = useState(current.country);
+    const [totalsupply, setTotalsupply] = useState(current.totalsupply);
+    const [ownername, setOwnername] = useState(current.ownername);
+    const [type, setType] = useState(current.type);
+    const [website, setWebsite] = useState(current.website);
+    const [description, setDescription] = useState(current.description);
+    const [datefounded, setDatefounded] = useState(current.datefounded);
+    const [nftaddress, setNftaddress] = useState(current.nftaddress);
 
     let projectimage1= 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/farm-quotes-1580917869.jpg?crop=0.723xw:1.00xh;0.189xw,0&resize=640:*'
     let projectimage2= 'https://www.immunology.org/sites/default/files/Farm%20barn%20small.jpg'
@@ -32,32 +32,35 @@ const CreateProject =()=> {
     let ownerpic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'
     const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(latitude),streetname:streetname
                     , city:city, county:county,
-                country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
-        ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
-        projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
-        projectimage5:projectimage5,
-        nftaddress:nftaddress}
+                    country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
+                ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
+                projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
+                 projectimage5:projectimage5,
+                nftaddress:nftaddress}
 
     const router = useRouter()
+
+
     const handleSubmit = async (e) => {
 
         e.preventDefault();
+                    console.log(project)
+        await editProjectById(project,current.id).then(res => {
+            if (res.status === 200)
+                toast.success('Success! project has been edited', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                router.push('/admin/adminProjects')} )
+            .catch(err => {
+                console.log(err);
+            });
 
-                    await createNewProject(project).then(res => {
-                        if (res.status === 200)
-                            toast.success('Success! project has been created', {
-                                position: "top-right",
-                                autoClose: 3000,
-                                hideProgressBar: false,
-                                closeOnClick: true,
-                                pauseOnHover: true,
-                                draggable: true,
-                                progress: undefined,
-                            });
-                        router.push('/admin/adminProjects')} )
-                        .catch(err => {
-                            console.log(err);
-                        });
 
     }
 
@@ -66,24 +69,23 @@ const CreateProject =()=> {
         <>
 
             <div
-                className="relative flex flex-col min-w-0 break-words m-10 shadow-lg rounded-lg bg-blue-50 border-0">
+                className="relative flex flex-col min-w-0 break-words shadow-lg m-10 rounded-lg bg-blue-50 border-0">
                 <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">
-                        <h6 className="text-blueGray-700 bg-gray-50 text-xl font-bold">Create New Project</h6>
+                        <h6 className="text-blueGray-700 bg-gray-50 text-xl font-bold">Edit Project</h6>
                     </div>
+                    <ToastContainer position="top-right"
+                                    autoClose={5000}
+                                    hideProgressBar={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                    pauseOnHover
+                    />
+
                 </div>
-
-                <ToastContainer position="top-right"
-                                autoClose={5000}
-                                hideProgressBar={false}
-                                newestOnTop={false}
-                                closeOnClick
-                                rtl={false}
-                                pauseOnFocusLoss
-                                draggable
-                                pauseOnHover
-                />
-
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                     <form onSubmit={handleSubmit}>
                         <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold capitalize">
@@ -120,8 +122,8 @@ const CreateProject =()=> {
                                     </label>
                                     <input
                                         type="text"
-                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="The hackney farm" onChange={(e) => setProjectname(e.target.value)}
+                                        className="border-0 px-3 py-3  text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        value={projectname} onChange={(e) => setProjectname(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -133,10 +135,10 @@ const CreateProject =()=> {
                                     >
                                         NFT address
                                     </label>
-                                    <input
+                                    <input value={nftaddress}
                                         required
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="0x8294y8943473290289343t5543534" onChange={(e) => setNftaddress(e.target.value)}
+                                         onChange={(e) => setNftaddress(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -148,10 +150,10 @@ const CreateProject =()=> {
                                     >
                                         Total Supply
                                     </label>
-                                    <input
+                                    <input value={totalsupply}
                                         type="number"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="1000" onChange={(e) => setTotalsupply(e.target.value)}
+                                         onChange={(e) => setTotalsupply(e.target.value)}
                                     />
                                 </div>
                                 <div className="relative w-full mb-3">
@@ -161,8 +163,8 @@ const CreateProject =()=> {
                                     >
                                         Cost per tonne of co2
                                     </label>
-                                    <input
-                                        placeholder='30£'
+                                    <input value={cptgbp}
+
                                         type="number" onChange={(e) => setCptgbp(e.target.value)}
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     />
@@ -174,7 +176,7 @@ const CreateProject =()=> {
                                     >
                                         Date project Was founded:
                                     </label>
-                                    <input
+                                    <input value={datefounded}
                                         type="date"
                                         value="2018-07-22"
                                         onChange={(e) => setDatefounded(e.target.value)}
@@ -191,11 +193,11 @@ const CreateProject =()=> {
                                     >
                                         About Project
                                     </label>
-                                    <textarea
+                                    <textarea value={description}
                                         type="text"
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         rows="4" onChange={(e) => setDescription(e.target.value)}
-                                        placeholder="A beautiful farm with lots of animals "
+
                                     ></textarea>
                                 </div>
                             </div>
@@ -215,10 +217,10 @@ const CreateProject =()=> {
                                     >
                                         Address
                                     </label>
-                                    <input
+                                    <input value={streetname}
                                         type="text" onChange={(e) => setStreetname(e.target.value)}
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+
                                     />
                                 </div>
                             </div>
@@ -231,9 +233,10 @@ const CreateProject =()=> {
                                         City
                                     </label>
                                     <input onChange={(e) => setCity(e.target.value)}
+                                           value={city}
                                            required
                                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                           placeholder="New York"
+
                                     />
                                 </div>
                             </div>
@@ -248,7 +251,7 @@ const CreateProject =()=> {
                                     <input onChange={(e) => setCounty(e.target.value)}
                                            type="text"
                                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                           placeholder="Essex"
+                                           value={county}
                                     />
                                 </div>
                             </div>
@@ -263,7 +266,7 @@ const CreateProject =()=> {
                                     <input onChange={(e) => setCountry(e.target.value)}
                                            type="text"
                                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                           placeholder="United Kingdom"
+                                           value={country}
                                     />
                                 </div>
                             </div>
@@ -279,7 +282,7 @@ const CreateProject =()=> {
                                     <input onChange={(e) => setLatitude(e.target.value)}
                                            type="number" step="0.01"
                                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                           placeholder="-20"
+                                           value={latitude}
                                     />
                                 </div>
                             </div>
@@ -295,7 +298,7 @@ const CreateProject =()=> {
                                     <input onChange={(e) => setLongitude(e.target.value)}
                                            type="number" step="0.01"
                                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                           placeholder="0.5"
+                                           value={longitude}
                                     />
                                 </div>
                             </div>
@@ -319,7 +322,7 @@ const CreateProject =()=> {
                                     required
                                     onChange={(e) => setOwnername(e.target.value)}
                                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    placeholder="Jack Smith"
+                                    value={ownername}
                                 />
                             </div>
                         </div>
@@ -334,7 +337,7 @@ const CreateProject =()=> {
                                 <input onChange={(e) => setType(e.target.value)}
                                        type="text"
                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                       placeholder="Farm owner"
+                                       value={type}
                                 />
                             </div>
                         </div>
@@ -349,7 +352,7 @@ const CreateProject =()=> {
                                 <input onChange={(e) => setWebsite(e.target.value)}
                                        type="string"
                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                       placeholder="www.cardiff.com"
+                                       value={website}
                                 />
                             </div>
                         </div>
@@ -357,7 +360,7 @@ const CreateProject =()=> {
                             <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent
                     rounded-full shadow-sm text-sm font-medium bg-gray-700 active:bg-blue-600 text-white font-bold capitalize
                      hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "
-                            >Create Project</button>
+                            >Edit Project</button>
                         </div>
                     </form>
                 </div>
@@ -366,6 +369,6 @@ const CreateProject =()=> {
     );
 }
 
-export default CreateProject;
+export default EditProject;
 
 
