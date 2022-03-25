@@ -1,6 +1,6 @@
 import { execute_query } from "../../../utils/db";
 
-const getAdminData = `SELECT * FROM USER WHERE type='ADMIN'`;
+const getAdminData = `SELECT * FROM USER WHERE role='ADMIN'`;
 const addNewAdmin = `UPDATE USER 
 SET 
     type = 'ADMIN'
