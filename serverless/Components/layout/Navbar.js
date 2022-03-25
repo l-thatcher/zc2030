@@ -29,8 +29,7 @@ const Navbar = () => {
           <svg
             aria-hidden="true"
             focusable="false"
-            data-prefix="fas"
-            data-icon="bars"
+            data-prefix="fas" data-icon="bars"
             className="w-6"
             role="img"
             xmlns="http://www.w3.org/2000/svg"

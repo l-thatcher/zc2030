@@ -15,22 +15,15 @@ const AdminProjectsLayout = (props) => {
     const [editPrj, setEditPrj] = useState('current projects');
 
     return(
-
             <ViewContext.Provider value={{view,setView,editPrj,setEditPrj}} >
                 <div className='w-full '>
                     <div className=''>
                         {/*<ProfileHeader/>*/}
                     </div>
-
                     <div className=' '>
-
                         <Projects projects={allProjects} />
-
                     </div>
-
-
                 </div>
-
             </ViewContext.Provider>
 
     )
