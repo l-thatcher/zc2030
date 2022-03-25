@@ -5,6 +5,7 @@ import {transferCarbonFromFarm} from "../../services/ProjectService";
 export default function PaymentGateway(props) {
     const orderDetails = props.orderDetails
     const projectId = props.projectId
+    const tonnesBuying = props.tonnesBuying
 
     return (
 
@@ -35,7 +36,7 @@ export default function PaymentGateway(props) {
                             //Send transfer token request and add to database
                             //Once transferred remove from database
                             const name = details.payer.name.given_name;
-                            const data = [orderDetails];
+                            const data = [tonnesBuying];
                             transferCarbonFromFarm(data,projectId)
                             alert(`Transaction completed by ${name}`);
 

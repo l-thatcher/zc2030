@@ -73,7 +73,7 @@ const BuyCard = (props) => {
                 >
                     Change Purchase Amount
                 </button>
-                <PaymentGateway orderDetails={(props.detailsProps.cptgbp * tonnesBuying)} projectId={projectId}></PaymentGateway>
+                <PaymentGateway orderDetails={(props.detailsProps.cptgbp * tonnesBuying)} tonnesBuying={tonnesBuying} projectId={projectId}></PaymentGateway>
             </div>
         )
     }

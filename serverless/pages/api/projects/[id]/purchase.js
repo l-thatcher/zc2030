@@ -17,7 +17,9 @@ export default async function handler(req, res) {
                 console.log(await getZCTBalance(`0x${projectWallet.publicAddress}`))
                 console.log(await getZCTBalance(`0x${session.user.walletAddress}`))
                 console.log(amount)
-                await transferZCT(`0x${projectWallet.publicAddress}`, `0x${session.user.walletAddress}`, String(amount))
+                console.log(projectWallet.ethWallet)
+                console.log(JSON.parse(projectWallet.ethWallet))
+                await transferZCT(JSON.parse(projectWallet.ethWallet), `0x${session.user.walletAddress}`, String(amount))
             }
             break;
     }

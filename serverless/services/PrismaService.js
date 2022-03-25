@@ -269,6 +269,7 @@ export const getProjectWalletById = (userId) => {
     },
     select: {
       publicAddress: true,
+      ethWallet: true
     },
   });
 };

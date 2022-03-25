@@ -3,6 +3,8 @@ import HDWalletProvider from "@truffle/hdwallet-provider";
 import {abiJson} from "../utils/constants";
 import log from "tailwindcss/lib/util/log";
 import * as fs from "fs";
+import {decryptWallet} from "./Web3jsService";
+import {getPrivateKeys} from "@truffle/hdwallet-provider/dist/constructor/getPrivateKeys";
 
 const childRPC = 'https://rpc-mumbai.maticvigil.com/'
 // https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907
@@ -45,11 +47,22 @@ export const getZCTBalances = async (addresses) => {
 
 //Transfers tokens from one address to another. Request sent by dev wallet so dev wallet pays gas fees.
 export const transferZCT = async (from, to, amount) => {
-    await erc20Contract.methods
-        .approve(from, Web3.utils.toWei(amount))
-        .send({from: devWallet});
+    const fromWallet = decryptWallet(from)
+    const localWeb3Connection = new Web3(
+        new HDWalletProvider({
+            privateKeys: [fromWallet.privateKey],
+            providerOrUrl: childRPC,
+            pollingInterval: 8000
+        })
+    );
+    const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
+    //Called from the farm wallet
+    await localErc20Contract.methods
+        .approve(devWallet, Web3.utils.toWei(amount))
+        .send({from: fromWallet.address});
+
     return erc20Contract.methods
-        .transferFrom(from, to, Web3.utils.toWei(amount))
+        .transferFrom(fromWallet.address, to, Web3.utils.toWei(amount))
         .send({from: devWallet})
         .then((balance) => {
             return Web3.utils.fromWei(balance.toString());
