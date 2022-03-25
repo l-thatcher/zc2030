@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../../Card";
 import React from "react";
 
 
@@ -10,7 +10,7 @@ const CurrentProject = (props) => {
      return   (
             <div>
                 <div>
-                    <h4 className='font-semibold text-xs py-6 capitalize font-serif text-gray-700 text-2xl px-10 '>
+                    <h4 className='font-semibold text-xl py-6 capitalize font-serif text-gray-700 text-2xl px-10 '>
                         Current Projects
                     </h4>
                 </div>
@@ -21,7 +21,7 @@ const CurrentProject = (props) => {
                     <div className="flex flex-nowrap lg:ml-5 md:ml-5 ml-5 ">
                         {allProjects.map((project) => (
                             // <ProjectCard project={project} key={project.name} />
-                            <Card projects={project} />
+                            <Card projects={project} type={'admin'} />
 
                         ))}
                     </div>

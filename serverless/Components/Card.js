@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {ViewContext} from "../../../Contexts/ViewContext";
+import {ViewContext} from "../Contexts/ViewContext";
 
 import ProgressBar from "@ramonak/react-progress-bar";
 
