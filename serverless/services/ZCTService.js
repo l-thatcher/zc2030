@@ -58,13 +58,13 @@ export const transferZCT = async (from, to, amount) => {
     const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
     //Called from the farm wallet
 
-    await localErc20Contract.methods
-        .permit(devWallet, fromWallet.address, 1, 9999999999999)
-        .send({from: devWallet.address});
+    // await localErc20Contract.methods
+    //     .permit(devWallet, fromWallet.address, 1, 9999999999999)
+    //     .send({from: devWallet.address});
 
     await localErc20Contract.methods
-        .approve(devWallet, Web3.utils.toWei(amount))
-        .permit(devWallet, fromWallet.address, 1, 9999999999999)
+        .approve(fromWallet.address, Web3.utils.toWei(amount))
+        // .permit(devWallet, fromWallet.address, 1, 9999999999999)
         .send({from: fromWallet.address});
 
     return erc20Contract.methods
@@ -84,12 +84,5 @@ export const mintZCT = async (address, amount) => {
         });
 };
 
-export const fetchTransactionsByAddress = async (address) => {
 
-    const res = await fetch(`https://api-testnet.polygonscan.com/api?module=account&action=txlist&address=0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=DKKBHH9D4HYB15JA4P1YVEZQX316D78JAR`);
-    console.log(await res.json());
-
-
-
-}
 
