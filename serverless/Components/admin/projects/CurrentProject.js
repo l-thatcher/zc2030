@@ -1,5 +1,6 @@
-import Card from "./Card";
+import Card from "../../Card";
 import React from "react";
+import BlankCard from "./BlankCard";
 
 
 const CurrentProject = (props) => {
@@ -18,10 +19,12 @@ const CurrentProject = (props) => {
 
                 <div className="flex overflow-x-scroll pb-10 scrollbar-hide ">
 
+                    <BlankCard/>
+
                     <div className="flex flex-nowrap lg:ml-5 md:ml-5 ml-5 ">
                         {allProjects.map((project) => (
                             // <ProjectCard project={project} key={project.name} />
-                            <Card projects={project} />
+                            <Card project={project} viewtype={'admin'} />
 
                         ))}
                     </div>
