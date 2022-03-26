@@ -7,11 +7,12 @@
 }
 
 .openingBox {
-  background: rgb(87, 188, 144);
+  background: rgb(137, 199, 193);
   background: linear-gradient(
-    90deg,
-    rgba(87, 188, 144, 1) 0%,
-    rgba(119, 201, 212, 1) 100%
+    0deg,
+    rgb(137, 199, 193) 0%,
+    rgb(87, 188, 144) 60%,
+    rgb(87, 188, 144) 100%
   );
   padding: 3rem 3rem;
   display: flex;
@@ -45,6 +46,42 @@
 .summaryPara {
   color: white;
   font-size: 16pt;
+}
+
+.ocean{
+  height: 100px; /* change the height of the waves here */
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  animation: wave 20s -3s linear infinite;
+  left: -50%;
+}
+
+.wave:nth-of-type(2) {
+  animation: wave 22s linear reverse infinite;
+}
+
+.wave:nth-of-type(3) {
+  animation: wave 25s -1s linear infinite;
+}
+
+.wave:nth-of-type(4) {
+  animation: wave 27s -1s linear infinite;
+}
+
+@keyframes wave {
+  0% {transform: translateX(-25%);}
+  50% {transform: translateX(25%);}
+  100% {transform: translateX(-25%);}
 }
 
 .promptsCollection {
