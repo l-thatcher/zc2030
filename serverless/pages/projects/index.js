@@ -1,16 +1,28 @@
-import ProjectCard from "../../Components/ProjectCard";
+import Card from "../../Components/Card";
 import { getProjectsList } from "../../services/ProjectService";
+import React from "react";
 
 export default function Projects(props) {
   const allProjects = props.allProjects;
   console.log("Test1:" + allProjects);
   return (
-    <div className="content-center">
-      <div className=" items-center justify-items-center justify-center flex px-50 grid grid-rows-2 grid-flow-col gap-4 justify-content-center">
-        <div className="overflow-y-scroll flex w-5/7 bg-zc30-green items-center justify-center flex px-10 grid grid-cols-3 grid-flow-row gap-4 border-5 border-zc30-light-green">
+    <div className="">
+
+      <div className="  gap-4  ">
+
+        <div>
+          <h2 className='font-semibold text-3xl py-6 px-10 capitalize font-serif text-gray-700 '>
+            ZeroCarbon Projects
+          </h2>
+          <p className='text-sm text-gray-500 px-10 '>
+            Discov
+          </p>
+        </div>
+
+        <div className="  bg-green-100 justify-end flex grid grid-cols-4 grid-flow-row  ">
           {allProjects.map((project) => (
             // <ProjectCard project={project} key={project.name} />
-            <ProjectCard project={project} />
+            <Card className='mt-5' project={project} viewtype={'project'}/>
           ))}
         </div>
       </div>

@@ -21,7 +21,7 @@ const Projects= (props) => {
 
     return(
 
-        <div className='w-11/12'>
+        <div >
             <div className=" border shadow border-gray-800 md:w-8/12  lg:w-10/12 m-10 rounded  ">
 
                 <div className="flex justify-between mb-2" >

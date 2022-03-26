@@ -1,32 +1,35 @@
 import React, {useContext} from "react";
-import {ViewContext} from "../../../Contexts/ViewContext";
-
+import {ViewContext} from "../Contexts/ViewContext";
+import Link from 'next/link'
 import ProgressBar from "@ramonak/react-progress-bar";
 
 
 const Card = (props) => {
-    const project= props.projects
+    const project= props.project
     const {setView} = useContext(ViewContext);
     const {view} = useContext(ViewContext);
     const {setEditPrj} = useContext(ViewContext);
+    const viewType = props.viewtype
+    console.log(viewType)
     function changeView() {
         setEditPrj(project)
         setView('edit')
-
     }
         // storing input name
 
-    console.log((project.remainingsupply/project.totalsupply)*100)
+    console.log(project)
     const widthPercentage = (project.remainingsupply/project.totalsupply)*100
     console.log(project)
+
+
 
     return(
         <div className="inline-block px-3">
 
 
-            <div className="w-80 static h-100 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
+            <div className="w-80 static h-100 max-w-xs border border-gray-500 overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
                 <div>
-                    <div className="relative rounded-lg cursor-pointer ">
+                    <div className="relative rounded-lg ">
                     <img
                         src={project.projectimage1}
                         alt="uploaded cover image"
@@ -39,20 +42,21 @@ const Card = (props) => {
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <h5 className=' ml-2 s text-gray-700 font-medium font-serif'>{project.projectname}  </h5>
+                    </div>
 
-                    <h5 className=' ml-5 py-2 text-gray-700 font-medium font-serif'>{project.projectname}  </h5>
-
-                    <div className=" font-semibold mt-2 py-2 ml-5 underline flex items-center text-sm text-gray-300 truncate mb-2 ml-4 capitalize">
+                    <div className=" font-semibold ml-2  underline flex items-center text-sm text-gray-300 truncate capitalize">
                         {/*location*/}
                          {project.city} , {project.county}, {project.country}
                     </div>
 
-                    <div className="mt-2  ml-5 no-underline flex items-center font-semibold text-xs text-gray-600  mb-2 ml-4 ">
+                    <div className=" ml-2 mt-2 no-underline flex items-center font-semibold text-xs text-gray-600 ">
                         {/*total supply*/}
                         Total Carbon Supply:  <span className='text-gray-400 ml-2'> {project.totalsupply} /tC02e</span>
                     </div>
 
-                    <div className=' mt-1 flex items-center '>
+                    <div className=' flex items-center '>
                         {/*<div>*/}
                         {/*    <h5 className='font-sans text-xs '>Remaining  </h5>*/}
                         {/*    <h5 className='font-sans text-xs'> supply</h5>*/}
@@ -60,8 +64,8 @@ const Card = (props) => {
                         <div>
                             <div className=" flex items-center  rounded-full">
 
-                                <div className='mt-2 py-2 ml-5 no-underline flex items-center text-xs text-gray-600 font-semibold mb-2 ml-4 capitalize'>Available Carbon Supply:</div>
-                                <div className='w-[150px] ml-2'> <ProgressBar completed={widthPercentage} /> </div>
+                                <div className=' ml-2 no-underline flex items-center text-xs text-gray-600 font-semibold  capitalize'>Available Carbon Supply:</div>
+                                <div className='w-[150px] ml-1'> <ProgressBar labelSize={'10px'} height={'15px'} bgColor={'#77C9D4'} completed={widthPercentage} /> </div>
 
 
                             </div>
@@ -74,13 +78,23 @@ const Card = (props) => {
                 </div>
 
                 <div className="flex justify-end">
-
+                    { viewType === "admin" &&
                     <button
-                        className=" mt-3 mb-3 mr-5 bg-specblue active:bg-zer text-white font-bold capitalize text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                        className=" mt-3 mb-3 mr-5 bg-green-500  justify-center text-white font-bold capitalize text-xs px-4 py-2
+                         rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                         type="button" onClick={changeView}>
                         Edit
-                    </button>
+                    </button>}
 
+                    { viewType === 'project' &&
+                    <Link  href={"./projects/" + props.project.id}>
+                        <a className='mt-3 no-underline mb-3 mr-5 bg-green-500  justify-center text-white font-bold capitalize text-xs px-4 py-2
+                         rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
+                            >
+                                More Details
+                        </a>
+                    </Link>
+                    }
                 </div>
 
 
