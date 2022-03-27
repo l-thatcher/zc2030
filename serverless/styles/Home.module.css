@@ -67,6 +67,7 @@
   position: relative;
   width: 70%;
   padding: 20px 0 0 20px;
+  text-shadow: 3px 3px 12px #000000;
 }
 
 @keyframes headerTextAnimation {
@@ -91,6 +92,7 @@
   animation-name: paraTextAnimation;
   animation-duration: 2s;
   padding: 0 0 0 20px;
+  text-shadow: 3px 3px 12px #000000;
 }
 
 @keyframes paraTextAnimation {
@@ -156,9 +158,9 @@
 .projectsHeader {
 }
 
-.team {
-  min-height: 30vh;
-  padding: 3rem 3rem;
+.teamBackground {
+  /*min-height: 30vh;*/
+  /*padding: 3rem 3rem;*/
   background: linear-gradient(329deg, #57bc90, #77c9d4);
   background-size: 400% 400%;
 
@@ -172,10 +174,10 @@
 /*  flex-direction: row;*/
 /*}*/
 
-.teamHeader {
-  color: white;
-  padding: 0 0 2rem 0;
-}
+/*.teamHeader {*/
+/*  color: white;*/
+/*  padding: 0 0 2rem 0;*/
+/*}*/
 
 .profileCard {
   background: rgba(255, 255, 255, 0.5);
