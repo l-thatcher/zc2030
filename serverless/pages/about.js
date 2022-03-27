@@ -1,24 +1,24 @@
 import styles from "../styles/About.module.css";
 
 const groupImg = "/group-placeholder.jpeg";
-const profilePic = "/profile-default.png";
+const profileImg = "/profile-default.png";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
+      <main className='flex flex-col'>
         <div>
           <div className={styles.openingBox}>
             <img
                 src={groupImg}
                 srcSet={groupImg}
-                className={styles.groupImg}
+                className="hidden sm:block h-52 flex items-center mb-8 pl-8"
                 alt="The team"
             />
 
-            <div className={styles.rightSide}>
-              <h1 className={styles.summaryHeader}>We're ZC30</h1>
-              <p className={styles.summaryPara}>
+            <div className="p-12">
+              <h1 className="text-white uppercase text-5xl left-40 font-light">We're ZC30</h1>
+              <p className="text-white text-xl">
                 We at zero carbon 30 aim to get everyone's carbon use to 0 by the
                 year 2030.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Nullam placerat enim et sapien congue venenatis. Aenean viverra ex
@@ -37,8 +37,7 @@ export default function Home() {
 
 
 
-          {/*wave animation adapted from https://codepen.io/Prachl/pen/XLveVd by user p.rachel - accessed 26/03/22 by Louis*/}
-          <div className={styles.ocean}>
+          <div className="h-32 w-full relative overflow-hidden">
             <svg className={styles.wave} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
               <path fill="#57BC90FF" fillOpacity="0.5" d="M0,192L48,208C96,224,192,256,288,234.7C384,213,480,139,576,128C672,117,768,171,864,160C960,149,1056,75,1152,64C1248,53,1344,107,1392,133.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"/>
             </svg>
@@ -57,53 +56,44 @@ export default function Home() {
         </div>
 
 
-        <div className={styles.projects}>
-          <h1 className={styles.teamHeader}>Meet the team</h1>
+        <div className="min-h-30 p-0 sm:p-10">
+          <h1 className="text-black uppercase font-extralight pb-8 pl-5">Meet the team</h1>
 
-          <div className={styles.profileCards}>
-            <div className={styles.profileCard}>
-              <img
-                src={profilePic}
-                srcSet={profilePic}
-                className={styles.groupImg}
-                alt="Calculate"
-              />
-              <h2>Peter Trott</h2>
-              <h4>CEO</h4>
-              <p>
-                Hi, i'm Peter Lorelum ipsum doerem fogarten motum henlum. Onmun
-                optus domini opium suptus.
-              </p>
+          <div className="flex flex-row overflow-x-auto">
+            <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+              <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                   src={profileImg}
+                   srcSet={profileImg}
+                   alt="CEO"/>
+              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+              <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+              <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <h3 className="text-lg text-gray-700"> email@address.com </h3>
             </div>
 
-            <div className={styles.profileCard}>
-              <img
-                src={profilePic}
-                srcSet={profilePic}
-                className={styles.groupImg}
-                alt="Calculate"
-              />
-              <h2>Peter Trott</h2>
-              <h4>CEO</h4>
-              <p>
-                Hi, i'm Peter Lorelum ipsum doerem fogarten motum henlum. Onmun
-                optus domini opium suptus.
-              </p>
+            <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+              <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                   src={profileImg}
+                   srcSet={profileImg}
+                   alt="CEO"/>
+              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+              <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+              <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <h3 className="text-lg text-gray-700"> email@address.com </h3>
             </div>
 
-            <div className={styles.profileCard}>
-              <img
-                src={profilePic}
-                srcSet={profilePic}
-                className={styles.groupImg}
-                alt="Calculate"
-              />
-              <h2>Peter Trott</h2>
-              <h4>CEO</h4>
-              <p>
-                Hi, i'm Peter Lorelum ipsum doerem fogarten motum henlum. Onmun
-                optus domini opium suptus.
-              </p>
+            <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+              <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                   src={profileImg}
+                   srcSet={profileImg}
+                   alt="CEO"/>
+              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+              <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+              <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <h3 className="text-lg text-gray-700"> email@address.com </h3>
             </div>
           </div>
         </div>
