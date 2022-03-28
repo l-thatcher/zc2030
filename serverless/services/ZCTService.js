@@ -50,7 +50,9 @@ export const getZCTBalances = async (addresses) => {
 export const transferZCT = async (from, to, amount) => {
     const fromWallet = decryptWallet(from)
 
-    const gasLimit = Web3.utils.toWei("5")
+    const gasLimit = ("22000")
+    // const gasLimit = Web3.utils.toWei("1000000");
+
 
     console.log(fromWallet)
 
@@ -72,8 +74,14 @@ export const transferZCT = async (from, to, amount) => {
             signedTx.raw || signedTx.rawTransaction);
 
         sentTx.on("receipt", receipt => {
+            console.log("here")
             // do something when receipt comes back
-            console.log("333 " + (signPromise).v);
+            let signatureParams = getSignatureParameters(signPromise)
+            console.log("r doo bee: " + (signatureParams.r));
+            console.log("s doo bee: " + (signatureParams.s));
+            console.log("v doo bee: " + (signatureParams.v));
+
+            console.log("333 " + (signPromise));
         });
         sentTx.on("error", err => {
             // do something on transaction error
@@ -96,24 +104,42 @@ export const transferZCT = async (from, to, amount) => {
     const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
     // Called from the farm wallet
 
-    await localErc20Contract.methods
-        .permit(devWallet, fromWallet.address, 1, 9999999999999)
-        .send({from: devWallet.address});
-
-    (await localErc20Contract.methods
-        .approve(devWallet, Web3.utils.toWei(amount))
-        .send({from: fromAddress})).then
-    {
-        erc20Contract.methods
-            .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
-            .send({from: devWallet})
-            .then((balance) => {
-                return Web3.utils.fromWei(balance.toString());
-            });
-    }
+    // await localErc20Contract.methods
+    //     .permit(devWallet, fromWallet.address, 1, 9999999999999)
+    //     .send({from: devWallet.address});
+    //
+    // (await localErc20Contract.methods
+    //     .approve(devWallet, Web3.utils.toWei(amount))
+    //     .send({from: fromAddress})).then
+    // {
+    //     erc20Contract.methods
+    //         .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
+    //         .send({from: devWallet})
+    //         .then((balance) => {
+    //             return Web3.utils.fromWei(balance.toString());
+    //         });
+    // }
 };
 
+// export const gaslessZCT = async (address)
 
+const getSignatureParameters = signature => {
+    if (!web3.utils.isHexStrict(signature)) {
+        throw new Error(
+            'Given value "'.concat(signature, '" is not a valid hex string.')
+        );
+    }
+    const r = signature.slice(0, 66);
+    const s = "0x".concat(signature.slice(66, 130));
+    let v = "0x".concat(signature.slice(130, 132));
+    v = web3.utils.hexToNumber(v);
+    if (![27, 28].includes(v)) v += 27;
+    return {
+        r: r,
+        s: s,
+        v: v
+    };
+};
 
 
 export const mintZCT = async (address, amount) => {
