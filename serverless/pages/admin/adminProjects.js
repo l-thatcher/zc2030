@@ -1,18 +1,31 @@
-import styles from "../../styles/AdminDashboard.module.css";
 import AdminSidebar from "../../Components/admin/AdminSidebar";
-import CreateProject from "../../Components/admin/projects/CreateProject";
+import AdminProjectsLayout from "../../Components/admin/projects/adminProjectsLayout";
 import React from "react";
+import {getProjectsList} from "../../services/ProjectService";
+import Sidebar from "../../Components/admin/projects/Sidebar";
 
-export default function adminProjects() {
-  return (
-    <div className="flex flex-wrap block h-[300px] bg-blue-500 ">
-      <AdminSidebar />
+export default function adminProjects(props) {
 
-      <div className="w-full lg:w-6/12 px-4  ">
-        <div className="   ">
-          <CreateProject />
+    const allProjects = props.allProjects;
+
+    return (
+        <div className=" flex bg-gray-500 ">
+            {/*<AdminSidebar/>*/}
+            {/*<AdminSidebar/>*/}
+            <Sidebar/>
+            <AdminProjectsLayout projects={allProjects}/>
+
         </div>
-      </div>
-    </div>
-  );
+    );
 }
+
+export async function getServerSideProps() {
+    const projectsRes = await getProjectsList();
+    const allProjects = projectsRes.data;
+
+
+    return {
+        props: {allProjects}
+    };
+}
+

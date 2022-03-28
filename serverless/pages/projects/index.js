@@ -1,5 +1,6 @@
 import ProjectCard from "../../Components/ProjectCard";
 import { getProjectsList } from "../../services/ProjectService";
+import {React} from "react";
 
 export default function Projects(props) {
   const allProjects = props.allProjects;

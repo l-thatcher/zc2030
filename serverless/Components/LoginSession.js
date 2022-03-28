@@ -20,7 +20,7 @@ function LoginPage() {
         </button>
 
         <button
-          className=" mt-4 -ml-1 flex items-center text-sm font-medium text-white bg-green-400 hover:bg-green-800  font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 "
+          className=" mt-4 -ml-1 flex items-center text-sm font-medium text-white bg-green-500 hover:bg-green-400  font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 "
           onClick={() =>
             signOut(null, {
               callbackUrl: "http://localhost:3000/registerRedirect",
@@ -36,7 +36,7 @@ function LoginPage() {
     <>
       {/*TODO: Remove In-Line Styling - Mix Bootstrap and External Styling?*/}
       <button
-        className=" mt-4 -ml-1 flex items-center text-sm font-medium text-white bg-green-400 hover:bg-green-800  font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2"
+        className=" mt-4 -ml-1 flex items-center text-sm font-medium text-white bg-green-500 hover:bg-green-400  font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2"
         onClick={() => signIn()}
       >
         Sign in
