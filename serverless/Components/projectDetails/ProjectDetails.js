@@ -136,7 +136,7 @@ function ProjectDetails(props) {
                                 </h3>
                                 <div className="mt-2 flex items-center text-sm text-gray-500 border-b border-[#F2F2F2] capitalize">
                                     {/*location*/}
-                                    <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                                    <HiLocationMarker className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
                                      {props.detailsProps.streetname} | {props.detailsProps.city} {props.detailsProps.county} {props.detailsProps.country}
                                 </div>
                                 <Map location={location} />

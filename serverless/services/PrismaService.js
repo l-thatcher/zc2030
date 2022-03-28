@@ -126,3 +126,19 @@ export const getWalletById = (userId) => {
     },
   });
 };
+
+export const getUsersLogs = (userId) => {
+    return prisma.calculatorResult.findMany({
+        where: {
+            user_id: userId
+        },
+        include: {
+            calculatorinput: {
+                include: {
+                    calculatorcategory: true
+                }
+            }
+        }
+    })
+}
+
