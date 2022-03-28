@@ -4,29 +4,6 @@ import {PrismaClient} from "@prisma/client";
 const prisma = new PrismaClient();
 
 
-export const getInputsByCategory = (categoryId) => {
-    return prisma.calculatorInput.findMany({
-        where: {
-            category_id: categoryId,
-        },
-        select: {
-            id: true,
-        },
-    });
-};
-
-export const getCountOfUsersUniqueFilledResultsByCategory = (
-    userId,
-    idArray
-) => {
-    return prisma.calculatorResult.findMany({
-        distinct: ["input_id"],
-        where: {
-            user_id: userId,
-            input_id: {in: idArray},
-        },
-    });
-};
 
 export const getListofProjects = () => {
     return prisma.project.findMany();
@@ -142,14 +119,6 @@ export const getUsersLogs = (userId) => {
     })
 }
 
-export const getUsersThatCanViewCalculator = (typeId) => {
-    return prisma.userCalculator.findMany({
-        where: {
-            type_id: typeId,
-        },
-    });
-};
-
 export const getUsersFromList = (userIdList) => {
     return prisma.user.findMany({
         where: {
@@ -161,3 +130,132 @@ export const getUsersFromList = (userIdList) => {
         },
     });
 };
+
+
+export const getInputsByCategory = (categoryId) => {
+    return prisma.calculatorInput.findMany({
+        where: {
+            category_id: categoryId,
+        },
+        select: {
+            id: true,
+        },
+    });
+};
+
+export const getUsersThatCanViewCalculator = (typeId) => {
+    return prisma.userCalculator.findMany({
+        where: {
+            type_id: typeId,
+        },
+    });
+};
+
+export const getCountOfUsersUniqueFilledResultsByCategory = (
+    userId,
+    idArray
+) => {
+    return prisma.calculatorResult.findMany({
+        distinct: ["input_id"],
+        where: {
+            user_id: userId,
+            input_id: { in: idArray },
+        },
+    });
+};
+
+export const getDetailsByType = (typeId) => {
+    return prisma.calculatorType.findUnique({
+        where: {
+            id: typeId,
+        },
+    });
+};
+
+export const getUsersByEmail = (userEmail) => {
+    return prisma.user.findMany({
+        where: {
+            email: userEmail,
+        },
+        select: {
+            id: true,
+        },
+    });
+};
+
+export const deleteCalculatorType = (typeId) => {
+    return prisma.calculatorType.delete({
+        where: {
+            id: typeId,
+        },
+    });
+};
+
+export const deleteCategoryByType = (typeId) => {
+    return prisma.calculatorCategory.deleteMany({
+        where: {
+            type_id: typeId,
+        },
+    });
+};
+
+export const deleteCategoryByCategoryId = (categoryId) => {
+    return prisma.calculatorCategory.delete({
+        where: {
+            id: categoryId,
+        },
+    });
+};
+
+export const deleteInputByCategory = (categoryId) => {
+    return prisma.calculatorInput.deleteMany({
+        where: {
+            category_id: categoryId,
+        },
+    });
+};
+
+export const deleteInputByInputId = (inputId) => {
+    return prisma.calculatorInput.deleteMany({
+        where: {
+            id: inputId,
+        },
+    });
+};
+
+export const deleteResultByInput = (inputId) => {
+    return prisma.calculatorResult.deleteMany({
+        where: {
+            input_id: inputId,
+        },
+    });
+};
+
+export const deleteUserCalculator = (typeId, userId) => {
+    return prisma.userCalculator.deleteMany({
+        where: {
+            type_id: typeId,
+            user_id: userId,
+        },
+    });
+};
+
+export const createCalculator = (calculatorName, isPublic) => {
+    return prisma.calculatorType.create({
+        data: {
+            name: calculatorName,
+            public: isPublic,
+        },
+    });
+};
+
+export const createUserCalculatorEntity = (typeId, userId) => {
+    return prisma.userCalculator.create({
+        data: {
+            type_id: typeId,
+            user_id: userId,
+        },
+    });
+};
+
+
