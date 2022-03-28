@@ -7,16 +7,16 @@ const discoverImg = "/discover-logo2.png";
 const purchaseImg = "/purchase-logo.png";
 const offsetImg = "/offset-logo.png";
 const profileImg = "/profile-default.png";
-const treeBackground = "/treeBackground.mp4";
+const treeBackground = "/compressedBackground.mp4";
 
 export default function Home(props) {
   const allProjects = props.allProjects;
   return (
     <div className={styles.container}>
       <div className='overflow-hidden fixed z-0 h-full pb-96'>
-        {/*<video autoPlay loop muted className={styles.video}>*/}
-        {/*  <source src={treeBackground} type="video/mp4"/>*/}
-        {/*</video>*/}
+        <video autoPlay loop muted className={styles.video}>
+          <source src={treeBackground} type="video/mp4"/>
+        </video>
       </div>
       <main className='flex flex-col relative z-10'>
         <div className='p-3 w-full flex justify-between h-5/6'>
