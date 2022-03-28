@@ -9,6 +9,7 @@ import {data} from "autoprefixer";
 import {useState, useEffect} from "react";
 import Link from "next/link";
 import TransactionRow from "../wallet/TransactionRow";
+import WalletProjectCard from "../wallet/WalletProjectCard";
 
 const ShowWallet = (props) => {
     const balance = props.balance;
@@ -124,6 +125,12 @@ const ShowWallet = (props) => {
                         {view === "wallet" && (
                             // <AddTripButton addTrip={() => setState('add-trip') } />
                             <>
+
+                                {/*{transactions.map((transaction, index) =>*/}
+                                {/*    <TransactionRow key={index} name={transaction.project.projectname} tonnes={transaction.amountTonnes} status={transaction.status} date={transaction.date} cost={transaction.amountGbp} imageurl={transaction.project.ownerpicture}/>*/}
+                                {/*)}*/}
+
+                                <WalletProjectCard></WalletProjectCard>
 
                             </>
                         )}
