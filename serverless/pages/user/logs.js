@@ -53,9 +53,10 @@ export async function getServerSideProps(context) {
   const session = await getSession(context);
   let userId = null;
   let logs = [];
+  let data = [session]
   if (session) {
     userId = session.user.id;
-    logs = await getLogsByUser(userId);
+    logs = await getLogsByUser(userId, data);
   }
   return { props: { logs: logs.data } };
 }

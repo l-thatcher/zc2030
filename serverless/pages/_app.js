@@ -2,6 +2,8 @@ import "../styles/globals.css";
 import "../styles/Header.module.css";
 import Layout from "../Components/layout/Layout";
 import { SessionProvider } from "next-auth/react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import SSRProvider from "react-bootstrap/SSRProvider";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
@@ -9,7 +11,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <SSRProvider>
       <SessionProvider session={session}>
         <Layout>
-          <Component {...pageProps}/>
+            <ToastContainer />
+          <Component {...pageProps} />
         </Layout>
       </SessionProvider>
     </SSRProvider>

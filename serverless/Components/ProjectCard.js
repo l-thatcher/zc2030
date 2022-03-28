@@ -4,9 +4,9 @@ export default function ProjectCard(props) {
   // const project = props.project
   return (
     <div className="py-2 flex items-center justify-center px-3 ">
-      <div className="border-white border-2 rounded-lg w-1/7 shadow-lg">
+      <div className="border-white border-2 rounded-lg w-1/7 shadow-md">
         <div className="border-white border-3 rounded-lg">
-          <div className="relative overflow-hidden rounded-lg shadow-lg">
+          <div className="relative overflow-hidden rounded-lg shadow-md">
             <img
               src="https://media.nationalgeographic.org/assets/photos/818/719/3d97f911-594f-4257-880c-d9aa1c6da22d.jpg"
               className="card-img rounded-t-lg h-60 w-full object-cover"
@@ -19,7 +19,7 @@ export default function ProjectCard(props) {
             </div>
           </div>
 
-          <h2 className="text-white text-xxl-center text-center font-light mb-1 position-relative flex-center shadow-lg">
+          <h2 className="text-gray-600 text-xxl-center text-center font-light mb-1 position-relative flex-center shadow-lg">
             {props.project.projectname}
           </h2>
         </div>
@@ -56,6 +56,7 @@ export default function ProjectCard(props) {
                 Available Carbon: {props.project.remainingsupply}t
               </span>
             </div>
+
           </div>
 
           <div className="overflow-hidden flex h-2 mb-2 text-xs rounded shadow-md">

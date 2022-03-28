@@ -1,5 +1,5 @@
 import { FiFacebook, FiGlobe } from "react-icons/fi";
-import { FcCalendar } from "react-icons/fc";
+import {HiCalendar} from "react-icons/hi";
 
 const AboutProject = (props) => {
   return (
@@ -52,7 +52,7 @@ const AboutProject = (props) => {
       <div className="">
         {/*Date*/}
         <div className="mt-2 flex items-center text-sm text-gray-500">
-          <FcCalendar
+          <HiCalendar
             className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
             aria-hidden="true"
           />

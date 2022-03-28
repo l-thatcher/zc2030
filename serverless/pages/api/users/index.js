@@ -1,15 +1,7 @@
 import { execute_query } from "../../../utils/db";
+import {getSession} from "next-auth/react";
 
 const getAllUserData = `SELECT * FROM USER`;
-
-const updateUser = `UPDATE USER 
-SET 
-    name = ?,
-    email = ?,
-    role = ?,
-    ethWallet = ?
-WHERE
-    id = ?`;
 
 // const handler = async (_, res) => {
 //     try {
@@ -23,6 +15,9 @@ WHERE
 // };
 
 export default async function handler(req, res) {
+  // const apiSession = await getSession({ req });
+  // console.log(apiSession)
+  // if ((apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -30,6 +25,7 @@ export default async function handler(req, res) {
         const result = await execute_query(getAllUserData);
         res.status(200).json(result);
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
       break;
@@ -42,24 +38,13 @@ export default async function handler(req, res) {
     case "DELETE":
       break;
 
+    // Update data from database
     case "PUT":
-      try {
-        const id = req.body[0];
-        const name = req.body[1];
-        const email = req.body[2];
-        const role = req.body[3];
-        const ethAddress = req.body[4];
-        const result = await execute_query(updateUser, [
-          name,
-          email,
-          role,
-          ethAddress,
-          id,
-        ]);
-        res.status(200).json(result);
-      } catch (e) {
-        res.status(500).json({ message: e.message });
-      }
       break;
   }
+  // } else {
+  //   // Not Signed in
+  //   res.status(401)
+  // }
+  // res.end()
 }

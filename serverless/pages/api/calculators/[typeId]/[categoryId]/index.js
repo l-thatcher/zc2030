@@ -24,9 +24,12 @@ const deleteCalculatorInput = `DELETE FROM CalculatorInput
 
 export default async function handler(req, res) {
   const { categoryId } = req.query;
-  // const session = await getSession({ req })
+  const apiSession = await getSession({ req });
+  const calculatorSession = await req.body[0]?.user?.role;
+  console.log("Category: " + req.body[0]?.user?.role)
+  console.log(apiSession)
 
-  // if (session) {
+  if ((calculatorSession === "PERSONAL") || (calculatorSession === "ADMIN") || (calculatorSession === undefined) || (apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -37,6 +40,7 @@ export default async function handler(req, res) {
         );
         res.status(200).json(result);
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
       break;
@@ -98,9 +102,9 @@ export default async function handler(req, res) {
 
       break;
   }
-  // } else {
-  //   // Not Signed in
-  //   res.status(200)
-  // }
-  // res.end()
+  } else {
+    // Not Signed in
+    res.status(401)
+  }
+  res.end()
 }
