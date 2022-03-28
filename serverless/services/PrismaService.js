@@ -142,3 +142,22 @@ export const getUsersLogs = (userId) => {
     })
 }
 
+export const getUsersThatCanViewCalculator = (typeId) => {
+    return prisma.userCalculator.findMany({
+        where: {
+            type_id: typeId,
+        },
+    });
+};
+
+export const getUsersFromList = (userIdList) => {
+    return prisma.user.findMany({
+        where: {
+            id: { in: userIdList },
+        },
+        select: {
+            email: true,
+            id: true,
+        },
+    });
+};
