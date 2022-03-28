@@ -1,15 +1,18 @@
-import { execute_query } from "../../../utils/db";
+import {execute_query} from "../../../utils/db";
 
 const getAdminData = `SELECT * FROM USER WHERE role='ADMIN'`;
-const addNewAdmin = `UPDATE USER 
+
+const updateRole = `UPDATE USER 
 SET 
-    type = 'ADMIN'
+    role = ?
 WHERE
     email = ?`;
 
+const removeUser = `DELETE FROM USER WHERE id=?`;
+
 export default async function handler(req, res) {
   switch (req.method) {
-    // Get data from database
+      // Get data from database
     case "GET":
       try {
         const result = await execute_query(getAdminData);
@@ -19,19 +22,27 @@ export default async function handler(req, res) {
       }
       break;
 
-    // Create data from database
+      // Create data from database
     case "POST":
       break;
 
-    // Delete data from database
+      // Delete data from database
     case "DELETE":
+      try {
+        const id = req.body[0];
+        const result = await execute_query(removeUser, id);
+        res.status(200).json(result);
+      } catch (e) {
+        res.status(500).json({ message: e.message });
+      }
       break;
 
-    // Update data from database
+      // Update data from database
     case "PUT":
-      const email = req.query.email;
       try {
-        const result = await execute_query(addNewAdmin, [email]);
+        const role = req.body[0];
+        const email = req.body[1];
+        const result = await execute_query(updateRole, [role, email]);
         res.status(200).json(result);
       } catch (e) {
         res.status(500).json({ message: e.message });
