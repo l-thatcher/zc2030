@@ -19,7 +19,7 @@ export default function Projects(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const projectsRes = await getProjectsList();
   const allProjects = projectsRes.data;
 
