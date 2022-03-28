@@ -17,6 +17,7 @@ function ProjectDetails(props) {
     details.projectimage2,
     details.projectimage3,
     details.projectimage4,
+    details.projectimage5
   ];
 
   console.log(details.projectname);
@@ -92,7 +93,7 @@ function ProjectDetails(props) {
                                     </div>
                                     <div className="w-full h-full rounded ">
                                         <img className ='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
-                                             src={details.projectimage4}
+                                             src={details.projectimage5}
                                             alt="image"/>
                                     </div>
                                 </div>
