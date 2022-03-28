@@ -5,6 +5,7 @@ import log from "tailwindcss/lib/util/log";
 import * as fs from "fs";
 import {decryptWallet} from "./Web3jsService";
 import {getPrivateKeys} from "@truffle/hdwallet-provider/dist/constructor/getPrivateKeys";
+import {errorParser} from "tedious/lib/token/infoerror-token-parser";
 
 const childRPC = 'https://rpc-mumbai.maticvigil.com/'
 // https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907
@@ -48,6 +49,42 @@ export const getZCTBalances = async (addresses) => {
 //Transfers tokens from one address to another. Request sent by dev wallet so dev wallet pays gas fees.
 export const transferZCT = async (from, to, amount) => {
     const fromWallet = decryptWallet(from)
+
+    const gasLimit = Web3.utils.toWei("5")
+
+    console.log(fromWallet)
+
+    const tx = {
+        from: fromWallet.address,
+        to: to,
+        gas: gasLimit,
+        value: Web3.utils.toWei(amount),
+        data: erc20Contract.methods.transferFrom(fromWallet.address, to, Web3.utils.toWei(amount)).encodeABI()
+    };
+
+    console.log(tx);
+
+
+    const signPromise = (web3.eth.accounts.signTransaction(tx, "0xbfbe13a0ebe33125893018b6bfe5d6474bd990260d4cc5404ade1804b68d7326"));
+
+    signPromise.then((signedTx) => {
+        const sentTx = web3.eth.sendSignedTransaction(
+            signedTx.raw || signedTx.rawTransaction);
+
+        sentTx.on("receipt", receipt => {
+            // do something when receipt comes back
+            console.log("333 " + (signPromise).v);
+        });
+        sentTx.on("error", err => {
+            // do something on transaction error
+        });
+    }).catch((err) => {
+        // do something when promise fails
+    });
+
+
+
+
     const localWeb3Connection = new Web3(
         new HDWalletProvider({
             privateKeys: [fromWallet.privateKey],
@@ -57,11 +94,11 @@ export const transferZCT = async (from, to, amount) => {
     );
     const fromAddress = fromWallet.address
     const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
-    //Called from the farm wallet
+    // Called from the farm wallet
 
-    // await localErc20Contract.methods
-    //     .permit(devWallet, fromWallet.address, 1, 9999999999999)
-    //     .send({from: devWallet.address});
+    await localErc20Contract.methods
+        .permit(devWallet, fromWallet.address, 1, 9999999999999)
+        .send({from: devWallet.address});
 
     (await localErc20Contract.methods
         .approve(devWallet, Web3.utils.toWei(amount))
@@ -76,7 +113,8 @@ export const transferZCT = async (from, to, amount) => {
     }
 };
 
-// export const gaslessZCT = async (address)
+
+
 
 export const mintZCT = async (address, amount) => {
     return erc20Contract.methods

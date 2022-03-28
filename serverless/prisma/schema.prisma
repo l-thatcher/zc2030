@@ -141,7 +141,6 @@ model Project {
   website         String?
   description     String        @db.Text
   datefounded     String
-  nftaddress      String?
   publicAddress   String?       @db.Text
   ethWallet       String?       @db.Text
   Transaction     Transaction[]
