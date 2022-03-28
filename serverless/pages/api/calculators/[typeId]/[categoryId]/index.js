@@ -29,7 +29,7 @@ export default async function handler(req, res) {
   console.log("Category: " + req.body[0]?.user?.role)
   console.log(apiSession)
 
-  // if ((calculatorSession === "PERSONAL") || (calculatorSession === "ADMIN") || (calculatorSession === undefined) || (apiSession?.user?.role === "ADMIN")) {
+  if ((calculatorSession === "PERSONAL") || (calculatorSession === "ADMIN") || (calculatorSession === undefined) || (apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -101,9 +101,9 @@ export default async function handler(req, res) {
 
       break;
   }
-  // } else {
-  //   // Not Signed in
-  //   res.status(401)
-  // }
-  // res.end()
+  } else {
+    // Not Signed in
+    res.status(401)
+  }
+  res.end()
 }

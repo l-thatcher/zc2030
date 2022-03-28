@@ -23,7 +23,7 @@ export default async function handler(req, res) {
   const apiSession = await getSession({ req });
   console.log("Types: " + calculatorSession)
 
-  // if ((calculatorSession === "PERSONAL") || (calculatorSession === "ADMIN") || (apiSession?.user?.role === "ADMIN")) {
+  if ((calculatorSession === "PERSONAL") || (calculatorSession === "ADMIN") || (apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -85,8 +85,8 @@ export default async function handler(req, res) {
 
       break;
   }
-  // } else {
-  //     res.status(401)
-  // }
-  // res.end()
+  } else {
+      res.status(401)
+  }
+  res.end()
 }
