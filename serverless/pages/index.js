@@ -158,6 +158,6 @@ export async function getServerSideProps() {
 
   return {
     props: { allProjects },
-    revalidate: 60, //Regenerates page every minute
+    // revalidate: 60, //Regenerates page every minute
   };
 }
