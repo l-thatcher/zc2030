@@ -80,7 +80,7 @@ export const mintZCT = async (address, amount) => {
         .mint(address, Web3.utils.toWei(amount))
         .send({from: devWallet, value: "0"})
         .then((balance) => {
-            return Web3.utils.fromWei(balance);
+            return Web3.utils.fromWei(balance.toString());
         });
 };
 

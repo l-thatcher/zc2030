@@ -282,6 +282,7 @@ export const createNewTransaction = (date, tonnes, price, paypalId, projectId, u
             amountGbp: price,
             paypal_id: paypalId,
             project_id: projectId,
+            user_id: userId
         },
     });
 };

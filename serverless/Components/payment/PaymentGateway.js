@@ -36,7 +36,9 @@ export default function PaymentGateway(props) {
                             //Send transfer token request and add to database
                             //Once transferred remove from database
                             const name = details.payer.name.given_name;
-                            const data = [tonnesBuying];
+                            const today  = new Date();
+                            const date = today.toLocaleDateString("en-US");
+                            const data = [tonnesBuying,date, orderDetails, details.id];
                             transferCarbonFromFarm(data,projectId)
                             alert(`Transaction completed by ${name}`);
 

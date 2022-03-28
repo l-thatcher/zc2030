@@ -47,6 +47,7 @@ model User {
   sessions         Session[]
   CalculatorResult CalculatorResult[]
   UserCalculator   UserCalculator[]
+  Transaction     Transaction[]
 }
 
 enum Role {
@@ -153,8 +154,11 @@ model Transaction {
   amountGbp    Decimal
   paypal_id    String
   project_id   String
+  user_id      String
   status       String  @default("Pending")
   project      Project @relation(fields: [project_id], references: [id], onDelete: Restrict, map: "fk_transaction_id_to_project_id")
+  user         User    @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "fk_transaction_id_to_user_id")
 
+  @@index([user_id], map: "fk_transaction_id_to_user_id")
   @@index([project_id], map: "fk_transaction_id_to_project_id")
 }
