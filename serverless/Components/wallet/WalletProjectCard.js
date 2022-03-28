@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 // import {ViewContext} from "../Contexts/ViewContext";
 import Link from 'next/link'
-import ProgressBar from "@ramonak/react-progress-bar";
+// import ProgressBar from "@ramonak/react-progress-bar";
 
 
 const Card = (props) => {

@@ -11,7 +11,7 @@ const childRPC = 'https://rpc-mumbai.maticvigil.com/'
 // const childRPC =
 //     "wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907";
 const mnemonic = fs.readFileSync(".secret").toString().trim();
-const devWallet="0x427897086E5Ac14561a7559B694617EaF5e0c1d8"
+const devWallet = "0x427897086E5Ac14561a7559B694617EaF5e0c1d8"
 const web3 = new Web3(
     new HDWalletProvider({
         mnemonic: {
@@ -63,17 +63,17 @@ export const transferZCT = async (from, to, amount) => {
     //     .permit(devWallet, fromWallet.address, 1, 9999999999999)
     //     .send({from: devWallet.address});
 
-    await localErc20Contract.methods
-        .approve(fromAddress, Web3.utils.toWei(amount))
-        // .permit(devWallet, fromWallet.address, 1, 9999999999999)
-        .send({from: fromAddress});
-
-    return erc20Contract.methods
-        .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
-        .send({from: devWallet})
-        .then((balance) => {
-            return Web3.utils.fromWei(balance.toString());
-        });
+    (await localErc20Contract.methods
+        .approve(devWallet, Web3.utils.toWei(amount))
+        .send({from: fromAddress})).then
+    {
+        erc20Contract.methods
+            .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
+            .send({from: devWallet})
+            .then((balance) => {
+                return Web3.utils.fromWei(balance.toString());
+            });
+    }
 };
 
 // export const gaslessZCT = async (address)

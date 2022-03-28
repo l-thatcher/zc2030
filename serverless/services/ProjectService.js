@@ -34,3 +34,7 @@ export const fetchTransactionsByAddress = (userAddress) => {
   return MainService.get(`/api/wallet/history/${userAddress}`);
 };
 
+// GET Request - Fetch transactions by address
+export const fetchBlockchainTransactionsByAddress = (userAddress) => {
+  return MainService.get(`/api/wallet/${userAddress}`);
+};

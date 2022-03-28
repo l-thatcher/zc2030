@@ -2,7 +2,7 @@ import ShowWallet from "../Components/User/ShowWallet";
 import Image from "@material-tailwind/react/Image";
 import {getSession} from "next-auth/react";
 import {getZCTBalance} from "../services/ZCTService";
-import {fetchTransactionsByAddress} from "../services/ProjectService";
+import {fetchBlockchainTransactionsByAddress, fetchTransactionsByAddress} from "../services/ProjectService";
 
 export default function Wallet(props) {
   const logo = "/cz2030_logo.png";
@@ -39,9 +39,12 @@ export async function getServerSideProps(context) {
     const session = await getSession(context);
     let balance = 0;
     let transactions = []
+    let blockchainTxs = []
     if (session){
         balance = await getZCTBalance(`0x${session.user.walletAddress}`)
         transactions = (await fetchTransactionsByAddress(session.user.id)).data;
+        blockchainTxs = (await fetchBlockchainTransactionsByAddress(session.user.walletAddress)).data;
+        console.log("eeee " + blockchainTxs)
     }
     return {props:{balance: balance, transactions:transactions}}
 }
