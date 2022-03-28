@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         // Get data from database
         case "GET":
             const address = req.query.account
-            console.log(address)
+            console.log("999" + address)
             try {
                 const result = await fetchTransactionsByAddress(address);
                 res.status(200).json(result)

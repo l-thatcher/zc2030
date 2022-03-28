@@ -126,9 +126,25 @@ const ShowWallet = (props) => {
                             // <AddTripButton addTrip={() => setState('add-trip') } />
                             <>
 
-                                {/*{transactions.map((transaction, index) =>*/}
-                                {/*    <TransactionRow key={index} name={transaction.project.projectname} tonnes={transaction.amountTonnes} status={transaction.status} date={transaction.date} cost={transaction.amountGbp} imageurl={transaction.project.ownerpicture}/>*/}
-                                {/*)}*/}
+                                {/*Get the list of transactions from polyscan with our address*/}
+                                {/*Map transactions to project in database*/}
+                                {/*Output summary*/}
+
+
+                                {transactions.map((transaction, index) =>
+                                    <TransactionRow key={index}
+                                                    projectimage1={project.projectimage1}
+                                                    projectname={transaction.amountTonnes}
+                                                    city={transaction.status}
+                                                    country={transaction.date}
+                                                    county={transaction.amountGbp}
+                                                    totalsupply={transaction.project.ownerpicture}
+                                                    cptgbp={transaction.project.ownerpicture}
+                                                    id={transaction.project.ownerpicture}
+                                                    remaininsupply={transaction.project.ownerpicture}
+
+                                    />
+                                )}
 
                                 <WalletProjectCard></WalletProjectCard>
 
@@ -171,6 +187,7 @@ const ShowWallet = (props) => {
                                                         </tr>
                                                         </thead>
                                                         <tbody className="text-sm divide-y divide-gray-100">
+
 
                                                         {transactions.map((transaction, index) =>
                                                                 <TransactionRow key={index} name={transaction.project.projectname} tonnes={transaction.amountTonnes} status={transaction.status} date={transaction.date} cost={transaction.amountGbp} imageurl={transaction.project.ownerpicture}/>

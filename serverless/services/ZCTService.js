@@ -76,6 +76,8 @@ export const transferZCT = async (from, to, amount) => {
         });
 };
 
+// export const gaslessZCT = async (address)
+
 export const mintZCT = async (address, amount) => {
     return erc20Contract.methods
         .mint(address, Web3.utils.toWei(amount))
