@@ -13,7 +13,7 @@ export default function ProjectCard(props) {
             />
 
             <div className="absolute bottom-0 right-0">
-              <h2 className="p-0.5 bg-opacity-70 rounded-3 bg-zc30-blue text-black text-center font-light mb-1 position-relative shadow-inner shadow-lg">
+              <h2 className="p-0.5 rounded-3 bg-zc30-blue font-semibold text-black text-center f mb-1 position-relative shadow-inner shadow-lg">
                 £{props.project.cptgbp}/ct
               </h2>
             </div>

@@ -9,8 +9,7 @@ const Card = (props) => {
     const {setView} = useContext(ViewContext);
     const {view} = useContext(ViewContext);
     const {setEditPrj} = useContext(ViewContext);
-    const viewType = props.viewtype
-    console.log(viewType)
+
     function changeView() {
         setEditPrj(project)
         setView('edit')
@@ -24,26 +23,20 @@ const Card = (props) => {
 
 
     return(
-        <div className="inline-block px-3">
-
-
-            <div className="w-80 static h-100 max-w-xs border border-gray-500 overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
-                <div>
-                    <div className="relative rounded-lg ">
+            <div className="   border border-gray-500
+            overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
+                <div className='relative'>
+                    <div className=" rounded-lg ">
                     <img
                         src={project.projectimage1}
                         alt="uploaded cover image"
-                        className="object-cover h-1/2 w-full rounded-lg ">
+                        className="w-full object-cover  h-48 sm:h-48 rounded-lg ">
 
                     </img>
-                        <div className=" absolute   bottom-0 w-[100px] bg-zc30-blue py-1 text-black text-center font-light">
-                            <div className='text-white text font-semibold text-sm'>
-                                £{project.cptgbp} <span > /tCo2e</span>
-                            </div>
-                        </div>
+
                     </div>
                     <div>
-                        <h5 className=' ml-2 s text-gray-700 font-medium font-serif'>{project.projectname}  </h5>
+                        <div className=' text-xl  ml-2 mt-3 text-gray-700 font-bold '>{project.projectname}  </div>
                     </div>
 
                     <div className=" font-semibold ml-2  underline flex items-center text-sm text-gray-300 truncate capitalize">
@@ -65,9 +58,15 @@ const Card = (props) => {
                             <div className=" flex items-center  rounded-full">
 
                                 <div className=' ml-2 no-underline flex items-center text-xs text-gray-600 font-semibold  capitalize'>Available Carbon Supply:</div>
-                                <div className='w-[150px] ml-1'> <ProgressBar labelSize={'10px'} height={'15px'} bgColor={'#77C9D4'} completed={widthPercentage} /> </div>
+                                <div className='w-[150px] ml-1'> <ProgressBar baseBgColor={'grey'} labelSize={'10px'} height={'15px'} bgColor={'#2D3B4F'} completed={widthPercentage} /> </div>
 
 
+                            </div>
+                        </div>
+
+                        <div className=" absolute   bottom-[95px] w-[100px] bg-zc30-orange py-1 text-black text-center font-light">
+                            <div className='text-white text font-bold text-sm'>
+                                £{project.cptgbp} <span > /tCo2e</span>
                             </div>
                         </div>
 
@@ -78,29 +77,23 @@ const Card = (props) => {
                 </div>
 
                 <div className="flex justify-end">
-                    { viewType === "admin" &&
-                    <button
-                        className=" mt-3 mb-3 mr-5 bg-green-500  justify-center text-white font-bold capitalize text-xs px-4 py-2
-                         rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                        type="button" onClick={changeView}>
-                        Edit
-                    </button>}
 
-                    { viewType === 'project' &&
+
+
                     <Link  href={"./projects/" + props.project.id}>
-                        <a className='mt-3 no-underline mb-3 mr-5 bg-green-500  justify-center text-white font-bold capitalize text-xs px-4 py-2
-                         rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'
+                        <a className='mt-3 no-underline mb-3 mr-5 bg-logo-green  justify-center font-bold capitalize text-xs px-4 py-2
+                         rounded shadow hover:shadow-md hover: mr-1 ease-linear transition-all duration-150'
                             >
-                                More Details
+                              <span className='text-white
+                              '>More Details</span>
                         </a>
                     </Link>
-                    }
+
                 </div>
 
 
 
             </div>
-        </div>
 
     )
 

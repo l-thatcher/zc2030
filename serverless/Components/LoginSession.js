@@ -9,7 +9,7 @@ function LoginPage() {
       <div className="flex ">
         {/*{session.user.name} <br/>*/}
 
-        <button className=" mt-4 -ml-1 flex items-center text-sm font-medium  mr-6 text-white bg-[#9F0E3F] hover:bg-blue-800  font-medium rounded-lg text-sm px-3 py-1 text-center mr-2 mb-2">
+        <button className=" mt-4 -ml-1 flex items-center text-sm font-medium  mr-6 text-white bg-zc30-orange hover:bg-blue-800  font-medium rounded-lg text-sm px-3 py-1 text-center mr-2 mb-2">
           <IoMdWallet className="" />
 
           <Link href="/wallet">

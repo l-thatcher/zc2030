@@ -6,7 +6,7 @@ import React, { useState } from "react"
 
 
 const Navbar = () => {
-  const logo = "/cz2030_logo.png";
+  const logo = "/logo100px.png";
 
 
   return (
@@ -18,13 +18,16 @@ const Navbar = () => {
                               {/*Website Logo*/}
                               <Link href="/">
                                   <a  className="flex items-center no-underline py-4 px-2">
-                                      <img src={logo}lt="Logo" className="h-8 w-8 mr-2"/>
-                                      <span className="font-semibold text-gray-500 text-lg">ZeroCarbon2030</span>
+                                      <img src={logo}lt="Logo" className=" mr-2"/>
                                   </a>
                               </Link>
                           </div>
                           {/*Primary Navbar items */}
                           <div className="hidden md:flex items-center px-5 lg:mx-auto lg:space-x-8 xl:space-x-14 ">
+                              <Link href="/">
+                                  <a href=""
+                                     className="py-4 px-2 text-gray-700 hover:text-green-500 hover:border-b-4 hover:border-green-500 no-underline font-semibold ">Home</a>
+                              </Link>
                               <Link href="/about">
                                   <a href=""
                                      className="py-4 px-2 text-gray-700 hover:text-green-500 hover:border-b-4 hover:border-green-500 no-underline font-semibold ">About</a>
