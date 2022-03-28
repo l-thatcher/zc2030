@@ -1,8 +1,9 @@
-import { HiLocationMarker } from "react-icons/hi";
+// import { HiLocationMarker } from "react-icons/hi";
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
 import Map from "./Map";
+import {HiLocationMarker} from "react-icons/hi";
 
 function ProjectDetails(props) {
   // const images2 = [image1,image2,image3,image4,image5]

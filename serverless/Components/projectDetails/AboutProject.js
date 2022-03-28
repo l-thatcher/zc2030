@@ -1,5 +1,5 @@
 import { FiFacebook, FiGlobe } from "react-icons/fi";
-import {HiCalendar} from "react-icons/all";
+import {HiCalendar} from "react-icons/hi";
 
 const AboutProject = (props) => {
   return (
