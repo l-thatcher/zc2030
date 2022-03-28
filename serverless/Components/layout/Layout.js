@@ -7,13 +7,13 @@ const Layout = ({ children }) => {
   return (
     <div>
 
-      <Navbar />
+      <Navbar className='' style=''/>
     <div className='container max-w-6xl mx-auto px-4' >
     <div className="bg-white py-3 md:mb-10">
       {/*<Header />*/}
-      <div>{children}</div>
+      <div className='pt-24 z-0'>{children}</div>
 
-      <Footer />
+      <Footer/>
     </div>
     </div>
     </div>

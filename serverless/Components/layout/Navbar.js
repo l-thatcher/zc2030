@@ -10,8 +10,8 @@ const Navbar = () => {
 
 
   return (
-          <nav className=" ">
-              <div className=" mx-auto px-4">
+          <nav className="">
+              <div className="fixed mx-auto px-4 bg-white z-50 w-full">
                   <div className="flex justify-between">
                       <div className="flex space-x-7">
                           <div>

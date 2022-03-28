@@ -18,7 +18,7 @@ export default function Home(props) {
           <source src={treeBackground} type="video/mp4"/>
         </video>
       </div>
-      <main className='flex flex-col relative z-10'>
+      <main className='flex flex-col relative'>
         <div className='p-3 w-full flex justify-between h-5/6'>
           <div className=''>
             <h1 className={styles.summaryHeader}>Are you carbon neutral?</h1>
