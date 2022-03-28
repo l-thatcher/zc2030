@@ -17,7 +17,7 @@ import {getSession} from "next-auth/react";
 export default async function handler(req, res) {
   const session = await getSession({ req })
 
-  if ((session?.user?.role === "ADMIN")) {
+  // if ((session?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
 
@@ -76,8 +76,8 @@ export default async function handler(req, res) {
 
       break;
   }
-  } else {
-    res.status(401)
-  }
-  res.end()
+  // } else {
+  //   res.status(401)
+  // }
+  // res.end()
 }

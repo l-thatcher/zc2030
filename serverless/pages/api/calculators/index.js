@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   console.log("CALCULATORS: " + calculatorSession)
   const apiSession = await getSession({ req });
 
-  if ((calculatorSession === "ADMIN") || (apiSession?.user?.role === "ADMIN")) {
+  // if ((calculatorSession === "ADMIN") || (apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -75,9 +75,9 @@ export default async function handler(req, res) {
       }
       break;
   }
-  } else {
-      // Not Signed in
-      res.status(401)
-  }
-  res.end()
+  // } else {
+  //     // Not Signed in
+  //     res.status(401)
+  // }
+  // res.end()
 }

@@ -1,4 +1,4 @@
-import { LocationMarkerIcon } from "@heroicons/react/solid";
+import { HiLocationMarker } from "react-icons/hi";
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
@@ -34,7 +34,7 @@ function ProjectDetails(props) {
             <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
               <div className="mt-2 flex items-center text-sm text-gray-500 underline border-b mb-2 border-[#F2F2F2] capitalize">
                 {/*location*/}
-                <LocationMarkerIcon
+                <HiLocationMarker
                   className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400"
                   aria-hidden="true"
                 />
@@ -167,7 +167,7 @@ function ProjectDetails(props) {
                 </h3>
                 <div className="mt-2 flex items-center text-sm text-gray-500 border-b border-[#F2F2F2] capitalize">
                   {/*location*/}
-                  <LocationMarkerIcon
+                  <HiLocationMarker
                     className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400"
                     aria-hidden="true"
                   />
@@ -175,8 +175,6 @@ function ProjectDetails(props) {
                   {props.detailsProps.county} {props.detailsProps.country}
                 </div>
                 <Map location={location} />
-
-                <div></div>
               </div>
             </div>
           </section>
