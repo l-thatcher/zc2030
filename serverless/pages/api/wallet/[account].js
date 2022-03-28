@@ -8,7 +8,6 @@ export default async function handler(req, res) {
         // Get data from database
         case "GET":
             const address = req.query.account
-            console.log("here111")
             console.log(address)
             try {
                 const result = await fetchTransactionsByAddress(address);

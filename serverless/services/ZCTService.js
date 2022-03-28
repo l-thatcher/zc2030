@@ -55,6 +55,7 @@ export const transferZCT = async (from, to, amount) => {
             pollingInterval: 8000
         })
     );
+    const fromAddress = fromWallet.address
     const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
     //Called from the farm wallet
 
@@ -63,12 +64,12 @@ export const transferZCT = async (from, to, amount) => {
     //     .send({from: devWallet.address});
 
     await localErc20Contract.methods
-        .approve(fromWallet.address, Web3.utils.toWei(amount))
+        .approve(fromAddress, Web3.utils.toWei(amount))
         // .permit(devWallet, fromWallet.address, 1, 9999999999999)
-        .send({from: fromWallet.address});
+        .send({from: fromAddress});
 
     return erc20Contract.methods
-        .transferFrom(fromWallet.address, to, Web3.utils.toWei(amount))
+        .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
         .send({from: devWallet})
         .then((balance) => {
             return Web3.utils.fromWei(balance.toString());

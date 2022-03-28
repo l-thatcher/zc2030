@@ -8,9 +8,11 @@ import {useSession} from "next-auth/react";
 import {data} from "autoprefixer";
 import {useState, useEffect} from "react";
 import Link from "next/link";
+import TransactionRow from "../wallet/TransactionRow";
 
 const ShowWallet = (props) => {
-    const balance= props.balance;
+    const balance = props.balance;
+    const transactions = props.transactions
     const {data: session} = useSession();
     const logo = "/cz2030_logo.png";
     const [view, setView] = useState("create");
@@ -121,8 +123,9 @@ const ShowWallet = (props) => {
                     <>
                         {view === "wallet" && (
                             // <AddTripButton addTrip={() => setState('add-trip') } />
+                            <>
 
-                            <></>
+                            </>
                         )}
                     </>
 
@@ -161,6 +164,11 @@ const ShowWallet = (props) => {
                                                         </tr>
                                                         </thead>
                                                         <tbody className="text-sm divide-y divide-gray-100">
+
+                                                        {transactions.map((transaction, index) =>
+                                                                <TransactionRow key={index} name={transaction.project.projectname} tonnes={transaction.amountTonnes} status={transaction.status} date={transaction.date} cost={transaction.amountGbp} imageurl={transaction.project.ownerpicture}/>
+                                                        )}
+
 
                                                         <tr>
                                                             <td className="p-2 whitespace-nowrap">
@@ -205,7 +213,7 @@ const ShowWallet = (props) => {
                 </div>
             </>
         );
-    } else{
+    } else {
         return (<div>Error</div>)
     }
 };

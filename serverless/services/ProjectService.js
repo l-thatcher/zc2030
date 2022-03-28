@@ -28,3 +28,9 @@ export const editProjectById = (data, id) => {
 export const transferCarbonFromFarm = (data, id) => {
   return MainService.post(`/api/projects/${id}/purchase`, data);
 };
+
+// GET Request - Fetch transactions by address
+export const fetchTransactionsByAddress = (userAddress) => {
+  return MainService.get(`/api/wallet/history/${userAddress}`);
+};
+
