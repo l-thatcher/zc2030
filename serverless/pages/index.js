@@ -152,7 +152,7 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const projectsRes = await getProjectsList();
   const allProjects = projectsRes.data.slice(-5);
 
