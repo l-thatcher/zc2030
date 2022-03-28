@@ -22,21 +22,19 @@ const CreateProject =()=> {
     const [website, setWebsite] = useState('');
     const [description, setDescription] = useState('');
     const [datefounded, setDatefounded] = useState('');
-    const [nftaddress, setNftaddress] = useState('');
+    const [projectImg1, setProjectImg1] = useState('');
+    const [projectImg2, setProjectImg2] = useState('');
+    const [projectImg3, setProjectImg3] = useState('');
+    const [projectImg4, setProjectImg4] = useState('');
+    const [projectImg5, setProjectImg5] = useState('');
 
-    let projectimage1= 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/farm-quotes-1580917869.jpg?crop=0.723xw:1.00xh;0.189xw,0&resize=640:*'
-    let projectimage2= 'https://www.immunology.org/sites/default/files/Farm%20barn%20small.jpg'
-    let projectimage3= 'https://www.greenqueen.com.hk/wp-content/uploads/2020/12/Veganic-Farming.png'
-    let projectimage4= 'https://i.guim.co.uk/img/media/92ff23fe9c9b9372d2bf6bc5f58b5317d09640ba/140_163_3360_2017/master/3360.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=a50edccf40f1867e8ae0407b8f249ef2'
-    let projectimage5= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRagVhujggQsNickn5lifRjb4EQzXgYvuaoyaqY06JjzDmgf6BLQ0qQGJQm-gUs0YQkNu4&usqp=CAU'
     let ownerpic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'
-    const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(latitude),streetname:streetname
+    const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(longitude),streetname:streetname
                     , city:city, county:county,
                 country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
         ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
-        projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
-        projectimage5:projectimage5,
-        nftaddress:nftaddress}
+        projectimage1:projectImg1,projectimage2:projectImg2,projectimage3:projectImg3,projectimage4:projectImg4,
+        projectimage5:projectImg5}
 
     const router = useRouter()
     const handleSubmit = async (e) => {
@@ -60,7 +58,6 @@ const CreateProject =()=> {
                         });
 
     }
-
 
     return (
         <>
@@ -89,26 +86,6 @@ const CreateProject =()=> {
                         <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold capitalize">
                             Project Information
                         </h6>
-                        {/*Image uploade*/}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700"> Image </label>
-                            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                <div className="space-y-1 text-center">
-                                    <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                    <div className="flex text-sm text-gray-600">
-                                        <label htmlFor="file" className="relative cursor-pointer  rounded-md font-medium text-blue-300 hover:text-blue-800 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-300">
-                                            <span>Upload a file</span>
-                                            {/*<input id="file" name="file" multiple type="file" className="sr-only" accept="image/png, image/jpeg"*/}
-                                            {/*       onChange={onFileChange}/>*/}
-                                        </label>
-                                        <p className="pl-1">or drag and drop</p>
-                                    </div>
-                                    <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                                </div>
-                            </div>
-                        </div>
                         <div className="flex flex-wrap">
                             <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative w-full mb-3">
@@ -124,19 +101,17 @@ const CreateProject =()=> {
                                         placeholder="The hackney farm" onChange={(e) => setProjectname(e.target.value)}
                                     />
                                 </div>
-                            </div>
-                            <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative w-full mb-3">
                                     <label
                                         className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
                                         htmlFor="grid-password"
                                     >
-                                        NFT address
+                                        Date project Was founded:
                                     </label>
                                     <input
-                                        required
+                                        type="date"
+                                        onChange={(e) => setDatefounded(e.target.value)}
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="0x8294y8943473290289343t5543534" onChange={(e) => setNftaddress(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -167,22 +142,8 @@ const CreateProject =()=> {
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     />
                                 </div>
-                                <div className="relative w-full mb-3">
-                                    <label
-                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlFor="grid-password"
-                                    >
-                                        Date project Was founded:
-                                    </label>
-                                    <input
-                                        type="date"
-                                        value="2018-07-22"
-                                        onChange={(e) => setDatefounded(e.target.value)}
-                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    />
-                                </div>
                             </div>
-                            <div className="w-full lg:w-6/12 px-4">
+                            <div className="w-full lg:w-12/12 px-4">
                                 <div className="relative w-full mb-3">
 
                                     <label
@@ -268,7 +229,7 @@ const CreateProject =()=> {
                                 </div>
                             </div>
 
-                            <div className="w-full lg:w-4/12 px-4">
+                            <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative w-full mb-3">
                                     <label
                                         className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
@@ -284,7 +245,7 @@ const CreateProject =()=> {
                                 </div>
                             </div>
 
-                            <div className="w-full lg:w-4/12 px-4">
+                            <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative w-full mb-3">
                                     <label
                                         className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
@@ -307,50 +268,147 @@ const CreateProject =()=> {
                             About Owner
                         </h6>
 
-                        <div className="w-full lg:w-4/12 px-4">
-                            <div className="relative w-full mb-3">
-                                <label
-                                    className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
-                                    htmlFor="grid-password"
-                                >
-                                    Owner Name
-                                </label>
-                                <input
-                                    required
-                                    onChange={(e) => setOwnername(e.target.value)}
-                                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    placeholder="Jack Smith"
-                                />
+                        <div className="flex flex-wrap">
+                            <div className="w-full lg:w-4/12 px-4">
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Owner Name
+                                    </label>
+                                    <input
+                                        required
+                                        onChange={(e) => setOwnername(e.target.value)}
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Jack Smith"
+                                    />
+                                </div>
+                            </div>
+                            <div className="w-full lg:w-4/12 px-4">
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Type of Owner
+                                    </label>
+                                    <input onChange={(e) => setType(e.target.value)}
+                                           type="text"
+                                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                           placeholder="Farm owner"
+                                    />
+                                </div>
+                            </div>
+                            <div className="w-full lg:w-4/12 px-4">
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        website
+                                    </label>
+                                    <input onChange={(e) => setWebsite(e.target.value)}
+                                           type="string"
+                                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                           placeholder="www.cardiff.com"
+                                    />
+                                </div>
                             </div>
                         </div>
-                        <div className="w-full lg:w-4/12 px-4">
-                            <div className="relative w-full mb-3">
-                                <label
-                                    className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
-                                    htmlFor="grid-password"
-                                >
-                                    Type of Owner
-                                </label>
-                                <input onChange={(e) => setType(e.target.value)}
-                                       type="text"
-                                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                       placeholder="Farm owner"
-                                />
+                        <hr className="mt-6 border-b-1 border-blueGray-300"/>
+
+                        <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold capitalize">
+                            Project Images
+                        </h6>
+
+                        <div className="flex flex-wrap">
+                            <div className="w-full lg:w-6/12 px-4">
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Image 1
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Image 1"
+                                        onChange={(e) => setProjectImg1(e.target.value)}
+                                    />
+                                </div>
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Image 2
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Image 2"
+                                        onChange={(e) => setProjectImg2(e.target.value)}
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    />
+                                </div>
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Image 3
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Image 3"
+                                        onChange={(e) => setProjectImg3(e.target.value)}
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="w-full lg:w-4/12 px-4">
-                            <div className="relative w-full mb-3">
-                                <label
-                                    className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
-                                    htmlFor="grid-password"
-                                >
-                                    website
-                                </label>
-                                <input onChange={(e) => setWebsite(e.target.value)}
-                                       type="string"
-                                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                       placeholder="www.cardiff.com"
-                                />
+                            <div className="w-full lg:w-6/12 px-4">
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Image 4
+                                    </label>
+                                    <input
+                                        type="text"
+                                        onChange={(e) => setProjectImg4(e.target.value)}
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Image 4"
+                                    />
+                                </div>
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Image 5
+                                    </label>
+                                    <input
+                                        placeholder="Image 5"
+                                        type="text"
+                                        onChange={(e) => setProjectImg5(e.target.value)}
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    />
+                                </div>
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Image 6
+                                    </label>
+                                    <input
+                                        placeholder="Image 6"
+                                        type="text"
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div>
