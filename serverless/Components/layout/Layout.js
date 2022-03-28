@@ -8,14 +8,14 @@ const Layout = ({ children }) => {
     <div>
 
       <Navbar className='' style=''/>
-    <div className='container max-w-6xl mx-auto px-4' >
-    <div className="bg-white py-3 md:mb-10">
+    {/*<div className='container max-w-6xl mx-auto px-4' >*/}
+    {/*<div className="bg-white py-3 md:mb-10">*/}
       {/*<Header />*/}
       <div className='pt-24 z-0'>{children}</div>
 
       <Footer/>
-    </div>
-    </div>
+    {/*</div>*/}
+    {/*</div>*/}
     </div>
   );
 };
