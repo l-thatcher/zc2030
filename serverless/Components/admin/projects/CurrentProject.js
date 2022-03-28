@@ -1,4 +1,4 @@
-import Card from "../../Card";
+import AdminCard from "./AdminCard";
 import React from "react";
 import BlankCard from "./BlankCard";
 
@@ -24,7 +24,7 @@ const CurrentProject = (props) => {
                     <div className="flex flex-nowrap lg:ml-5 md:ml-5 ml-5 ">
                         {allProjects.map((project) => (
                             // <ProjectCard project={project} key={project.name} />
-                            <Card project={project} viewtype={'admin'} />
+                            <AdminCard project={project} viewtype={'admin'} />
 
                         ))}
                     </div>

@@ -1,10 +1,11 @@
 import Card from "../../Components/Card";
 import { getProjectsList } from "../../services/ProjectService";
 import React from "react";
+import ProjectCard from '../../Components/ProjectCard';
 
 export default function Projects(props) {
   const allProjects = props.allProjects;
-  console.log("Test1:" + allProjects);
+  console.log("Test1:" + allProjects[1]['id']);
   return (
     <div className="">
 
@@ -15,14 +16,14 @@ export default function Projects(props) {
             ZeroCarbon Projects
           </h2>
           <p className='text-sm text-gray-500 px-10 '>
-            Discov
+
           </p>
         </div>
 
-        <div className="  bg-green-100 justify-end flex grid grid-cols-4 grid-flow-row  ">
+        <div className=" grid lg:grid-cols-3 gap-10  ">
+
           {allProjects.map((project) => (
-            // <ProjectCard project={project} key={project.name} />
-            <Card className='mt-5' project={project} viewtype={'project'}/>
+            <Card className='mt-5' project={project} />
           ))}
         </div>
       </div>

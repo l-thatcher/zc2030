@@ -8,7 +8,6 @@
 html,
 body {
   /*padding-top: 60px;*/
-  margin: 0;
   /*font-family: 'Poppins', sans-serif;*/
   font-family: 'Noto Sans', sans-serif;
 }
@@ -21,3 +20,26 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.custom-shape-divider-bottom-1648382942 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1648382942 svg {
+  position: relative;
+  display: block;
+  width: calc(124% + 1.3px);
+  height: 358px;
+}
+
+.custom-shape-divider-bottom-1648382942 .shape-fill {
+  fill: #FFFFFF;
+}
+
+
