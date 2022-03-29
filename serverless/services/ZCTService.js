@@ -61,6 +61,8 @@ export const transferZCT = async (from, to, amount) => {
         gas: 2000000
     }, "0xbfbe13a0ebe33125893018b6bfe5d6474bd990260d4cc5404ade1804b68d7326");
 
+    console.log("SIGNED TX IS: " + signedTx.messageHash)
+
 
     const localWeb3Connection = new Web3(
         new HDWalletProvider({
@@ -72,15 +74,30 @@ export const transferZCT = async (from, to, amount) => {
 
     // Called from the farm wallet
     const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
-    const signedTxHash = signedTx.transactionHash;
+    const signedTxHash = signedTx.messageHash;
     const sigParams = getSignatureParameters(signedTxHash);
-    console.log("here" + sigParams.v)
+    console.log("here 54 " + sigParams.v)
 
+    const permitValue = amount.toString()
 
+    console.log(devWallet)
+    console.log(fromWallet.address)
+    console.log("5051" + permitValue)
+    console.log(`0x${sigParams.v}`)
+    console.log(`0x${sigParams.r}`)
+    console.log(`0x${sigParams.s}`)
+
+    const vSig = sigParams.v;
+    const rSig = sigParams.r;
+    const sSig = sigParams.s;
+
+    console.log(vSig)
+    console.log(rSig)
+    console.log(sSig)
 
     await localErc20Contract.methods
-        .permit(devWallet, fromWallet, 1, 9999999999999, `0x${sigParams.v}`, `0x${sigParams.r}`, `0x${sigParams.s}`)
-        .send({from: devWallet.address});
+        .permit(devWallet, devWallet, permitValue, "9999999999999", vSig, rSig, sSig)
+        .send({from: fromWallet.address});
 
 
     // (await localErc20Contract.methods
