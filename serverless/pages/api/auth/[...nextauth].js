@@ -8,6 +8,7 @@ import { PrismaClient } from "@prisma/client";
 import { addWalletToUserId } from "../../../services/PrismaService";
 import { createEncryptedWallet } from "../../../services/Web3jsService";
 
+
 dotenv.config();
 
 //https://next-auth.js.org/adapters/prisma
@@ -50,4 +51,7 @@ export default NextAuth({
       await addWalletToUserId(user.id, JSON.stringify(wallet), wallet.address);
     },
   },
+  pages: {
+    signIn: '/auth/signin',
+  }
 });
