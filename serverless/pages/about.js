@@ -7,11 +7,11 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <main className='flex flex-col'>
-        <div>
+        <div className='pt-40 sm:pt-0'>
           <div className={styles.openingBox}>
 
             <div className="p-12">
-              <h1 className="text-white uppercase text-5xl left-40 font-light">We're ZC30</h1>
+              <h1 className="text-white uppercase text-7xl font-light pb-8 pl-5">We're ZC30</h1>
               <p className="text-white text-xl">
                 We at zero carbon 30 aim to get everyone's carbon use to 0 by the
                 year 2030.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -56,44 +56,90 @@ export default function Home() {
         </div>
 
 
-        <div className="min-h-30 p-0 sm:p-10 pb-3">
-          <h1 className="text-black uppercase font-extralight pb-8 pl-5">Meet the team</h1>
+        <div className='hidden sm:block px-36'>
+          <div className="min-h-30 p-0 sm:p-10 pb-3">
+            <h1 className="text-black uppercase font-extralight pb-8 pl-5">Meet the team</h1>
 
-          <div className="flex flex-row overflow-x-auto">
-            <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
-              <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
-                   src={profileImg}
-                   srcSet={profileImg}
-                   alt="CEO"/>
-              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-              <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
-              <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-              <h3 className="text-lg text-gray-700"> email@address.com </h3>
+            <div className="flex flex-row overflow-x-auto">
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <h3 className="text-lg text-gray-700"> email@address.com </h3>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <h3 className="text-lg text-gray-700"> email@address.com </h3>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <h3 className="text-lg text-gray-700"> email@address.com </h3>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
-              <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
-                   src={profileImg}
-                   srcSet={profileImg}
-                   alt="CEO"/>
-              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-              <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
-              <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-              <h3 className="text-lg text-gray-700"> email@address.com </h3>
-            </div>
+        <div className='block sm:hidden px-0'>
+          <div className="min-h-30 p-0 sm:p-10 pb-3">
+            <h1 className="text-black uppercase font-extralight pb-8 pl-5">Meet the team</h1>
 
-            <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
-              <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
-                   src={profileImg}
-                   srcSet={profileImg}
-                   alt="CEO"/>
-              <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-              <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
-              <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-              <h3 className="text-lg text-gray-700"> email@address.com </h3>
+            <div className="flex flex-row overflow-x-auto">
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <h3 className="text-lg text-gray-700"> email@address.com </h3>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <h3 className="text-lg text-gray-700"> email@address.com </h3>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+                <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <h3 className="text-lg text-gray-700"> email@address.com </h3>
+              </div>
             </div>
           </div>
         </div>

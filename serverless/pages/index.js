@@ -24,7 +24,9 @@ export default function Home(props) {
       <main className='flex flex-col relative'>
         <div className='p-3 w-full flex justify-between h-5/6'>
           <div className='pt-40 sm:pt-0'>
-            <h1 className={styles.summaryHeader}>Are you carbon neutral?</h1>
+            <div className={styles.summaryHeader}>
+              <h1 className='text-white uppercase text-7xl font-light pb-8 pl-5'>Are you carbon neutral?</h1>
+            </div>
             <p className={styles.summaryPara}>
               Carbon Neutrality is important.. lorem ipsum dolor sit amet,
               consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -79,7 +81,9 @@ export default function Home(props) {
 
         <div className='min-h-1/3 p-3 text-black bg-white w-full'>
           <div className='px-0 block sm:hidden'>
-            <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
+            <div className={styles.projectsHeader}>
+              <h1 className='text-black uppercase font-extralight pb-8 pl-5'>Newest Carbon Projects</h1>
+            </div>
             <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
               {allProjects.map((project) => (
                   // <ProjectCard project={project} key={project.name} />
@@ -89,7 +93,9 @@ export default function Home(props) {
           </div>
 
           <div className='px-32 hidden sm:block'>
-            <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
+            <div className={styles.projectsHeader}>
+              <h1 className='text-black uppercase font-extralight pb-8 pl-5'>Newest Carbon Projects</h1>
+            </div>
             <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
               {allProjects.map((project) => (
                   // <ProjectCard project={project} key={project.name} />
@@ -103,7 +109,7 @@ export default function Home(props) {
         <div className={styles.teamBackground}>
         <div className="h-fit py-3">
           <div className='hidden sm:block px-32'>
-            <h1 className="text-white pl-2 pb-2 uppercase font-light">Who's involved?</h1>
+            <h1 className="text-black uppercase font-extralight pb-8 pl-5">Who's involved?</h1>
 
             <div className='overflow-scroll flex flex-row w-full'>
               <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
@@ -147,7 +153,7 @@ export default function Home(props) {
 
 
           <div className='block sm:hidden px-0'>
-            <h1 className="text-white pl-2 pb-2 uppercase font-light">Who's involved?</h1>
+            <h1 className="text-black uppercase font-extralight pb-8 pl-5">Who's involved?</h1>
 
             <div className='overflow-scroll flex flex-row w-full'>
 
