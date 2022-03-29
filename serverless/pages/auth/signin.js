@@ -1,5 +1,6 @@
 import { getProviders, signIn } from "next-auth/react"
 import React from "react";
+import router from "next/router";
 
 export default function SignIn({ providers }) {
   const logo = "/logo100px-noText.png";
@@ -19,7 +20,7 @@ export default function SignIn({ providers }) {
             <img src={logo}lt="Logo" className=" my-4 mx-auto"/>
             {Object.values(providers).map((provider) => (
                 <div key={provider.name} className='px-3 py-2 rounded-full hover:bg-[#77C9D480]'>
-                  <button className='text-2xl font-light' onClick={() => signIn(provider.id)}>
+                  <button className='text-2xl font-light' onClick={() => signIn(provider.id, {callbackUrl: `${window.location.origin}/`,})}>
                     Sign in with {provider.name}
                   </button>
                 </div>
