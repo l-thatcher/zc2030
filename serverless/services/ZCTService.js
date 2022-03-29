@@ -49,48 +49,26 @@ export const getZCTBalances = async (addresses) => {
 //Transfers tokens from one address to another. Request sent by dev wallet so dev wallet pays gas fees.
 export const transferZCT = async (from, to, amount) => {
     const fromWallet = decryptWallet(from)
+    const fromAddress = fromWallet.address
+    const gasLimit = ("10000000108")
+    console.log("123")
+    const gasEstimate = web3.eth.getGasPrice()
+    // const gasEstimate = await (erc20Contract.methods.transferFrom(fromWallet.address, to, Web3.utils.toWei(amount))).estimateGas();
+    console.log("456")
 
-    const gasLimit = ("22000")
-    // const gasLimit = Web3.utils.toWei("1000000");
-
-
-    console.log(fromWallet)
-
-    const tx = {
-        from: fromWallet.address,
+    const signedTx = await web3.eth.accounts.signTransaction({
         to: to,
-        gas: gasLimit,
-        value: Web3.utils.toWei(amount),
-        data: erc20Contract.methods.transferFrom(fromWallet.address, to, Web3.utils.toWei(amount)).encodeABI()
-    };
-
-    console.log(tx);
+        gas: 2000000
+    }, "0xbfbe13a0ebe33125893018b6bfe5d6474bd990260d4cc5404ade1804b68d7326");
 
 
-    const signPromise = (web3.eth.accounts.signTransaction(tx, "0xbfbe13a0ebe33125893018b6bfe5d6474bd990260d4cc5404ade1804b68d7326"));
-
-    signPromise.then((signedTx) => {
-        const sentTx = web3.eth.sendSignedTransaction(
-            signedTx.raw || signedTx.rawTransaction);
-
-        sentTx.on("receipt", receipt => {
-            console.log("here")
-            // do something when receipt comes back
-            let signatureParams = getSignatureParameters(signPromise)
-            console.log("r doo bee: " + (signatureParams.r));
-            console.log("s doo bee: " + (signatureParams.s));
-            console.log("v doo bee: " + (signatureParams.v));
-
-            console.log("333 " + (signPromise));
-        });
-        sentTx.on("error", err => {
-            // do something on transaction error
-        });
-    }).catch((err) => {
-        // do something when promise fails
-    });
-
-
+    const localWeb3Connection = new Web3(
+        new HDWalletProvider({
+            privateKeys: [fromWallet.privateKey],
+            providerOrUrl: childRPC,
+            pollingInterval: 8000
+        })
+    );
 
 
     const localWeb3Connection = new Web3(
@@ -103,11 +81,18 @@ export const transferZCT = async (from, to, amount) => {
     const fromAddress = fromWallet.address
     const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
     // Called from the farm wallet
+    const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
+    const signedTxHash = signedTx.transactionHash;
+    const sigParams = getSignatureParameters(signedTxHash);
+    console.log("here" + sigParams.v)
 
-    // await localErc20Contract.methods
-    //     .permit(devWallet, fromWallet.address, 1, 9999999999999)
-    //     .send({from: devWallet.address});
-    //
+
+
+    await localErc20Contract.methods
+        .permit(devWallet, fromWallet, 1, 9999999999999, `0x${sigParams.v}`, `0x${sigParams.r}`, `0x${sigParams.s}`)
+        .send({from: devWallet.address});
+
+
     // (await localErc20Contract.methods
     //     .approve(devWallet, Web3.utils.toWei(amount))
     //     .send({from: fromAddress})).then
@@ -119,19 +104,24 @@ export const transferZCT = async (from, to, amount) => {
     //             return Web3.utils.fromWei(balance.toString());
     //         });
     // }
+
+
 };
 
 // export const gaslessZCT = async (address)
 
-const getSignatureParameters = signature => {
-    if (!web3.utils.isHexStrict(signature)) {
+const getSignatureParameters = signTxHash => {
+    console.log("here9090")
+    console.log(signTxHash)
+
+    if (!web3.utils.isHexStrict(signTxHash)) {
         throw new Error(
-            'Given value "'.concat(signature, '" is not a valid hex string.')
+            'Given value "'.concat(signTxHash, '" is not a valid hex string.')
         );
     }
-    const r = signature.slice(0, 66);
-    const s = "0x".concat(signature.slice(66, 130));
-    let v = "0x".concat(signature.slice(130, 132));
+    const r = signTxHash.slice(0, 66);
+    const s = "0x".concat(signTxHash.slice(66, 130));
+    let v = "0x".concat(signTxHash.slice(130, 132));
     v = web3.utils.hexToNumber(v);
     if (![27, 28].includes(v)) v += 27;
     return {
@@ -140,6 +130,7 @@ const getSignatureParameters = signature => {
         v: v
     };
 };
+
 
 
 export const mintZCT = async (address, amount) => {
