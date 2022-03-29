@@ -47,10 +47,10 @@ function ProjectDetails(props) {
                         <div className=" mt-3">
 
                                 <div className='md:hidden'>
-                                    <ul className='flex overflow-x-auto gap-6 snap-x snap-mandatory '>
+                                    <ul className='flex overflow-x-auto gap-6 snap-x snap-mandatory'>
                                         {imgs.map((image,index) => (
                                             <li  className='shrink-0 snap-center'>
-                                                <ProjectImageCard key={index} img={image} />
+                                                <ProjectImageCard key={index} img={image}/>
                                             </li>
                                         ))}
                                     </ul>

@@ -9,12 +9,6 @@ export default function Home() {
       <main className='flex flex-col'>
         <div>
           <div className={styles.openingBox}>
-            <img
-                src={groupImg}
-                srcSet={groupImg}
-                className="hidden sm:block h-52 flex items-center mb-8 pl-8"
-                alt="The team"
-            />
 
             <div className="p-12">
               <h1 className="text-white uppercase text-5xl left-40 font-light">We're ZC30</h1>
@@ -33,6 +27,12 @@ export default function Home() {
                 Integer rhoncus congue
               </p>
             </div>
+            <img
+                src={groupImg}
+                srcSet={groupImg}
+                className="hidden sm:block h-52 flex items-center mb-8 px-16 justify-center"
+                alt="The team"
+            />
           </div>
 
 
