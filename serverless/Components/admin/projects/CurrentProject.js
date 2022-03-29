@@ -1,12 +1,20 @@
 import AdminCard from "./AdminCard";
-import React from "react";
+import React, {useContext} from "react";
 import BlankCard from "./BlankCard";
+import {ViewContext} from "../../../Contexts/ViewContext";
 
 
 const CurrentProject = (props) => {
 
     const allProjects = props.projects
+    const {setView} = useContext(ViewContext);
+    const {view} = useContext(ViewContext);
 
+    function changeView() {
+        console.log("hello")
+        setView('current projects')
+        console.log(view)
+    }
 
      return   (
             <div>
@@ -19,7 +27,10 @@ const CurrentProject = (props) => {
 
                 <div className="flex overflow-x-scroll pb-10 scrollbar-hide ">
 
-                    <BlankCard/>
+                    <button onClick={()=> setView('create project')}>
+                        <BlankCard onClick={changeView()}/>
+                    </button>
+
 
                     <div className="flex flex-nowrap lg:ml-5 md:ml-5 ml-5 ">
                         {allProjects.map((project) => (

@@ -65,7 +65,6 @@ export const createNewProject = (data, wallet, publicAddress) => {
       website: data.website,
       description: data.description,
       datefounded: data.datefounded,
-      nftaddress: data.nftaddress,
       ethWallet: wallet,
       publicAddress: publicAddress,
     },
@@ -100,7 +99,6 @@ export const createNewProject = (data, wallet, publicAddress) => {
                 website: data.website,
                 description: data.description,
                 datefounded: data.datefounded,
-                nftaddress: data.nftaddress,
             },
         });
     }

@@ -33,9 +33,6 @@ const Projects= (props) => {
                         <button onClick={() => setView('current projects')} className='mt-4 p-4 mr-10 bg-[#77C9D4] active:bg-blue-600 text-white font-bold capitalize text-xs px-4 p-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'>
                             Current projects</button>
 
-                        <button onClick={() => setView('create project')} className='mt-6 p-4 mr-5 bg-[#0E9F6E] active:bg-blue-600 text-white font-bold capitalize text-xs px-4 p-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'>
-                            Create Project</button>
-
                     </div>
 
 

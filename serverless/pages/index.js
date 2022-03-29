@@ -9,6 +9,7 @@ const offsetImg = "/offset-logo.png";
 const profileImg = "/profile-default.png";
 const treeBackground = "/compressedBackground.mp4";
 
+
 export default function Home(props) {
   const allProjects = props.allProjects;
   return (
@@ -98,7 +99,7 @@ export default function Home(props) {
             <div className={styles.projectsHeader}>
               <h1 className='text-black uppercase font-extralight pb-8 pl-5'>Newest Carbon Projects</h1>
             </div>
-            <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
+            <div className='flex overflow-x-scroll pb-10 scrollbar-hide' style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
               {allProjects.map((project) => (
                   // <ProjectCard project={project} key={project.name} />
                   <ProjectCard project={project} key={project.name}/>
@@ -113,7 +114,7 @@ export default function Home(props) {
           <div className='hidden sm:block px-32'>
             <h1 className="text-black uppercase font-extralight pb-8 pl-5">Who's involved?</h1>
 
-            <div className='overflow-scroll flex flex-row w-full'>
+            <div className='overflow-scroll flex flex-row w-full scrollbar-hide'>
               <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
                 <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
                      src={profileImg}

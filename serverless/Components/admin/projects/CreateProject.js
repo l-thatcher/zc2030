@@ -4,8 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
 import {createNewProject} from '../../../services/ProjectService'
 // components
-import { AiFillCloseCircle } from "react-icons/ai";
-// import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
 
 const CreateProject =()=> {
     const [projectname, setProjectname] = useState('');
@@ -22,7 +20,6 @@ const CreateProject =()=> {
     const [website, setWebsite] = useState('');
     const [description, setDescription] = useState('');
     const [datefounded, setDatefounded] = useState('');
-    const [nftaddress, setNftaddress] = useState('');
 
     let projectimage1= 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/farm-quotes-1580917869.jpg?crop=0.723xw:1.00xh;0.189xw,0&resize=640:*'
     let projectimage2= 'https://www.immunology.org/sites/default/files/Farm%20barn%20small.jpg'
@@ -35,8 +32,7 @@ const CreateProject =()=> {
                 country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
         ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
         projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
-        projectimage5:projectimage5,
-        nftaddress:nftaddress}
+        projectimage5:projectimage5,}
 
     const router = useRouter()
     const handleSubmit = async (e) => {
@@ -54,7 +50,7 @@ const CreateProject =()=> {
                                 draggable: true,
                                 progress: undefined,
                             });
-                        router.push('/admin/adminProjects')} )
+                        router.push('/adminDashboard')} )
                         .catch(err => {
                             console.log(err);
                         });
@@ -127,17 +123,7 @@ const CreateProject =()=> {
                             </div>
                             <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative w-full mb-3">
-                                    <label
-                                        className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlFor="grid-password"
-                                    >
-                                        NFT address
-                                    </label>
-                                    <input
-                                        required
-                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="0x8294y8943473290289343t5543534" onChange={(e) => setNftaddress(e.target.value)}
-                                    />
+
                                 </div>
                             </div>
                             <div className="w-full lg:w-6/12 px-4">
