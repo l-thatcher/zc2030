@@ -1,7 +1,6 @@
 import { FiFacebook, FiGlobe } from "react-icons/fi";
-import { CalendarIcon } from "@heroicons/react/solid";
-
-import Link from "next/link";
+// import { CalendarIcon } from "@heroicons/react/solid";
+import {BsCalendarEvent} from "react-icons/bs";
 
 const AboutProject = (props) => {
   return (
@@ -54,7 +53,7 @@ const AboutProject = (props) => {
       <div className="">
         {/*Date*/}
         <div className="mt-2 flex items-center text-sm text-gray-500">
-          <CalendarIcon
+          <BsCalendarEvent
             className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
             aria-hidden="true"
           />

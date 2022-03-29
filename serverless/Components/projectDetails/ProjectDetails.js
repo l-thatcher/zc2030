@@ -1,8 +1,9 @@
-import { LocationMarkerIcon } from "@heroicons/react/solid";
+// import { LocationMarkerIcon } from "@heroicons/react/solid";
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
 import Map from "./Map";
+import {MdLocationOn} from "react-icons/md";
 
 function ProjectDetails(props) {
 
@@ -33,7 +34,7 @@ function ProjectDetails(props) {
                         <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                             <div className="mt-2 flex items-center text-sm text-gray-500 underline border-b mb-2 border-[#F2F2F2] capitalize">
                                 {/*location*/}
-                                <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                                <MdLocationOn className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
                                 {props.detailsProps.streetname} | {props.detailsProps.city} {props.detailsProps.county} {props.detailsProps.country}
                             </div>
 
@@ -137,7 +138,7 @@ function ProjectDetails(props) {
                                 </h3>
                                 <div className="mt-2 flex items-center text-sm text-gray-500 border-b border-[#F2F2F2] capitalize">
                                     {/*location*/}
-                                    <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                                    <MdLocationOn className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
                                      {props.detailsProps.streetname} | {props.detailsProps.city} {props.detailsProps.county} {props.detailsProps.country}
                                 </div>
                                 <Map location={location} />
