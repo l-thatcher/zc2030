@@ -1,6 +1,9 @@
 import { getProviders, signIn } from "next-auth/react"
+import React from "react";
 
 export default function SignIn({ providers }) {
+  const logo = "/logo100px-noText.png";
+
   return (
       <div className='h-screen'>
         <svg className='absolute w-full h-full' id="visual" viewBox="0 0 900 600" width="900" height="600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -12,7 +15,8 @@ export default function SignIn({ providers }) {
           <path d="M0 550L16.7 545.5C33.3 541 66.7 532 100 534.3C133.3 536.7 166.7 550.3 200 548.8C233.3 547.3 266.7 530.7 300 523C333.3 515.3 366.7 516.7 400 526.7C433.3 536.7 466.7 555.3 500 559.5C533.3 563.7 566.7 553.3 600 550C633.3 546.7 666.7 550.3 700 548.5C733.3 546.7 766.7 539.3 800 535.8C833.3 532.3 866.7 532.7 883.3 532.8L900 533L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z" fill="#77c9d4"/>
         </svg>
         <div className='flex h-5/6'>
-          <div className="m-auto bg-white z-50 p-10 border rounded-xl justify-between">
+          <div className="m-auto bg-white z-20 p-10 border rounded-xl justify-between">
+            <img src={logo}lt="Logo" className=" my-4 mx-auto"/>
             {Object.values(providers).map((provider) => (
                 <div key={provider.name} className='px-3 py-2 rounded-full hover:bg-[#77C9D480]'>
                   <button className='text-2xl font-light' onClick={() => signIn(provider.id)}>
