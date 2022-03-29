@@ -56,7 +56,7 @@ const Card = (props) => {
                         <div>
                             <div className=" flex items-center  rounded-full">
 
-                                <div className=' ml-2 no-underline flex items-center text-xs text-gray-600 font-semibold  capitalize'>Available Carbon Supply:</div>
+                                <div className=' ml-2 no-underline flex items-center text-md text-gray-600 font-semibold  capitalize'>Available Carbon Supply:</div>
                                 <div className='w-[150px] ml-1'> <ProgressBar baseBgColor={'grey'} labelSize={'10px'} height={'15px'} bgColor={'#2D3B4F'} completed={widthPercentage} /> </div>
 
 
@@ -64,7 +64,7 @@ const Card = (props) => {
                         </div>
 
                         <div className=" absolute   bottom-[95px] w-[100px] bg-gray-700 py-1 text-black text-center font-light">
-                            <div className='text-white text font-bold text-sm'>
+                            <div className='text-white text font-bold text-md'>
                                 £{project.cptgbp} <span > /tCo2e</span>
                             </div>
                         </div>

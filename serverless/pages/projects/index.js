@@ -18,24 +18,50 @@ export default function Projects(props) {
         <div className='flex h-5/6'>
           <div className="m-auto z-20 justify-between w-full">
             <div className='z-50 justify-center'>
-              <div className="px-36 py-12">
+              <div className='hidden sm:block px-36'>
+                <div className="py-12">
 
-                <div className="  gap-4  ">
+                  <div className="  gap-4  ">
 
-                  <div>
-                    <h2 className='font-semibold text-3xl py-6 px-10 capitalize font-serif text-gray-700 '>
-                      ZeroCarbon Projects
-                    </h2>
-                    <p className='text-sm text-gray-500 px-10'>
-                      Showing {allProjects.length} projects
-                    </p>
+                    <div>
+                      <h2 className='font-semibold text-3xl py-6 px-10 capitalize font-serif text-gray-700 '>
+                        ZeroCarbon Projects
+                      </h2>
+                      <p className='text-sm text-gray-500 px-10'>
+                        Showing {allProjects.length} projects
+                      </p>
+                    </div>
+
+                    <div className=" grid lg:grid-cols-3 gap-10  ">
+
+                      {allProjects.map((project) => (
+                          <Card className='mt-5' project={project} />
+                      ))}
+                    </div>
                   </div>
+                </div>
+              </div>
 
-                  <div className=" grid lg:grid-cols-3 gap-10  ">
+              <div className='block sm:hidden px-0 pt-32'>
+                <div className="py-12">
 
-                    {allProjects.map((project) => (
-                        <Card className='mt-5' project={project} />
-                    ))}
+                  <div className="  gap-4  ">
+
+                    <div>
+                      <h2 className='font-semibold text-3xl py-6 px-10 capitalize font-serif text-gray-700 '>
+                        ZeroCarbon Projects
+                      </h2>
+                      <p className='text-sm text-gray-500 px-10'>
+                        Showing {allProjects.length} projects
+                      </p>
+                    </div>
+
+                    <div className=" grid lg:grid-cols-3 gap-10  ">
+
+                      {allProjects.map((project) => (
+                          <Card className='mt-5' project={project} />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
