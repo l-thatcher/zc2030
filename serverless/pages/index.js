@@ -84,10 +84,12 @@ export default function Home(props) {
             <div className={styles.projectsHeader}>
               <h1 className='text-black uppercase font-extralight pb-8 pl-5'>Newest Carbon Projects</h1>
             </div>
-            <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
+            <div style={{display: "flex", flexDirection:"column", width:"100%", overflow:"scroll"}}>
               {allProjects.map((project) => (
                   // <ProjectCard project={project} key={project.name} />
-                  <ProjectCard project={project} key={project.name}/>
+                  <div className='py-2'>
+                    <ProjectCard project={project} key={project.name}/>
+                  </div>
               ))}
             </div>
           </div>
