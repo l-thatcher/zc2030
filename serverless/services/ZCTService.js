@@ -70,16 +70,6 @@ export const transferZCT = async (from, to, amount) => {
         })
     );
 
-
-    const localWeb3Connection = new Web3(
-        new HDWalletProvider({
-            privateKeys: [fromWallet.privateKey],
-            providerOrUrl: childRPC,
-            pollingInterval: 8000
-        })
-    );
-    const fromAddress = fromWallet.address
-    const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
     // Called from the farm wallet
     const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
     const signedTxHash = signedTx.transactionHash;
@@ -130,7 +120,6 @@ const getSignatureParameters = signTxHash => {
         v: v
     };
 };
-
 
 
 export const mintZCT = async (address, amount) => {
