@@ -23,7 +23,7 @@ export default function Home(props) {
       </div>
       <main className='flex flex-col relative'>
         <div className='p-3 w-full flex justify-between h-5/6'>
-          <div className='px-0 sm:px-36 pt-40 sm:pt-0'>
+          <div className='pt-40 sm:pt-0'>
             <h1 className={styles.summaryHeader}>Are you carbon neutral?</h1>
             <p className={styles.summaryPara}>
               Carbon Neutrality is important.. lorem ipsum dolor sit amet,
@@ -78,18 +78,31 @@ export default function Home(props) {
         </div>
 
         <div className='min-h-1/3 p-3 text-black bg-white w-full'>
-          <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
-          <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
-            {allProjects.map((project) => (
-                // <ProjectCard project={project} key={project.name} />
-                <ProjectCard project={project} key={project.name}/>
-            ))}
+          <div className='px-0 block sm:hidden'>
+            <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
+            <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
+              {allProjects.map((project) => (
+                  // <ProjectCard project={project} key={project.name} />
+                  <ProjectCard project={project} key={project.name}/>
+              ))}
+            </div>
           </div>
+
+          <div className='px-36 hidden sm:block'>
+            <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
+            <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
+              {allProjects.map((project) => (
+                  // <ProjectCard project={project} key={project.name} />
+                  <ProjectCard project={project} key={project.name}/>
+              ))}
+            </div>
+          </div>
+
         </div>
 
         <div className={styles.teamBackground}>
         <div className="h-fit py-3">
-          <div className='px-0 sm:px-32'>
+          <div className={styles.mobilePadding}>
             <h1 className="text-white pl-2 pb-2 uppercase font-light">Who's involved?</h1>
 
             <div className='overflow-scroll flex flex-row w-full'>
@@ -146,12 +159,12 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const projectsRes = await getProjectsList();
   const allProjects = projectsRes.data.slice(-5);
 
   return {
     props: { allProjects },
-    revalidate: 60, //Regenerates page every minute
+    // revalidate: 5, //Regenerates page every minute
   };
 }

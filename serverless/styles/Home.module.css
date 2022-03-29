@@ -172,6 +172,25 @@
   animation: topBoxAnimation 6s ease infinite;
 }
 
+/*@media only screen and (max-width: 640px) {*/
+/*  .mobilePadding{*/
+/*    padding-left: 8rem;*/
+/*    padding-right: 8rem;*/
+/*  }*/
+/*}*/
+
+@media only screen and (max-width: 640px) {
+  .mobilePadding{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.mobilePadding{
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
 /*.teamCards{*/
 /*  display: flex;*/
 /*  flex-direction: row;*/

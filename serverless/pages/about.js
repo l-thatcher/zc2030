@@ -56,7 +56,7 @@ export default function Home() {
         </div>
 
 
-        <div className="min-h-30 p-0 sm:p-10">
+        <div className="min-h-30 p-0 sm:p-10 pb-3">
           <h1 className="text-black uppercase font-extralight pb-8 pl-5">Meet the team</h1>
 
           <div className="flex flex-row overflow-x-auto">

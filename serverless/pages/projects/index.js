@@ -7,7 +7,7 @@ export default function Projects(props) {
   const allProjects = props.allProjects;
   console.log("Test1:" + allProjects[1]['id']);
   return (
-    <div className="">
+    <div className="px-36 py-12">
 
       <div className="  gap-4  ">
 
@@ -31,12 +31,12 @@ export default function Projects(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const projectsRes = await getProjectsList();
   const allProjects = projectsRes.data;
 
   return {
     props: { allProjects },
-    revalidate: 60, //Regenerates page every minute
+    // revalidate: 60, //Regenerates page every minute
   };
 }
