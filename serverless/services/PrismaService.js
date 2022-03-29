@@ -295,3 +295,14 @@ export const getTransactionByUserId = (userId) => {
         },
     });
 };
+
+export const getProjectsByUserId = (userId) => {
+    return prisma.transaction.findMany({
+        where: {
+            user_id: userId,
+        },
+        include: {
+            project: true
+        },
+    });
+};

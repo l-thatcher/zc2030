@@ -34,6 +34,11 @@ export const fetchTransactionsByAddress = (userAddress) => {
   return MainService.get(`/api/wallet/history/${userAddress}`);
 };
 
+// GET Request - Fetch projects by address
+export const fetchProjectsByAddress = (userAddress) => {
+  return MainService.get(`/api/wallet/project/${userAddress}`);
+};
+
 // GET Request - Fetch transactions by address
 export const fetchBlockchainTransactionsByAddress = (userAddress) => {
   return MainService.get(`/api/wallet/${userAddress}`);
