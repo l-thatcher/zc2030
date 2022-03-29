@@ -23,8 +23,7 @@ const Card = (props) => {
 
 
     return(
-            <div className="   border border-gray-500
-            overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
+            <div className="border border-gray-500 overflow-hidden rounded-lg shadow-xl bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
                 <div className='relative'>
                     <div className=" rounded-lg ">
                     <img
@@ -64,7 +63,7 @@ const Card = (props) => {
                             </div>
                         </div>
 
-                        <div className=" absolute   bottom-[95px] w-[100px] bg-zc30-orange py-1 text-black text-center font-light">
+                        <div className=" absolute   bottom-[95px] w-[100px] bg-gray-700 py-1 text-black text-center font-light">
                             <div className='text-white text font-bold text-sm'>
                                 £{project.cptgbp} <span > /tCo2e</span>
                             </div>
@@ -81,7 +80,7 @@ const Card = (props) => {
 
 
                     <Link  href={"./projects/" + props.project.id}>
-                        <a className='mt-3 no-underline mb-3 mr-5 bg-logo-green  justify-center font-bold capitalize text-xs px-4 py-2
+                        <a className='mt-3 no-underline mb-3 mr-5 bg-green-500  justify-center font-bold capitalize text-xs px-4 py-2
                          rounded shadow hover:shadow-md hover: mr-1 ease-linear transition-all duration-150'
                             >
                               <span className='text-white

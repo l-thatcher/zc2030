@@ -37,13 +37,13 @@ const AboutProject = (props) => {
         {/*//socials*/}
         <div className="flex px-10">
           <a href="https://google.com" target="_blank">
-            <span className="text-xl font-bold block uppercase  tracking-wide hover:text-green-700 text-gray-500 cursor-pointer   ">
+            <span className="text-xl font-bold block uppercase  tracking-wide hover:text-green-400 text-green-600 cursor-pointer   ">
               <FiGlobe />
             </span>
           </a>
 
           <a href="https://facebook.com" target="_blank">
-            <span className="text-xl font-bold block uppercase tracking-wide text-gray-500 ml-6 hover:text-green-700 cursor-pointer">
+            <span className="text-xl font-bold block uppercase tracking-wide ml-6 hover:text-green-400 text-green-600  cursor-pointer">
               <FiFacebook />
             </span>{" "}
           </a>
@@ -54,7 +54,7 @@ const AboutProject = (props) => {
         {/*Date*/}
         <div className="mt-2 flex items-center text-sm text-gray-500">
           <BsCalendarEvent
-            className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+            className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400 text-green-500"
             aria-hidden="true"
           />
           {props.detailsProps.datefounded}

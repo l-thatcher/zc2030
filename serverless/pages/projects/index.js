@@ -26,8 +26,8 @@ export default function Projects(props) {
                     <h2 className='font-semibold text-3xl py-6 px-10 capitalize font-serif text-gray-700 '>
                       ZeroCarbon Projects
                     </h2>
-                    <p className='text-sm text-gray-500 px-10 '>
-
+                    <p className='text-sm text-gray-500 px-10'>
+                      Showing {allProjects.length} projects
                     </p>
                   </div>
 
