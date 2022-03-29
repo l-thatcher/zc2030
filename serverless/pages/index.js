@@ -88,7 +88,7 @@ export default function Home(props) {
             </div>
           </div>
 
-          <div className='px-36 hidden sm:block'>
+          <div className='px-32 hidden sm:block'>
             <h1 className={styles.projectsHeader}>Newest Carbon Projects</h1>
             <div style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
               {allProjects.map((project) => (
@@ -102,7 +102,7 @@ export default function Home(props) {
 
         <div className={styles.teamBackground}>
         <div className="h-fit py-3">
-          <div className={styles.mobilePadding}>
+          <div className='hidden sm:block px-32'>
             <h1 className="text-white pl-2 pb-2 uppercase font-light">Who's involved?</h1>
 
             <div className='overflow-scroll flex flex-row w-full'>
@@ -114,6 +114,42 @@ export default function Home(props) {
                 <h1 className="text-lg text-gray-700"> Peter Trott </h1>
                 <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
               </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={profileImg}
+                     srcSet={profileImg}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div className='block sm:hidden px-0'>
+            <h1 className="text-white pl-2 pb-2 uppercase font-light">Who's involved?</h1>
+
+            <div className='overflow-scroll flex flex-row w-full'>
 
               <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
                 <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
