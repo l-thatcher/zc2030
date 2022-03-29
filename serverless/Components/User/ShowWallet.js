@@ -14,6 +14,7 @@ import WalletProjectCard from "../wallet/WalletProjectCard";
 const ShowWallet = (props) => {
     const balance = props.balance;
     const transactions = props.transactions
+    const projects = props.projects
     const {data: session} = useSession();
     const logo = "/cz2030_logo.png";
     const [view, setView] = useState("create");
@@ -130,23 +131,21 @@ const ShowWallet = (props) => {
                                 {/*Map transactions to project in database*/}
                                 {/*Output summary*/}
 
-
-                                {transactions.map((transaction, index) =>
-                                    <TransactionRow key={index}
-                                                    projectimage1={project.projectimage1}
-                                                    projectname={transaction.amountTonnes}
-                                                    city={transaction.status}
-                                                    country={transaction.date}
-                                                    county={transaction.amountGbp}
-                                                    totalsupply={transaction.project.ownerpicture}
-                                                    cptgbp={transaction.project.ownerpicture}
-                                                    id={transaction.project.ownerpicture}
-                                                    remaininsupply={transaction.project.ownerpicture}
-
+                                {projects.map((project, index) =>
+                                    <WalletProjectCard
+                                        key={index}
+                                        projectName={project.project.projectname}
+                                        projectImg={project.project.projectimage1}
+                                        city={project.project.city}
+                                        country={project.project.country}
+                                        county={project.project.county}
+                                        totalSupply={project.project.totalsupply}
+                                        cptgbp={project.project.cptgbp}
+                                        id={project.project_id}
+                                        amountTonnes={project.amountTonnes}
                                     />
                                 )}
 
-                                <WalletProjectCard></WalletProjectCard>
 
                             </>
                         )}
