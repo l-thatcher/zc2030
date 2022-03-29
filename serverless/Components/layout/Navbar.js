@@ -69,7 +69,7 @@ const Navbar = () => {
                           </button>
                       </div>
                   </div>
-                  <div className="flex flex-column sm:hidden relative bg-white h-fit items-center"  style={{visibility: mobileVisible ? "visible" : "hidden"}}>
+                  <div className="flex flex-column relative bg-white h-fit items-center"  style={{visibility: mobileVisible ? "visible" : "hidden"}}>
                       <Link href="/">
                           <a href=""
                              className="py-1 px-2 text-gray-700 hover:text-green-500 hover:border-b-4 hover:border-green-500 no-underline font-semibold ">Home</a>
