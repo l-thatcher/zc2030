@@ -8,7 +8,7 @@ import React, { useState } from "react"
 const Navbar = () => {
   const logo = "/logo100px.png";
 
-  const [mobileVisible, setmobileVisible] = useState(false);
+  const [mobileVisible, setmobileVisible] = useState(true);
 
   return (
           <nav className="">
@@ -54,7 +54,9 @@ const Navbar = () => {
                       </div>
                       {/*Mobile menu button*/}
                       <div className="md:hidden flex items-center">
-                          <button className="outline-none mobile-menu-button" onClick={()=> setmobileVisible(!mobileVisible)}>
+                          <button className="outline-none mobile-menu-button"
+                                  // onClick={()=> setmobileVisible(!mobileVisible)}
+                          >
                               <svg className=" w-6 h-6 text-gray-500 hover:text-green-500 "
                                    x-show="!showMenu"
                                    fill="none"

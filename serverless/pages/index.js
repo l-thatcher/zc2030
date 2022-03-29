@@ -23,7 +23,7 @@ export default function Home(props) {
       </div>
       <main className='flex flex-col relative'>
         <div className='p-3 w-full flex justify-between h-5/6'>
-          <div className=''>
+          <div className='px-0 sm:px-36 pt-40 sm:pt-0'>
             <h1 className={styles.summaryHeader}>Are you carbon neutral?</h1>
             <p className={styles.summaryPara}>
               Carbon Neutrality is important.. lorem ipsum dolor sit amet,
@@ -88,8 +88,8 @@ export default function Home(props) {
         </div>
 
         <div className={styles.teamBackground}>
-        <div className="px-0 h-fit py-3">
-
+        <div className="h-fit py-3">
+          <div className='px-0 sm:px-32'>
             <h1 className="text-white pl-2 pb-2 uppercase font-light">Who's involved?</h1>
 
             <div className='overflow-scroll flex flex-row w-full'>
@@ -137,6 +137,7 @@ export default function Home(props) {
                 <h1 className="text-lg text-gray-700"> Peter Trott </h1>
                 <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
               </div>
+            </div>
           </div>
           </div>
         </div>
