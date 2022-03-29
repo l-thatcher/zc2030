@@ -124,10 +124,10 @@ function ProjectDetails(props) {
                             </div>
                             {/*Header*/}
                             <div className='flex'>
-                                <div>
+                                <div className="w-full sm:w-2/3">
                                     <AboutProject detailsProps={details} />
                                 </div>
-                                <div className="hidden md:block ">
+                                <div className="hidden md:block w-2/5">
                                     <BuyCard detailsProps={details} />
                                 </div>
                             </div>
