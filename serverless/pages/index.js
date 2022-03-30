@@ -23,10 +23,10 @@ export default function Home(props) {
 
       </div>
       <main className='flex flex-col relative'>
-        <div className='p-3 w-full flex justify-between h-5/6'>
+        <div className='p-5 w-full flex justify-between h-5/6'>
           <div className='pt-40 sm:pt-0'>
             <div className={styles.summaryHeader}>
-              <h1 className='text-white uppercase text-7xl font-light pb-8 pl-5'>Are you carbon neutral?</h1>
+              <h1 className='text-white uppercase font-semibold text-5xl font-light pb-8 pl-5'>Are you carbon neutral?</h1>
             </div>
             <p className={styles.summaryPara}>
               Carbon Neutrality is important.. lorem ipsum dolor sit amet,
