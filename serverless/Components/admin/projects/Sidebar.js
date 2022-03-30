@@ -84,22 +84,22 @@ export default function  Sidebar ()  {
                             </div>
                         </li>
 
-                        <li className="md:px-4" onClick={() => setDashboardView('users')} className="md:px-4 cursor-pointer ">
-                            <div
-                               className="relative flex flex-row items-center h-14 focus:outline-none rounded-lg hover:bg-green-700 text-white-600 hover:text-white-800 pr-6">
-                                <span className="inline-flex justify-center items-center ml-4">
-                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-                                          clip-rule="evenodd"/>
-                                  </svg>
-                                </span>
-                                <span className=" flex-1 ml-2 text-sm tracking-wide truncate">
+                        <li  className="md:px-4 cursor-pointer" onClick={() => setDashboardView('users')} >
+                            <div className="relative flex flex-row items-center h-11 focus:outline-none rounded-lg hover:bg-green-700 text-white-600 hover:text-white-800 pr-6">
+                                    <span className="inline-flex justify-center items-center ml-4">
 
-                                  <div className="text-white text-sm">Users</div>
-                                </span>
+                                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                                              clip-rule="evenodd"/>
+                                      </svg>
+
+                                    </span>
+                                <span className="ml-2 text-sm tracking-wide truncate">Users</span>
                             </div>
                         </li>
+
+
                         <li className="md:px-4">
                             <div
                                className="relative flex flex-row items-center h-11 focus:outline-none rounded-lg hover:bg-green-700 text-white-600 hover:text-white-800 pr-6">

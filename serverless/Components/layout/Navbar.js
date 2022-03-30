@@ -34,14 +34,15 @@ const Navbar = () => {
                                   <a href=""
                                      className="py-4 px-2 text-gray-700 hover:text-green-500 hover:border-b-4 hover:border-green-500 no-underline font-semibold ">About</a>
                               </Link>
-                              <Link href="/projects">
-                                  <a href=""
-                                     className="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300">Projects</a>
-                              </Link>
                               <Link href="/calculator">
                                   <a href=""
                                      className="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300">Calculator</a>
                               </Link>
+                              <Link href="/projects">
+                                  <a href=""
+                                     className="py-4 px-2 text-gray-700 font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300">Projects</a>
+                              </Link>
+
                               {/*<Link href="/about">*/}
                               {/*  <a href=""*/}
                               {/*     className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition no-underline duration-300">Contact*/}
@@ -54,17 +55,9 @@ const Navbar = () => {
                           <LoginSession/>
                       </div>
                       {/*Mobile menu button*/}
-                      <div className="md:hidden flex items-center">
-                          <button className="outline-none mobile-menu-button"
-                                  // onClick={()=> setmobileVisible(!mobileVisible)}
-                          >
-
-                          </button>
-                      </div>
                   </div>
                     </div>
                   <Menu right customBurgerIcon={ <svg className=" md:hidden w-6 h-6 text-gray-500 hover:text-green-500 "
-                                                      x-show="!showMenu"
                                                       fill="none"
                                                       strokeLinecap="round"
                                                       strokeLinejoin="round"
@@ -74,29 +67,24 @@ const Navbar = () => {
                   >
                       <path d="M4 6h16M4 12h16M4 18h16"/>
                   </svg> } >
-                      <a className="menu-item" href="/">
+                      <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/">
                           Home
                       </a>
 
-                      <a className="menu-item" href="/laravel">
-                          Laravel
+                      <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/about">
+                          About
                       </a>
 
-                      <a className="menu-item" href="/angular">
-                          Angular
+                      <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/calculator">
+                          Calculator
                       </a>
 
-                      <a className="menu-item" href="/react">
-                          React
+                      <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/projects">
+                          Projects
                       </a>
 
-                      <a className="menu-item" href="/vue">
-                          Vue
-                      </a>
+                      <LoginSession/>
 
-                      <a className="menu-item" href="/node">
-                          Node
-                      </a>
                   </Menu>
 
 
