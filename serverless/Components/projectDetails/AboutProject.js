@@ -1,5 +1,5 @@
 import { FiFacebook, FiGlobe } from "react-icons/fi";
-import { CalendarIcon } from "@heroicons/react/solid";
+// import { CalendarIcon } from "@heroicons/react/solid";
 
 import Link from "next/link";
 
@@ -54,10 +54,10 @@ const AboutProject = (props) => {
       <div className="">
         {/*Date*/}
         <div className="mt-2 flex items-center text-sm text-gray-500">
-          <CalendarIcon
-            className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-            aria-hidden="true"
-          />
+          {/*<CalendarIcon*/}
+          {/*  className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"*/}
+          {/*  aria-hidden="true"*/}
+          {/*/>*/}
           {props.detailsProps.datefounded}
         </div>
         <div className="border-b border-[#F2F2F2] w-20 pt-2 g"></div>

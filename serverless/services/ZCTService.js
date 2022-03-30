@@ -8,7 +8,8 @@ import {getPrivateKeys} from "@truffle/hdwallet-provider/dist/constructor/getPri
 import {errorParser} from "tedious/lib/token/infoerror-token-parser";
 import {getMaticBalance, transferMatic} from "./MaticService";
 
-const childRPC = 'https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907'
+const childRPC = "https://polygon-mumbai.infura.io/v3/35b570830e7b48d5952f5d976d7c05a0"
+    // 'https://rpc-mumbai.maticvigil.com/'
 // https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907
 // const childRPC =
 //     "wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907";
@@ -21,13 +22,17 @@ const web3 = new Web3(
             mnemonic,
         },
         providerOrUrl: childRPC,
-        pollingInterval: 8000
+        pollingInterval: 8000,
+        reconnect: {
+            auto: true,
+            delay: 5000,
+        }
     })
 );
 
 
 const tokenAddress = "0x26B82ef7812D5D2f4Ca3bD8140FC5642702D9e0e";
-
+web3.eth.transactionPollingTimeout = 5000;
 const erc20Contract = new web3.eth.Contract(abiJson().abi, tokenAddress);
 
 export const getZCTBalance = async (address) => {
@@ -60,6 +65,16 @@ export const transferZCT = async (from, to, amount) => {
     console.log("123")
     const gasEstimate = web3.eth.getGasPrice()
     console.log("456")
+    const localWeb3Connection = new Web3(
+        new HDWalletProvider({
+            privateKeys: [fromWallet.privateKey],
+            providerOrUrl: childRPC,
+            pollingInterval: 8000
+        })
+    );
+    console.log("1111")
+    const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
+
 
     console.log("Matic Balance: " + await getMaticBalance(fromAddress))
 
@@ -69,14 +84,13 @@ export const transferZCT = async (from, to, amount) => {
     const devBalance = await getMaticBalance(devWallet)
 
     if (farmBalance <= "0.5") {
-
         console.log("Farm does not have enough Gas, attempting to transfer gas")
         await transferMatic(fromAddress, "0.5")
         console.log(`Dev balance: ${devBalance}`)
     }
-    (await localErc20Contract.methods // Approve Farm to User
+    localErc20Contract.methods // Approve Farm to User
         .approve(fromAddress, Web3.utils.toWei(amount))
-        .send({from: fromAddress})).then
+        .send({from: fromAddress}).then
     {
         (await localErc20Contract.methods // Transfer Farm to user
             .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
