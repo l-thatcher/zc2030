@@ -3,6 +3,8 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useRouter} from 'next/router'
 import {createNewProject} from '../../../services/ProjectService'
+import Link from 'next/link'
+
 // components
 import {AiFillCloseCircle} from "react-icons/ai";
 // import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
@@ -259,6 +261,13 @@ const CreateProject = () => {
                                            placeholder="0.5"
                                     />
                                 </div>
+                            </div>
+                            <div className='text-sm text-gray-400'>
+                                <p>find co-ordinates here -
+                                    <a target="_blank" href="https://www.gps-coordinates.net/" rel="noopener noreferrer">
+                                        <p>https://www.gps-coordinates.net/</p>
+                                    </a>
+                                </p>
                             </div>
                         </div>
 

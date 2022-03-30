@@ -31,11 +31,11 @@ const ProjectCard = (props) => {
           </div>
           <div className='px-2'>
             <div>
-              <div className=' text-xl  ml-2 mt-3 text-gray-700 font-bold flex flex-row justify-between'>
+              <div className=' text-lg  ml-2 mt-3 text-gray-700 font-bold flex flex-row justify-between truncate'>
                 {project.projectname}
-                <div className=" font-semibold ml-2  underline flex items-center text-sm text-gray-300 truncate capitalize">
-                  {/*location*/}{project.country}
-                </div>
+              </div>
+              <div className=" font-semibold ml-2  underline flex items-center text-sm text-gray-300 truncate capitalize">
+                {/*location*/}{project.country}
               </div>
             </div>
 
