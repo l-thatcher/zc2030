@@ -63,7 +63,7 @@ const Card = (props) => {
                             </div>
                         </div>
 
-                        <div className=" absolute   bottom-[95px] w-[100px] bg-gray-700 py-1 text-black text-center font-light">
+                        <div className=" absolute mb-[210px] w-[100px] bg-gray-700 py-1 text-black text-center font-light">
                             <div className='text-white text font-bold text-md'>
                                 £{project.cptgbp} <span > /tCo2e</span>
                             </div>
