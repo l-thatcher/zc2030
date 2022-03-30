@@ -80,8 +80,8 @@ export default function Home(props) {
           </div>
         </div>
 
-        <div className='min-h-1/3 p-3 text-black bg-white w-full'>
-          <div className='px-0 block sm:hidden'>
+        <div className='min-h-1/3 p-3 text-black bg-white w-full overflow-x-auto'>
+          <div className='px-0 block lg:hidden'>
             <div className={styles.projectsHeader}>
               <h1 className='text-black uppercase font-extralight pb-8 pl-5'>Newest Carbon Projects</h1>
             </div>
@@ -95,14 +95,16 @@ export default function Home(props) {
             </div>
           </div>
 
-          <div className='px-32 hidden sm:block'>
+          <div className='px-32 hidden lg:block'>
             <div className={styles.projectsHeader}>
               <h1 className='text-black uppercase font-extralight pb-8 pl-5'>Newest Carbon Projects</h1>
             </div>
             <div className='flex overflow-x-scroll pb-10 scrollbar-hide' style={{display: "flex", flexDirection:"row", width:"100%", overflow:"scroll"}}>
               {allProjects.map((project) => (
                   // <ProjectCard project={project} key={project.name} />
-                  <ProjectCard project={project} key={project.name}/>
+                  <div style={{width: "50rem"}}>
+                    <ProjectCard project={project} key={project.name}/>
+                  </div>
               ))}
             </div>
           </div>

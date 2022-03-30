@@ -27,9 +27,9 @@ const CurrentProject = (props) => {
 
                 <div className="flex overflow-x-scroll pb-10 scrollbar-hide ">
 
-                    <button onClick={()=> setView('create project')}>
+                    <div onClick={()=> setView('create project')}>
                         <BlankCard onClick={changeView()}/>
-                    </button>
+                    </div>
 
 
                     <div className="flex flex-nowrap lg:ml-5 md:ml-5 ml-5 ">

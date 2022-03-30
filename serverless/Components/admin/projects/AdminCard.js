@@ -25,18 +25,14 @@ const Card = (props) => {
 
     return(
         <div className="inline-block px-3">
-
-
             <div className="w-80 static h-100 max-w-xs border border-gray-500 overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
                 <div className='relative'>
                     <div className=" rounded-lg ">
-                    <img
-                        src={project.projectimage1}
-                        alt="uploaded cover image"
-                        className=" object-cover h-3/4 w-full rounded-lg ">
-
-                    </img>
-
+                        <img
+                            src={project.projectimage1}
+                            alt="uploaded cover image"
+                            className=" object-cover h-3/4 w-full rounded-lg ">
+                        </img>
                     </div>
                     <div>
                         <h5 className=' ml-2 mt-3 text-gray-700 font-medium font-serif'>{project.projectname}  </h5>
@@ -66,32 +62,21 @@ const Card = (props) => {
 
                             </div>
                         </div>
-
                         <div className=" absolute   bottom-[95px] w-[100px] bg-zc30-blue py-1 text-black text-center font-light">
                             <div className='text-white text font-semibold text-sm'>
                                 £{project.cptgbp} <span > /tCo2e</span>
                             </div>
                         </div>
-
-
+                    </div>
                 </div>
-
-
-                </div>
-
                 <div className="flex justify-end">
-
                     <button
                         className=" mt-3 mb-3 mr-5 bg-green-500  justify-center text-white font-bold capitalize text-xs px-4 py-2
                          rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                         type="button" onClick={changeView}>
                         Edit
                     </button>
-
                 </div>
-
-
-
             </div>
         </div>
 

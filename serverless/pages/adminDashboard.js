@@ -112,5 +112,5 @@ export async function getServerSideProps() {
 
 
   // Pass post data to the page via props
-  return { props: { allProjects,users, admins, types } };
+  return { props: { allProjects, users, admins, types } };
 }

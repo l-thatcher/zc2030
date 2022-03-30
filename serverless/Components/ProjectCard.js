@@ -23,9 +23,9 @@ const Card = (props) => {
 
 
   return(
-      <div className="border border-gray-500 overflow-hidden rounded-lg shadow-xl bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out mx-2">
+      <div className="w-full lg:w-64 border border-gray-500 overflow-hidden rounded-lg shadow-xl bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out mx-2">
         <div className='relative'>
-          <div className=" rounded-lg ">
+          <div className=" rounded-lg">
             <img
                 src={project.projectimage1}
                 alt="uploaded cover image"
