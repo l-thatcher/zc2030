@@ -2,14 +2,6 @@ import {PrismaClient} from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// export default async function FilledResultsByCategory(userId, inputIds) {
-//     const results = await prisma.calculatorResult.findMany({
-//         where: {
-//             user_id: userId,
-//             input_id: {in: inputIds}
-//         },
-//     })
-// }
 
 export const getInputsByCategory = (categoryId) => {
     return prisma.calculatorInput.findMany({
@@ -168,6 +160,7 @@ export const getListofProjects = () => {
     return prisma.project.findMany();
 };
 
+
 export const getProject = (projectID) => {
     return prisma.project.findUnique({
         where: {
@@ -206,36 +199,36 @@ export const createNewProject = (data, wallet, publicAddress) => {
     });
 };
 
-export const editProjectById = (data, id) => {
-    console.log("Here: " + data);
-    return prisma.project.update({
-        where: {
-            id: id,
-        },
-        data: {
-            projectname: data.projectname,
-            projectimage1: data.projectimage1,
-            projectimage2: data.projectimage2,
-            projectimage3: data.projectimage3,
-            projectimage4: data.projectimage4,
-            projectimage5: data.projectimage5,
-            cptgbp: data.cptgbp,
-            latitude: data.latitude,
-            longitude: data.longitude,
-            streetname: data.streetname,
-            city: data.city,
-            county: data.county,
-            country: data.country,
-            totalsupply: data.totalsupply,
-            remainingsupply: data.remainingsupply,
-            ownerpicture: data.ownerpicture,
-            type: data.type,
-            website: data.website,
-            description: data.description,
-            datefounded: data.datefounded,
-        },
-    });
-};
+    export const editProjectById = (data, id) => {
+        return prisma.project.update({
+            where: {
+                id: id,
+            },
+            data: {
+                projectname: data.projectname,
+                projectimage1: data.projectimage1,
+                projectimage2: data.projectimage2,
+                projectimage3: data.projectimage3,
+                projectimage4: data.projectimage4,
+                projectimage5: data.projectimage5,
+                cptgbp: data.cptgbp,
+                latitude: data.latitude,
+                longitude: data.longitude,
+                streetname: data.streetname,
+                city: data.city,
+                county: data.county,
+                country: data.country,
+                totalsupply: data.totalsupply,
+                remainingsupply: data.remainingsupply,
+                ownername: data.ownername,
+                ownerpicture: data.ownerpicture,
+                type: data.type,
+                website: data.website,
+                description: data.description,
+                datefounded: data.datefounded,
+            },
+        });
+    }
 
 export const addWalletToUserId = (userId, wallet, publicAddress) => {
     return prisma.user.update({
@@ -295,3 +288,17 @@ export const getTransactionByUserId = (userId) => {
         },
     });
 };
+
+export const getProjectsByUserId = (userId) => {
+    return prisma.transaction.findMany({
+        where: {
+            user_id: userId,
+        },
+        include: {
+            project: true
+        },
+    });
+};
+
+
+

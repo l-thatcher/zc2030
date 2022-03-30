@@ -1,6 +1,7 @@
 # ZC2030
 
 ## Getting Started
+### Web Application
 
 Welcome to the Zero Carbon 2030 Web Application. In order to launch, follow these instructions:
 
@@ -11,6 +12,18 @@ Welcome to the Zero Carbon 2030 Web Application. In order to launch, follow thes
 5. `npx prisma generate`
 6. `npm run dev`
 7. Your application should now be running on http://localhost:3000
+
+### Blockchain
+
+Welcome to the Zero Carbon 2030 Blockchain. In order to launch, follow these instructions:
+
+1. Add the .secret as provided by the team into the blockchain/smart-contracts directory
+2. From your project directory type the following commands into your terminal:
+3. `cd blockchain/smart-contracts`
+4. `npm install`
+5. `truffle compile`
+6. `truffle deploy`
+7. Your smart contracts should now be deployed on the networks specified on the truffle-config.js
 
 ## Documentation
 
@@ -28,6 +41,12 @@ of NextJS, which is a JavaScript framework.
 
 NextJS is a React framework that gives you building blocks to create web applications.
 NextJS is used for the backend and the frontend of the web application.
+
+ ### Solidity (Programming Language)
+[Solidity](https://docs.soliditylang.org/en/latest/index.html#getting-started)
+
+Solidity is a statically-typed curly-braces programming language designed for developing smart contracts that run 
+on Ethereum.
 
  ### MySQL (Database Service)
 [MySQL documentation](https://dev.mysql.com/doc/)
@@ -113,5 +132,18 @@ collaborative coding and pair programming service.
 MySQL Workbench is a visual designing tool for creating, executing, and optimizing SQL 
 queries. It was used for writing the code for database tier of the web application. In 
 addition, it was used for testing purposes on the development phase.
+
+ ### Truffle (Blockchain Development Environment)
+[Truffle](https://trufflesuite.com/docs/truffle/)
+
+Truffle is a development environment utilizing the EVM (Ethereum Virtual Machine) as a basis. The slogan of Truffle is 
+”Smart Contracts Made Sweeter”, indicating that the environment specializes in smart contract development.
+
+ ### Ganache (Local Ethereum Environment)
+[Ganache](https://trufflesuite.com/docs/ganache/)
+
+Ganache is a tool to set up your own local Ethereum blockchain that you can use to deploy and test your smart
+contracts/dApps before launching them on an authentic chain. As such, Ganache enables developers to avoid paying 
+unnecessary gas fees during the developing process.
 
 

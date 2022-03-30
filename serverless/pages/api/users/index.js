@@ -1,4 +1,5 @@
 import { execute_query } from "../../../utils/db";
+import {getSession} from "next-auth/react";
 
 const getAllUserData = `SELECT * FROM USER`;
 
@@ -14,6 +15,9 @@ const getAllUserData = `SELECT * FROM USER`;
 // };
 
 export default async function handler(req, res) {
+  // const apiSession = await getSession({ req });
+  // console.log(apiSession)
+  // if ((apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -21,6 +25,7 @@ export default async function handler(req, res) {
         const result = await execute_query(getAllUserData);
         res.status(200).json(result);
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
       break;
@@ -37,4 +42,9 @@ export default async function handler(req, res) {
     case "PUT":
       break;
   }
+  // } else {
+  //   // Not Signed in
+  //   res.status(401)
+  // }
+  // res.end()
 }

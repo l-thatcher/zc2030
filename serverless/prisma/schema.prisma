@@ -119,7 +119,7 @@ model UserCalculator {
 }
 
 model Project {
-  id              String        @id @default(cuid())
+  id              String  @id @default(cuid())
   projectname     String
   projectimage1   String
   projectimage2   String

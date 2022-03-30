@@ -21,28 +21,14 @@ const Card = (props) => {
 
     // console.log(project)
 
-    const project = {
-        projectimage1: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
-        projectname: "Test Project",
-        city: "Landaan",
-        country: "United Kingdom",
-        county: "Leicester",
-        totalsupply: "10000",
-        cptgbp: "35",
-        id: "234",
-        remaininsupply:"100"
-    }
-
-    const widthPercentage = (project.remainingsupply / project.totalsupply) * 100
-
 
     return (
-        <div className="w-1/3 border border-gray-500
+        <div className="w-1/4 border border-gray-500
             overflow-hidden rounded-lg shadow-md bg-zc30-blue hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
             <div className='relative'>
                 <div className=" rounded-lg ">
                     <img
-                        src={project.projectimage1}
+                        src={props.projectImg}
                         alt="uploaded cover image"
                         className="w-full object-cover  h-48 sm:h-48 rounded-lg ">
 
@@ -50,18 +36,18 @@ const Card = (props) => {
 
                 </div>
                 <div>
-                    <div className=' text-xl text-black ml-2 mt-3 font-bold '>{project.projectname}  </div>
+                    <div className=' text-xl text-black ml-2 mt-3 font-bold '>{props.projectName}  </div>
                 </div>
 
                 <div
                     className=" font-semibold ml-2  underline flex items-center text-sm text-white truncate capitalize">
                     {/*location*/}
-                    {project.city} , {project.county}, {project.country}
+                    {props.city} , {props.county}, {props.country}
                 </div>
 
                 <div className="text-white ml-2 mt-2 no-underline flex items-center font-semibold text-xs text-white ">
                     {/*total supply*/}
-                    Offset Purchased: <span className='text-white ml-2'> {project.totalsupply} /tC02e</span>
+                    Money Spent: <span className='text-white ml-2'> {props.cptgbp} £</span>
                 </div>
 
                 <div className=' flex items-center '>
@@ -70,7 +56,7 @@ const Card = (props) => {
                         <div className=" flex items-center  rounded-full">
 
                             <div
-                                className=' ml-2 no-underline flex items-center text-xs text-white font-semibold  capitalize'>Total Carbon Supply:  {project.totalsupply} /tC02e
+                                className=' ml-2 no-underline flex items-center text-xs text-white font-semibold  capitalize'>Total Carbon Supply:  {props.totalSupply} /tC02e
                             </div>
                             {/*<div className='w-[150px] ml-1'><*/}
                             {/*    ProgressBar baseBgColor={'grey'} labelSize={'10px'}*/}
@@ -80,7 +66,6 @@ const Card = (props) => {
 
                         </div>
                     </div>
-
                     <div
                         className=" absolute   bottom-[95px] w-[100px] bg-zc30-orange py-1 text-black text-center font-light">
 
@@ -91,17 +76,13 @@ const Card = (props) => {
                             SOLD OUT
                         </div>
                     </div>
-
-
                 </div>
-
-
             </div>
 
             <div className="flex justify-end">
 
 
-                <Link href={"./projects/" + project.id}>
+                <Link href={"./projects/" + props.id}>
                     <a className='mt-3 no-underline mb-3 mr-5 bg-logo-green  justify-center font-bold capitalize text-xs px-4 py-2
                          rounded shadow hover:shadow-md hover: mr-1 ease-linear transition-all duration-150'
                     >
@@ -116,8 +97,6 @@ const Card = (props) => {
         </div>
 
     )
-
 }
-
 
 export default Card;

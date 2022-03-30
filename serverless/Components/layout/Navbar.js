@@ -1,12 +1,20 @@
 import LoginSession from "../LoginSession";
 import Link from "next/link";
+import React, { useState } from "react"
+
+
+
 
 const Navbar = () => {
   const logo = "/cz2030_logo.png";
+
+
   return (
+      <div>
     <nav
-      className="relative
-  w-full flex flex-wrap items-center justify-between bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light "
+      className="relative  h-20
+  w-full flex flex-wrap items-center justify-between bg-white  hover:text-gray-700
+  focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light "
     >
       <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
         <button
@@ -21,8 +29,7 @@ const Navbar = () => {
           <svg
             aria-hidden="true"
             focusable="false"
-            data-prefix="fas"
-            data-icon="bars"
+            data-prefix="fas" data-icon="bars"
             className="w-6"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
@@ -40,18 +47,25 @@ const Navbar = () => {
         >
           <Link href="/">
             <a
-              className="Flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt- mr-1"
+              className="Flex items-center no-underline text-gray-800 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt- mr-1"
               href="#"
             >
-              <img src={logo} style={{ height: 70 }} alt="" loading="lazy" />
+                <div className="h-8 flex">
+                    <img
+                        src="/cz2030_logo-removebg-preview.png"
+                        className="h-full"
+                    />
+
+                    <h5 className='  text-grey-800 font-semibold items-center'> ZeroCarbon2030</h5>
+                </div>
             </a>
           </Link>
           {/*  Left links */}
-          <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+          <ul className="navbar-nav flex flex-col ml-5 pl-0 list-style-none mr-auto">
             <li className="nav-item p-2">
               <Link href="/about">
                 <a
-                  className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                  className="nav-link no-underline text-gray-800 font-semibold hover:text-green-300"
                   href="#"
                 >
                   About
@@ -61,7 +75,7 @@ const Navbar = () => {
             <li className="nav-item p-2">
               <Link href="/projects">
                 <a
-                  className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                  className="nav-link text-gray-800 font-semibold hover:text-green-300  "
                   href="#"
                 >
                   Projects
@@ -71,7 +85,7 @@ const Navbar = () => {
             <li className="nav-item p-2">
               <Link href="/calculator">
                 <a
-                  className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                  className="nav-link no-underline text-gray-800 font-semibold hover:text-green-300 focus:text-gray-700"
                   href="#"
                 >
                   Calculator
@@ -96,6 +110,7 @@ const Navbar = () => {
         {/* - Right elements */}
       </div>
     </nav>
+      </div>
   );
 };
 
