@@ -23,6 +23,7 @@ export default async function handler(req, res) {
   const calculatorSession = req.body[0]?.user?.role;
   console.log("CALCULATORS: " + calculatorSession)
   const apiSession = await getSession({ req });
+  console.log(apiSession)
 
   if ((calculatorSession === "ADMIN") || (apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {

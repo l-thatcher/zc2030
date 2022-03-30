@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.css";
 import ProjectCard from "../Components/ProjectCard";
-import {getListedProjectsList, getProjectsList} from "../services/ProjectService";
+import {getListedProjectsList} from "../services/ProjectService";
 
 const calculatorImg = "/calculator-logo.png";
 const discoverImg = "/discover-logo2.png";
@@ -152,12 +152,11 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const projectsRes = await getListedProjectsList();
   const allProjects = projectsRes.data.slice(-5);
 
   return {
     props: { allProjects },
-    revalidate: 60, //Regenerates page every minute
   };
 }

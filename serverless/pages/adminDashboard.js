@@ -2,9 +2,10 @@ import styles from "../styles/AdminDashboard.module.css";
 import {getUserData, getAdminData, updateRole} from "../services/adminService";
 import AccountDashboard from "../Components/admin/AdminPages/accountDashboard";
 import ShowCalculators from "../Components/admin/AdminPages/showCalculators";
-import {getCalculatorTypes} from "../services/CalculatorService";
+import {getCalculatorTypes, getCalculatorTypesForUser, getPublicCalculatorTypes} from "../services/CalculatorService";
 import {useState} from "react";
 import Sidebar from "../Components/admin/projects/Sidebar";
+import {getSession} from "next-auth/react";
 
 export default function adminDashboard(props) {
 
@@ -57,7 +58,10 @@ export default function adminDashboard(props) {
 }
 
 // This gets called at build time
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+
+    const session = await getSession(context);
+
   // Adds all users types in a list
   const userRes = await getUserData();
   const users = userRes.data;
@@ -66,8 +70,9 @@ export async function getServerSideProps() {
   const adminRes = await getAdminData();
   const admins = adminRes.data;
 
-  const typesRes = await getCalculatorTypes();
-  const types = typesRes.data;
+  const data = [session]
+    const typesRes = await getCalculatorTypes(data)
+    const types = typesRes.data
 
   // Pass post data to the page via props
   return { props: { users, admins, types } };

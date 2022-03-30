@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import styles from "../../../styles/Calculator.module.css";
 import { FaEdit } from "react-icons/fa";
-import { CgAddR } from "react-icons/Cg";
+import { CgAddR } from "react-icons/cg";
 import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
 import CalculatorInput from "./CalculatorInput";

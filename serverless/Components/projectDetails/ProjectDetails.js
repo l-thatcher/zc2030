@@ -11,14 +11,13 @@ function ProjectDetails(props) {
     const location = {lat, lng};
     const details = props.detailsProps;
 
-    const imgs = [
-        details.projectimage1,
-        details.projectimage2,
-        details.projectimage3,
-        details.projectimage4,
-    ];
-
-
+  const imgs = [
+    details.projectimage1,
+    details.projectimage2,
+    details.projectimage3,
+    details.projectimage4,
+    details.projectimage5
+  ];
 
     return (
         <div className="lg:flex lg:items-center lg:justify-between container mx-auto ">
@@ -76,7 +75,7 @@ function ProjectDetails(props) {
                                     </div>
                                     <div className="w-full h-full rounded ">
                                         <img className ='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
-                                             src={details.projectimage4}
+                                             src={details.projectimage5}
                                             alt="image"/>
                                     </div>
                                 </div>
