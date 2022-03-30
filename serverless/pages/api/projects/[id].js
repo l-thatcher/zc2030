@@ -1,4 +1,5 @@
 import { getProject } from "../../../services/PrismaService";
+import {getZCTBalance, getZCTBalances} from "../../../services/ZCTService";
 
 export default async function handler(req, res) {
   console.log(req.query.id);
@@ -7,8 +8,10 @@ export default async function handler(req, res) {
     case "GET":
       try {
         const result = await getProject(req.query.id);
+        result.balance = await getZCTBalance(`0x${result.publicAddress}`)
         res.status(200).json(result);
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
       break;

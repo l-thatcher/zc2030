@@ -1,25 +1,22 @@
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
-import Map from "./Map";
 import {HiLocationMarker} from "react-icons/hi";
+import Map from "./Map";
 
 function ProjectDetails(props) {
-  // const images2 = [image1,image2,image3,image4,image5]
 
-  const lat = props.detailsProps.latitude;
-  const lng = props.detailsProps.longitude;
-  const location = { lat, lng };
-  const details = props.detailsProps;
+    const lat = props.detailsProps.latitude;
+    const lng = props.detailsProps.longitude;
+    const location = {lat, lng};
+    const details = props.detailsProps;
 
-  const imgs = [
-    details.projectimage1,
-    details.projectimage2,
-    details.projectimage3,
-    details.projectimage4,
-  ];
-
-  console.log(details.projectname);
+    const imgs = [
+        details.projectimage1,
+        details.projectimage2,
+        details.projectimage3,
+        details.projectimage4,
+    ];
 
 
 
@@ -55,19 +52,6 @@ function ProjectDetails(props) {
                                         ))}
                                     </ul>
                                 </div>
-
-              {/*<div className="grid-cols-4 space-y-2  md:space-y-0 md:grid md:gap-3  ">*/}
-              {/*    <div className="w-full  col-span-2 row-span-2 rounded ">*/}
-              {/*        {imgs.map((image,index) => (*/}
-              {/*            <div  className='shrink-0 snap-center w-full '>*/}
-              {/*                <img className='rounded-xl hover:scale-105 transition duration-200 ease-in-out'*/}
-              {/*                     src={image}*/}
-              {/*                     alt="image"/>*/}
-
-                                {/*            </div>*/}
-                                {/*        ))}*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
                             <div className="hidden md:block  ">
                                 <div className="grid-cols-4 space-y-2 md:space-y-0 md:grid md:gap-3  ">
                                     <div className=" w-full col-span-2 bg-yellow-600 row-span-2 rounded ">

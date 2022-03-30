@@ -1,13 +1,13 @@
-import React, { useState} from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import React, {useState} from "react";
+import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import {createNewProject} from '../../../services/ProjectService'
 // components
-import { AiFillCloseCircle } from "react-icons/ai";
+import {AiFillCloseCircle} from "react-icons/ai";
 // import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
 
-const CreateProject =()=> {
+const CreateProject = () => {
     const [projectname, setProjectname] = useState('');
     const [cptgbp, setCptgbp] = useState('');
     const [latitude, setLatitude] = useState(0);
@@ -17,26 +17,37 @@ const CreateProject =()=> {
     const [county, setCounty] = useState('');
     const [country, setCountry] = useState('');
     const [totalsupply, setTotalsupply] = useState('');
+    const [remainingsupply, setRemainingsupply] = useState("0");
+    const [ownerpicture, setOwnerpicture] = useState("");
     const [ownername, setOwnername] = useState('');
     const [type, setType] = useState('');
     const [website, setWebsite] = useState('');
     const [description, setDescription] = useState('');
     const [datefounded, setDatefounded] = useState('');
-    const [nftaddress, setNftaddress] = useState('');
 
-    let projectimage1= 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/farm-quotes-1580917869.jpg?crop=0.723xw:1.00xh;0.189xw,0&resize=640:*'
-    let projectimage2= 'https://www.immunology.org/sites/default/files/Farm%20barn%20small.jpg'
-    let projectimage3= 'https://www.greenqueen.com.hk/wp-content/uploads/2020/12/Veganic-Farming.png'
-    let projectimage4= 'https://i.guim.co.uk/img/media/92ff23fe9c9b9372d2bf6bc5f58b5317d09640ba/140_163_3360_2017/master/3360.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=a50edccf40f1867e8ae0407b8f249ef2'
-    let projectimage5= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRagVhujggQsNickn5lifRjb4EQzXgYvuaoyaqY06JjzDmgf6BLQ0qQGJQm-gUs0YQkNu4&usqp=CAU'
-    let ownerpic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'
-    const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(latitude),streetname:streetname
-                    , city:city, county:county,
-                country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
-        ,type:type,website:website,description:description,datefounded:datefounded,ownername:ownername,
-        projectimage1:projectimage1,projectimage2:projectimage2,projectimage3:projectimage3,projectimage4:projectimage4,
-        projectimage5:projectimage5,
-        nftaddress:nftaddress}
+  const project = {
+    projectname: projectname,
+    cptgbp: parseFloat(cptgbp),
+    latitude: parseFloat(latitude),
+    longitude: parseFloat(latitude),
+    streetname: streetname,
+    city: city,
+    county: county,
+    country: country,
+    totalsupply: parseFloat(totalsupply),
+    remainingsupply: parseFloat(totalsupply),
+    ownerpicture: ownerpic,
+    type: type,
+    website: website,
+    description: description,
+    datefounded: datefounded,
+    ownername: ownername,
+    projectimage1: projectimage1,
+    projectimage2: projectimage2,
+    projectimage3: projectimage3,
+    projectimage4: projectimage4,
+    projectimage5: projectimage5,
+  };
 
     const router = useRouter()
     const handleSubmit = async (e) => {
@@ -59,7 +70,7 @@ const CreateProject =()=> {
                             console.log(err);
                         });
 
-    }
+        }
 
 
     return (
@@ -367,5 +378,3 @@ const CreateProject =()=> {
 }
 
 export default CreateProject;
-
-
