@@ -4,6 +4,7 @@ import React from "react";
 
 export default function Projects(props) {
   const allProjects = props.allProjects;
+  console.log(allProjects[1])
   return (
       <div>
         <svg className='absolute w-full h-full' id="visual" viewBox="0 0 900 600" width="900" height="600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">
