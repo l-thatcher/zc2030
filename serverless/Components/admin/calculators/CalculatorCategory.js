@@ -288,7 +288,7 @@ const CalculatorCategory = (data) => {
                     id="button-addon2"
                     onClick={(e) => handleEdit(i)}
                   >
-                    Edit <FaEdit size={20} style={{ marginBottom: "5px" }} />
+                    Edit <FaEdit style={{float: "right", marginLeft:"8px", marginTop:"5px"}} size={20}/>
                   </Button>
                   <Button
                     variant="danger"

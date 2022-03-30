@@ -172,7 +172,7 @@ const CalculatorInput = (data) => {
                 onClick={(e) => handleOpen(inputVal.id, i)}
               >
                 Delete
-                <AiOutlineDelete size={18} style={{ marginBottom: "3px" }} />
+                <AiOutlineDelete size={18} style={{float: "right", marginLeft:"8px", marginTop:"3px"}} />
               </Button>
             </Form.Group>
 
