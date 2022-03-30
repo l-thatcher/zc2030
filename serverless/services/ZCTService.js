@@ -6,8 +6,9 @@ import * as fs from "fs";
 import {decryptWallet} from "./Web3jsService";
 import {getPrivateKeys} from "@truffle/hdwallet-provider/dist/constructor/getPrivateKeys";
 import {errorParser} from "tedious/lib/token/infoerror-token-parser";
+import {getMaticBalance} from "./MaticService";
 
-const childRPC = 'https://rpc-mumbai.maticvigil.com/'
+const childRPC = 'https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907'
 // https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907
 // const childRPC =
 //     "wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907";
@@ -45,6 +46,11 @@ export const getZCTBalances = async (addresses) => {
     return addresses
 };
 
+export const gasInFarmWallet = async (from, to) => {
+
+
+}
+
 
 //Transfers tokens from one address to another. Request sent by dev wallet so dev wallet pays gas fees.
 export const transferZCT = async (from, to, amount) => {
@@ -56,61 +62,38 @@ export const transferZCT = async (from, to, amount) => {
     // const gasEstimate = await (erc20Contract.methods.transferFrom(fromWallet.address, to, Web3.utils.toWei(amount))).estimateGas();
     console.log("456")
 
-    const signedTx = await web3.eth.accounts.signTransaction({
-        to: to,
-        gas: 2000000
-    }, "0xbfbe13a0ebe33125893018b6bfe5d6474bd990260d4cc5404ade1804b68d7326");
+    console.log("Matic Balance: " + await getMaticBalance(fromAddress))
 
-    console.log("SIGNED TX IS: " + signedTx.messageHash)
+    console.log("Matic Balance: " + await getMaticBalance(devWallet))
 
+    const farmBalance = await getMaticBalance(from)
+    const devBalance = await getMaticBalance(devWallet)
 
-    const localWeb3Connection = new Web3(
-        new HDWalletProvider({
-            privateKeys: [fromWallet.privateKey],
-            providerOrUrl: childRPC,
-            pollingInterval: 8000
-        })
-    );
+    if (farmBalance <= 1) {
 
-    // Called from the farm wallet
-    const localErc20Contract = new localWeb3Connection.eth.Contract(abiJson().abi, tokenAddress);
-    const signedTxHash = signedTx.messageHash;
-    const sigParams = getSignatureParameters(signedTxHash);
-    console.log("here 54 " + sigParams.v)
+        console.log("Farm does not have enough Gas, attempting to transfer gas")
 
-    const permitValue = amount.toString()
+        (await localErc20Contract.methods // Approve Dev to Farm
+            .approve(devWallet, Web3.utils.toWei(amount))
+            .send({from: devWallet})).then
+        {
+            (await localErc20Contract.methods // Transfer Dev Wallet to farm
+                .transferFrom(devWallet, fromAddress, Web3.utils.toWei(amount))
+                .send({from: devWallet}));
+        }
 
-    console.log(devWallet)
-    console.log(fromWallet.address)
-    console.log("5051" + permitValue)
-    console.log(`0x${sigParams.v}`)
-    console.log(`0x${sigParams.r}`)
-    console.log(`0x${sigParams.s}`)
-
-    const vSig = sigParams.v;
-    const rSig = sigParams.r;
-    const sSig = sigParams.s;
-
-    console.log(vSig)
-    console.log(rSig)
-    console.log(sSig)
-
-    await localErc20Contract.methods
-        .permit(devWallet, devWallet, permitValue, "9999999999999", vSig, rSig, sSig)
-        .send({from: fromWallet.address});
-
-
-    // (await localErc20Contract.methods
-    //     .approve(devWallet, Web3.utils.toWei(amount))
-    //     .send({from: fromAddress})).then
-    // {
-    //     erc20Contract.methods
-    //         .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
-    //         .send({from: devWallet})
-    //         .then((balance) => {
-    //             return Web3.utils.fromWei(balance.toString());
-    //         });
-    // }
+        console.log("Farm balance: " + await getMaticBalance(fromAddress))
+    } else {
+        (await localErc20Contract.methods // Approve Farm to User
+            .approve(fromAddress, Web3.utils.toWei(amount))
+            .send({from: fromAddress})).then
+        {
+            (await localErc20Contract.methods // Transfer Farm to user
+                .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
+                .send({from: fromAddress}));
+        }
+    }
+    console.log("Matic Balance: " + await getMaticBalance(fromAddress))
 
 
 };
