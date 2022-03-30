@@ -69,7 +69,7 @@ export const transferZCT = async (from, to, amount) => {
     const farmBalance = await getMaticBalance(from)
     const devBalance = await getMaticBalance(devWallet)
 
-    if (farmBalance <= 1) {
+    if (farmBalance <= "0.5") {
 
         console.log("Farm does not have enough Gas, attempting to transfer gas")
 
