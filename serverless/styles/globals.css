@@ -49,9 +49,10 @@ a {
 
 @media only screen and (max-width: 768px) {
   .bm-burger-button {
-    visibility: hidden;
+    visibility: visible;
   }
 }
+
 
 .bm-burger-bars {
   background: #373a47;

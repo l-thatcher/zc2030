@@ -57,18 +57,17 @@ const Navbar = () => {
                       {/*Mobile menu button*/}
                   </div>
                     </div>
-
-                  <div className="md:hidden">
-                      <Menu right customBurgerIcon={
-                          <svg className="md:hidden w-6 h-6 text-gray-500 hover:text-green-500 "
-                               fill="none"
-                               strokeLinecap="round"
-                               strokeLinejoin="round"
-                               strokeWidth="2"
-                               viewBox="0 0 24 24"
-                               stroke="currentColor">
-                              <path d="M4 6h16M4 12h16M4 18h16"/>
-                          </svg> } >
+                  <div className='block md:hidden'>
+                      <Menu right customBurgerIcon={ <svg className="block md:hidden w-6 h-6 text-gray-500 hover:text-green-500 "
+                                                          fill="none"
+                                                          strokeLinecap="round"
+                                                          strokeLinejoin="round"
+                                                          strokeWidth="2"
+                                                          viewBox="0 0 24 24"
+                                                          stroke="currentColor"
+                      >
+                          <path d="M4 6h16M4 12h16M4 18h16"/>
+                      </svg> } >
                           <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/">
                               Home
                           </a>
