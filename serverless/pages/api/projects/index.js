@@ -7,6 +7,7 @@ import { getSession } from "next-auth/react";
 import { createEncryptedWallet } from "../../../services/Web3jsService";
 import {fetchTransactionsByAddress, getZCTBalance, getZCTBalances, mintZCT} from "../../../services/ZCTService";
 import log from "tailwindcss/lib/util/log";
+import {transferMatic} from "../../../services/MaticService";
 
 const getCalculatorTypes = `SELECT * FROM Projects`;
 
@@ -34,9 +35,10 @@ export default async function handler(req, res) {
           JSON.stringify(wallet),
           wallet.address
         );
+        console.log(await transferMatic(`0x${wallet.address}`, "1"))
         mintZCT(`0x${wallet.address}`, String(req.body.totalsupply)).then(
             console.log("Minted in farm wallet")
-        )
+            )
         res.status(200).json(result);
       } catch (e) {
         console.log(e);

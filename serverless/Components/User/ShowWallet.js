@@ -89,7 +89,7 @@ const ShowWallet = (props) => {
               <a
                   target="_blank"
                   className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
-                  href={"https://etherscan.io/address/0x" + session?.user.walletAddress}
+                  href={"https://mumbai.polygonscan.com/address/0x" + session?.user.walletAddress}
               >
                 0x{session?.user.walletAddress}
               </a>
