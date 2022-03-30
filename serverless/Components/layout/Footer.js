@@ -9,8 +9,8 @@ const Footer = () => {
             <a target="_blank" rel="noopener noreferrer">
                 Powered by{" "}
                 <span className={styles.logo}>
-          <img className={styles.img} src={logo} srcSet={logo} alt="Zero Carbon 2030 logo"/>
-        </span>
+                    <img className={styles.img} src={logo} srcSet={logo} alt="Zero Carbon 2030 logo"/>
+                    </span>
             </a>
         </footer>
     </div>
