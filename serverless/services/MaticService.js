@@ -1,6 +1,9 @@
 import { POSClient, use } from "@maticnetwork/maticjs";
 import { Web3ClientPlugin } from "@maticnetwork/maticjs-web3";
 import HDWalletProvider from "@truffle/hdwallet-provider";
+import {decryptWallet} from "./Web3jsService";
+import Web3 from "web3";
+import * as fs from "fs";
 
 // install web3 plugin
 use(Web3ClientPlugin);
@@ -8,6 +11,7 @@ use(Web3ClientPlugin);
 //Setting up MaticJS
 const posClient = new POSClient();
 const parentRPC = "https://rpc-mumbai.maticvigil.com/"; //Matic chain
+const mnemonic = fs.readFileSync(".secret").toString().trim();
 posClient.init({
   network: "testnet",
   version: "mumbai",
@@ -15,9 +19,10 @@ posClient.init({
     provider: new HDWalletProvider({
       mnemonic: {
         phrase:
-          "labor evoke bounce thank discover badge history great peasant isolate jazz ahead", //TODO: Make new wallet and store securely
+        mnemonic
       },
       providerOrUrl: parentRPC,
+      pollingInterval: 8000
     }),
     defaultConfig: {
       from: "0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B",
@@ -27,9 +32,10 @@ posClient.init({
     provider: new HDWalletProvider({
       mnemonic: {
         phrase:
-          "labor evoke bounce thank discover badge history great peasant isolate jazz ahead", //TODO: Make new wallet and store securely
+        mnemonic
       },
       providerOrUrl: "https://rpc-mumbai.maticvigil.com/",
+      pollingInterval: 8000
     }),
     defaultConfig: {
       from: "0xDb6C1E3eE0370Abfc240Df451Ddd72FD05315F4B",
@@ -44,3 +50,9 @@ const erc20ParentToken = posClient.erc20(
 export async function getMaticBalance(userAddress) {
   return (await erc20ParentToken.getBalance(userAddress)) / 1000000000000000000;
 }
+
+//Transfers tokens from one address to another.
+export const transferMatic = async (to, amount) => {
+  return (await erc20ParentToken.transfer(amount, to))
+};
+

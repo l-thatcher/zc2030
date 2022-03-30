@@ -6,7 +6,7 @@ import * as fs from "fs";
 import {decryptWallet} from "./Web3jsService";
 import {getPrivateKeys} from "@truffle/hdwallet-provider/dist/constructor/getPrivateKeys";
 import {errorParser} from "tedious/lib/token/infoerror-token-parser";
-import {getMaticBalance} from "./MaticService";
+import {getMaticBalance, transferMatic} from "./MaticService";
 
 const childRPC = 'https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907'
 // https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907
@@ -59,39 +59,28 @@ export const transferZCT = async (from, to, amount) => {
     const gasLimit = ("10000000108")
     console.log("123")
     const gasEstimate = web3.eth.getGasPrice()
-    // const gasEstimate = await (erc20Contract.methods.transferFrom(fromWallet.address, to, Web3.utils.toWei(amount))).estimateGas();
     console.log("456")
 
     console.log("Matic Balance: " + await getMaticBalance(fromAddress))
 
     console.log("Matic Balance: " + await getMaticBalance(devWallet))
 
-    const farmBalance = await getMaticBalance(from)
+    const farmBalance = await getMaticBalance(fromAddress)
     const devBalance = await getMaticBalance(devWallet)
 
     if (farmBalance <= "0.5") {
 
         console.log("Farm does not have enough Gas, attempting to transfer gas")
-
-        (await localErc20Contract.methods // Approve Dev to Farm
-            .approve(devWallet, Web3.utils.toWei(amount))
-            .send({from: devWallet})).then
-        {
-            (await localErc20Contract.methods // Transfer Dev Wallet to farm
-                .transferFrom(devWallet, fromAddress, Web3.utils.toWei(amount))
-                .send({from: devWallet}));
-        }
-
-        console.log("Farm balance: " + await getMaticBalance(fromAddress))
-    } else {
-        (await localErc20Contract.methods // Approve Farm to User
-            .approve(fromAddress, Web3.utils.toWei(amount))
-            .send({from: fromAddress})).then
-        {
-            (await localErc20Contract.methods // Transfer Farm to user
-                .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
-                .send({from: fromAddress}));
-        }
+        await transferMatic(fromAddress, "0.5")
+        console.log(`Dev balance: ${devBalance}`)
+    }
+    (await localErc20Contract.methods // Approve Farm to User
+        .approve(fromAddress, Web3.utils.toWei(amount))
+        .send({from: fromAddress})).then
+    {
+        (await localErc20Contract.methods // Transfer Farm to user
+            .transferFrom(fromAddress, to, Web3.utils.toWei(amount))
+            .send({from: fromAddress}));
     }
     console.log("Matic Balance: " + await getMaticBalance(fromAddress))
 
