@@ -21,6 +21,7 @@ const EditProject =(props)=> {
     const [type, setType] = useState(current.type);
     const [website, setWebsite] = useState(current.website);
     const [description, setDescription] = useState(current.description);
+    const [ownerpic,setOwnerpic] = useState(current.ownerpicture);
     const [datefounded, setDatefounded] = useState(current.datefounded);
 
 
@@ -29,7 +30,6 @@ const EditProject =(props)=> {
     let projectimage3= 'https://www.greenqueen.com.hk/wp-content/uploads/2020/12/Veganic-Farming.png'
     let projectimage4= 'https://i.guim.co.uk/img/media/92ff23fe9c9b9372d2bf6bc5f58b5317d09640ba/140_163_3360_2017/master/3360.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=a50edccf40f1867e8ae0407b8f249ef2'
     let projectimage5= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRagVhujggQsNickn5lifRjb4EQzXgYvuaoyaqY06JjzDmgf6BLQ0qQGJQm-gUs0YQkNu4&usqp=CAU'
-    let ownerpic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'
     const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(latitude),streetname:streetname
                     , city:city, county:county,
                     country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
@@ -155,7 +155,6 @@ const EditProject =(props)=> {
                                     </label>
                                     <input value={datefounded}
                                         type="date"
-                                        value="2018-07-22"
                                         onChange={(e) => setDatefounded(e.target.value)}
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     />
@@ -300,6 +299,23 @@ const EditProject =(props)=> {
                                     onChange={(e) => setOwnername(e.target.value)}
                                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     value={ownername}
+                                />
+                            </div>
+                        </div>
+                        <div className="w-full lg:w-4/12 px-4">
+                            <div className="relative w-full mb-3">
+                                <label
+                                    className="block capitalize text-blueGray-600 text-xs font-bold mb-2"
+                                    htmlFor="grid-password"
+                                >
+                                    Owner Image Url
+                                </label>
+                                <input
+                                    required
+                                    value={ownerpic}
+                                    onChange={(e) => setOwnerpic(e.target.value)}
+                                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    placeholder="www.imagehosting.com"
                                 />
                             </div>
                         </div>
