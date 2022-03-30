@@ -1,9 +1,20 @@
 import { FiFacebook, FiGlobe } from "react-icons/fi";
 import {FcCalendar} from "react-icons/fc";
+import React, { useState } from 'react';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+
 
 const AboutProject = (props) => {
+
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
   return (
     <>
+
       <div>
         <h2 className="flex justify-between items-center py-3 w-full font-medium text-left text-gray-900 rounded-t-xl border-b border-gray-200 dark:border-gray-700 dark:text-white">
           <span>About This Project</span>
@@ -72,10 +83,22 @@ const AboutProject = (props) => {
 
       {/*modal*/}
       <div className=" border-b border-gray-200">
+        <button onClick={onOpenModal}>
         <p className="text-gray-500 line-clamp-4 underline font-bold text-green-600 ">
           {" "}
-          Show more >{" "}
+          Show more >
         </p>
+        </button>
+      </div>
+      <div style={{fontFamily: "sans-serif",
+        textAlign: "center"}}>
+        <Modal open={open} onClose={onCloseModal} center>
+          <h2>Description</h2>
+          <p className="text-gray-500 ">
+            {" "}
+            {props.detailsProps.description}
+          </p>
+        </Modal>
       </div>
     </>
   );

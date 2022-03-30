@@ -23,10 +23,10 @@ export default function Home(props) {
 
       </div>
       <main className='flex flex-col relative'>
-        <div className='p-3 w-full flex justify-between h-5/6'>
+        <div className='p-5 w-full flex justify-between h-5/6'>
           <div className='pt-40 sm:pt-0'>
             <div className={styles.summaryHeader}>
-              <h1 className='text-white uppercase text-7xl font-light pb-8 pl-5'>Are you carbon neutral?</h1>
+              <h1 className='text-white uppercase font-semibold text-5xl font-light pb-8 pl-5'>Are you carbon neutral?</h1>
             </div>
             <p className={styles.summaryPara}>
               Carbon Neutrality is important.. lorem ipsum dolor sit amet,
@@ -119,10 +119,25 @@ export default function Home(props) {
             <div className='overflow-scroll flex flex-row w-full scrollbar-hide'>
               <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
                 <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
-                     src={profileImg}
-                     srcSet={profileImg}
+                     src={'/peterTrott.jpg'}
                      alt="CEO"/>
                 <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={'/alfredB.jpg'}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Alfred Bwomezi </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
+              </div>
+
+              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
+                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
+                     src={'/alun.jpg'}
+                     alt="CEO"/>
+                <h1 className="text-lg text-gray-700"> Alun Jones </h1>
                 <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
               </div>
 
@@ -131,25 +146,7 @@ export default function Home(props) {
                      src={profileImg}
                      srcSet={profileImg}
                      alt="CEO"/>
-                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
-              </div>
-
-              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
-                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
-                     src={profileImg}
-                     srcSet={profileImg}
-                     alt="CEO"/>
-                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
-              </div>
-
-              <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
-                <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto mx-2"
-                     src={profileImg}
-                     srcSet={profileImg}
-                     alt="CEO"/>
-                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h1 className="text-lg text-gray-700"> Tim Edwards </h1>
                 <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
               </div>
 

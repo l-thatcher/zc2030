@@ -62,35 +62,31 @@ export default function Home() {
 
             <div className="flex flex-row overflow-x-auto">
               <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
-                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
-                     src={profileImg}
-                     srcSet={profileImg}
+                <img className="mb-6 w-50 h-50 object-fill rounded-full shadow-lg mx-auto mx-2"
+                     src={'/peterTrott.jpg'}
                      alt="CEO"/>
                 <h1 className="text-lg text-gray-700"> Peter Trott </h1>
                 <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
-                <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <p className="text-xs text-gray-400 mt-4"> +25 years in international telecommunications and ICT innovation, organisational leadership,
+                  governance and management, team leadership. </p>
                 <h3 className="text-lg text-gray-700"> email@address.com </h3>
               </div>
 
               <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
-                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
-                     src={profileImg}
-                     srcSet={profileImg}
+                <img className="mb-6 w-50 h-50 rounded-full object-fill shadow-lg mx-auto mx-2"
+                     src={'/alfredB.jpg'}
                      alt="CEO"/>
-                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
-                <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
-                <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <h1 className="text-lg text-gray-700"> Alfred Bwomezi </h1>
+                <h3 className="text-sm text-gray-400 px-16"> CTO </h3>
+                <p className="text-xs text-gray-400 mt-4"> Lead developer with almost 10 years experience in the industry and is currently working for the Natwest Group </p>
                 <h3 className="text-lg text-gray-700"> email@address.com </h3>
               </div>
 
               <div className="bg-white font-semibold text-center rounded-3xl border w-96 p-8 mx-2">
-                <img className="mb-6 w-fit h-50 shadow-lg mx-auto mx-2"
-                     src={profileImg}
-                     srcSet={profileImg}
+                <img className="mb-6 w-50 h-50 object-fill rounded-full shadow-lg mx-auto mx-2"
+                     src={'/alun.jpg'}
                      alt="CEO"/>
-                <h1 className="text-lg text-gray-700"> Peter Trott </h1>
+                <h1 className="text-lg text-gray-700"> Alun Jones </h1>
                 <h3 className="text-sm text-gray-400 px-16"> CEO </h3>
                 <p className="text-xs text-gray-400 mt-4"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
