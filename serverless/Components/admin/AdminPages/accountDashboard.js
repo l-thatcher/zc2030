@@ -138,14 +138,6 @@ export default function AccountDashboard(props) {
 
   }
 
-  // function removeAdminFunc(removalEmail) {
-  //   const data = ["PERSONAL", removalEmail];
-  //   updateRole(data).then((res) => {
-  //     console.log("Admin removed successfully", res.data);
-  //     // router.reload();
-  //   });
-  // }
-
   const removeAdminFunc = async (removalEmail) => {
     const data = ["PERSONAL", removalEmail];
 
