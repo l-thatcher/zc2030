@@ -1,5 +1,5 @@
 import ProjectCard from "../../Components/ProjectCard";
-import { getProjectsList } from "../../services/ProjectService";
+import {getListedProjectsList} from "../../services/ProjectService";
 import {React} from "react";
 
 export default function Projects(props) {
@@ -20,11 +20,10 @@ export default function Projects(props) {
 }
 
 export async function getServerSideProps() {
-  const projectsRes = await getProjectsList();
+  const projectsRes = await getListedProjectsList();
   const allProjects = projectsRes.data;
 
   return {
     props: { allProjects },
-    // revalidate: 60, //Regenerates page every minute
   };
 }

@@ -19,7 +19,7 @@ export default async function handler(req, res) {
         res.status(500).json({ message: e.message });
       }
       break;
-
+d
     // Create data from database
     case "POST":
       break;

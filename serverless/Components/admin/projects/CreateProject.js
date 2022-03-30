@@ -1,13 +1,13 @@
-import React, { useState} from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import React, {useState} from "react";
+import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import {createNewProject} from '../../../services/ProjectService'
 // components
-import { AiFillCloseCircle } from "react-icons/ai";
+import {AiFillCloseCircle} from "react-icons/ai";
 // import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
 
-const CreateProject =()=> {
+const CreateProject = () => {
     const [projectname, setProjectname] = useState('');
     const [cptgbp, setCptgbp] = useState('');
     const [latitude, setLatitude] = useState(0);
@@ -17,6 +17,8 @@ const CreateProject =()=> {
     const [county, setCounty] = useState('');
     const [country, setCountry] = useState('');
     const [totalsupply, setTotalsupply] = useState('');
+    const [remainingsupply, setRemainingsupply] = useState("0");
+    const [ownerpicture, setOwnerpicture] = useState("");
     const [ownername, setOwnername] = useState('');
     const [type, setType] = useState('');
     const [website, setWebsite] = useState('');
@@ -57,7 +59,7 @@ const CreateProject =()=> {
                             console.log(err);
                         });
 
-    }
+        }
 
     return (
         <>
@@ -425,5 +427,3 @@ const CreateProject =()=> {
 }
 
 export default CreateProject;
-
-
