@@ -81,7 +81,7 @@ export default function Home(props) {
         </div>
 
         <div className='min-h-1/3 p-3 text-black bg-white w-full overflow-x-auto'>
-          <div className='px-0 block lg:hidden'>
+          <div className='px-0 block md:hidden'>
             <div className={styles.projectsHeader}>
               <h1 className='text-black uppercase font-extralight pb-8 pl-5'>Newest Carbon Projects</h1>
             </div>
@@ -95,7 +95,7 @@ export default function Home(props) {
             </div>
           </div>
 
-          <div className='px-32 hidden lg:block'>
+          <div className='px-32 hidden md:block'>
             <div className={styles.projectsHeader}>
               <h1 className='text-black uppercase font-extralight pb-8 pl-5'>Newest Carbon Projects</h1>
             </div>

@@ -6,24 +6,18 @@ import ProgressBar from "@ramonak/react-progress-bar";
 
 const Card = (props) => {
   const project= props.project
-  const {setView} = useContext(ViewContext);
-  const {view} = useContext(ViewContext);
-  const {setEditPrj} = useContext(ViewContext);
 
-  function changeView() {
-    setEditPrj(project)
-    setView('edit')
-  }
+
+
   // storing input name
 
   console.log(project)
-  const widthPercentage = (project.remainingsupply/project.totalsupply)*100
-  console.log(project)
+
 
 
 
   return(
-      <div className="w-full lg:w-64 border border-gray-500 overflow-hidden rounded-lg shadow-xl bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out mx-2">
+      <div className="w-full sm:w-64 border border-gray-500 overflow-hidden rounded-lg shadow-xl bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out mx-2">
         <div className='relative'>
           <div className=" rounded-lg">
             <img
