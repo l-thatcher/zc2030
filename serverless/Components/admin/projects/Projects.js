@@ -21,27 +21,22 @@ const Projects= (props) => {
 
     return(
 
-        <div className='w-11/12'>
-            <div className="bg-blue-500 md:w-8/12  lg:w-9/12 m-10 rounded  ">
+        <div>
+            <div className=" border shadow border-gray-800 w-[100%] rounded  ">
 
-                <div className="flex justify-between mb-5" >
+                <div className="flex justify-between mb-2" >
                     <h3 className='font-bold py-6 capitalize font-serif text-gray-700 text-2xl px-10 '>
                         Admin project Dashboard
                     </h3>
 
                     <div>
-                        <button onClick={() => setView('current projects')} className='mt-6 p-4 mr-10 bg-[#F8818C] active:bg-blue-600 text-white font-bold capitalize text-xs px-4 p-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'>
+                        <button onClick={() => setView('current projects')} className='mt-4 p-4 mr-10 bg-blue-500 hover:bg-blue-700 text-white font-bold capitalize text-xs px-4 p-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'>
                             Current projects</button>
 
-                        <button onClick={() => setView('create project')} className='mt-6 p-4 mr-5 bg-indigo-400 active:bg-blue-600 text-white font-bold capitalize text-xs px-4 p-1 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150'>
-                            Create Project</button>
-
                     </div>
 
 
                     </div>
-
-
 
                 <div className=''>
 

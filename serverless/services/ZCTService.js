@@ -8,6 +8,7 @@ import {getPrivateKeys} from "@truffle/hdwallet-provider/dist/constructor/getPri
 import {errorParser} from "tedious/lib/token/infoerror-token-parser";
 
 const childRPC = 'https://rpc-mumbai.maticvigil.com/'
+// const childRPC = "https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907"
 // https://polygon-mumbai.infura.io/v3/579ec05cfce44d31854d6f693d5fa907
 // const childRPC =
 //     "wss://ropsten.infura.io/ws/v3/579ec05cfce44d31854d6f693d5fa907";

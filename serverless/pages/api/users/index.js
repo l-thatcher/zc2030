@@ -3,6 +3,15 @@ import {getSession} from "next-auth/react";
 
 const getAllUserData = `SELECT * FROM USER`;
 
+const updateUser = `UPDATE USER 
+SET 
+    name = ?,
+    email = ?,
+    role = ?,
+    ethWallet = ?
+WHERE
+    id = ?`;
+
 // const handler = async (_, res) => {
 //     try {
 //         const result = await sql_query(getAllUserData);
@@ -15,11 +24,8 @@ const getAllUserData = `SELECT * FROM USER`;
 // };
 
 export default async function handler(req, res) {
-  // const apiSession = await getSession({ req });
-  // console.log(apiSession)
-  // if ((apiSession?.user?.role === "ADMIN")) {
   switch (req.method) {
-    // Get data from database
+      // Get data from database
     case "GET":
       try {
         const result = await execute_query(getAllUserData);
@@ -30,21 +36,27 @@ export default async function handler(req, res) {
       }
       break;
 
-    // Create data from database
+      // Create data from database
     case "POST":
       break;
 
-    // Delete data from database
+      // Delete data from database
     case "DELETE":
       break;
 
-    // Update data from database
     case "PUT":
+      try {
+        const id = req.body[0];
+        const name = req.body[1];
+        const email = req.body[2];
+        const role = req.body[3];
+        const ethAddress = req.body[4];
+        const result = await execute_query(updateUser, [name, email, role, ethAddress, id]);
+        res.status(200).json(result);
+      } catch (e) {
+        res.status(500).json({ message: e.message });
+      }
       break;
   }
-  // } else {
-  //   // Not Signed in
-  //   res.status(401)
-  // }
-  // res.end()
 }
+

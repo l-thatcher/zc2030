@@ -3,6 +3,8 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useRouter} from 'next/router'
 import {createNewProject} from '../../../services/ProjectService'
+import Link from 'next/link'
+
 // components
 import {AiFillCloseCircle} from "react-icons/ai";
 // import IndexDropdown from "components/Dropdowns/IndexDropdown.js"
@@ -17,12 +19,11 @@ const CreateProject = () => {
     const [county, setCounty] = useState('');
     const [country, setCountry] = useState('');
     const [totalsupply, setTotalsupply] = useState('');
-    const [remainingsupply, setRemainingsupply] = useState("0");
-    const [ownerpicture, setOwnerpicture] = useState("");
     const [ownername, setOwnername] = useState('');
     const [type, setType] = useState('');
     const [website, setWebsite] = useState('');
     const [description, setDescription] = useState('');
+    const [ownerpic,setOwnerpic] = useState('');
     const [datefounded, setDatefounded] = useState('');
     const [projectImg1, setProjectImg1] = useState('');
     const [projectImg2, setProjectImg2] = useState('');
@@ -30,7 +31,6 @@ const CreateProject = () => {
     const [projectImg4, setProjectImg4] = useState('');
     const [projectImg5, setProjectImg5] = useState('');
 
-    let ownerpic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'
     const project= {projectname:projectname,cptgbp:parseFloat(cptgbp),latitude:parseFloat(latitude),longitude:parseFloat(longitude),streetname:streetname
                     , city:city, county:county,
                 country:country,totalsupply:parseFloat(totalsupply),remainingsupply:totalsupply,ownerpicture:ownerpic
@@ -54,7 +54,7 @@ const CreateProject = () => {
                                 draggable: true,
                                 progress: undefined,
                             });
-                        router.push('/admin/adminProjects')} )
+                        router.push('/adminDashboard')} )
                         .catch(err => {
                             console.log(err);
                         });
@@ -155,11 +155,11 @@ const CreateProject = () => {
                                         About Project
                                     </label>
                                     <textarea
-                                        type="text"
-                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        rows="4" onChange={(e) => setDescription(e.target.value)}
-                                        placeholder="A beautiful farm with lots of animals "
-                                    ></textarea>
+    type="text"
+    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+    rows="4" onChange={(e) => setDescription(e.target.value)}
+    placeholder="A beautiful farm with lots of animals "
+    />
                                 </div>
                             </div>
                         </div>
@@ -262,6 +262,13 @@ const CreateProject = () => {
                                     />
                                 </div>
                             </div>
+                            <div className='text-sm text-gray-400'>
+                                <p>find co-ordinates here -
+                                    <a target="_blank" href="https://www.gps-coordinates.net/" rel="noopener noreferrer">
+                                        <p>https://www.gps-coordinates.net/</p>
+                                    </a>
+                                </p>
+                            </div>
                         </div>
 
                         <hr className="mt-6 border-b-1 border-blueGray-300"/>
@@ -310,10 +317,12 @@ const CreateProject = () => {
                                     >
                                         website
                                     </label>
-                                    <input onChange={(e) => setWebsite(e.target.value)}
-                                           type="string"
-                                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                           placeholder="www.cardiff.com"
+                                    <input
+                                        required
+                                        onChange={(e) => setOwnerpic(e.target.value)}
+                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        pattern="https?://.+"
+                                        placeholder="https://www.cardiff.com"
                                     />
                                 </div>
                             </div>

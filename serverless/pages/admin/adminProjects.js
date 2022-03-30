@@ -9,7 +9,7 @@ export default function adminProjects(props) {
     const allProjects = props.allProjects;
 
     return (
-        <div className=" flex bg-gray-500 ">
+        <div className=" flex ">
             {/*<AdminSidebar/>*/}
             {/*<AdminSidebar/>*/}
             <Sidebar/>
