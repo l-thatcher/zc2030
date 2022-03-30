@@ -16,10 +16,10 @@
 }
 
 .container {
-  padding: 5px 1rem;
   background: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: all 200ms ease-in-out;
+  padding: 2rem;
 }
 
 .popup {
