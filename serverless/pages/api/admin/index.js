@@ -1,6 +1,6 @@
 import { execute_query } from "../../../utils/db";
 
-const getAdminData = `SELECT * FROM USER WHERE type='ADMIN'`;
+const getAdminData = `SELECT * FROM USER WHERE role='ADMIN'`;
 const addNewAdmin = `UPDATE USER 
 SET 
     type = 'ADMIN'
@@ -15,6 +15,7 @@ export default async function handler(req, res) {
         const result = await execute_query(getAdminData);
         res.status(200).json(result);
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
       break;

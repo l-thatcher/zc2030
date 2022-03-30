@@ -2,9 +2,14 @@ import {
   getUsersFromList,
   getUsersThatCanViewCalculator,
 } from "../../../../../services/PrismaService";
+import {getSession} from "next-auth/react";
 
 export default async function handler(req, res) {
+  const session = await getSession({ req })
+  const role = req.body[0]?.user;
   const { typeId } = req.query;
+
+  if ((role) || (session?.user?.role === "ADMIN") ) {
   switch (req.method) {
     // Get data from database
     case "GET":
@@ -19,6 +24,7 @@ export default async function handler(req, res) {
         );
         res.status(200).json(json);
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
       break;
@@ -35,4 +41,8 @@ export default async function handler(req, res) {
     case "PUT":
       break;
   }
+  } else {
+    res.status(401)
+  }
+  res.end()
 }
