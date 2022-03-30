@@ -16,8 +16,8 @@ const Card = (props) => {
     }
         // storing input name
 
-    console.log((project.remainingsupply/project.totalsupply)*100)
-    const widthPercentage = (project.remainingsupply/project.totalsupply)*100
+    console.log((project.balance/project.totalsupply)*100)
+    const widthPercentage = (project.balance/project.totalsupply)*100
     console.log(project)
 
     return(

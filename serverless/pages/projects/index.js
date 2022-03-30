@@ -72,6 +72,7 @@ export default function Projects(props) {
 export async function getServerSideProps() {
   const projectsRes = await getListedProjectsList();
   const allProjects = projectsRes.data;
+  console.log(allProjects)
 
   return {
     props: { allProjects },
