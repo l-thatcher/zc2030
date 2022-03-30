@@ -26,21 +26,21 @@ const Card = (props) => {
             <div className="border border-gray-500 overflow-hidden rounded-lg shadow-xl bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
                 <div className='relative'>
                     <div className=" rounded-lg ">
-                    <img
-                        src={project.projectimage1}
-                        alt="uploaded cover image"
-                        className="w-full object-cover  h-48 sm:h-48 rounded-lg ">
+                        <img
+                            src={project.projectimage1}
+                            alt="uploaded cover image"
+                            className="w-full object-cover  h-48 sm:h-48 rounded-lg ">
 
-                    </img>
+                        </img>
 
                     </div>
                     <div>
-                        <div className=' text-xl  ml-2 mt-3 text-gray-700 font-bold '>{project.projectname}  </div>
+                        <div className=' text-md  ml-2 mt-3 text-gray-700 font-bold '>{project.projectname}  </div>
                     </div>
 
                     <div className=" font-semibold ml-2  underline flex items-center text-sm text-gray-300 truncate capitalize">
                         {/*location*/}
-                         {project.city} , {project.county}, {project.country}
+                        {project.city} , {project.county}, {project.country}
                     </div>
 
                     <div className=" ml-2 mt-2 no-underline flex items-center font-semibold text-xs text-gray-600 ">
@@ -70,7 +70,7 @@ const Card = (props) => {
                         </div>
 
 
-                </div>
+                    </div>
 
 
                 </div>
@@ -82,7 +82,7 @@ const Card = (props) => {
                     <Link  href={"./projects/" + props.project.id}>
                         <a className='mt-3 no-underline mb-3 mr-5 bg-green-500  justify-center font-bold capitalize text-xs px-4 py-2
                          rounded shadow hover:shadow-md hover: mr-1 ease-linear transition-all duration-150'
-                            >
+                        >
                               <span className='text-white
                               '>More Details</span>
                         </a>

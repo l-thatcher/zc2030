@@ -31,11 +31,11 @@ const Card = (props) => {
                         <img
                             src={project.projectimage1}
                             alt="uploaded cover image"
-                            className=" object-cover h-3/4 w-full rounded-lg ">
+                            className=" w-full object-cover  sm:h-48 rounded-lg">
                         </img>
                     </div>
                     <div>
-                        <h5 className=' ml-2 mt-3 text-gray-700 font-medium font-serif'>{project.projectname}  </h5>
+                        <h5 className=' text-md  ml-2 mt-3 text-gray-700 font-bold'>{project.projectname}  </h5>
                     </div>
 
                     <div className=" font-semibold ml-2  underline flex items-center text-sm text-gray-300 truncate capitalize">
@@ -56,13 +56,13 @@ const Card = (props) => {
                         <div>
                             <div className=" flex items-center  rounded-full">
 
-                                <div className=' ml-2 no-underline flex items-center text-xs text-gray-600 font-semibold  capitalize'>Available Carbon Supply:</div>
-                                <div className='w-[150px] ml-1'> <ProgressBar labelSize={'10px'} height={'15px'} bgColor={'#77C9D4'} completed={widthPercentage} /> </div>
+                                <div className=' ml-2 no-underline flex items-center text-md text-gray-600 font-semibold  capitalize'>Available Carbon Supply:</div>
+                                <div className='w-[150px] ml-1'> <ProgressBar labelSize={'10px'} height={'15px'} bgColor={'#2D3B4F'} baseBgColor={'grey'} completed={widthPercentage} /> </div>
 
 
                             </div>
                         </div>
-                        <div className=" absolute   bottom-[95px] w-[100px] bg-zc30-blue py-1 text-black text-center font-light">
+                        <div className=" absolute   bottom-[125px] w-[100px] bg-gray-700 py-1 text-black text-center font-light">
                             <div className='text-white text font-semibold text-sm'>
                                 £{project.cptgbp} <span > /tCo2e</span>
                             </div>
