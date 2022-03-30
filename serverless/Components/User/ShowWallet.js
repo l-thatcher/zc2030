@@ -17,7 +17,7 @@ const ShowWallet = (props) => {
     const projects = props.projects
     const {data: session} = useSession();
     const logo = "/cz2030_logo.png";
-    const [view, setView] = useState("create");
+    const [view, setView] = useState("wallet");
     const setToWallet = () => {
         setView("wallet");
     };
@@ -46,36 +46,34 @@ const ShowWallet = (props) => {
 
                     <div
                         className="w-full lg:w-4/12 px-4 lg:order-3 lg:self-center flex justify-center mt-10 lg:justify-end lg:mt-0">
-                        <button className="btn border-blue-500 " type="button">
-                            <Icon size="lg"/> Settings
-                        </button>
+                        {/*<div className="btn border-blue-500 " type="button">*/}
+                        {/*    <Icon size="lg"/> Settings*/}
+                        {/*</div>*/}
                     </div>
 
                     <div className="w-full lg:w-4/12 px-4 lg:order-1">
                         <div className=" flex justify-center py-4 lg:pt-4 pt-8">
                             <div className="mr-4 p-3 text-center ">
                                 <div className="inline-flex rounded-md shadow-sm" role="group">
-                                    <button
-                                        type="button"
+                                    <div
                                         className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200  "
                                     >
                   <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
                     {balance}
                   </span>
                                         <span className="text-sm text-gray-700">
-                    Zero Carbon Credits
+                    ZeroCarbon Credits
                   </span>
-                                    </button>
+                                    </div>
 
-                                    <button
-                                        type="button"
+                                    <div
                                         className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200   "
                                     >
                   <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
-                    1
+                    {projects.length}
                   </span>
                                         <span className="text-sm text-gray-700">Projects</span>
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -131,21 +129,23 @@ const ShowWallet = (props) => {
                                 {/*Map transactions to project in database*/}
                                 {/*Output summary*/}
 
-                                {projects.map((project, index) =>
-                                    <WalletProjectCard
-                                        key={index}
-                                        projectName={project.project.projectname}
-                                        projectImg={project.project.projectimage1}
-                                        city={project.project.city}
-                                        country={project.project.country}
-                                        county={project.project.county}
-                                        totalSupply={project.project.totalsupply}
-                                        cptgbp={project.project.cptgbp}
-                                        id={project.project_id}
-                                        amountTonnes={project.amountTonnes}
-                                    />
-                                )}
-
+                                <div className='flex flex-col sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                                    {projects.map((project, index) =>
+                                        <WalletProjectCard
+                                            key={index}
+                                            projectName={project.project.projectname}
+                                            projectImg={project.project.projectimage1}
+                                            city={project.project.city}
+                                            country={project.project.country}
+                                            county={project.project.county}
+                                            totalSupply={project.project.totalsupply}
+                                            cptgbp={project.project.cptgbp}
+                                            id={project.project_id}
+                                            amountTonnes={project.amountTonnes}
+                                            remainingSupply={project.project.remainingsupply}
+                                        />
+                                    )}
+                                </div>
 
                             </>
                         )}

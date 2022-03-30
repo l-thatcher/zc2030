@@ -16,12 +16,16 @@
 /*  justify-content: space-between;*/
 /*}*/
 
+.blur{
+
+}
+
 .video {
   height: 100vh;
   width: 100vw;
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
   object-fit: cover;
-  filter: blur(10px);
-  -webkit-filter: blur(10px);
 }
 
 @-webkit-keyframes topBoxAnimation {
@@ -90,7 +94,7 @@
   font-size: 17pt;
   position: relative;
   animation-name: paraTextAnimation;
-  animation-duration: 2s;
+  animation-duration: 1s;
   padding: 0 0 0 20px;
   text-shadow: 3px 3px 12px #000000;
 }
@@ -131,7 +135,7 @@
   left: -20px;
   top: 6rem;
   height: min-content;
-  animation-name: promptTextAnimation;
+  /*animation-name: promptTextAnimation;*/
   animation-duration: 2s;
   color: white;
   text-shadow: 3px 3px 12px #000000;
@@ -168,6 +172,25 @@
   -moz-animation: topBoxAnimation 6s ease infinite;
   animation: topBoxAnimation 6s ease infinite;
 }
+
+/*@media only screen and (max-width: 640px) {*/
+/*  .mobilePadding{*/
+/*    padding-left: 8rem;*/
+/*    padding-right: 8rem;*/
+/*  }*/
+/*}*/
+
+/*@media only screen and (max-width: 640px) {*/
+/*  .mobilePadding{*/
+/*    padding-left: 0;*/
+/*    padding-right: 0;*/
+/*  }*/
+/*}*/
+
+/*.mobilePadding{*/
+/*  padding-left: 8rem;*/
+/*  padding-right: 8rem;*/
+/*}*/
 
 /*.teamCards{*/
 /*  display: flex;*/

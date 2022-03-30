@@ -3,7 +3,7 @@
   padding-top: 40px;
   height: 100px;
   padding-left: 50px;
-  background: #57bc90;
+  /*background: #57bc90;*/
 }
 
 .h2 {
@@ -110,15 +110,19 @@
 }
 
 .button {
-  color: black;
-  background: #57bc90;
-  border: solid 3px #57bc90;
+  color: white;
+  background: #0e9f6e;
+  border: solid 3px #0e9f6e;
   width: 150px;
-  text-transform: capitalize;
+}
+
+.button:hover{
+  background: rgb(97, 193, 145);
+  border: solid 3px #61c191;
 }
 
 .buttonBack {
-  color: black;
+  color: white;
   background: #a5a5af;
   border: solid 3px #a5a5af;
   width: 150px;
