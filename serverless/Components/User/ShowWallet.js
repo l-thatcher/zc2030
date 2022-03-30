@@ -129,7 +129,7 @@ const ShowWallet = (props) => {
                                 {/*Map transactions to project in database*/}
                                 {/*Output summary*/}
 
-                                <div className='grid grid-cols-4'>
+                                <div className='flex flex-col sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                                     {projects.map((project, index) =>
                                         <WalletProjectCard
                                             key={index}

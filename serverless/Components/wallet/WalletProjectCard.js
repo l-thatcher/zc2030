@@ -24,7 +24,7 @@ const Card = (props) => {
 
     return (
         <div className='m-2'>
-            <div className="w-full border border-gray-500 m-2
+            <div className="w-full h-full border border-gray-500 m-2
             overflow-hidden rounded-lg shadow-md bg-zc30-blue hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out">
                 <div className='relative'>
                     <div className=" rounded-lg ">
