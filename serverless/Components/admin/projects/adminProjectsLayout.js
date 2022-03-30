@@ -15,7 +15,7 @@ const AdminProjectsLayout = (props) => {
 
     return(
             <ViewContext.Provider value={{view,setView,editPrj,setEditPrj}} >
-                <div className='w-full'>
+                <div className='w-[80%] m-10'>
                     <div className=''>
                         {/*<ProfileHeader/>*/}
                     </div>
