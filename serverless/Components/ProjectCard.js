@@ -4,7 +4,7 @@ import Link from 'next/link'
 import ProgressBar from "@ramonak/react-progress-bar";
 
 
-const Card = (props) => {
+const ProjectCard = (props) => {
   const project= props.project
 
 
@@ -87,4 +87,4 @@ const Card = (props) => {
 
 
 
-export default Card;
+export default ProjectCard;
