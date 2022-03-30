@@ -13,6 +13,9 @@ const CarbonCalculator = (data) => {
   const results = data.data.results;
   const userId = data.userId;
 
+  // console.log(type)
+  // console.log(categories)
+  // console.log(inputs)
   // User Input value
   const [inputValue, setInputValue] = useState();
 

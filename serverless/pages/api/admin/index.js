@@ -1,13 +1,17 @@
 import {execute_query} from "../../../utils/db";
 
 const getAdminData = `SELECT * FROM USER WHERE role='ADMIN'`;
+const addNewAdmin = `UPDATE USER 
+SET 
+    type = 'ADMIN'
+WHERE
+    email = ?`;
 
 const updateRole = `UPDATE USER 
 SET 
     role = ?
 WHERE
     email = ?`;
-
 const removeUser = `DELETE FROM USER WHERE id=?`;
 
 export default async function handler(req, res) {
@@ -18,6 +22,7 @@ export default async function handler(req, res) {
         const result = await execute_query(getAdminData);
         res.status(200).json(result);
       } catch (e) {
+        console.log(e)
         res.status(500).json({ message: e.message });
       }
       break;

@@ -1,9 +1,8 @@
 import styles from "../styles/Calculator.module.css";
 import {
   getCalculatorCategories,
-  getCalculatorInputs,
   getCalculatorTypes,
-  getCalculatorTypesForUser,
+  getCalculatorTypesForUser, getPublicCalculatorCategories, getPublicCalculatorInputs,
   getPublicCalculatorTypes,
   getUserCategoryProgress,
 } from "../services/CalculatorService";
@@ -19,6 +18,7 @@ export default function Calculator(props) {
   const inputs = props.inputs;
   const categoriesCount = props.categoriesCount;
   const { data: session } = useSession();
+
   let userId = null;
   if (session) {
     userId = session.user.id;
@@ -74,6 +74,7 @@ export default function Calculator(props) {
                     types={types}
                     inputs={[inputs]}
                     userId={userId}
+                    session={session}
                 />
               </div>
             </div>
@@ -109,34 +110,54 @@ export async function getServerSideProps(context) {
     typeId.push(type.id);
   });
 
-  // Add Calculator Categories into categories for every id of calculators
-  for (let i = 0; i < typeId.length; i++) {
-    const res = await getCalculatorCategories(typeId[i]);
-    const calculatorCategories = res.data;
-    if (userId != null) {
-      // categoriesCount.push(await calculatorCategories.map(it => getUserCategoryProgress(userId, it.id)))
-      // categoriesCount.push((await getUserCategoryProgress("cl0h963z10006rwqni8sc891f", 1)).data.count)
-      const temp = [];
-      for (let j = 0; j < calculatorCategories.length; j++) {
-        temp.push(
-          (await getUserCategoryProgress(userId, calculatorCategories[j].id))
-            .data.count
-        );
+  const data = [session]
+  let calculatorCategories;
+
+  if (session) {
+    // Add Calculator Categories into categories for every id of calculators
+    for (let i = 0; i < typeId.length; i++) {
+      const res = await getCalculatorCategories(typeId[i], data);
+      calculatorCategories = res.data;
+      if (userId != null) {
+        const temp = [];
+        for (let j = 0; j < calculatorCategories.length; j++) {
+          temp.push(
+              (await getUserCategoryProgress(userId, calculatorCategories[j].id))
+                  .data.count
+          );
+        }
+        categoriesCount.push(temp);
       }
-      categoriesCount.push(temp);
+      categories.push(calculatorCategories);
     }
-    categories.push(calculatorCategories);
+
+    // // Add Calculator Inputs for each calculator type
+    // for (let i = 0; i < typeId.length; i++) {
+    //   for (let b = 0; b < categories[i].length; b++) {
+    //     categoryId = categories[i][b].id;
+    //     const res = await getCalculatorInputs(typeId[i], categoryId, data);
+    //     inputs.push(res.data);
+    //   }
+    // }
+  } else {
+    for (let i = 0; i < typeId.length; i++) {
+      const res = await getPublicCalculatorCategories(typeId[i]);
+      calculatorCategories = res.data;
+      if (userId != null) {
+        const temp = [];
+        for (let j = 0; j < calculatorCategories.length; j++) {
+          temp.push(
+              (await getUserCategoryProgress(userId, calculatorCategories[j].id))
+                  .data.count
+          );
+        }
+        categoriesCount.push(temp);
+      }
+      categories.push(calculatorCategories);
+    }
   }
 
-  // Add Calculator Inputs for each calculator type
-  for (let i = 0; i < typeId.length; i++) {
-    for (let b = 0; b < categories[i].length; b++) {
-      categoryId = categories[i][b].id;
-      const res = await getCalculatorInputs(typeId[i], categoryId);
-      inputs.push(res.data);
-    }
-  }
 
   // Pass post data to the page via props
-  return { props: { types, categories, inputs, categoriesCount } };
+  return { props: { types, categories, categoriesCount, session} };
 }

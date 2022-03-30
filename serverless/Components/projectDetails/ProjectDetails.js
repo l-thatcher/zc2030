@@ -1,4 +1,3 @@
-// import { LocationMarkerIcon } from "@heroicons/react/solid";
 import ProjectImageCard from "./ProjectImageCard";
 import AboutProject from "./AboutProject";
 import BuyCard from "./BuyCard";
@@ -7,30 +6,26 @@ import {MdLocationOn} from "react-icons/md";
 
 function ProjectDetails(props) {
 
-    // const images2 = [image1,image2,image3,image4,image5]
-
-
-
-
     const lat = props.detailsProps.latitude;
     const lng = props.detailsProps.longitude;
-    const location = {lat,lng};
+    const location = {lat, lng};
     const details = props.detailsProps;
 
-    const imgs= [details.projectimage1,details.projectimage2,details.projectimage3,details.projectimage4]
-
-    console.log(details.projectname);
-
-
+  const imgs = [
+    details.projectimage1,
+    details.projectimage2,
+    details.projectimage3,
+    details.projectimage4,
+    details.projectimage5
+  ];
 
     return (
-        <div className='pt-40 sm:pt-0'>
-            <div className="lg:flex lg:items-center lg:justify-between container mx-auto ">
-                <div className="flex-1 min-w-0">
-                    <main className="lg:w-[1000px] lg:mx-auto" >
-                        {/*Name*/}
-                        <div className=' mt-10'>
-                            <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl capitalize sm:truncate">{props.detailsProps.projectname}</h1>
+        <div className="lg:flex lg:items-center lg:justify-between container mx-auto ">
+            <div className="flex-1 min-w-0">
+                <main className="lg:w-[1000px] lg:mx-auto" >
+                    {/*Name*/}
+                    <div className=' mt-10'>
+                        <h1 className="text-[42px] font-semibold leading-7 text-gray-900 sm:text-3xl capitalize sm:truncate">{props.detailsProps.projectname}</h1>
 
                             <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                                 <div className="mt-2 flex items-center text-sm text-gray-500 underline border-b mb-2 border-[#F2F2F2] capitalize">
@@ -56,59 +51,44 @@ function ProjectDetails(props) {
                                         ))}
                                     </ul>
                                 </div>
-
-
-
-                                {/*<div className="grid-cols-4 space-y-2  md:space-y-0 md:grid md:gap-3  ">*/}
-                                {/*    <div className="w-full  col-span-2 row-span-2 rounded ">*/}
-                                {/*        {imgs.map((image,index) => (*/}
-                                {/*            <div  className='shrink-0 snap-center w-full '>*/}
-                                {/*                <img className='rounded-xl hover:scale-105 transition duration-200 ease-in-out'*/}
-                                {/*                     src={image}*/}
-                                {/*                     alt="image"/>*/}
-
-                                {/*            </div>*/}
-                                {/*        ))}*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                <div className="hidden md:block  ">
-                                    <div className="grid-cols-4 space-y-2 md:space-y-0 md:grid md:gap-3  ">
-                                        <div className=" w-full col-span-2 bg-yellow-600 row-span-2 rounded ">
-                                            <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
-                                                 src={details.projectimage1}
-                                                 alt="image"/>
-                                        </div>
-                                        <div className=" w-full   rounded ">
-                                            <img className='rounded-xl h-full object-cover  hover:scale-105 transition duration-200 ease-in-out'
-                                                 src={details.projectimage2}
-                                                 alt="image"/>
-                                        </div>
-                                        <div className="w-full h-full rounded ">
-                                            <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
-                                                 src={details.projectimage3}
-                                                 alt="image"/>
-                                        </div>
-                                        <div className="w-full h-full rounded ">
-                                            <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
-                                                 src={details.projectimage4}
-                                                 alt="image"/>
-                                        </div>
-                                        <div className="w-full h-full rounded ">
-                                            <img className ='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
-                                                 src={details.projectimage4}
-                                                 alt="image"/>
-                                        </div>
+                            <div className="hidden md:block  ">
+                                <div className="grid-cols-4 space-y-2 md:space-y-0 md:grid md:gap-3  ">
+                                    <div className=" w-full col-span-2 bg-yellow-600 row-span-2 rounded ">
+                                        <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
+                                            src={details.projectimage1}
+                                            alt="image"/>
+                                    </div>
+                                    <div className=" w-full   rounded ">
+                                        <img className='rounded-xl h-full object-cover  hover:scale-105 transition duration-200 ease-in-out'
+                                             src={details.projectimage2}
+                                             alt="image"/>
+                                    </div>
+                                    <div className="w-full h-full rounded ">
+                                        <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
+                                             src={details.projectimage3}
+                                            alt="image"/>
+                                    </div>
+                                    <div className="w-full h-full rounded ">
+                                        <img className='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
+                                             src={details.projectimage4}
+                                            alt="image"/>
+                                    </div>
+                                    <div className="w-full h-full rounded ">
+                                        <img className ='rounded-xl h-full object-cover hover:scale-105 transition duration-200 ease-in-out'
+                                             src={details.projectimage5}
+                                            alt="image"/>
                                     </div>
                                 </div>
                             </div>
-                            {/*ABOUT Project*/}
-                            <div className='mt-4 border-t border-[#F2F2F2] p-4'>
-                                {/*BUY Carbon*/}
-                                <div className="mt-1 md:hidden">
-                                    <div className=''>
-                                        <h2 className="font-bold  mb-1 text-[34px] text-green-600 pb-3 ">
-                                            £{props.detailsProps.cptgbp}
-                                            <span className="text-base text-body-color text-black  font-medium">/ tCo2e
+                        </div>
+                        {/*ABOUT Project*/}
+                        <div className='mt-4 border-t border-[#F2F2F2] p-4'>
+                            {/*BUY Carbon*/}
+                            <div className="mt-1 md:hidden">
+                                <div className=''>
+                                    <h2 className="font-bold  mb-1 text-[34px] text-green-600 pb-3 ">
+                                        £{props.detailsProps.cptgbp}
+                                        <span className="text-base text-body-color text-black  font-medium">/ tCo2e
                                          </span>
                                         </h2>
                                         <p className='font-semibold text-gray-400'> Total Supply: {props.detailsProps.totalsupply} </p>
@@ -150,7 +130,6 @@ function ProjectDetails(props) {
                         </section>
                     </main>
                 </div>
-            </div>
         </div>
     )
 }

@@ -6,6 +6,7 @@ import {
   getCalculatorType,
   getCalculatorUsers,
 } from "../../../../services/CalculatorService";
+import {getSession} from "next-auth/react";
 
 const background3 = "/calculator_background_3.jpg";
 
@@ -33,11 +34,13 @@ export default function editCalculator(props) {
 }
 
 export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  const data = [session]
   const typeId = context.params.typeId;
   const [typeRes, categoriesRes, usersRes] = await Promise.all([
-    getCalculatorType(typeId),
-    getCalculatorCategories(typeId),
-    getCalculatorUsers(typeId),
+    getCalculatorType(typeId, data),
+    getCalculatorCategories(typeId, data),
+    getCalculatorUsers(typeId, data),
   ]);
 
   const calculatorDetails = typeRes.data;
@@ -53,7 +56,7 @@ export async function getServerSideProps(context) {
   for (let i = 0; i < categoryId.length; i++) {
     for (let b = 0; b < calculatorCategories.length; b++) {
       categoryId = calculatorCategories[b].id;
-      const res = await getCalculatorInputs(typeId, categoryId);
+      const res = await getCalculatorInputs(typeId, categoryId, data);
       inputs.push(res.data);
     }
   }
@@ -67,3 +70,4 @@ export async function getServerSideProps(context) {
     },
   };
 }
+

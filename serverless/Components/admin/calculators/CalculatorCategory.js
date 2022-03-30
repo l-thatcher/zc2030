@@ -28,6 +28,7 @@ import {
   updateCalculatorType,
 } from "../../../services/CalculatorService";
 import { useRouter } from "next/router";
+import {useSession} from "next-auth/react";
 
 const CalculatorCategory = (data) => {
   const router = useRouter();
@@ -51,6 +52,7 @@ const CalculatorCategory = (data) => {
   const [modalVariantColor, setModalVariantColor] = useState();
   const [isSaveHandler, setIsSaveHandler] = useState(false);
   const handleClose = () => setShowModal(false);
+  const session = useSession();
 
   // "Save" handler button
   async function handleSave() {
@@ -201,7 +203,8 @@ const CalculatorCategory = (data) => {
   // "Delete" button handler
   async function handleDelete() {
     if (idToRemove !== "") {
-      await deleteCalculatorCategory(type.id, idToRemove);
+      const data = [session]
+      await deleteCalculatorCategory(details.id, idToRemove,data);
       const temp = [...categories];
       temp.splice(optionSelected, 1);
       setCategories(temp);

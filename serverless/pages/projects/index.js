@@ -1,13 +1,9 @@
 import Card from "../../Components/Card";
-import { getProjectsList } from "../../services/ProjectService";
+import { getListedProjectsList } from "../../services/ProjectService";
 import React from "react";
-import ProjectCard from '../../Components/ProjectCard';
-import styles from "../../styles/Calculator.module.css";
-import ListOfCalculators from "../../Components/calculators/ListOfCalculators";
 
 export default function Projects(props) {
   const allProjects = props.allProjects;
-  console.log("Test1:" + allProjects[1]['id']);
   return (
       <div>
         <svg className='absolute w-full h-full' id="visual" viewBox="0 0 900 600" width="900" height="600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -74,11 +70,10 @@ export default function Projects(props) {
 }
 
 export async function getServerSideProps() {
-  const projectsRes = await getProjectsList();
+  const projectsRes = await getListedProjectsList();
   const allProjects = projectsRes.data;
 
   return {
     props: { allProjects },
-    // revalidate: 60, //Regenerates page every minute
   };
 }

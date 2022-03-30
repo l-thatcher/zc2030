@@ -39,11 +39,6 @@ const Card = (props) => {
               </div>
             </div>
 
-            {/*<div className=" ml-2 mt-2 no-underline flex items-center font-semibold text-xs text-gray-600 ">*/}
-            {/*  /!*total supply*!/*/}
-            {/*  Total Carbon Supply:  <span className='text-gray-400 ml-2'> {project.totalsupply} /tC02e</span>*/}
-            {/*</div>*/}
-
             <div className=' flex items-center '>
               {/*<div>*/}
               {/*    <h5 className='font-sans text-xs '>Remaining  </h5>*/}
@@ -58,12 +53,6 @@ const Card = (props) => {
 
                 </div>
               </div>
-
-              {/*<div className=" absolute   bottom-[95px] w-[100px] bg-gray-700 py-1 text-black text-center font-light">*/}
-              {/*  <div className='text-white text font-bold text-md'>*/}
-              {/*    £{project.cptgbp} <span > /tCo2e</span>*/}
-              {/*  </div>*/}
-              {/*</div>*/}
 
           </div>
 

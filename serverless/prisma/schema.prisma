@@ -119,7 +119,7 @@ model UserCalculator {
 }
 
 model Project {
-  id              String        @id @default(cuid())
+  id              String  @id @default(cuid())
   projectname     String
   projectimage1   String
   projectimage2   String
@@ -159,5 +159,5 @@ model Transaction {
   user         User    @relation(fields: [user_id], references: [id], onDelete: Restrict, map: "fk_transaction_id_to_user_id")
 
   @@index([project_id], map: "fk_transaction_id_to_project_id")
-  @@index([user_id], map: "fk_transaction_id_to_user_id")
+  @@index([project_id], map: "fk_transaction_id_to_user_id")
 }
