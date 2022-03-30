@@ -57,35 +57,38 @@ const Navbar = () => {
                       {/*Mobile menu button*/}
                   </div>
                     </div>
-                  <Menu right customBurgerIcon={ <svg className=" md:hidden w-6 h-6 text-gray-500 hover:text-green-500 "
-                                                      fill="none"
-                                                      strokeLinecap="round"
-                                                      strokeLinejoin="round"
-                                                      strokeWidth="2"
-                                                      viewBox="0 0 24 24"
-                                                      stroke="currentColor"
-                  >
-                      <path d="M4 6h16M4 12h16M4 18h16"/>
-                  </svg> } >
-                      <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/">
-                          Home
-                      </a>
 
-                      <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/about">
-                          About
-                      </a>
+                  <div className="md:hidden">
+                      <Menu right customBurgerIcon={
+                          <svg className="md:hidden w-6 h-6 text-gray-500 hover:text-green-500 "
+                               fill="none"
+                               strokeLinecap="round"
+                               strokeLinejoin="round"
+                               strokeWidth="2"
+                               viewBox="0 0 24 24"
+                               stroke="currentColor">
+                              <path d="M4 6h16M4 12h16M4 18h16"/>
+                          </svg> } >
+                          <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/">
+                              Home
+                          </a>
 
-                      <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/calculator">
-                          Calculator
-                      </a>
+                          <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/about">
+                              About
+                          </a>
 
-                      <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/projects">
-                          Projects
-                      </a>
+                          <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/calculator">
+                              Calculator
+                          </a>
 
-                      <LoginSession/>
+                          <a className="menu-item font-semibold hover:text-green-500 hover:border-b-4 hover:border-green-500 transition no-underline duration-300" href="/projects">
+                              Projects
+                          </a>
 
-                  </Menu>
+                          <LoginSession/>
+
+                      </Menu>
+                  </div>
 
 
                   {/*<div className="flex flex-column sm:hidden relative bg-white h-fit items-center"  style={{visibility: mobileVisible ? "visible" : "hidden"}}>*/}
