@@ -25,6 +25,7 @@
   width: 100vw;
   filter: blur(20px);
   -webkit-filter: blur(20px);
+  object-fit: cover;
 }
 
 @-webkit-keyframes topBoxAnimation {

@@ -142,6 +142,7 @@ const ShowWallet = (props) => {
                                             cptgbp={project.project.cptgbp}
                                             id={project.project_id}
                                             amountTonnes={project.amountTonnes}
+                                            remainingSupply={project.project.remainingsupply}
                                         />
                                     )}
                                 </div>

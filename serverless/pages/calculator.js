@@ -26,7 +26,7 @@ export default function Calculator(props) {
 
   return (
     <div className={styles.container}>
-      <div className='pt-32 sm:pt-0'>
+      <div className=''>
         <svg className='absolute w-full h-full z-0' id="visual" viewBox="0 0 900 600" width="900" height="600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1">
           <rect x="0" y="0" width="900" height="600" fill="#ffffff"/>
           <defs>
