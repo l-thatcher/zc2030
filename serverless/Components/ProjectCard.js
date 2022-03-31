@@ -1,83 +1,90 @@
-import React from "react";
+import React, {useContext} from "react";
+import {ViewContext} from "../Contexts/ViewContext";
+import Link from 'next/link'
+import ProgressBar from "@ramonak/react-progress-bar";
 
-export default function ProjectCard(props) {
-  // const project = props.project
-  return (
-    <div className="py-2 flex items-center justify-center px-3 ">
-      <div className="border-white border-2 rounded-lg w-1/7 shadow-md">
-        <div className="border-white border-3 rounded-lg">
-          <div className="relative overflow-hidden rounded-lg shadow-md">
+
+const ProjectCard = (props) => {
+  const project= props.project
+
+
+
+  // storing input name
+
+  console.log(project)
+  const widthPercentage = `${((project.balance/project.totalsupply)*100).toPrecision(3)}%`
+  console.log(project)
+
+
+
+  return(
+      <div className="w-full sm:w-64 border border-gray-500 overflow-hidden rounded-lg shadow-xl bg-white hover:shadow-xl hover:scale-104 transition duration-200 ease-in-out mx-2">
+        <div className='relative'>
+          <div className=" rounded-lg">
             <img
-              src="https://media.nationalgeographic.org/assets/photos/818/719/3d97f911-594f-4257-880c-d9aa1c6da22d.jpg"
-              className="card-img rounded-t-lg h-60 w-full object-cover"
-            />
+                src={project.projectimage1}
+                alt="uploaded cover image"
+                className="w-full object-cover  h-48 sm:h-48 rounded-lg ">
 
-            <div className="absolute bottom-0 right-0">
-              <h2 className="p-0.5 bg-opacity-70 rounded-3 bg-zc30-blue text-black text-center font-light mb-1 position-relative shadow-inner shadow-lg">
-                £{props.project.cptgbp}/ct
-              </h2>
-            </div>
+            </img>
+
           </div>
-
-          <h2 className="text-gray-600 text-xxl-center text-center font-light mb-1 position-relative flex-center shadow-lg">
-            {props.project.projectname}
-          </h2>
-        </div>
-
-        <div className="bg-white p-2 position-relative text-center">
-          <div className="flex justify-center">
-            <div className=" items-center">
-              <img
-                src="https://www.svgrepo.com/show/127575/location-sign.svg"
-                className="w-5 h-5 align-content-center opacity-75"
-              />
-            </div>
-            <p className="flex font-light text-lg">{props.project.location}</p>
-          </div>
-
-          <a href={"./projects/" + props.project.id}>
-            <button className="font-semibold hover:text-white py-1 px-4 border hover:border-transparent rounded">
-              More details
-            </button>
-          </a>
-        </div>
-
-        {/*add progress bar here*/}
-        <footer className="bg-white bg-gray-100 rounded-b-lg text-right py-1 px-8 text-xs text-gray-500">
-          <div className="flex mb-2 items-center justify-between">
+          <div className='px-2'>
             <div>
-              <span className="text-xs font-semibold inline-block py-1 px-2 rounded-full">
-                Captured Carbon:{" "}
-                {props.project.totalsupply - props.project.remainingsupply}t
-              </span>
-            </div>
-            <div className="text-right">
-              <span className="text-xs font-semibold inline-block opacity-80">
-                Available Carbon: {props.project.remainingsupply}t
-              </span>
-            </div>
-
-          </div>
-
-          <div className="overflow-hidden flex h-2 mb-2 text-xs rounded shadow-md">
-            <div
-              style={{ width: "100%", background: "white", opacity: "100%" }}
-            >
-              <div className="overflow-hidden flex h-2 mb-2 text-xs rounded">
-                <div
-                  style={{
-                    width: `${
-                      props.project.totalsupply - props.project.remainingsupply
-                    }%`,
-                    background: "#77C9D4",
-                    opacity: "100%",
-                  }}
-                ></div>
+              <div className=' text-lg  ml-2 mt-3 text-gray-700 font-bold flex flex-row justify-between truncate'>
+                {project.projectname}
+              </div>
+              <div className=" font-semibold ml-2  underline flex items-center text-sm text-gray-300 truncate capitalize">
+                {/*location*/}{project.country}
               </div>
             </div>
+
+            <div className=' flex items-center '>
+              {/*<div>*/}
+              {/*    <h5 className='font-sans text-xs '>Remaining  </h5>*/}
+              {/*    <h5 className='font-sans text-xs'> supply</h5>*/}
+              {/*</div>*/}
+              <div>
+                <div className=" flex items-center  rounded-full">
+
+                  <div className=' ml-2 no-underline flex items-center text-md text-gray-600 font-semibold  capitalize'>Available Carbon Supply:</div>
+                  <div className='w-[150px] ml-1'> <ProgressBar baseBgColor={'grey'} labelSize={'10px'} height={'15px'} bgColor={'#2D3B4F'} completed={widthPercentage} /> </div>
+
+
+                </div>
+              </div>
+
           </div>
-        </footer>
+
+
+
+          </div>
+
+
+        </div>
+
+        <div className="flex justify-end">
+
+
+
+          <Link  href={"./projects/" + props.project.id}>
+            <a className='mt-3 no-underline mb-3 mr-5 bg-green-500  justify-center font-bold capitalize text-xs px-4 py-2
+                         rounded shadow hover:shadow-md hover: mx-5 ease-linear transition-all duration-150 w-full text-center'>
+                              <span className='text-white
+                              '>More Details</span>
+            </a>
+          </Link>
+
+        </div>
+
+
+
       </div>
-    </div>
-  );
+
+  )
+
 }
+
+
+
+export default ProjectCard;

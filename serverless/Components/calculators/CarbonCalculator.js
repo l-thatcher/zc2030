@@ -3,6 +3,7 @@ import { Button, Form, InputGroup, ToggleButton } from "react-bootstrap";
 import ProgressBar from "./ProgressBar";
 import { useState } from "react";
 import { saveCalculatorResult } from "../../services/CalculatorService";
+import {useRouter} from "next/router";
 
 const CarbonCalculator = (data) => {
   const type = data.type;
@@ -12,6 +13,7 @@ const CarbonCalculator = (data) => {
   const inputs = data.input;
   const results = data.data.results;
   const userId = data.userId;
+  const router = useRouter();
 
   // console.log(type)
   // console.log(categories)
@@ -67,8 +69,7 @@ const CarbonCalculator = (data) => {
 
   // "Reset" button
   function handleReset() {
-    setStep(1);
-    setChecked([false, false, false]);
+    router.reload()
   }
 
   // Save calculator result

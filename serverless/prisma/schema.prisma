@@ -40,19 +40,20 @@ model User {
   email            String?            @unique
   emailVerified    DateTime?
   image            String?
-  publicAddress   String?            @db.Text
+  publicAddress    String?            @db.Text
   ethWallet        String?            @db.Text
   role             Role               @default(PERSONAL)
   accounts         Account[]
   sessions         Session[]
   CalculatorResult CalculatorResult[]
   UserCalculator   UserCalculator[]
+  Transaction      Transaction[]
 }
 
 enum Role {
-    PERSONAL
-    ADMIN
-    BUSINESS
+  PERSONAL
+  ADMIN
+  BUSINESS
 }
 
 model VerificationToken {
@@ -138,11 +139,25 @@ model Project {
   ownerpicture    String
   type            String
   website         String?
-  description     String             @db.Text
+  description     String        @db.Text
   datefounded     String
-  nftaddress      String?
-  publicAddress   String?            @db.Text
-  ethWallet       String?            @db.Text
+  publicAddress   String?       @db.Text
+  ethWallet       String?       @db.Text
+  Transaction     Transaction[]
 }
 
+model Transaction {
+  id           String  @id @default(cuid())
+  date         String
+  amountTonnes Decimal
+  amountGbp    Decimal
+  paypal_id    String
+  project_id   String
+  user_id      String
+  status       String  @default("Pending")
+  project      Project @relation(fields: [project_id], references: [id], onDelete: Restrict, map: "fk_transaction_id_to_project_id")
+  user         User    @relation(fields: [user_id], references: [id], onDelete: Restrict, map: "fk_transaction_id_to_user_id")
 
+  @@index([project_id], map: "fk_transaction_id_to_project_id")
+  @@index([project_id], map: "fk_transaction_id_to_user_id")
+}

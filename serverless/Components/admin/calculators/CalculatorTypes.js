@@ -3,8 +3,11 @@ import Link from "next/link";
 import styles from "../../../styles/Calculator.module.css";
 import { AiFillDelete } from "react-icons/ai";
 import { deleteCalculatorType } from "../../../services/CalculatorService";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import router, { useRouter } from "next/router";
+import {useContext, useState} from "react";
+import {updateRole} from "../../../services/adminService";
+import {toast} from "react-toastify";
+import {DashboardViewContext} from "../../../Contexts/DashboardViewContext";
 
 const CalculatorTypes = (data) => {
   const types = data.types;
@@ -12,15 +15,41 @@ const CalculatorTypes = (data) => {
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
   const [idToDelete, setIdToDelete] = useState(null);
+  const {dashboardView,setDashboardView} = useContext(DashboardViewContext);
+  const [optionSelected, setOptionSelected] = useState(0);
 
-  async function handleDelete() {
-    await deleteCalculatorType(idToDelete);
-    router.reload();
-  }
+  // async function handleDelete() {
+  //   await deleteCalculatorType(idToDelete);
+  //   router.reload();
+  // }
 
   function handleOpen(id) {
     setIdToDelete(id);
     setShowModal(true);
+  }
+
+  const handleDelete = async () => {
+
+    await deleteCalculatorType(idToDelete).then(res => {
+      if (res.status === 200)
+        toast.warn('Calculator deleted successfully!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      setShowModal(false);
+      router.push('/adminDashboard');
+      setDashboardView('calculator')
+      console.log(dashboardView)
+    } )
+        .catch(err => {
+          console.log(err);
+        });
+
   }
 
   return (
@@ -67,7 +96,7 @@ const CalculatorTypes = (data) => {
                         </Link>
                       </td>
                       <td className="py-4 px-6 text-m font-medium text-right whitespace-nowrap hover:cursor-pointer">
-                        <span onClick={(e) => handleOpen(it.id)}>
+                        <span onClick={(e) => {handleOpen(it.id), setOptionSelected(i)}}>
                           <AiFillDelete size={20} />
                         </span>
                       </td>
@@ -88,7 +117,7 @@ const CalculatorTypes = (data) => {
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            Delete type {`"${types[idToDelete]?.name}"`}?
+            Delete type {`"${types[optionSelected]?.name}"`}?
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

@@ -3,7 +3,7 @@
   padding-top: 40px;
   height: 100px;
   padding-left: 50px;
-  background: #57bc90;
+  /*background: #57bc90;*/
 }
 
 .h2 {
@@ -110,11 +110,16 @@
 }
 
 .button {
-  color: black;
-  background: #57bc90;
-  border: solid 3px #57bc90;
+  color: white;
+  background: #0e9f6e;
+  border: solid 3px #0e9f6e;
   width: 150px;
-  text-transform: capitalize;
+  color: black;
+}
+
+.button:hover{
+  background: rgb(97, 193, 145);
+  border: solid 3px #61c191;
 }
 
 .buttonBack {
@@ -134,11 +139,13 @@
   text-transform: capitalize;
 }
 
+.nav {
+  background-color: #a5a5af;
+}
+
 .navItems {
   color: black !important;
   font-size: 21px !important;
-  border-top: solid 1px #d2ede3 !important;
-  text-transform: capitalize;
 }
 
 .navItems:hover {

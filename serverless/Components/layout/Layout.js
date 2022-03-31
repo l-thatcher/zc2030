@@ -2,15 +2,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
+
 const Layout = ({ children }) => {
   return (
-    <div className="">
+    <div>
+
+      <Navbar className='' style=''/>
+    {/*<div className='container max-w-6xl mx-auto px-4' >*/}
+    {/*<div className="bg-white py-3 md:mb-10">*/}
       {/*<Header />*/}
-      <Navbar />
+      <div className='pt-24 z-0' id='page-wrap'>{children}</div>
 
-      <div>{children}</div>
-
-      <Footer />
+      <Footer/>
+    {/*</div>*/}
+    {/*</div>*/}
     </div>
   );
 };

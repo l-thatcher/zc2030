@@ -172,7 +172,7 @@ const CalculatorInput = (data) => {
                 onClick={(e) => handleOpen(inputVal.id, i)}
               >
                 Delete
-                <AiOutlineDelete size={18} style={{ marginBottom: "3px" }} />
+                <AiOutlineDelete size={18} style={{float: "right", marginLeft:"8px", marginTop:"3px"}} />
               </Button>
             </Form.Group>
 
@@ -205,7 +205,10 @@ const CalculatorInput = (data) => {
           style={{ width: "100%", marginTop: "10px" }}
           onClick={(e) => handleAdd(e)}
         >
-          Add <CgAddR size={20} style={{ marginBottom: "4px" }} />
+          <div className='flex flex-row justify-center items-center'>
+            <p className='mt-[12px]'> Add</p>
+            <CgAddR className='mt-[0px] mx-2'/>
+          </div>
         </Button>
       </Form>
       <div style={{ width: "100%", textAlign: "center" }}>

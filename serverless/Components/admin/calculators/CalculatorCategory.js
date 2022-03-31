@@ -288,7 +288,7 @@ const CalculatorCategory = (data) => {
                     id="button-addon2"
                     onClick={(e) => handleEdit(i)}
                   >
-                    Edit <FaEdit size={20} style={{ marginBottom: "5px" }} />
+                    Edit <FaEdit style={{float: "right", marginLeft:"8px", marginTop:"5px"}} size={20}/>
                   </Button>
                   <Button
                     variant="danger"
@@ -309,7 +309,10 @@ const CalculatorCategory = (data) => {
               style={{ width: "100%", marginTop: "10px" }}
               onClick={(e) => handleAdd("")}
             >
-              Add <CgAddR size={20} style={{ marginBottom: "4px" }} />
+              <div className='flex flex-row justify-center items-center'>
+                <p className='mt-[12px]'> Add</p>
+                <CgAddR className='mt-[0px] mx-2'/>
+              </div>
             </Button>
           </Form>
         )}
