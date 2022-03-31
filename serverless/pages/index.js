@@ -32,7 +32,7 @@ export default function Home(props) {
                         <p className={styles.summaryPara}>
                             Carbon Neutrality is important. We all need to play our part in taking action to achieve our
                             long term well-being goals for a
-                            Sustainable Wales. The seven well-being goals, agreed by the Senedd through the Well-being
+                            Sustainable planet. The seven well-being goals, agreed by the Senedd through the Well-being
                             of
                             Future Generations Act provide us with a comprehensive framework for action to meet the
                             needs

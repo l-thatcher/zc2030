@@ -13,18 +13,13 @@ export default function Home() {
             <div className="p-12">
               <h1 className="text-white uppercase text-7xl font-light pb-8 pl-5">We're ZC30</h1>
               <p className="text-white text-xl">
-                We at zero carbon 30 aim to get everyone's carbon use to 0 by the
-                year 2030.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nullam placerat enim et sapien congue venenatis. Aenean viverra ex
-                nec sapien condimentum, non blandit mi ullamcorper. Maecenas
-                condimentum venenatis tempor. Nunc pulvinar metus eget dolor
-                sollicitudin dictum. Duis sagittis suscipit fringilla. Integer
-                rhoncus congu. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nullam placerat enim et sapien congue venenatis. Aenean
-                viverra ex nec sapien condimentum, non blandit mi ullamcorper.
-                Maecenas condimentum venenatis tempor. Nunc pulvinar metus eget
-                dolor sollicitudin dictum. Duis sagittis suscipit fringilla.
-                Integer rhoncus congue
+                Zero Carbon 2030 aims to incentivize carbon negative projects which are
+                fundamental to decreasing the planet's overall carbon emissions. We facilitate transactions using
+                the eco-friendly blockchain which is scaling Ethereum, Polygon. Organisations or individuals can purchase
+                Fungible Carbon Tokens (ZCToken, ZCT), representing one Metric Tonne of carbon - captured from the atmosphere.
+              </p>
+                <p className="text-white text-xl">
+                View our <a href="/calculator">Calculator</a> page to calculate your carbon footprint - then choose which <a href="/projects">Projects</a> can help you offset your emissions!
               </p>
             </div>
             <img
