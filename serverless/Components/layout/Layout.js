@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 const Layout = ({ children }) => {
   return (
     <div>
-
+    <html lang="en"/>
       <Navbar className='' style=''/>
     {/*<div className='container max-w-6xl mx-auto px-4' >*/}
     {/*<div className="bg-white py-3 md:mb-10">*/}
