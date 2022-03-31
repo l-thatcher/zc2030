@@ -16,6 +16,7 @@ const CalculatorTypes = (data) => {
   const handleClose = () => setShowModal(false);
   const [idToDelete, setIdToDelete] = useState(null);
   const {dashboardView,setDashboardView} = useContext(DashboardViewContext);
+  const [optionSelected, setOptionSelected] = useState(0);
 
   // async function handleDelete() {
   //   await deleteCalculatorType(idToDelete);
@@ -95,7 +96,7 @@ const CalculatorTypes = (data) => {
                         </Link>
                       </td>
                       <td className="py-4 px-6 text-m font-medium text-right whitespace-nowrap hover:cursor-pointer">
-                        <span onClick={(e) => handleOpen(it.id)}>
+                        <span onClick={(e) => {handleOpen(it.id), setOptionSelected(i)}}>
                           <AiFillDelete size={20} />
                         </span>
                       </td>
@@ -116,7 +117,7 @@ const CalculatorTypes = (data) => {
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            Delete type {`"${types[idToDelete]?.name}"`}?
+            Delete type {`"${types[optionSelected]?.name}"`}?
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

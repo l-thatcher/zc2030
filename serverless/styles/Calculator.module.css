@@ -114,6 +114,7 @@
   background: #0e9f6e;
   border: solid 3px #0e9f6e;
   width: 150px;
+  color: black;
 }
 
 .button:hover{
@@ -122,7 +123,7 @@
 }
 
 .buttonBack {
-  color: white;
+  color: black;
   background: #a5a5af;
   border: solid 3px #a5a5af;
   width: 150px;
@@ -138,11 +139,13 @@
   text-transform: capitalize;
 }
 
+.nav {
+  background-color: #a5a5af;
+}
+
 .navItems {
   color: black !important;
   font-size: 21px !important;
-  border-top: solid 1px #d2ede3 !important;
-  text-transform: capitalize;
 }
 
 .navItems:hover {
