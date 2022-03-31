@@ -15,6 +15,7 @@ const ShowWallet = (props) => {
     const balance = props.balance;
     const transactions = props.transactions
     const projects = props.projects
+    const blockchainTxs = props.blockchainTxs
     const {data: session} = useSession();
     const logo = "/cz2030_logo.png";
     const [view, setView] = useState("wallet");
@@ -139,7 +140,7 @@ const ShowWallet = (props) => {
                                             country={project.project.country}
                                             county={project.project.county}
                                             totalSupply={project.project.totalsupply}
-                                            cptgbp={project.project.cptgbp}
+                                            owned={blockchainTxs[`0x${project.project.publicAddress}`]}
                                             id={project.project_id}
                                             amountTonnes={project.amountTonnes}
                                             remainingSupply={project.project.remainingsupply}

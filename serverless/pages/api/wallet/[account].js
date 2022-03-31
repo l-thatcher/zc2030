@@ -1,6 +1,7 @@
 import {getListofProjects} from "../../../services/PrismaService";
 import {getZCTBalances} from "../../../services/ZCTService";
 import {fetchTransactionsByAddress} from "../../../services/WalletService";
+import Web3 from "web3";
 
 export default async function handler(req, res) {
 
@@ -15,14 +16,14 @@ export default async function handler(req, res) {
                 // console.log(result.result)
                 const blockchainTxs = result.result.reduce(function (map, transaction) {
                     if (transaction.from in map)
-                        map[transaction.from].purchased = map[transaction.from].purchased + transaction.value;
+                        map[transaction.from] = map[transaction.from] + parseInt(Web3.utils.fromWei(transaction.value));
                     else {
-                        map[transaction.from].purchased = transaction.value;
-                        console.log(map)
+                        map[transaction.from] = parseInt(Web3.utils.fromWei(transaction.value));
                     }
                     return map;
                 }, {});
                 console.log(blockchainTxs)
+                console.log("ppp")
                 //{"status":"1","message":"OK",
                 // "result":[{"blockNumber":"25706137",
                 // "timeStamp":"1648496083",
@@ -33,9 +34,9 @@ export default async function handler(req, res) {
                 // "tokenName":"ZC-Token","tokenSymbol":"ZCT","tokenDecimal":"18","transactionIndex":"25","gas":"70598",
                 // "gasPrice":"2500202055","gasUsed":"60356","cumulativeGasUsed":"12552750","input":"deprecated",
                 // "confirmations":"98"}]}
-                res.status(200).json(result)
+                res.status(200).json(blockchainTxs)
             } catch (e) {
-                // console.log(res);
+                console.log(e);
                 res.status(500).json({message: e.message});
             }
             break;

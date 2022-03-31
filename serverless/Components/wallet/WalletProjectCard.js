@@ -48,7 +48,7 @@ const Card = (props) => {
 
                     <div className="text-gray-600 ml-2 mt-2 no-underline flex items-center font-semibold text-xs text-gray-600 ">
                         {/*total supply*/}
-                        Cost per tonne: <span className='text-gray-600 ml-2'> {props.cptgbp} £</span>
+                        Tonnes purchased: <span className='text-gray-600 ml-2'> {props.owned} CO2e</span>
                     </div>
 
                     <div className=' flex items-center '>
