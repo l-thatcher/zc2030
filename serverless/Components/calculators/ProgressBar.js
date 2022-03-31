@@ -37,7 +37,7 @@ const ProgressBar = (data) => {
           ))}
         </div>
         <Link href={`/user/logs`}>
-          <button className=" mt-4 -ml-1 flex items-center text-sm font-medium text-white bg-green-500 hover:bg-green-400  font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 ">View Logs</button>
+          <button className=" mt-4 -ml-1 flex items-center text-sm font-medium text-black bg-green-500 hover:bg-green-400  font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 ">View Logs</button>
         </Link>
       </div>
     );
