@@ -7,7 +7,7 @@ import { getSession } from "next-auth/react";
 import { createEncryptedWallet } from "../../../services/Web3jsService";
 import {fetchTransactionsByAddress, getZCTBalance, getZCTBalances, mintZCT} from "../../../services/ZCTService";
 import log from "tailwindcss/lib/util/log";
-import {transferMatic} from "../../../services/MaticService";
+import {getMaticBalances, transferMatic} from "../../../services/MaticService";
 
 const getCalculatorTypes = `SELECT * FROM Projects`;
 
@@ -18,8 +18,9 @@ export default async function handler(req, res) {
       try {
         let result = await getListofProjects(getCalculatorTypes);
         const addresses = await getZCTBalances(result)
+        const addressesWithMatic = (await getMaticBalances(addresses))
         // await fetchTransactionsByAddress("0x6c578c393dc9176497e797a54631f8c7c1e0522e")
-        res.status(200).json(addresses);
+        res.status(200).json(addressesWithMatic);
       } catch (e) {
         console.log(e)
         res.status(500).json({ message: e.message });

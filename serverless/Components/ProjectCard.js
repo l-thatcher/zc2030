@@ -12,7 +12,7 @@ const ProjectCard = (props) => {
   // storing input name
 
   console.log(project)
-  const widthPercentage = (project.remainingsupply/project.totalsupply)*100
+  const widthPercentage = `${((project.balance/project.totalsupply)*100).toPrecision(3)}%`
   console.log(project)
 
 

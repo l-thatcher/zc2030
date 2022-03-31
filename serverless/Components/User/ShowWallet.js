@@ -88,7 +88,7 @@ const ShowWallet = (props) => {
               <a
                   target="_blank"
                   className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
-                  href={"https://mumbai.polygonscan.com/address/0x" + session?.user.walletAddress}
+                  href={"https://mumbai.polygonscan.com/token/0x26b82ef7812d5d2f4ca3bd8140fc5642702d9e0e?a=0x" + session?.user.walletAddress}
               >
                 0x{session?.user.walletAddress}
               </a>

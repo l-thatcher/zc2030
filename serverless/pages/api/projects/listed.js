@@ -17,8 +17,8 @@ export default async function handler(req, res) {
         case "GET":
             try {
                 let result = await getListofProjects(getCalculatorTypes);
-                const addresses = (await getZCTBalances(result)).filter(address => address.balance >= 0.1)
-                const addressesWithMatic = (await getMaticBalances(addresses)).filter(address => address.maticBalance >=0.1)
+                const addresses = (await getZCTBalances(result)).filter(address => address.balance >= 0.01)
+                const addressesWithMatic = (await getMaticBalances(addresses)).filter(address => address.maticBalance >=0.01)
                 res.status(200).json(addressesWithMatic);
             } catch (e) {
                 console.log(e)
